@@ -4,13 +4,15 @@ yii2-widgets
 Collection of useful widgets for Yii Framework 2 and typically themed for Twitter Bootstrap. The widgets currently available are:
 
 ### Forms/Inputs
-* **ActiveForm:** Facilitates all [three form layouts] (http://getbootstrap.com/css/#forms-example) available in Bootstrap i.e.
-  __vertical__, __horizontal__, and __inline__. Allows options for offsetting labels and inputs for horizontal form layout. Works closely
+* **ActiveForm:** Extends Yii [ActiveForm widget] (https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveForm.php). Facilitates
+   all [three form layouts] (http://getbootstrap.com/css/#forms-example) available in Bootstrap i.e. __vertical__, __horizontal__, and __inline__. 
+  Allows options for offsetting labels and inputs for horizontal form layout. Works closely
   with the extended ActiveField widget.
 	
-* **ActiveField:** Allows Bootstrap styled [input group addons] (http://getbootstrap.com/components/#input-groups-basic) to 
-  be prepended or appended to textInputs. Automatically adjusts checkboxes and radio input offsets for horizontal forms. Allows, 
-  flexibility to control the labels and placeholders based on form layout style (e.g. hide labels and show them as placeholder for inline forms).
+* **ActiveField:** Extends Yii [ActiveField widget] (https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveField.php). Allows
+  Bootstrap styled [input group addons] (http://getbootstrap.com/components/#input-groups-basic) to be prepended or appended to textInputs. 
+  Automatically adjusts checkboxes and radio input offsets for horizontal forms. Allows, flexibility to control the labels and placeholders 
+  based on form layout style (e.g. hide labels and show them as placeholder for inline forms).
 
 ## Installation
 
