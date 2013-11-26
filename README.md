@@ -73,7 +73,7 @@ to the require section of your `composer.json` file.
 	echo $form->field($model, 'phone', [
 	  'addon' => [
 	    'type'=>'prepend', 
-	    'content'=>'<i class="glyphicon glyphicon-phone'
+	    'content'=>'<i class="glyphicon glyphicon-phone"></i>'
 	   ]
 	]);
 ```
