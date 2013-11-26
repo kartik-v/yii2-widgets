@@ -5,7 +5,7 @@ Collection of useful widgets for Yii Framework 2 and typically themed for Twitte
 
 ### Forms/Inputs
 * **ActiveForm:** Facilitates all [three form layouts] (http://getbootstrap.com/css/#forms-example) available in Bootstrap i.e.
-  vertical, horizontal, and inline. Allows options for offsetting labels and inputs for horizontal form layout. Works closely
+  __vertical__, __horizontal__, and __inline__. Allows options for offsetting labels and inputs for horizontal form layout. Works closely
   with the extended ActiveField widget.
 	
 * **ActiveField:** Allows Bootstrap styled [input group addons] (http://getbootstrap.com/components/#input-groups-basic) to 
