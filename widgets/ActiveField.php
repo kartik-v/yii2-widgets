@@ -90,7 +90,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	
 	/**
 	 * Initializes addon for inputs
-     */	 	
+	 * /
 	protected function initAddon() {
 		if (!empty($this->addon)) {
 			$addon = $this->addon;
@@ -109,7 +109,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	
 	/**
 	 * Initializes placeholder based on $labelAsPlaceholder
-     */	 
+	 * /
 	protected function initPlaceholder(&$options) {
 		if ($this->labelAsPlaceholder) {
 			$label = Html::encode($this->model->getAttributeLabel($this->attribute));
@@ -120,7 +120,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	
 	/**
 	 * Initializes template for bootstrap 3 specific styling
-     */	 	
+	 * /
 	protected function initTemplate() {
 		$inputDivClass = $this->form->getInputCss();
 		$offsetDivClass = $this->form->getOffsetCss();
