@@ -43,39 +43,62 @@ to the require section of your `composer.json` file.
 
 ```php
   // Horizontal Form
-  $form = ActiveForm::begin([
-    'id' => 'form-signup',
-    'type' => ActiveForm::TYPE_HORIZONTAL
-  ]);
+	$form = ActiveForm::begin([
+		'id' => 'form-signup',
+		'type' => ActiveForm::TYPE_HORIZONTAL
+	]);
   
-  // Inline Form
-  $form = ActiveForm::begin([
-  		'id' => 'form-login', 
-  		'type' => ActiveForm::TYPE_INLINE
-  		'fieldConfig' => ['labelAsPlaceholder'=>true]
-  ]);
+	// Inline Form
+	$form = ActiveForm::begin([
+		'id' => 'form-login', 
+		'type' => ActiveForm::TYPE_INLINE
+		'fieldConfig' => ['labelAsPlaceholder'=>true]
+	]);
 
-  // Horizontal Form Configuration
-  $form = ActiveForm::begin([
+  	// Horizontal Form Configuration
+  	$form = ActiveForm::begin([
   		'id' => 'form-signup', 
   		'type' => ActiveForm::TYPE_HORIZONTAL
-  		'formConfig' => ['labelSpan' => 2, 'spanSize' => ActiveForm::SIZE_SMALL]
-  ]);
+		'formConfig' => ['labelSpan' => 2, 'spanSize' => ActiveForm::SIZE_SMALL]
+	]);
 ```
 
 ### ActiveField
 
 ```php
-	echo $form->field($model, 'email', ['addon' => ['type'=>'prepend', 'content'=>'@']]);
+	// Prepend an addon text
+   	echo $form->field($model, 'email', ['addon' => ['type'=>'prepend', 'content'=>'@']]);
+   	
+   	// Append an addon text
 	echo $form->field($model, 'amount_paid', [
-	  'addon' => ['type'=>'append', 'content'=>'.00']
+  		'addon' => ['type' => 'append', 'content'=>'.00']
 	]);
+	
+	// Formatted addons (like icons)
 	echo $form->field($model, 'phone', [
-	  'addon' => [
-	    'type'=>'prepend', 
-	    'content'=>'<i class="glyphicon glyphicon-phone"></i>'
-	   ]
+		'addon' => [
+			'type' => 'prepend', 
+			'content' => '<i class="glyphicon glyphicon-phone"></i>'
+		]
 	]);
+	
+	// Formatted addons (inputs)
+	echo $form->field($model, 'phone', [
+		'addon' => [
+			'type' => 'prepend', 
+			'content' => '<input type="radio">'
+		]
+	]);
+	
+	// Formatted addons (buttons)
+	echo $form->field($model, 'phone', [
+		'addon' => [
+			'type' => 'prepend', 
+			'content' => Html::button('Go', ['class'=>'btn btn-primary']),
+			'asButton' => true
+		]
+	]);
+	
 ```
 
 ## License
