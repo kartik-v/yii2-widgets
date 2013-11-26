@@ -1,0 +1,19 @@
+{
+	"name": "kartik-v/yii2-widgets",
+	"description": "A collection of useful widgets for Yii Framework 2",
+	"keywords": ["yii2", "extension", "widget", "form"],
+	"homepage": "https://github.com/kartik-v/yii2-widgets",
+	"type": "yii2-extension",
+	"license": "BSD 3-Clause",
+	"authors": [
+		{
+			"name": "Kartik Visweswaran",
+			"email": "kartikv2@gmail.com",
+			"homepage": "http://kartikv.krajee.com/"
+		}
+	],
+	"require": {
+		"yiisoft/yii2": "*"
+	}
+	"target-dir": "kartik/widgets"
+}
