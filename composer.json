@@ -14,6 +14,5 @@
 	],
 	"require": {
 		"yiisoft/yii2": "dev-master"
-	},
-	"target-dir": "kartik-v/yii2-widgets"
+	}
 }
