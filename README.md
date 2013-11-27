@@ -1,7 +1,7 @@
 yii2-widgets
 ============
 
-Collection of useful widgets for Yii Framework 2 and typically themed for Twitter Bootstrap. The widgets currently available are:
+This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Twitter Bootstrap or other Bootstrap extras. The widgets currently available are:
 
 ### Forms/Inputs
 * **ActiveForm:** Extends Yii [ActiveForm widget] (https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveForm.php). Facilitates
