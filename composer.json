@@ -16,7 +16,7 @@
 		"yiisoft/yii2": "dev-master"
 	},
 	"autoload": {
-		"psr-0": { "kartik\\widgets\\": "" }
+		"psr-0": { "kartik\\": "" }
 	},
-	"target-dir": "kartik/widgets"
+	"target-dir": "kartik"
 }
