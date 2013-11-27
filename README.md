@@ -4,15 +4,17 @@ yii2-widgets
 This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Twitter Bootstrap or other Bootstrap extras. The widgets currently available are:
 
 ### Forms/Inputs
-* **ActiveForm:** Extends Yii [ActiveForm widget] (https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveForm.php). Facilitates
-   all [three form layouts] (http://getbootstrap.com/css/#forms-example) available in Bootstrap i.e. __vertical__, __horizontal__, and __inline__. 
-  Allows options for offsetting labels and inputs for horizontal form layout. Works closely
-  with the extended ActiveField widget.
+* **ActiveForm:** Extends [Yii ActiveForm widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveForm.php). Facilitates all [three form layouts](http://getbootstrap.com/css/#forms-example) available in Bootstrap i.e. __vertical__, __horizontal__, and __inline__. Allows options for offsetting labels and inputs for horizontal form layout. Works closely with the extended ActiveField widget.
 	
-* **ActiveField:** Extends Yii [ActiveField widget] (https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveField.php). Allows
-  Bootstrap styled [input group addons] (http://getbootstrap.com/components/#input-groups-basic) to be prepended or appended to textInputs. 
-  Automatically adjusts checkboxes and radio input offsets for horizontal forms. Allows, flexibility to control the labels and placeholders 
-  based on form layout style (e.g. hide labels and show them as placeholder for inline forms).
+* **ActiveField:** Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveField.php). Allows Bootstrap styled [input group addons](http://getbootstrap.com/components/#input-groups-basic) to be prepended or appended to textInputs. Automatically adjusts checkboxes and radio input offsets for horizontal forms. Allows, flexibility to control the labels and placeholders based on form layout style (e.g. hide labels and show them as placeholder for inline forms).
+
+### Upcoming
+* Nav
+* Sidenav
+* Gridview
+* Panel
+* Affix
+* and more...
 
 ## Installation
 
