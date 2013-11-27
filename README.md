@@ -32,7 +32,7 @@ or add
 "kartik-v/yii2-widgets": "dev-master"
 ```
 
-to the require section of your `composer.json` file.
+to the ```require``` section of your `composer.json` file.
 
 ## Usage
 
