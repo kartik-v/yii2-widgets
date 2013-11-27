@@ -1,6 +1,6 @@
 {
 	"name": "kartik-v/yii2-widgets",
-	"description": "A collection of useful widgets for Yii Framework 2",
+	"description": "Collection of useful widgets for Yii Framework 2.0 extending functionalities for Twitter Bootstrap",
 	"keywords": ["yii2", "extension", "widget", "form"],
 	"homepage": "https://github.com/kartik-v/yii2-widgets",
 	"type": "yii2-extension",
