@@ -58,9 +58,9 @@ class ActiveForm extends \yii\widgets\ActiveForm
 	/**
 	 * @var array the configuration for the form
 	 * 	[
-	 *		'labelSpan'  => 2,	               		 // must be between 1 and 12
-	 *		'spanSize' 	 => ActiveForm::SIZE_MEDIUM, // must be one of the SIZE modifiers
-	 *		'showLabels' => true
+	 *		'labelSpan' => 2, // must be between 1 and 12
+	 *		'spanSize' => ActiveForm::SIZE_MEDIUM, // must be one of the SIZE modifiers
+	 *		'showLabels' => true // show or hide labels (mainly useful for inline type form)
 	 *	],
 	 */
 	public $formConfig = [];
@@ -82,18 +82,18 @@ class ActiveForm extends \yii\widgets\ActiveForm
 	 */
 	private $_config = [
 		self::TYPE_VERTICAL => [
-			'labelSpan'  => self::NOT_SET,	// must be between 1 and 12
-			'spanSize' 	 => self::NOT_SET,  // must be one of the SIZE constants set above
-			'showLabels' => true            // show or hide labels (mainly useful for inline type form)
+			'labelSpan'  => self::NOT_SET, // must be between 1 and 12
+			'spanSize' => self::NOT_SET, // must be one of the SIZE modifiers
+			'showLabels' => true // show or hide labels (mainly useful for inline type form)
 		],
 		self::TYPE_HORIZONTAL => [
 			'labelSpan'  => self::DEFAULT_LABEL_SPAN,
-			'spanSize' 	 => self::SIZE_MEDIUM, 
+			'spanSize' => self::SIZE_MEDIUM, 
 			'showLabels' => true
 		],
 		self::TYPE_INLINE => [
 			'labelSpan'  => self::NOT_SET,
-			'spanSize' 	 => self::NOT_SET, 
+			'spanSize' => self::NOT_SET, 
 			'showLabels' => false
 		],
 	];
