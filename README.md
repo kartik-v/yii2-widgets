@@ -39,14 +39,15 @@ to the require section of your `composer.json` file.
 ### How to call?
 
 ```php
-  use kartik\widgets;
-  $form = ActiveForm::begin();
+	// add this in your view
+	use kartik\widgets;
+	$form = ActiveForm::begin();
 ```
 
 ### ActiveForm
 
 ```php
-  // Horizontal Form
+	// Horizontal Form
 	$form = ActiveForm::begin([
 		'id' => 'form-signup',
 		'type' => ActiveForm::TYPE_HORIZONTAL
