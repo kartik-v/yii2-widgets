@@ -32,22 +32,22 @@ use yii\helpers\Html;
 class ActiveForm extends \yii\widgets\ActiveForm
 {
 	const NOT_SET            = '';
-	const DEFAULT_LABEL_SPAN = 2;
-	const FULL_SPAN          = 12;	// bootstrap full width
+	const DEFAULT_LABEL_SPAN = 2;	// this will offset the adjacent input accordingly
+	const FULL_SPAN          = 12;	// bootstrap default full grid width
 	
 	/* Form Types */
-	const TYPE_VERTICAL		 = 'vertical';
-	const TYPE_HORIZONTAL 	 = 'horizontal';
-	const TYPE_INLINE 		 = 'inline';
+	const TYPE_VERTICAL   = 'vertical';
+	const TYPE_HORIZONTAL = 'horizontal';
+	const TYPE_INLINE     = 'inline';
 
 	/* Size Modifiers */
-	const SIZE_TINY          = 'xs';
-	const SIZE_SMALL         = 'sm';
-	const SIZE_MEDIUM        = 'md';
-	const SIZE_LARGE         = 'lg';
+	const SIZE_TINY       = 'xs';
+	const SIZE_SMALL      = 'sm';
+	const SIZE_MEDIUM     = 'md';
+	const SIZE_LARGE      = 'lg';
 
-	/* Label Settings */
-	const SCREEN_READER      = 'sr-only';
+	/* Label Display Settings */
+	const SCREEN_READER   = 'sr-only';
 	
 	/**
 	 * @var string form orientation type (for bootstrap styling)
