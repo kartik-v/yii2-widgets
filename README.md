@@ -40,7 +40,7 @@ to the ```require``` section of your `composer.json` file.
 
 ```php
 	// add this in your view
-	use kartik\widgets;
+	use kartik\widgets\ActiveForm;
 	$form = ActiveForm::begin();
 ```
 
