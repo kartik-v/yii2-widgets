@@ -47,24 +47,24 @@ to the ```require``` section of your `composer.json` file.
 ### ActiveForm
 
 ```php
-	// Horizontal Form
+	// Vertical Form
 	$form = ActiveForm::begin([
 		'id' => 'form-signup',
-		'type' => ActiveForm::TYPE_HORIZONTAL
+		'type' => ActiveForm::TYPE_VERTICAL
 	]);
   
 	// Inline Form
 	$form = ActiveForm::begin([
 		'id' => 'form-login', 
-		'type' => ActiveForm::TYPE_INLINE
+		'type' => ActiveForm::TYPE_INLINE,
 		'fieldConfig' => ['labelAsPlaceholder'=>true]
 	]);
 
   	// Horizontal Form Configuration
   	$form = ActiveForm::begin([
   		'id' => 'form-signup', 
-  		'type' => ActiveForm::TYPE_HORIZONTAL
-		'formConfig' => ['labelSpan' => 2, 'spanSize' => ActiveForm::SIZE_SMALL]
+  		'type' => ActiveForm::TYPE_HORIZONTAL,
+		'formConfig' => ['labelSpan' => 3, 'deviceSize' => ActiveForm::SIZE_SMALL]
 	]);
 ```
 
