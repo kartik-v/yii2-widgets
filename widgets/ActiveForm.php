@@ -23,7 +23,7 @@ use yii\helpers\Html;
  * $form = ActiveForm::begin([
  *		'id' => 'form-signup', 
  *		'type' => ActiveForm::TYPE_HORIZONTAL
- *		'formConfig' => ['labelSpan' => 2, 'spanSize' => ActiveForm::SIZE_SMALL]
+ *		'formConfig' => ['labelSpan' => 2, 'deviceSize' => ActiveForm::SIZE_SMALL]
  * ]);
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
@@ -59,7 +59,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
 	 * @var array the configuration for the form
 	 * 	[
 	 *		'labelSpan' => 2, // must be between 1 and 12
-	 *		'spanSize' => ActiveForm::SIZE_MEDIUM, // must be one of the SIZE modifiers
+	 *		'deviceSize' => ActiveForm::SIZE_MEDIUM, // must be one of the SIZE modifiers
 	 *		'showLabels' => true // show or hide labels (mainly useful for inline type form)
 	 *	],
 	 */
@@ -83,17 +83,17 @@ class ActiveForm extends \yii\widgets\ActiveForm
 	private $_config = [
 		self::TYPE_VERTICAL => [
 			'labelSpan'  => self::NOT_SET, // must be between 1 and 12
-			'spanSize' => self::NOT_SET, // must be one of the SIZE modifiers
+			'deviceSize' => self::NOT_SET, // must be one of the SIZE modifiers
 			'showLabels' => true // show or hide labels (mainly useful for inline type form)
 		],
 		self::TYPE_HORIZONTAL => [
 			'labelSpan'  => self::DEFAULT_LABEL_SPAN,
-			'spanSize' => self::SIZE_MEDIUM, 
+			'deviceSize' => self::SIZE_MEDIUM, 
 			'showLabels' => true
 		],
 		self::TYPE_INLINE => [
 			'labelSpan'  => self::NOT_SET,
-			'spanSize' => self::NOT_SET, 
+			'deviceSize' => self::NOT_SET, 
 			'showLabels' => false
 		],
 	];
@@ -126,7 +126,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
 		
 		$config = $this->_config[$this->type];
 		$span = $config['labelSpan'];
-		$size = $config['spanSize'];
+		$size = $config['deviceSize'];
 		$labelCss = self::NOT_SET;		
 		
 		if ($span != self::NOT_SET && intval($span) > 0) {
@@ -137,7 +137,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
 				$span = self::DEFAULT_LABEL_SPAN;
 			}
 
-			/* Validate if invalid spanSize is passed - else default to medium */
+			/* Validate if invalid deviceSize is passed - else default to medium */
 			if ($size == self::NOT_SET) {
 				$size = self::SIZE_MEDIUM;
 			}
