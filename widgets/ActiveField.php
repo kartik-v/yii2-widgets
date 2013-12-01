@@ -18,9 +18,9 @@ use yii\helpers\Html;
  *
  * Example(s):
  * ```php
- * 	echo $form->field($model, 'email', ['addon' => ['type'=>'prepend', 'content'=>'@']]);
- * 	echo $form->field($model, 'amount_paid', ['addon' => ['type'=>'append', 'content'=>'.00']]);
- * 	echo $form->field($model, 'phone', ['addon' => ['type'=>'prepend', 'content'=>'<i class="glyphicon glyphicon-phone']]);
+ * 	echo $this->form->field($model, 'email', ['addon' => ['type'=>'prepend', 'content'=>'@']]);
+ * 	echo $this->form->field($model, 'amount_paid', ['addon' => ['type'=>'append', 'content'=>'.00']]);
+ * 	echo $this->form->field($model, 'phone', ['addon' => ['type'=>'prepend', 'content'=>'<i class="glyphicon glyphicon-phone']]);
  * ```
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
@@ -56,12 +56,25 @@ class ActiveField extends \yii\widgets\ActiveField
 	/**
 	 * @var boolean whether the label is to be displayed as a placeholder
 	 */
-	public $labelAsPlaceholder = false;
+	public $labelAsPlaceholder;
 	
 	/**
 	 * @var boolean whether the input is to be offset (like for checkbox or radio).
 	 */
 	private $_offsetInput = false;
+	
+	/**
+	 * Initialize widget
+	 */	
+	public function init() {
+		parent::init();
+		if ($this->form->type === ActiveForm::TYPE_INLINE && !isset($this->labelAsPlaceholder)) {
+			$this->labelAsPlaceholder = true;
+		}
+		elseif (!isset($this->labelAsPlaceholder)) {
+			$this->labelAsPlaceholder = false;
+		}		
+	}
 	
 	/**
 	 * Renders the whole field.
@@ -161,6 +174,24 @@ class ActiveField extends \yii\widgets\ActiveField
 		}
 		$this->parts['{input}'] = Html::activeInput($type, $this->model, $this->attribute, $options);
 		return $this;
+	}
+	
+	/**
+	 * Renders a password input.
+	 */	
+	public function passwordInput($options = [])
+	{
+		$this->initPlaceholder($options);
+		return parent::passwordInput($options);
+	}
+	
+	/**
+	 * Renders a text area.
+	 */
+	public function textarea($options = [])
+	{
+		$this->initPlaceholder($options);
+		return parent::textarea($options);
 	}
 	
 	/**
