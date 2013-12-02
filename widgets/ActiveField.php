@@ -1,6 +1,5 @@
 <?php
 namespace kartik\widgets;
-
 use yii\helpers\Html;
 
 /**
@@ -24,13 +23,6 @@ use yii\helpers\Html;
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
- */
-
- 
-/**
- * @author Kartik Visweswaran <kartik.visweswaran@krajee.com>
- * @since 2.0
- 
  */
 class ActiveField extends \yii\widgets\ActiveField
 {
