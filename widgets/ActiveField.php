@@ -267,7 +267,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	{
 		$height = static::MULTI_SELECT_HEIGHT;
 		$selector = static::TYPE_CHECKBOX;
-		$conOptions = [];
+		$container = [];
 		$options['encode'] = false;
 		if (isset($options['height'])) {
 			$height = $options['height'];
@@ -278,13 +278,13 @@ class ActiveField extends \yii\widgets\ActiveField
 			unset($options['selector']);
 		}
 		if (isset($options['container'])) {
-			$conOptions = $options['container'];
+			$container = $options['container'];
 			unset($options['container']);
 		}
-		Html::addCssClass($conOptions, 'form-control');
-		$style = isset($conOptions['style']) ? $conOptions['style'] : '';
-		$conOptions['style'] = $style . "height: {$height}; overflow: auto;";
-		$this->_multiSelectContainer = Html::tag('div', '{input}', $conOptions);
+		Html::addCssClass($container, 'form-control');
+		$style = isset($container['style']) ? $container['style'] : '';
+		$container['style'] = $style . "height: {$height}; overflow: auto;";
+		$this->_multiSelectContainer = Html::tag('div', '{input}', $container);
 		
 		if ($selector == static::TYPE_RADIO) {
 			return static::radioList($items, $options);
