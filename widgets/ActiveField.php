@@ -9,7 +9,7 @@ use yii\helpers\Html;
  *
  * ADDITIONAL VARIABLES/PARAMETERS:
  * ===============================
- * @param boolean $labelAsPlaceholder whether to display the label as a placeholder (default false)
+ * @param boolean $autoPlaceholder whether to display the label as a placeholder (default false)
  * @param array $addon whether to prepend or append an addon to an input group - contains these keys:
  * 		- @param string $type whether 'prepend' or 'append'
  *		- @param string $content the addon content - this is not html encoded
@@ -50,7 +50,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	/**
 	 * @var boolean whether the label is to be displayed as a placeholder
 	 */
-	public $labelAsPlaceholder;
+	public $autoPlaceholder;
 	
 	/**
 	 * @var boolean whether the input is to be offset (like for checkbox or radio).
@@ -67,11 +67,11 @@ class ActiveField extends \yii\widgets\ActiveField
 	 */	
 	public function init() {
 		parent::init();
-		if ($this->form->type === ActiveForm::TYPE_INLINE && !isset($this->labelAsPlaceholder)) {
-			$this->labelAsPlaceholder = true;
+		if ($this->form->type === ActiveForm::TYPE_INLINE && !isset($this->autoPlaceholder)) {
+			$this->autoPlaceholder = true;
 		}
-		elseif (!isset($this->labelAsPlaceholder)) {
-			$this->labelAsPlaceholder = false;
+		elseif (!isset($this->autoPlaceholder)) {
+			$this->autoPlaceholder = false;
 		}
 		if ($this->form->type === ActiveForm::TYPE_HORIZONTAL) {
 			Html::addCssClass($this->labelOptions, 'control-label');
@@ -123,10 +123,10 @@ class ActiveField extends \yii\widgets\ActiveField
 	}
 	
 	/**
-	 * Initializes placeholder based on $labelAsPlaceholder
+	 * Initializes placeholder based on $autoPlaceholder
 	 */
 	protected function initPlaceholder(&$options) {
-		if ($this->labelAsPlaceholder) {
+		if ($this->autoPlaceholder) {
 			$label = Html::encode($this->model->getAttributeLabel($this->attribute));
 			$this->inputOptions['placeholder'] = $label;
 			$options['placeholder'] = $label;
@@ -151,7 +151,7 @@ class ActiveField extends \yii\widgets\ActiveField
 			$this->template = "{label}\n{$input}\n{$error}\n{$hint}";
 		}
 		$showLabels = isset($this->form->formConfig['showLabels']) ? $this->form->formConfig['showLabels'] : true;
-		if (!$showLabels || $this->labelAsPlaceholder) {
+		if (!$showLabels || $this->autoPlaceholder) {
 			$this->template = str_replace("{label}\n", "", $this->template);
 		}
 		if ($this->_multiSelectContainer != '') {
@@ -259,7 +259,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	 * @param array $options the options for checkboxList or radioList. Additional parameters
 	 *         - @param string height: the height of the multiselect control - defaults to 145px
 	 *         - @param string selector: whether checkbox or radio - defaults to checkbox
-	 *         - @param string containerOptions: options for the multiselect container
+	 *         - @param array container: options for the multiselect container
 	 * @param string $selector 
 	 *
 	 */	
@@ -277,9 +277,9 @@ class ActiveField extends \yii\widgets\ActiveField
 			$selector = $options['selector'];
 			unset($options['selector']);
 		}
-		if (isset($options['containerOptions'])) {
-			$conOptions = $options['containerOptions'];
-			unset($options['containerOptions']);
+		if (isset($options['container'])) {
+			$conOptions = $options['container'];
+			unset($options['container']);
 		}
 		Html::addCssClass($conOptions, 'form-control');
 		$style = isset($conOptions['style']) ? $conOptions['style'] : '';
