@@ -4,9 +4,9 @@ yii2-widgets
 This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Twitter Bootstrap or other Bootstrap extras. The widgets currently available are:
 
 ### Forms/Inputs
-* **ActiveForm:** Extends [Yii ActiveForm widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveForm.php). Facilitates all [three form layouts](http://getbootstrap.com/css/#forms-example) available in Bootstrap i.e. __vertical__, __horizontal__, and __inline__. Allows options for offsetting labels and inputs for horizontal form layout. Works closely with the extended ActiveField widget. [```VIEW DEMO```](http://demos/krajee.com/widget-details/ActiveForm)
+* **ActiveForm:** Extends [Yii ActiveForm widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveForm.php). Facilitates all [three form layouts](http://getbootstrap.com/css/#forms-example) available in Bootstrap i.e. __vertical__, __horizontal__, and __inline__. Allows options for offsetting labels and inputs for horizontal form layout. Works closely with the extended ActiveField widget. [```VIEW DEMO```](http://demos.krajee.com/widget-details/ActiveForm)
 	
-* **ActiveField:** Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveField.php). Allows Bootstrap styled [input group addons](http://getbootstrap.com/components/#input-groups-basic) to be prepended or appended to textInputs. Automatically adjusts checkboxes and radio input offsets for horizontal forms. Allows, flexibility to control the labels and placeholders based on form layout style (e.g. hide labels and show them as placeholder for inline forms). [```VIEW DEMO```](http://demos/krajee.com/widget-details/ActiveField). The extended ActiveField functionalities available are:
+* **ActiveField:** Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveField.php). Allows Bootstrap styled [input group addons](http://getbootstrap.com/components/#input-groups-basic) to be prepended or appended to textInputs. Automatically adjusts checkboxes and radio input offsets for horizontal forms. Allows, flexibility to control the labels and placeholders based on form layout style (e.g. hide labels and show them as placeholder for inline forms). [```VIEW DEMO```](http://demos.krajee.com/widget-details/ActiveField). The extended ActiveField functionalities available are:
     * Addons
 		* Prepend Addon
 		* Append Addon
@@ -30,7 +30,7 @@ This extension enhances or adds functionality to existing Yii Framework 2 Widget
 
 
 ### Demo
-You can see demonstration on usage of these widgets with documentation [```HERE```](http://demos/krajee.com/widgets).
+You can see demonstration on usage of these widgets with documentation [```HERE```](http://demos.krajee.com/widgets).
 
 ### Upcoming
 * Nav
