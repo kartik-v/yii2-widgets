@@ -229,7 +229,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	{
 		if (isset($options['inline']) && $options['inline'] == true) {
 			Html::addCssClass($options['itemOptions']['labelOptions'], self::TYPE_CHECKBOX . '-' . self::STYLE_INLINE);
-			$options['itemOptions']['hasContainer'] = false;
+			$options['itemOptions']['container'] = false;
 			unset($options['inline']);
 		}
 		return parent::checkboxList($items, $options);
@@ -246,7 +246,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	{
 		if (isset($options['inline']) && $options['inline'] == true) {
 			Html::addCssClass($options['itemOptions']['labelOptions'], static::TYPE_RADIO . '-' . static::STYLE_INLINE);
-			$options['itemOptions']['hasContainer'] = false;
+			$options['itemOptions']['container'] = false;
 			unset($options['inline']);
 		}
 		return parent::radioList($items, $options);
