@@ -40,6 +40,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	const TYPE_RADIO    = 'radio';
 	const TYPE_CHECKBOX = 'checkbox';
 	const STYLE_INLINE  = 'inline';
+	const MULTI_SELECT_HEIGHT = '145px';
 
 	/**
 	 * @var array addon options for text and password inputs
@@ -57,6 +58,11 @@ class ActiveField extends \yii\widgets\ActiveField
 	private $_offsetInput = false;
 	
 	/**
+	 * @var boolean the container for multi select
+	 */
+	private $_multiSelectContainer = '';
+	
+	/**
 	 * Initialize widget
 	 */	
 	public function init() {
@@ -66,7 +72,10 @@ class ActiveField extends \yii\widgets\ActiveField
 		}
 		elseif (!isset($this->labelAsPlaceholder)) {
 			$this->labelAsPlaceholder = false;
-		}		
+		}
+		if ($this->form->type === ActiveForm::TYPE_HORIZONTAL) {
+			Html::addCssClass($this->labelOptions, 'control-label');
+		}
 	}
 	
 	/**
@@ -145,6 +154,9 @@ class ActiveField extends \yii\widgets\ActiveField
 		if (!$showLabels || $this->labelAsPlaceholder) {
 			$this->template = str_replace("{label}\n", "", $this->template);
 		}
+		if ($this->_multiSelectContainer != '') {
+			$this->template = str_replace('{input}', $this->_multiSelectContainer, $this->template);
+		}
 	}
 	
 	/**
@@ -204,5 +216,81 @@ class ActiveField extends \yii\widgets\ActiveField
 	{
 		$this->_offsetInput = true;
 		return parent::radio($options, $enclosedByLabel);
+	}
+		
+	/**
+	 * Renders a list of checkboxes.
+	 * @param array $options options (name => config) for the radio button list. In addition to checkboxList options 
+	 * available in yii\widgets\ActiveField, the following additional options are specially handled:
+	 *     - inline: boolean, whether the list should be displayed as a series on the same line, default is false
+	 * @return static the field object itself
+	 */
+	public function checkboxList($items, $options = [])
+	{
+		if (isset($options['inline']) && $options['inline'] == true) {
+			Html::addCssClass($options['itemOptions']['labelOptions'], self::TYPE_CHECKBOX . '-' . self::STYLE_INLINE);
+			$options['itemOptions']['hasContainer'] = false;
+			unset($options['inline']);
+		}
+		return parent::checkboxList($items, $options);
+	}
+	
+	/**
+	 * Renders a list of radio buttons.
+	 * @param array $options options (name => config) for the radio button list. In addition to radioList options 
+	 * available in yii\widgets\ActiveField, the following additional options are specially handled:
+	 *     - inline: boolean, whether the list should be displayed as a series on the same line, default is false
+	 * @return static the field object itself
+	 */
+	public function radioList($items, $options = [])
+	{
+		if (isset($options['inline']) && $options['inline'] == true) {
+			Html::addCssClass($options['itemOptions']['labelOptions'], static::TYPE_RADIO . '-' . static::STYLE_INLINE);
+			$options['itemOptions']['hasContainer'] = false;
+			unset($options['inline']);
+		}
+		return parent::radioList($items, $options);
+	}
+	
+	/**
+	 * Renders a multi select list box. This control extends the checkboxList and radioList
+	 * available in yii\widgets\ActiveField - to display a scrolling multi select list box.
+	 * @param array $items the data item used to generate the checkboxes or radio.
+	 * @param array $options the options for checkboxList or radioList. Additional parameters
+	 *         - @param string height: the height of the multiselect control - defaults to 145px
+	 *         - @param string selector: whether checkbox or radio - defaults to checkbox
+	 *         - @param string containerOptions: options for the multiselect container
+	 * @param string $selector 
+	 *
+	 */	
+	public function multiselect($items, $options = [])
+	{
+		$height = static::MULTI_SELECT_HEIGHT;
+		$selector = static::TYPE_CHECKBOX;
+		$conOptions = [];
+		$options['encode'] = false;
+		if (isset($options['height'])) {
+			$height = $options['height'];
+			unset($options['height']);
+		}
+		if (isset($options['selector'])) {
+			$selector = $options['selector'];
+			unset($options['selector']);
+		}
+		if (isset($options['containerOptions'])) {
+			$conOptions = $options['containerOptions'];
+			unset($options['containerOptions']);
+		}
+		Html::addCssClass($conOptions, 'form-control');
+		$style = isset($conOptions['style']) ? $conOptions['style'] : '';
+		$conOptions['style'] = $style . "height: {$height}; overflow: auto;";
+		$this->_multiSelectContainer = Html::tag('div', '{input}', $conOptions);
+		
+		if ($selector == static::TYPE_RADIO) {
+			return static::radioList($items, $options);
+		}
+		else {
+			return static::checkboxList($items, $options);
+		}
 	}
 }
