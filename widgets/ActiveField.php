@@ -11,7 +11,7 @@ use yii\helpers\Html;
  * ===============================
  * @param boolean $autoPlaceholder whether to display the label as a placeholder (default false)
  * @param array $addon whether to prepend or append an addon to an input group - contains these keys:
- * 		- @param string $type whether 'prepend' or 'append'
+ *		- @param string $type whether 'prepend' or 'append'
  *		- @param string $content the addon content - this is not html encoded
  *		- @param boolean $asButton whether the addon is a button or button group
  *
