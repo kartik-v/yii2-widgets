@@ -9,7 +9,6 @@ use yii\helpers\Html;
  *
  * ADDITIONAL VARIABLES/PARAMETERS:
  * ===============================
- * @param boolean $hideLabel whether to hide the label for the field (default false)
  * @param boolean $labelAsPlaceholder whether to display the label as a placeholder (default false)
  * @param array $addon whether to prepend or append an addon to an input group - contains these keys:
  * 		- @param string $type whether 'prepend' or 'append'
@@ -46,12 +45,6 @@ class ActiveField extends \yii\widgets\ActiveField
 	 * @var array addon options for text and password inputs
 	 */
 	public $addon = [];
-	
-	
-	/**
-	 * @var boolean whether the label is to be displayed
-	 */
-	public $hideLabel = false;
 	
 	/**
 	 * @var boolean whether the label is to be displayed as a placeholder
@@ -148,7 +141,8 @@ class ActiveField extends \yii\widgets\ActiveField
 			}
 			$this->template = "{label}\n{$input}\n{$error}\n{$hint}";
 		}
-		if ($this->hideLabel || $this->labelAsPlaceholder) {
+		$showLabels = isset($this->form->formConfig['showLabels']) ? $this->form->formConfig['showLabels'] : true;
+		if (!$showLabels || $this->labelAsPlaceholder) {
 			$this->template = str_replace("{label}\n", "", $this->template);
 		}
 	}
@@ -209,6 +203,6 @@ class ActiveField extends \yii\widgets\ActiveField
 	public function radio($options = [], $enclosedByLabel = true) 
 	{
 		$this->_offsetInput = true;
-		return parent::checkbox($options, $enclosedByLabel);
+		return parent::radio($options, $enclosedByLabel);
 	}
 }
