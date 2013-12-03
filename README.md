@@ -14,27 +14,27 @@ Extends [Yii ActiveForm widget](https://github.com/yiisoft/yii2/blob/master/fram
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/ActiveField)
 
 Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/ActiveField.php). Allows Bootstrap styled [input group addons](http://getbootstrap.com/components/#input-groups-basic) to be prepended or appended to textInputs. Automatically adjusts checkboxes and radio input offsets for horizontal forms. Allows, flexibility to control the labels and placeholders based on form layout style (e.g. hide labels and show them as placeholder for inline forms). The extended ActiveField functionalities available are:
-    * Addons
-		* Prepend Addon
-		* Append Addon
-		* Icon Addon
-		* Input Addon
-		* Button Addon
-		* Button Dropdown Addon
-		* Segmented Button Addon
-    * Inputs
-		* Checkbox
-		* Radio
-		* Checkbox List
-		* Radio List
-		* Static Input
-		* HTML 5 Input
-	* Multi Select
-		* Vertical Form
-		* Horizontal Form
-		* Radio List
-		* Display Options
 
+- Addons
+	* Prepend Addon
+	* Append Addon
+	* Icon Addon
+	* Input Addon
+	* Button Addon
+	* Button Dropdown Addon
+	* Segmented Button Addon
+- Inputs
+	* Checkbox
+	* Radio
+	* Checkbox List
+	* Radio List
+	* Static Input
+	* HTML 5 Input
+- Multi Select
+	* Vertical Form
+	* Horizontal Form
+	* Radio List
+	* Display Options
 
 ### Demo
 You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of these widgets with documentation and examples.
