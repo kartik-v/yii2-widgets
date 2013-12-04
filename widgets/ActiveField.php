@@ -172,10 +172,50 @@ class ActiveField extends \yii\widgets\ActiveField
 	 */
 	public function input($type, $options = [])
 	{
-		if ($type !== 'range') {
+		if ($type === 'range') {
+			return $this->rangeInput($options);
+		}
+		else {
 			$options = array_merge($this->inputOptions, $options);
 		}
 		$this->parts['{input}'] = Html::activeInput($type, $this->model, $this->attribute, $options);
+		return $this;
+	}
+
+	/**
+	 * Renders a HTML 5 range input tag.
+	 * @param array $options the tag options in terms of name-value pairs. These will be rendered as
+	 * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
+	 * The special $option variables that need to be set for range input are:
+	 * - min, string - specifies the minimum value allowed
+	 * - max, string - specifies the maximum value allowed
+	 * - step, string - specifies the legal number of intervals
+	 * - value, string - Specifies the default value
+	 * - prepend, string - Label to prepend to the value (not html encoded) - default null
+	 * - append, string - Label to append to the value (not html encoded) - default null
+	 * - output, array - options for the output value of the slider control (including prepend and append) 
+	 * - container, array - options for the entire input container
+	 * @return static the field object itself
+	 */
+	public function rangeInput($options = [])
+	{
+		$min = !isset($options['min']) ? '' : $options['min'];
+		$max = !isset($options['max']) ? '' : $options['max'];
+		$prepend = empty($options['prepend']) ? '' : $options['prepend'];
+		$append = empty($options['append']) ? '' : $options['append'];
+		$output = empty($options['output']) ? ['style'=>'font-size: 20px; color: #777;'] : $options['output'];
+		$container = empty($options['container']) ? [] : $options['container'];
+		unset($options['prepend'], $options['append'], $options['output'], $options['container']);
+		
+		$id = Html::getInputId($this->model, $this->attribute);
+		$container['id'] = $id . '-container';
+		$output['id'] = $id . '-output';
+		$span = $id . '-value';
+		$value = Html::tag('span', $this->model[$this->attribute], ['id' => $span]);
+		$options['onchange'] = '$("#' . $span . '").html(this.value)';
+		$html = Html::activeInput('range', $this->model, $this->attribute, $options) . '&nbsp;' .
+			Html::tag('span', $prepend . $value . $append, $output);
+		$this->parts['{input}'] = Html::tag('div', $html, $container);
 		return $this;
 	}
 	
