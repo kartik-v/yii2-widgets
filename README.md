@@ -1,7 +1,7 @@
 yii2-widgets
 ============
 
-This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Twitter Bootstrap, HTML 5 Features, or other Bootstrap extras. The widgets currently available are:
+This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Twitter Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras. The widgets currently available are:
 
 ### Forms/Inputs
 
