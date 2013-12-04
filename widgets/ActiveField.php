@@ -227,7 +227,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	 * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
 	 * @return static the field object itself
 	 */
-	public function passwordInput1($options = [])
+	public function passwordInput($options = [])
 	{
 		$this->initPlaceholder($options);
 		return parent::passwordInput($options);
