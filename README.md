@@ -1,7 +1,7 @@
 yii2-widgets
 ============
 
-This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Twitter Bootstrap or other Bootstrap extras. The widgets currently available are:
+This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Twitter Bootstrap, HTML 5 Features, or other Bootstrap extras. The widgets currently available are:
 
 ### Forms/Inputs
 
@@ -29,6 +29,7 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 	* Checkbox List
 	* Radio List
 	* Static Input
+	* Range Input
 	* HTML 5 Input
 - Multi Select
 	* Vertical Form
