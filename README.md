@@ -37,6 +37,22 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 	* Radio List
 	* Display Options
 
+### Navigation
+
+#### Affix
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/Affix)  
+
+Extends [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/Menu.php). This widget offers a [scrollspy](http://getbootstrap.com/javascript/#scrollspy) and [affixed](http://getbootstrap.com/javascript/#affix) enhanced navigation (upto 2-levels) to highlight sections and secondary sections in each page. The affix widget can be used to generate both the:
+
+- **Sidebar Menu:** Displays the scrollspy/affix navigation menu as a sidebar, and/or
+- **Main Body:** Displays the main body sections based on the section & subsection headings and content passed.
+
+The parameters to pass are:
+
+- `type` The affix content type. Must be either `menu` or `body`. Defaults to `menu`
+- `items`: The affix content items as an array. Check the affix details for usage and demo.
+
+
 ### Demo
 You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of these widgets with documentation and examples.
 
