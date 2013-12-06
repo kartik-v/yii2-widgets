@@ -47,8 +47,7 @@ class Affix extends \yii\widgets\Menu
 	 *
 	 * - label: string, mandatory, specifies the menu item label. When [[encodeLabels]] is true, the label 
 	 *   will be HTML-encoded.
-	 * - icon: string, optional, specifies the glyphicon name to be placed before label. Either this or label
-	 *   is required.
+	 * - icon: string, optional, specifies the glyphicon name to be placed before label.
 	 * - header: string, optional, the header for the body content to be rendered in the main page
 	 *   using Affix::body. If not set, this will be defaulted to the label.
 	 * - subheader: string, optional, the subheader that will be printed within the header.
