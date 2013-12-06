@@ -50,7 +50,7 @@ Extends [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/
 The parameters to pass are:
 
 - `type` The affix content type. Must be either `menu` or `body`. Defaults to `menu`
-- `items`: The affix content items as an array. Check the affix details for usage and demo.
+- `items`: The affix content items as an array. Check the [affix combined usage](http://demos.krajee.com/widget-details/affix#affix-menu-body) for a detailed example.
 
 
 ### Demo
@@ -61,7 +61,6 @@ You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of 
 * Sidenav
 * Gridview
 * Panel
-* Affix
 * and more...
 
 ## Installation
