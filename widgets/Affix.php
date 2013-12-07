@@ -17,12 +17,12 @@ use yii\helpers\ArrayHelper;
  *         [
  *             'url' => '#section-1',
  *             'label' => 'Section 1',
- *			   'icon' => '',
- *             'linkOptions' => [...],
+ *             'icon' => 'asterisk'
  *         ],
  *         [
- *			   'url' => '#section-2',
+ *             'url' => '#section-2',
  *             'label' => 'Section 2',
+ *             'icon' => 'asterisk'
  *             'items' => [
  *                  ['url' => '#section-2-1', 'label' => 'Section 2.1'],
  *                  ['url' => '#section-2-2', 'label' => 'Section 2.2'],
