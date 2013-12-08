@@ -52,8 +52,8 @@ The parameters to pass are:
 - `type` The affix content type. Must be either `menu` or `body`. Defaults to `menu`
 - `items`: The affix content items as an array. Check the [affix combined usage](http://demos.krajee.com/widget-details/affix#affix-menu-body) for a detailed example.
 
-> Note:
-> If you have a bootstrap Navbar fixed on the top - you must add a CSS class `kv-nav` to the navbar. Similarly, for a fixed footer you must add the class `kv-footer` to your footer container. This will ensure the correct positioning of the affix widget.
+> **Note:**
+> If you have a bootstrap Navbar component fixed on the top, you must add a CSS class `kv-nav` to the navbar. Similarly, for a fixed footer you must add the class `kv-footer` to your footer container. This will ensure the correct positioning of the affix widget.
 
 ### Demo
 You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of these widgets with documentation and examples.
