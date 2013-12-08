@@ -22,8 +22,6 @@
     $('.kv-sidebar [href=#]').click(function (e) {
       e.preventDefault()
     })
-
-	$('.kv-example form').submit(function(e){ e.preventDefault(); });
 	
     // back to top
     setTimeout(function () {
