@@ -364,7 +364,7 @@ class ActiveField extends \yii\widgets\ActiveField
 	public function radioList($items, $options = [])
 	{
 		if (isset($options['inline']) && $options['inline'] == true) {
-			Html::addCssClass($options['itemOptions']['labelOptions'], static::TYPE_RADIO . '-' . static::STYLE_INLINE);
+			Html::addCssClass($options['itemOptions']['labelOptions'], self::TYPE_RADIO . '-' . self::STYLE_INLINE);
 			$options['itemOptions']['container'] = false;
 			unset($options['inline']);
 		}
@@ -389,8 +389,8 @@ class ActiveField extends \yii\widgets\ActiveField
 	 */	
 	public function multiselect($items, $options = [])
 	{
-		$height = static::MULTI_SELECT_HEIGHT;
-		$selector = static::TYPE_CHECKBOX;
+		$height = self::MULTI_SELECT_HEIGHT;
+		$selector = self::TYPE_CHECKBOX;
 		$container = [];
 		$options['encode'] = false;
 		if (isset($options['height'])) {
@@ -410,11 +410,11 @@ class ActiveField extends \yii\widgets\ActiveField
 		$container['style'] = $style . "height: {$height}; overflow: auto;";
 		$this->_multiselect = Html::tag('div', '{input}', $container);
 		
-		if ($selector == static::TYPE_RADIO) {
-			return static::radioList($items, $options);
+		if ($selector == self::TYPE_RADIO) {
+			return $this->radioList($items, $options);
 		}
 		else {
-			return static::checkboxList($items, $options);
+			return $this->checkboxList($items, $options);
 		}
 	}
 }
