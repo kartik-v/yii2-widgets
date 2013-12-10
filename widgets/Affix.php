@@ -87,7 +87,7 @@ EOT;
 		$this->submenuTemplate = "\n<ul class='nav'>\n{items}\n</ul>\n";
 		$this->linkTemplate = '<a href="{url}">{icon}{label}</a>';
 		$this->labelTemplate = '{icon}{label}';
-		Html::addCssClass($this->options, 'nav kv-sidenav');
+		Html::addCssClass($this->options, 'nav kv-nav');
 		Html::addCssClass($this->container, 'kv-sidebar hidden-print-affix');
 	}
 	
