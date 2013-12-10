@@ -55,15 +55,14 @@ The parameters to pass are:
 > **Note:**
 > If you have the `header` section fixed to the top, you must add a CSS class `kv-header` to the header container. Similarly, for a fixed footer you must add the class `kv-footer` to your footer container. This will ensure a correct positioning of the affix widget on the page.
 
+
+#### SideNav
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/sidenav)  
+
+This widget is a collapsible side navigation menu built to seamlessly work with Twitter Bootstrap framework. It is built over Twitter Bootstrap [stacked nav](http://getbootstrap.com/components/#nav-pills) component. This widget class extends the [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/Menu.php). Upto 3 levels of submenus are by default supported by the CSS styles to balance performance and useability. You can choose to extend it to more or less levels by customizing the <a [CSS](https://github.com/kartik-v/yii2-widgets/blob/master/assets/css/sidenav.css).
+
 ### Demo
 You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of these widgets with documentation and examples.
-
-### Upcoming
-* Nav
-* Sidenav
-* Gridview
-* Panel
-* and more...
 
 ## Installation
 
