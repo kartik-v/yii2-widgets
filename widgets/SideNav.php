@@ -90,7 +90,7 @@ class SideNav extends \yii\widgets\Menu
 	 *   The token `{url}` will be replaced by the URL associated with this menu item,
 	 *   and the token `{label}` will be replaced by the label of the menu item.
 	 *   If this option is not set, [[linkTemplate]] or [[labelTemplate]] will be used instead.
-	 * - options: array, optional, the HTML attributes for the menu container tag.
+	 * - options: array, optional, the HTML attributes for the menu item tag.
 	 *
 	 */	
 	public $items;
