@@ -12,7 +12,7 @@
 }
 
 /* First level of nav */
-.kv-sidenav {
+.kv-nav {
   margin-top: 30px;
   margin-bottom: 30px;
   padding-top:    10px;
@@ -73,8 +73,8 @@
   .kv-sidebar.affix-bottom {
     position: akvolute; /* Undo the static from mobile first approach */
   }
-  .kv-sidebar.affix-bottom .kv-sidenav,
-  .kv-sidebar.affix .kv-sidenav {
+  .kv-sidebar.affix-bottom .kv-nav,
+  .kv-sidebar.affix .kv-nav {
     margin-top: 0;
     margin-bottom: 0;
   }
