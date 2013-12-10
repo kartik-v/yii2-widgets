@@ -55,7 +55,7 @@ class Affix extends \yii\widgets\Menu
 	 * - url: string, mandatory, specifies the URL of the menu item. This will be a bookmark on the same page.
 	 *   For example "#section-1" or "#section-1-1".
 	 * - items: array, optional, specifies the sub-menu items. Its format is the same as the parent items.
-	 * - options: array, optional, the HTML attributes for the menu container tag.
+	 * - options: array, optional, the HTML attributes for the menu item tag.
 	 */	
 	public $items;
 
