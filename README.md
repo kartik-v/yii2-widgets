@@ -154,6 +154,63 @@ to the ```require``` section of your `composer.json` file.
 	
 ```
 
+### Affix
+
+```php
+$content = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.';
+$items = [[
+	'url' => '#sec-1',
+	'label' => 'Section 1',
+	'icon' => 'play-circle',
+	'content' => $content,
+	'items' => [
+		 ['url' => '#sec-1-1', 'label' => 'Section 1.1', 'content' => $content],
+		 ['url' => '#sec-1-2', 'label' => 'Section 1.2', 'content' => $content],
+		 ['url' => '#sec-1-3', 'label' => 'Section 1.3', 'content' => $content],
+		 ['url' => '#sec-1-4', 'label' => 'Section 1.4', 'content' => $content],
+		 ['url' => '#sec-1-5', 'label' => 'Section 1.5', 'content' => $content],
+	],
+]];
+
+// Displays sidebar menu
+echo Affix::widget([
+	'items' => $items, 
+	'type' => 'menu'
+]);
+
+// Displays body sections
+echo Affix::widget([
+	'items' => $items, 
+	'type' => 'body'
+]);
+```
+
+### SideNav
+
+```php
+use kartik\widgets\SideNav;
+     
+echo SideNav::widget([
+	'type' => SideNav::TYPE_DEFAULT,
+	'heading' => 'Options',
+	'items' => [
+		[
+			'url' => '#',
+			'label' => 'Home',
+			'icon' => 'home'
+		],
+		[
+			'label' => 'Help',
+			'icon' => 'question-sign'
+			'items' => [
+				['label' => 'About', 'icon'=>'info-sign', 'url'=>'#'],
+				['label' => 'Contact', 'icon'=>'phone', 'url'=>'#'],
+			],
+		],
+	],
+]);
+```
+
 ## License
 
 **yii2-widgets** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
