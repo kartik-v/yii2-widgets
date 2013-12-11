@@ -85,7 +85,6 @@ to the ```require``` section of your `composer.json` file.
 ## Usage
 
 ### How to call?
-
 ```php
 	// add this in your view
 	use kartik\widgets\ActiveForm;
@@ -93,7 +92,6 @@ to the ```require``` section of your `composer.json` file.
 ```
 
 ### ActiveForm
-
 ```php
 	// Vertical Form
 	$form = ActiveForm::begin([
@@ -117,7 +115,6 @@ to the ```require``` section of your `composer.json` file.
 ```
 
 ### ActiveField
-
 ```php
 	// Prepend an addon text
    	echo $form->field($model, 'email', ['addon' => ['type'=>'prepend', 'content'=>'@']]);
@@ -155,7 +152,6 @@ to the ```require``` section of your `composer.json` file.
 ```
 
 ### Affix
-
 ```php
 $content = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.';
 $items = [[
@@ -186,7 +182,6 @@ echo Affix::widget([
 ```
 
 ### SideNav
-
 ```php
 use kartik\widgets\SideNav;
      
