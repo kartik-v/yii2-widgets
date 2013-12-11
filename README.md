@@ -57,7 +57,7 @@ The parameters to pass are:
 
 
 #### SideNav
-[```VIEW DEMO```](http://demos.krajee.com/sidenav-demo)  
+[```VIEW DEMO```](http://demos.krajee.com/sidenav-demo/profile/default)  
 
 This widget is a collapsible side navigation menu built to seamlessly work with Twitter Bootstrap framework. It is built over Twitter Bootstrap [stacked nav](http://getbootstrap.com/components/#nav-pills) component. This widget class extends the [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/Menu.php). Upto 3 levels of submenus are by default supported by the CSS styles to balance performance and useability. You can choose to extend it to more or less levels by customizing the [CSS](https://github.com/kartik-v/yii2-widgets/blob/master/assets/css/sidenav.css).
 
