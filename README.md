@@ -40,7 +40,7 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 ### Navigation
 
 #### Affix
-[```VIEW DEMO```](http://demos.krajee.com/widget-details/affix)  
+[```VIEW DEMO```](http://demos.krajee.com/affix-demo)  
 
 Extends [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/Menu.php). This widget offers a [scrollspy](http://getbootstrap.com/javascript/#scrollspy) and [affixed](http://getbootstrap.com/javascript/#affix) enhanced navigation (upto 2-levels) to highlight sections and secondary sections in each page. The affix widget can be used to generate both the:
 
@@ -57,7 +57,7 @@ The parameters to pass are:
 
 
 #### SideNav
-[```VIEW DEMO```](http://demos.krajee.com/widget-details/sidenav)  
+[```VIEW DEMO```](http://demos.krajee.com/sidenav-demo)  
 
 This widget is a collapsible side navigation menu built to seamlessly work with Twitter Bootstrap framework. It is built over Twitter Bootstrap [stacked nav](http://getbootstrap.com/components/#nav-pills) component. This widget class extends the [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/yii/widgets/Menu.php). Upto 3 levels of submenus are by default supported by the CSS styles to balance performance and useability. You can choose to extend it to more or less levels by customizing the [CSS](https://github.com/kartik-v/yii2-widgets/blob/master/assets/css/sidenav.css).
 
