@@ -19,7 +19,7 @@ use yii\helpers\ArrayHelper;
  *             'icon' => 'home'
  *         ],
  *         [
- *              'url' => ['/site/about'],
+ *             'url' => ['/site/about'],
  *             'label' => 'About',
  *             'icon' => 'info-sign'
  *             'items' => [
@@ -175,7 +175,7 @@ class SideNav extends \yii\widgets\Menu
 	protected function renderItem($item)
 	{
 		$this->validateItems($item);
-		$url = ArrayHelper::getValue($item, 'url', '#');
+		$url = Html::url(ArrayHelper::getValue($item, 'url', '#'));
 		$template = $this->linkTemplate;
 		if (empty($item['top'])) {
 			if (empty($item['items'])) {
