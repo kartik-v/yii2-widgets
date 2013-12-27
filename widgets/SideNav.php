@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
  *         [
  *             'url' => ['/site/about'],
  *             'label' => 'About',
- *             'icon' => 'info-sign'
+ *             'icon' => 'info-sign',
  *             'items' => [
  *                  ['url' => '#', 'label' => 'Item 1'],
  *                  ['url' => '#', 'label' => 'Item 2'],
