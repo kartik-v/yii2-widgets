@@ -196,7 +196,7 @@ echo SideNav::widget([
 		],
 		[
 			'label' => 'Help',
-			'icon' => 'question-sign'
+			'icon' => 'question-sign',
 			'items' => [
 				['label' => 'About', 'icon'=>'info-sign', 'url'=>'#'],
 				['label' => 'Contact', 'icon'=>'phone', 'url'=>'#'],
