@@ -14,8 +14,7 @@
 	],
 	"require": {
 		"yiisoft/yii2": "dev-master",
-		"yiisoft/yii2-bootstrap": "dev-master",
-		"ivaynberg/select2": "*"
+		"yiisoft/yii2-bootstrap": "dev-master"
 	},
 	"autoload": {
 		"psr-0": { "kartik\\": "" }
