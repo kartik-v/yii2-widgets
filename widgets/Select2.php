@@ -29,7 +29,8 @@ class Select2 extends \yii\widgets\InputWidget {
 
     /**
      * @var ActiveForm the form object to which this
-     * input will be attached to.
+     * input will be attached to in case you are using 
+	 * the widget within an ActiveForm
      */
     public $form;
 
@@ -45,7 +46,7 @@ class Select2 extends \yii\widgets\InputWidget {
     /**
      * @var array the HTML attributes for the input tag. The following options are important:
      * - multiple: boolean whether multiple or single item should be selected. Defaults to false.
-     * - placeholder: string placeholder for the select item. Defaults to `Select a value ...`
+     * - placeholder: string placeholder for the select item.
      */
     public $options = [];
 
