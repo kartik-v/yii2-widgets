@@ -81,21 +81,21 @@ class Select2 extends \yii\widgets\InputWidget {
      */
     public function init() {
         parent::init();
+        $this->_hidden = !empty($this->pluginOptions['data']) ||
+                !empty($this->pluginOptions['query']) ||
+                !empty($this->pluginOptions['ajax']) ||
+                !empty($this->pluginOptions['tags']);
         if (isset($this->form) && !($this->form instanceof \yii\widgets\ActiveForm)) {
             throw new InvalidConfigException("The 'form' property must be set and must be an object of type 'ActiveForm'.");
         }
         if (isset($this->form) && !$this->hasModel()) {
             throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
         }
-        if (!empty($this->options['placeholder']) && !in_array("", $this->data) &&
+        if (!empty($this->options['placeholder']) && !$this->_hidden && !in_array("", $this->data) &&
                 (empty($this->options['multiple']) || $this->options['multiple'] == false)) {
             $this->data = array_merge(["" => ""], $this->data);
         }
-        $this->_hidden = !empty($this->pluginOptions['data']) ||
-                !empty($this->pluginOptions['query']) ||
-                !empty($this->pluginOptions['ajax']) ||
-                !empty($this->pluginOptions['tags']);
-        if ($this->_hidden) {
+        if (($this->_hidden || !isset($this->form)) && !isset($this->options['style'])) {
             $this->options['style'] = 'width: 100%';
         }
         $this->registerAssets();
