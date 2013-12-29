@@ -100,12 +100,12 @@ class Select2 extends \yii\widgets\InputWidget {
         $this->registerAssets();
         $this->renderInput();
     }
-	
+
     /**
      * Renders the source Input for the Select2 plugin.
-	 * Graceful fallback to a normal HTML select dropdown
-	 * or text input - in case JQuery is not supported by 
-	 * the browser
+     * Graceful fallback to a normal HTML select dropdown
+     * or text input - in case JQuery is not supported by 
+     * the browser
      */
     protected function renderInput() {
         if ($this->_hidden) {

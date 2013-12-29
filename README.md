@@ -161,7 +161,7 @@ to the ```require``` section of your `composer.json` file.
 
 ### Select2
 ```php
-	// Normal select with Active Form
+	// Normal select with ActiveForm & model
 	echo Select2::widget([
 		'model' => $model, 
 		'attribute' => 'state_1',
@@ -174,11 +174,10 @@ to the ```require``` section of your `composer.json` file.
 		],
 	]);
 
-	// Multiple select with ActiveForm
+	// Multiple select without model
 	echo Select2::widget([
-		'model' => $model, 
-		'attribute' => 'state_2',
-		'form' => $form,
+		'name' => 'state_2',
+		'value' => '',
 		'data' => $data,
 		'options' => ['multiple' => true, 'placeholder' => 'Select states ...']
 	]);
