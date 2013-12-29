@@ -39,7 +39,7 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 
 
 #### Select2
-[```VIEW DEMO```](http://demos.krajee.com/select2-demo)  
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/select2)  
 
 The Select2 widget is a Yii 2 wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2/). 
 This input widget is a jQuery based replacement for select boxes. It supports searching, remote data sets, 
