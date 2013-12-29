@@ -81,7 +81,7 @@ class Select2 extends \yii\widgets\InputWidget {
      */
     public function init() {
         parent::init();
-        if (!isset($this->form) || !($this->form instanceof \yii\widgets\ActiveForm)) {
+        if (isset($this->form) && !($this->form instanceof \yii\widgets\ActiveForm)) {
             throw new InvalidConfigException("The 'form' property must be set and must be an object of type 'ActiveForm'.");
         }
         if (!isset($this->form) && !$this->hasModel()) {
