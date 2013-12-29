@@ -8,6 +8,7 @@ use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
 use yii\web\View;
+use yii\web\JsExpression;
 
 /**
  * Select2 widget is a Yii2 wrapper for the Select2 jQuery plugin. This
