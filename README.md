@@ -37,6 +37,14 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 	* Radio List
 	* Display Options
 
+
+#### Select2
+[```VIEW DEMO```](http://demos.krajee.com/select2-demo)  
+
+The Select2 widget is a Yii 2 wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2/). 
+This input widget is a jQuery based replacement for select boxes. It supports searching, remote data sets, 
+and infinite scrolling of results. The widget is specially styled for Twitter Bootstrap 3.
+
 ### Navigation
 
 #### Affix
@@ -149,6 +157,31 @@ to the ```require``` section of your `composer.json` file.
 		]
 	]);
 	
+```
+
+### Select2
+```php
+	// Normal select with Active Form
+	echo Select2::widget([
+		'model' => $model, 
+		'attribute' => 'state_1',
+		'form' => $form,
+		'data' => array_merge(["" => ""], $data),
+		'language' => 'de',
+		'options' => ['placeholder' => 'Select a state ...'],
+		'pluginOptions' => [
+			'allowClear' => true
+		],
+	]);
+
+	// Multiple select with ActiveForm
+	echo Select2::widget([
+		'model' => $model, 
+		'attribute' => 'state_2',
+		'form' => $form,
+		'data' => $data,
+		'options' => ['multiple' => true, 'placeholder' => 'Select states ...']
+	]);
 ```
 
 ### Affix
