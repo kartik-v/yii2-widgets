@@ -45,6 +45,13 @@ class Select2 extends \yii\widgets\InputWidget {
     public $data;
 
     /**
+     * @var boolean whether the widget will be used inside a bootstrap modal window.
+     * Fixes [issue # 6](https://github.com/kartik-v/yii2-widgets/issues/6) on an
+     * interoperability issue with bootstrap modal.
+     */
+    public $modal = false;
+	
+    /**
      * @var array the HTML attributes for the input tag. The following options are important:
      * - multiple: boolean whether multiple or single item should be selected. Defaults to false.
      * - placeholder: string placeholder for the select item.
@@ -170,6 +177,9 @@ class Select2 extends \yii\widgets\InputWidget {
                 $func = new JsExpression($function);
                 $js .= ".on('{$event}', {$func})\n";
             }
+        }
+        if ($this->modal) {
+            $js .= "\n$.fn.modal.Constructor.prototype.enforceFocus = function() {};";
         }
         $view->registerJs($js);
     }
