@@ -1,8 +1,13 @@
-/*!
- * Copyright 2013 Kartik Visweswaran
+/**
+ * Scrollspy and affixed enhanced navigation for Twitter Bootstrap
+ * Modified and built for Yii Framework 2.0
  *
- * Sourced from Twitter Bootstrap Documentation Examples
- * http://getbootstrap.com/
+ * Based on affix sidenav examples available in Twitter Bootstrap 
+ * documentation site at http://getbootstrap.com/
+ *
+ * Author: Kartik Visweswaran
+ * Year: 2013
+ * For more Yii related demos visit http://demos.krajee.com
  */
 !function ($) {
   $(function(){

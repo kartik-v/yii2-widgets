@@ -1,11 +1,14 @@
-/*
+/**
  * Scrollspy and affixed enhanced navigation for Twitter Bootstrap
+ * Modified and built for Yii Framework 2.0
  *
  * Based on affix sidenav available in Twitter Bootstrap 
  * documentation site at http://getbootstrap.com/
  *
+ * Author: Kartik Visweswaran
+ * Year: 2013
+ * For more Yii related demos visit http://demos.krajee.com
  */
-
 /* By default it's not affixed in mobile views, so undo that */
 .kv-sidebar .affix {
   position: static;

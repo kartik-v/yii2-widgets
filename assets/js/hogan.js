@@ -13,8 +13,6 @@
  *  limitations under the License.
  */
 
-
-
 var Hogan = {};
 
 (function (Hogan, useArrayBuffer) {
