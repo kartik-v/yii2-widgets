@@ -125,12 +125,26 @@ class Typeahead extends \yii\widgets\InputWidget {
 	protected function setPluginOptions() {
 		$i = 1;
 		$data = [];
-		foreach ($this->dataset as $d) {	
+		foreach ($this->dataset as $d) {
+			/* Generate name */
 			if (empty($d['name'])) {
 				$d['name'] = $this->options['id'] . '-ta-' . $i;
 			}
+			/* Parse engine */
 			if (!empty($d['engine']) && !$d['engine'] instanceof JsExpression) {
 				$d['engine'] = new JsExpression($d['engine']);
+			}
+			/* Add a spinning indicator for remote calls */
+			if (!empty($d['remote'])) {
+				$r = is_array($d['remote']) ? $d['remote'] : ['url' => $d['remote']];        
+				$hint = '$("#' . $this->options['id'] . '").parent().children(".tt-hint")';
+				if (empty($r['beforeSend'])) {
+					$r['beforeSend'] = new JsExpression("function (xhr) { {$hint}.addClass('loading'); }");
+				}
+				if (empty($r['filter'])) {
+					$r['filter'] = new JsExpression("function (parsedResponse) { {$hint}.removeClass('loading'); return parsedResponse; }");
+				}
+				$d['remote'] = $r;
 			}
 			$data[] = $d;
 			$i++;

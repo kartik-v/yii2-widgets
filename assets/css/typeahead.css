@@ -176,3 +176,6 @@
     background-color: #EEEEEE;
     cursor: not-allowed;
 }
+.tt-hint.loading {
+    background: transparent url('../img/loading.gif') no-repeat scroll right center content-box !important;
+}
