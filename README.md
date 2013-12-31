@@ -47,6 +47,8 @@ and infinite scrolling of results. The widget is specially styled for Twitter Bo
 graceful degradation to a normal HTML select or text input, if the browser does not support JQuery.
 
 #### Typeahead
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/typeahead)
+
 The Typeahead widget is a Yii 2 wrapper for for the [Twitter Typeahead.js](http://twitter.github.com/typeahead.js/examples) 
 plugin. This input widget is a jQuery based replacement for text inputs providing search and typeahead functionality. 
 It is inspired by twitter.com's autocomplete search functionality and based on Twitter's `typeahead.js` which Twitter 
