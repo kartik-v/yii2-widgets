@@ -35,6 +35,7 @@ use yii\helpers\ArrayHelper;
  */
 class SideNav extends \yii\widgets\Menu
 {
+
 	/* Panel contextual states */
 	const TYPE_DEFAULT = 'default';
 	const TYPE_PRIMARY = 'primary';
@@ -207,4 +208,5 @@ class SideNav extends \yii\widgets\Menu
 			throw new InvalidConfigException("The 'label' option is required.");
 		}
 	}
+
 }

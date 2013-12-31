@@ -12,6 +12,7 @@ use yii\web\AssetBundle;
  */
 class SideNavAsset extends AssetBundle
 {
+
 	public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/assets';
 	public $depends = [
 		'yii\web\JqueryAsset',
@@ -23,4 +24,5 @@ class SideNavAsset extends AssetBundle
 		$this->js = YII_DEBUG ? ['js/sidenav.js'] : ['js/sidenav.min.js'];
 		parent::init();
 	}
+
 }

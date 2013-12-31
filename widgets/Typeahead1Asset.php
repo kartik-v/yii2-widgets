@@ -12,6 +12,7 @@ use yii\web\AssetBundle;
  * @since 1.0
  */
 class Typeahead1Asset extends AssetBundle {
+
     public $sourcePath = '@vendor/twitter/typeahead.js/dist';
 	
     public $depends = [

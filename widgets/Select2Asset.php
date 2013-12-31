@@ -12,6 +12,7 @@ use yii\web\AssetBundle;
  * @since 1.0
  */
 class Select2Asset extends AssetBundle {
+
     public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/lib/select2';
     public $depends = [
         'yii\web\JqueryAsset',
@@ -23,4 +24,5 @@ class Select2Asset extends AssetBundle {
 		$this->js = YII_DEBUG ? ['select2.js'] : ['select2.min.js'];
 		parent::init();
 	}
+
 }

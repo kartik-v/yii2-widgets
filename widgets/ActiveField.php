@@ -26,6 +26,7 @@ use yii\helpers\Html;
  */
 class ActiveField extends \yii\widgets\ActiveField
 {
+
 	const ADDON_PREPEND = 'prepend';
 	const ADDON_APPEND  = 'append';
 	
@@ -417,4 +418,5 @@ class ActiveField extends \yii\widgets\ActiveField
 			return $this->checkboxList($items, $options);
 		}
 	}
+
 }

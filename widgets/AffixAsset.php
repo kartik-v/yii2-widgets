@@ -11,6 +11,7 @@ use yii\web\AssetBundle;
  */
 class AffixAsset extends AssetBundle
 {
+
 	public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/assets';
 	public $depends = [
 		'yii\web\JqueryAsset',
@@ -22,4 +23,5 @@ class AffixAsset extends AssetBundle
 		$this->js = YII_DEBUG ? ['affix.js'] : ['affix.min.js'];
 		parent::init();
 	}
+
 }

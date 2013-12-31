@@ -31,6 +31,7 @@ use yii\helpers\Html;
  */
 class ActiveForm extends \yii\widgets\ActiveForm
 {
+
 	const NOT_SET            = '';
 	const DEFAULT_LABEL_SPAN = 2;  // this will offset the adjacent input accordingly
 	const FULL_SPAN          = 12; // bootstrap default full grid width
@@ -185,4 +186,5 @@ class ActiveForm extends \yii\widgets\ActiveForm
 	public function hasOffsetCss() {
 		return ($this->_offsetCss != self::NOT_SET);
 	}
+
 }

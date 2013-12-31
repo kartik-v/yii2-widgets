@@ -12,6 +12,7 @@ use yii\web\AssetBundle;
  * @since 1.0
  */
 class Typeahead2Asset extends AssetBundle {
+
     public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/assets';
 	
 	public function init() {
@@ -19,4 +20,5 @@ class Typeahead2Asset extends AssetBundle {
 		$this->js = YII_DEBUG ? ['js/hogan.js'] : ['js/hogan.min.js'] ;
 		parent::init();
 	}
+
 }

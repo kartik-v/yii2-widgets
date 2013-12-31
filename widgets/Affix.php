@@ -36,6 +36,7 @@ use yii\helpers\ArrayHelper;
  */
 class Affix extends \yii\widgets\Menu
 {
+
 	/**
 	 * @var string, the type of content to display. By default displays the navigation menu
 	 * If set to 'body' it will display the body.
@@ -208,4 +209,5 @@ EOT;
 			throw new InvalidConfigException("The 'url' option is required and must point to a bookmarked content on the same page.");
 		}	
 	}
+
 }
