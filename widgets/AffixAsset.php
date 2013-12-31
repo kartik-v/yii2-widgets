@@ -4,19 +4,22 @@ namespace kartik\widgets;
 use yii\web\AssetBundle;
 
 /**
+ * Asset bundle for Affix Widget
+ *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
+ * @since 1.0
  */
 class AffixAsset extends AssetBundle
 {
 	public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/assets';
-	public $css = [
-		'css/affix.css',
-	];
-	public $js = [
-		'js/affix.js',
-	];
 	public $depends = [
 		'yii\web\JqueryAsset',
 		'yii\bootstrap\BootstrapAsset',
 	];
+
+	public function init() {
+		$this->css = YII_DEBUG ? ['affix.css'] : ['affix.min.css'];
+		$this->js = YII_DEBUG ? ['affix.js'] : ['affix.min.js'];
+		parent::init();
+	}
 }

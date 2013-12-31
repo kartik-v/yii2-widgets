@@ -19,7 +19,7 @@ class Select2Asset extends AssetBundle {
     ];
 
 	public function init() {
-		 $this->css = YII_DEBUG ? ['select2.css', 'select2-bootstrap3.css'] : ['select2.min.css', 'select2-bootstrap3.min.css'];
+		$this->css = YII_DEBUG ? ['select2.css', 'select2-bootstrap3.css'] : ['select2.min.css', 'select2-bootstrap3.min.css'];
 		$this->js = YII_DEBUG ? ['select2.js'] : ['select2.min.js'];
 		parent::init();
 	}
