@@ -173,8 +173,7 @@
 .tt-suggestion p {
   margin: 0;
 }
-.twitter-typeahead .tt-header, .twitter-typeahead .tt-footer {
-	padding: 6px;
-	font-weight: bold;
-	background: #eee;
+.twitter-typeahead input[disabled], input[readonly], fieldset[disabled] .twitter-typeahead  input {
+    background-color: #EEEEEE;
+    cursor: not-allowed;
 }

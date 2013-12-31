@@ -33,11 +33,10 @@ class Typeahead extends \yii\widgets\InputWidget {
 	/**
 	 * @var array dataset an object that defines a set of data that hydrates suggestions. 
 	 * It consists of the following special variable settings:
-	 * - data: array the option data items - a linear list of values. For a simple and 
-	 *   straight forward setup, you must define either [[data]] or [[action]].
-	 * - action: mixed URL or a remote action, which will return json-encoded typeahead 
-	 *   datasets or list of datums. For a simple and straight forward setup, you must 
-	 *   define either [[data]] or [[action]].
+	 * - local: array configuration for the [[local]] list of datums. You must set one of
+	 *   [[local]], [[prefetch]], or [[remote]].	 
+	 * - prefetch: array configuration for the [[prefetch]] options object.
+	 * - remote: array configuration for the [[remote]] options object.
 	 * - limit: integer the max number of suggestions from the dataset to display for 
 	 *   a given query. Defaults to 5.
 	 * - valueKey: string the key used to access the value of the datum in the datum 
@@ -45,28 +44,18 @@ class Typeahead extends \yii\widgets\InputWidget {
 	 * - template: string the template used to render suggestions. Can be a string or a 
 	 *   pre-compiled template (i.e. a `JsExpression` function that takes a datum as input
 	 *   and returns html as output). If not provided, defaults to `<p>{{value}}</p>`
-	 * - engine: the template engine used to compile/render template if it is a string. 
+	 * - engine: string the template engine used to compile/render template if it is a string. 
 	 *   Any engine can be used as long as it adheres to the expected API. Required if 
 	 *   template is a string.	 
-	 * - local: array configuration for the [[local]] list of datums. Optional.
-	 *   If this is set, it will skip the setting for [[data]]	 
-	 * - prefetch: array configuration for the [[prefetch]] options object. Optional.
-	 *   If this is set, it will skip the setting for [[action]]
-	 * - remote: array configuration for the [[remote]] options object. Optional.
-	 *   If this is set, it will skip the setting for [[action]]
 	 * - header: string the header rendered before suggestions in the dropdown menu. Can
 	 *   be either a DOM element or HTML
 	 * - footer: string the footer rendered after suggestions in the dropdown menu. Can
 	 *   be either a DOM element or HTML
-	 * - headerOptions: array the HTML attributes for the header container.
-	 * - footerOptions: array the HTML attributes for the footer container.
 	 */
 	public $dataset = [];
 	
     /**
-     * @var array the HTML attributes for the input tag. The following options are important:
-     * - multiple: boolean whether multiple or single item should be selected. Defaults to false.
-     * - placeholder: string placeholder for the select item.
+     * @var array the HTML attributes for the input tag.
      */
     public $options = [];
 
@@ -102,7 +91,10 @@ class Typeahead extends \yii\widgets\InputWidget {
             throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
         }		
 		if (empty($this->dataset) || !is_array($this->dataset)) {
-			 throw new InvalidConfigException("You must define the 'dataset' property for Typeahead which must be an array.");
+			throw new InvalidConfigException("You must define the 'dataset' property for Typeahead which must be an array.");
+		}
+		if (!is_array(current($this->dataset))) {
+			throw new InvalidConfigException("The 'dataset' array must contain an array of datums. Invalid data found.");
 		}
         $this->registerAssets();
         $this->renderInput();
@@ -131,26 +123,12 @@ class Typeahead extends \yii\widgets\InputWidget {
 	protected function setPluginOptions() {
 		$i = 1;
 		$data = [];
-		foreach ($this->dataset as $d) {
+		foreach ($this->dataset as $d) {	
 			if (empty($d['name'])) {
 				$d['name'] = $this->options['id'] . '-ta-' . $i;
 			}
-			if (!empty($d['data']) && empty($d['local'])) {
-				$d['local'] = $d['data'];
-				unset($d['data']);
-			}
-			if (empty($d['remote']) && empty($d['prefetch']) && !empty($d['action'])) {
-				$d['remote'] = $d['action'];
-				unset($d['action']);
-			}
-			if (!empty($d['header'])) {
-				$opt = ArrayHelper::remove($d, 'headerOptions', []);
-				$d['header'] = Html::tag('div', $d['header'], $opt);
-				
-			}
-			if (!empty($d['footer'])) {
-				$opt = ArrayHelper::remove($d, 'footerOptions', []);
-				$d['footer'] = Html::tag('div', $d['footer'], $opt);
+			if (!empty($d['engine']) && !$d['engine'] instanceof JsExpression) {
+				$d['engine'] = new JsExpression($d['engine']);
 			}
 			$data[] = $d;
 			$i++;
