@@ -65,9 +65,11 @@ class Typeahead extends \yii\widgets\InputWidget {
      * for example:
      * ~~~
      * pluginEvents = [
-     * 		"change" => "function() { log("change"); }",
-     * 		"open" => "function() { log("open"); }",
-     * 		"typeahead-opening" => "function() { log("typeahead-opening"); }",
+     * 		"typeahead:initialized " => "function() { log("typeahead:initialized "); }",
+     * 		"typeahead:opened" => "function() { log("typeahead:opened"); }",
+     * 		"typeahead:closed" => "function() { log("typeahead:closed"); }",
+     * 		"typeahead:selected" => "function() { log("typeahead:selected"); }",
+     * 		"typeahead:autocompleted" => "function() { log("typeahead:autocompleted"); }",
      * ];
      * ~~~
      */
