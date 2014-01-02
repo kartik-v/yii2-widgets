@@ -87,7 +87,7 @@ class Typeahead extends \yii\widgets\InputWidget {
     public function init() {
         parent::init();
         if (isset($this->form) && !($this->form instanceof \yii\widgets\ActiveForm)) {
-            throw new InvalidConfigException("The 'form' property must be set and must be an object of type 'ActiveForm'.");
+            throw new InvalidConfigException("The 'form' property must be an object of type 'yii\\widgets\\ActiveForm'.");
         }
         if (isset($this->form) && !$this->hasModel()) {
             throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
