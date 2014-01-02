@@ -58,7 +58,7 @@ validation rules for a model attribute that uses Typeahead widget for input like
 #### DatePicker
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/datepicker)  
 
-The Select2 widget is a Yii 2 wrapper for the [Bootstrap DatePicker plugin](http://eternicode.github.io/bootstrap-datepicker/). 
+The DatePicker widget is a Yii 2 wrapper for the [Bootstrap DatePicker plugin](http://eternicode.github.io/bootstrap-datepicker/). 
 The plugin is a fork of Stefan Petre's DatePicker (of eyecon.ro), with improvements by @eternicode. This widget is specially 
 styled for Yii framework 2.0 and Twitter Bootstrap 3. The widget allows graceful degradation to a normal HTML text input, if 
 the browser does not support JQuery.  This widget supports these markups:
