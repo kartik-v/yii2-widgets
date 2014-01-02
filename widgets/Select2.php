@@ -94,7 +94,7 @@ class Select2 extends \yii\widgets\InputWidget {
                 !empty($this->pluginOptions['ajax']) ||
                 !empty($this->pluginOptions['tags']);
         if (isset($this->form) && !($this->form instanceof \yii\widgets\ActiveForm)) {
-            throw new InvalidConfigException("The 'form' property must be an object of type 'yii\\widgets\\ActiveForm'.");
+            throw new InvalidConfigException("The 'form' property must be an object of type 'ActiveForm'.");
         }
         if (isset($this->form) && !$this->hasModel()) {
             throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
