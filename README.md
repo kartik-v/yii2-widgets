@@ -37,7 +37,6 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 	* Radio List
 	* Display Options
 
-
 #### Select2
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/select2)  
 
@@ -50,8 +49,19 @@ graceful degradation to a normal HTML select or text input, if the browser does 
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/typeahead)
 
 The Typeahead widget is a Yii 2 wrapper for for the [Twitter Typeahead.js](http://twitter.github.com/typeahead.js/examples) 
-plugin with certain custom enhancements. This input widget is a jQuery based replacement for text inputs providing search and typeahead functionality. 
-It is inspired by twitter.com's autocomplete search functionality and based on Twitter's `typeahead.js` which the plugin documentation mentions as a fast and fully-featured autocomplete library. The widget is specially styled for Twitter Bootstrap 3. The widget allows graceful degradation to a normal HTML text input, if the browser does not support JQuery. You can setup model validation rules for a model attribute that uses Typeahead widget for input like any other field.
+plugin with certain custom enhancements. This input widget is a jQuery based replacement for text inputs providing search and 
+typeahead functionality. It is inspired by twitter.com's autocomplete search functionality and based on Twitter's `typeahead.js` 
+which is described as as a fast and fully-featured autocomplete library. The widget is specially styled for Twitter Bootstrap 3. 
+The widget allows graceful degradation to a normal HTML text input, if the browser does not support JQuery. You can setup model 
+validation rules for a model attribute that uses Typeahead widget for input like any other field.
+
+#### DatePicker
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/datepicker)  
+
+The Select2 widget is a Yii 2 wrapper for the [Bootstrap DatePicker plugin](http://eternicode.github.io/bootstrap-datepicker/). 
+The plugin is a fork of Stefan Petre's DatePicker (of eyecon.ro), with improvements by @eternicode. This widget is specially 
+styled for Yii framework 2.0 and Twitter Bootstrap 3. The widget allows graceful degradation to a normal HTML text input, if 
+the browser does not support JQuery. 
 
 ### Navigation
 
@@ -206,6 +216,23 @@ echo Typeahead::widget([
 			'local' => \$data,
 			'limit' => 10
 		]
+	]
+]);
+```
+
+#### DatePicker
+```php
+use kartik\widgets\DatePicker
+
+// usage without model
+echo '<label>Check Issue Date</label>';
+echo DatePicker::widget([
+	'name' => 'check_issue_date', 
+	'value' => date('d-M-Y', strtotime('+2 days')),,
+	'options' => ['placeholder' => 'Select issue date ...'],
+	'pluginOptions' => [
+		'format' => 'dd-M-yyyy',
+		'todayHighlight' => true
 	]
 ]);
 ```

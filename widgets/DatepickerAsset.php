@@ -11,17 +11,17 @@ use yii\web\AssetBundle;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class DatepickerAsset extends AssetBundle {
+class DatePickerAsset extends AssetBundle {
 
-    public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/lib/datepicker';
+    public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/lib/bootstrap-datepicker';
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 
 	public function init() {
-		$this->css = YII_DEBUG ? ['datepicker3.css'] : ['datepicker3.min.css'];
-		$this->js = YII_DEBUG ? ['datepicker.js'] : ['datepicker.min.js'];
+		$this->css = YII_DEBUG ? ['css/datepicker3.css'] : ['css/datepicker3.min.css'];
+		$this->js = YII_DEBUG ? ['js/bootstrap-datepicker.js'] : ['js/bootstrap-datepicker.min.js'];
 		parent::init();
 	}
 
