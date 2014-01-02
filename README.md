@@ -61,7 +61,13 @@ validation rules for a model attribute that uses Typeahead widget for input like
 The Select2 widget is a Yii 2 wrapper for the [Bootstrap DatePicker plugin](http://eternicode.github.io/bootstrap-datepicker/). 
 The plugin is a fork of Stefan Petre's DatePicker (of eyecon.ro), with improvements by @eternicode. This widget is specially 
 styled for Yii framework 2.0 and Twitter Bootstrap 3. The widget allows graceful degradation to a normal HTML text input, if 
-the browser does not support JQuery. 
+the browser does not support JQuery.  This widget supports these markups:
+
+* Simple Input Markup
+* Component Markup - Addon Prepended
+* Component Markup - Addon Appended
+* Date Range Markup (from and to dates)
+* Inline / Embedded Markup
 
 ### Navigation
 
