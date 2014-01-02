@@ -207,7 +207,7 @@ to the ```require``` section of your `composer.json` file.
 	]);
 ```
 
-#### Typeahead
+### Typeahead
 ```php
 use kartik\widgets\Typeahead
 
@@ -226,7 +226,7 @@ echo Typeahead::widget([
 ]);
 ```
 
-#### DatePicker
+### DatePicker
 ```php
 use kartik\widgets\DatePicker
 
