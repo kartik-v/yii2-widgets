@@ -31,15 +31,15 @@ class Select2 extends \yii\widgets\InputWidget {
     /**
      * @var ActiveForm the form object to which this
      * input will be attached to in case you are using 
-	 * the widget within an ActiveForm
+     * the widget within an ActiveForm
      */
     public $form;
 
-	/**
+    /**
      * @var array input options for the ActiveForm input
-	 * applicable only if the [[form]] property is set
+     * applicable only if the [[form]] property is set
      */
-	public $inputOptions = [];
+    public $inputOptions = [];
 
     /**
      * @var array $data the option data items. The array keys are option values, and the array values
@@ -56,7 +56,7 @@ class Select2 extends \yii\widgets\InputWidget {
      * interoperability issue with bootstrap modal.
      */
     public $modal = false;
-	
+
     /**
      * @var array the HTML attributes for the input tag. The following options are important:
      * - multiple: boolean whether multiple or single item should be selected. Defaults to false.
