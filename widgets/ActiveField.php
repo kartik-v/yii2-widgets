@@ -1,6 +1,7 @@
 <?php
 namespace kartik\widgets;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 
 /**
  * Extends the ActiveField widget to handle various 
@@ -13,6 +14,9 @@ use yii\helpers\Html;
  *		- @param string $type whether 'prepend' or 'append'
  *		- @param string $content the addon content - this is not html encoded
  *		- @param boolean $asButton whether the addon is a button or button group
+ *		- @param array $groupOptions HTML options for the input group
+ *		- @param string $contentBefore content placed before addon
+ *		- @param string $contentAfter content placed after addon
  *
  * Example(s):
  * ```php
@@ -110,7 +114,11 @@ class ActiveField extends \yii\widgets\ActiveField
 				$tag = Html::tag('span', $addon['content'], ['class'=>'input-group-addon']);
 			}
 			$addonText = ($type == self::ADDON_PREPEND) ? $tag . '{input}' : '{input}' . $tag;
-			$addonText = "<div class='input-group'>{$addonText}</div>";
+			$group = ArrayHelper::getValue($addon, 'groupOptions', []);
+			Html::addCssClass($group, 'input-group');
+			$contentBefore = ArrayHelper::getValue($addon, 'contentBefore', '');
+			$contentAfter = ArrayHelper::getValue($addon, 'contentAfter', '');
+			$addonText = Html::tag('div', $contentBefore . $addonText . $contentAfter, $group);
 			$this->template = str_replace('{input}', $addonText, $this->template);
 		}	
 	}
