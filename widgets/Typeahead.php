@@ -31,6 +31,12 @@ class Typeahead extends \yii\widgets\InputWidget {
     public $form;
 
 	/**
+     * @var array input options for the ActiveForm input
+	 * applicable only if the [[form]] property is set
+     */
+	public $inputOptions = [];
+	
+	/**
 	 * @var array dataset an object that defines a set of data that hydrates suggestions. 
 	 * It consists of the following special variable settings:
 	 * - local: array configuration for the [[local]] list of datums. You must set one of
@@ -109,7 +115,7 @@ class Typeahead extends \yii\widgets\InputWidget {
      */
     protected function renderInput() {
 		if (isset($this->form)) {
-			echo $this->form->field($this->model, $this->attribute)->textInput($this->options);
+			echo $this->form->field($this->model, $this->attribute, $this->inputOptions)->textInput($this->options);
 		}
 		elseif ($this->hasModel()) {
 			echo Html::activeTextInput($this->model, $this->attribute, $this->options);

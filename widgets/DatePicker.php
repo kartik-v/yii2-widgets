@@ -33,6 +33,12 @@ class DatePicker extends \yii\widgets\InputWidget {
 	 * the widget within an ActiveForm
      */
     public $form;
+
+	/**
+     * @var array input options for the ActiveForm input
+	 * applicable only if the [[form]] property is set
+     */
+	public $inputOptions = [];
 	
     /**
      * @var string the markup type of widget markup
@@ -165,13 +171,13 @@ class DatePicker extends \yii\widgets\InputWidget {
 				if (isset($this->size)) {
 					Html::addCssClass($this->options, 'input-' . $this->size);
 				}
-				$template = [];
+				$template = ArrayHelper::getValue($this->inputOptions, 'template', "{label}\n{input}\n{error}\n{hint}");
 				if ($this->type == self::TYPE_INLINE) {
 					$this->_id = $this->options['id'] . '-inline';
 					$this->_container['id'] = $this->_id;
-					$template = ['template' => "{label}\n" . Html::tag('div', '', $this->_container) . "{input}\n{error}\n{hint}"];
+					$this->inputOptions['template'] = str_replace('{input}', Html::tag('div', '', $this->_container) . "{input}", $template);
 				}
-				echo $this->form->field($this->model, $this->attribute, $template)->textInput($this->options);
+				echo $this->form->field($this->model, $this->attribute, $this->inputOptions)->textInput($this->options);
 			}
 			else {
 				$type = ($this->type == self::TYPE_COMPONENT_PREPEND) ? 'prepend' : 'append';

@@ -35,6 +35,12 @@ class Select2 extends \yii\widgets\InputWidget {
      */
     public $form;
 
+	/**
+     * @var array input options for the ActiveForm input
+	 * applicable only if the [[form]] property is set
+     */
+	public $inputOptions = [];
+
     /**
      * @var array $data the option data items. The array keys are option values, and the array values
      * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
@@ -119,7 +125,7 @@ class Select2 extends \yii\widgets\InputWidget {
     protected function renderInput() {
         if ($this->_hidden) {
             if (isset($this->form)) {
-                echo $this->form->field($this->model, $this->attribute)->textInput($this->options);
+                echo $this->form->field($this->model, $this->attribute, $this->inputOptions)->textInput($this->options);
             }
             elseif ($this->hasModel()) {
                 echo Html::activeTextInput($this->model, $this->attribute, $this->options);
