@@ -28,6 +28,13 @@ class DatePicker extends \yii\widgets\InputWidget {
 	const TYPE_INLINE = 5;
 	
     /**
+     * @var ActiveForm the form object to which this
+     * input will be attached to in case you are using 
+	 * the widget within an ActiveForm
+     */
+    public $form;
+	
+    /**
      * @var string the markup type of widget markup
 	 * must be one of the TYPE constants. Defaults
 	 * to [[TYPE_COMPONENT_PREPEND]]
@@ -117,6 +124,12 @@ class DatePicker extends \yii\widgets\InputWidget {
      */
     public function init() {
         parent::init();
+        if (isset($this->form) && !($this->form instanceof \kartik\widgets\ActiveForm)) {
+            throw new InvalidConfigException("The 'form' property must be an object of type '\\kartik\\widgets\\ActiveForm'.");
+        }
+        if (isset($this->form) && !$this->hasModel()) {
+            throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
+        }		
 		if ($this->type === self::TYPE_RANGE && $this->attribute2 === null && $this->name2 === null) {
 			throw new InvalidConfigException("Either 'name2' or 'attribute2' properties must be specified for a datepicker 'range' markup.");
 		}
@@ -127,14 +140,6 @@ class DatePicker extends \yii\widgets\InputWidget {
 		$this->registerAssets();
         $this->renderInput();
 		$value = $this->hasModel() ? $this->model[$this->attribute] : $this->value;
-		/*
-		if (strlen($value) > 0) {
-			$date = strtotime($value);
-			$date = 'new Date(' . Date("Y", $value) . ', ' . Date("m", $value) . ', ' . Date("d", $value) . ')';
-			$js = "{$this->_id}.datepicker('update', '{$value}');";
-			$this->getView()->registerJs($js);
-		}
-		*/
      }
 
     /**
@@ -155,7 +160,51 @@ class DatePicker extends \yii\widgets\InputWidget {
 			Html::addCssClass($this->options, 'form-control');
 		}
 		
-		if ($this->hasModel()) {
+		if (isset($this->form)) {
+			if ($this->type == self::TYPE_INPUT || $this->type == self::TYPE_INLINE) {
+				if (isset($this->size)) {
+					Html::addCssClass($this->options, 'input-' . $this->size);
+				}
+				$template = [];
+				if ($this->type == self::TYPE_INLINE) {
+					$this->_id = $this->options['id'] . '-inline';
+					$this->_container['id'] = $this->_id;
+					$template = ['template' => "{label}\n" . Html::tag('div', '', $this->_container) . "{input}\n{error}\n{hint}"];
+				}
+				echo $this->form->field($this->model, $this->attribute, $template)->textInput($this->options);
+			}
+			else {
+				$type = ($this->type == self::TYPE_COMPONENT_PREPEND) ? 'prepend' : 'append';
+				$class = ($this->type == self::TYPE_RANGE) ? "input-daterange" : "date";
+				$css = isset($this->size) ? "input-group-{$this->size} {$class}" : $class;
+				Html::addCssClass($group, $css);
+				if ($this->type != self::TYPE_RANGE) {
+					echo $this->form->field($this->model, $this->attribute,  [
+						'addon' => [
+							'type' => $type, 
+							'content' => $this->addon, 
+							'groupOptions' => $group
+						]
+					])->textInput($this->options);
+				}
+				else {
+					if (empty($this->options2['id'])) {
+						$this->options2['id'] = Html::getInputId($this->model, $this->attribute2);
+					}
+					Html::addCssClass($this->options2, 'form-control');
+					$input2 = Html::activeTextInput($this->model, $this->attribute2, $this->options2);
+					echo $this->form->field($this->model, $this->attribute, [
+						'addon' => [
+							'type' => 'append', 
+							'content' => $this->separator, 
+							'groupOptions' => $group,
+							'contentAfter' => $input2
+						]
+					])->textInput($this->options);
+				}
+			}
+		}
+		elseif ($this->hasModel()) {
 			echo $this->parseMarkup(Html::activeTextInput($this->model, $this->attribute, $this->options));
 		}
 		else {
@@ -192,7 +241,7 @@ class DatePicker extends \yii\widgets\InputWidget {
 		}
 		if ($this->type == self::TYPE_RANGE) {
 			Html::addCssClass($this->_container, 'input-daterange');
-			if (!isset($this->options2['id'])) {
+			if (empty($this->options2['id'])) {
 				$this->options2['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute2) : $this->getId() . '-2';
 			}
 			Html::addCssClass($this->options2, 'form-control');
