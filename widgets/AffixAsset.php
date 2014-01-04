@@ -19,8 +19,8 @@ class AffixAsset extends AssetBundle
 	];
 
 	public function init() {
-		$this->css = YII_DEBUG ? ['affix.css'] : ['affix.min.css'];
-		$this->js = YII_DEBUG ? ['affix.js'] : ['affix.min.js'];
+		$this->css = YII_DEBUG ? ['css/affix.css'] : ['css/affix.min.css'];
+		$this->js = YII_DEBUG ? ['js/affix.js'] : ['js/affix.min.js'];
 		parent::init();
 	}
 
