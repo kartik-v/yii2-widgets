@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
+ * @package yii2-widgets
+ * @version 1.0.0
+ */
+
 namespace kartik\widgets;
 
 use Yii;
@@ -19,10 +25,10 @@ class DatePickerAsset extends AssetBundle {
         'yii\bootstrap\BootstrapAsset',
     ];
 
-	public function init() {
-		$this->css = YII_DEBUG ? ['css/datepicker3.css'] : ['css/datepicker3.min.css'];
-		$this->js = YII_DEBUG ? ['js/bootstrap-datepicker.js'] : ['js/bootstrap-datepicker.min.js'];
-		parent::init();
-	}
+    public function init() {
+        $this->css = YII_DEBUG ? ['css/datepicker3.css'] : ['css/datepicker3.min.css'];
+        $this->js = YII_DEBUG ? ['js/bootstrap-datepicker.js'] : ['js/bootstrap-datepicker.min.js'];
+        parent::init();
+    }
 
 }

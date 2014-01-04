@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
+ * @package yii2-widgets
+ * @version 1.0.0
+ */
+
 namespace kartik\widgets;
 
 use Yii;
@@ -19,10 +25,10 @@ class Select2Asset extends AssetBundle {
         'yii\bootstrap\BootstrapAsset',
     ];
 
-	public function init() {
-		$this->css = YII_DEBUG ? ['select2.css', 'select2-bootstrap3.css'] : ['select2.min.css', 'select2-bootstrap3.min.css'];
-		$this->js = YII_DEBUG ? ['select2.js'] : ['select2.min.js'];
-		parent::init();
-	}
+    public function init() {
+        $this->css = YII_DEBUG ? ['select2.css', 'select2-bootstrap3.css'] : ['select2.min.css', 'select2-bootstrap3.min.css'];
+        $this->js = YII_DEBUG ? ['select2.js'] : ['select2.min.js'];
+        parent::init();
+    }
 
 }
