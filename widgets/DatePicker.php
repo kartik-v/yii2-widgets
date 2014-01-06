@@ -150,7 +150,6 @@ class DatePicker extends \yii\widgets\InputWidget {
         $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         $this->renderInput();
-        $value = $this->hasModel() ? $this->model[$this->attribute] : $this->value;
     }
 
     /**
