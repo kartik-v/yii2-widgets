@@ -23,6 +23,8 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 	* Button Addon
 	* Button Dropdown Addon
 	* Segmented Button Addon
+	* Prepend & Append
+	* Input Group Settings
 - Inputs
 	* Checkbox
 	* Radio
