@@ -151,38 +151,40 @@ to the ```require``` section of your `composer.json` file.
 ### ActiveField
 ```php
 	// Prepend an addon text
-   	echo $form->field($model, 'email', ['addon' => ['type'=>'prepend', 'content'=>'@']]);
+   	echo $form->field($model, 'email', ['addon' => ['prepend' => ['content'=>'@']]]);
    	
    	// Append an addon text
 	echo $form->field($model, 'amount_paid', [
-  		'addon' => ['type' => 'append', 'content'=>'.00']
+  		'addon' => ['append' => ['content'=>'.00']]
 	]);
 	
 	// Formatted addons (like icons)
 	echo $form->field($model, 'phone', [
 		'addon' => [
-			'type' => 'prepend', 
-			'content' => '<i class="glyphicon glyphicon-phone"></i>'
+			'prepend' => [
+				'content' => '<i class="glyphicon glyphicon-phone"></i>'
+			]
 		]
 	]);
 	
 	// Formatted addons (inputs)
 	echo $form->field($model, 'phone', [
 		'addon' => [
-			'type' => 'prepend', 
-			'content' => '<input type="radio">'
+			'prepend' => [
+				'content' => '<input type="radio">'
+			]
 		]
 	]);
 	
 	// Formatted addons (buttons)
 	echo $form->field($model, 'phone', [
 		'addon' => [
-			'type' => 'prepend', 
-			'content' => Html::button('Go', ['class'=>'btn btn-primary']),
+			'prepend' => [
+				'content' => Html::button('Go', ['class'=>'btn btn-primary'])
+			]
 			'asButton' => true
 		]
 	]);
-	
 ```
 
 ### Select2
