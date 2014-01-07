@@ -201,7 +201,7 @@ class Select2 extends \yii\widgets\InputWidget {
 		if (!isset($this->addon) && isset($this->size)) {
 			Html::addCssClass($this->options, 'input-' . $this->size);
 		}
-		if (isset($this->form) && isset($this->addon)) {
+		if (isset($this->form) && !empty($this->addon)) {
             $addon = $this->addon;
             $type = isset($addon['type']) ? $addon['type'] : 'prepend';
 			$size = isset($this->size) ? ' input-group-' . $this->size  : '';
@@ -274,6 +274,7 @@ class Select2 extends \yii\widgets\InputWidget {
             $this->addAsset($view, 'select2_locale_' . $this->language . '.js', 'js');
         }
         $id = '$("#' . $this->options['id'] . '")';
+		$this->pluginOptions['width'] = 'resolve';
         $js = "{$id}.select2(" . Json::encode($this->pluginOptions) . ");";
         if (!empty($this->pluginEvents)) {
             $js .= "\n{$id}";
