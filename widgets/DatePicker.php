@@ -191,8 +191,7 @@ class DatePicker extends \yii\widgets\InputWidget {
                 if ($this->type != self::TYPE_RANGE) {
                     echo $this->form->field($this->model, $this->attribute, [
                         'addon' => [
-                            'type' => $type,
-                            'content' => $this->addon,
+                            $type => ['content' => $this->addon],
                             'groupOptions' => $group
                         ]
                     ])->textInput($this->options);
@@ -205,8 +204,7 @@ class DatePicker extends \yii\widgets\InputWidget {
                     $input2 = Html::activeTextInput($this->model, $this->attribute2, $this->options2);
                     echo $this->form->field($this->model, $this->attribute, [
                         'addon' => [
-                            'type' => 'append',
-                            'content' => $this->separator,
+                            $type => ['content' => $this->separator],
                             'groupOptions' => $group,
                             'contentAfter' => $input2
                         ]

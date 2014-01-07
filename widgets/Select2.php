@@ -28,6 +28,10 @@ use yii\web\JsExpression;
  */
 class Select2 extends \yii\widgets\InputWidget {
 
+	const LARGE = 'lg';
+	const MEDIUM = 'md';
+	const SMALL = 'sm';
+	
     /**
      * @var mixed the locale ID (e.g. 'fr', 'de') for the language to be used by the Select2 Widget.
      * If this property set to false, the widget will use English (en).
@@ -47,6 +51,26 @@ class Select2 extends \yii\widgets\InputWidget {
      */
     public $inputOptions = [];
 
+	/**
+	 * @var array addon to prepend or append to the Select2 widget
+	 * - prepend: array the prepend addon configuration
+	 *     - content: string the prepend addon content
+	 *     - asButton: boolean whether the addon is a button or button group. Defaults to false.
+	 * - append: array the append addon configuration
+	 *     - content: string the append addon content
+	 *     - asButton: boolean whether the addon is a button or button group. Defaults to false.
+	 * - groupOptions: array HTML options for the input group
+	 * - contentBefore: string content placed before addon
+	 * - contentAfter: string content placed after addon
+	 */
+	public $addon = [];
+
+	/**
+	 * @var size of the Select2 input, must be one of the 
+	 * [[LARGE]], [[MEDIUM]] or [[SMALL]]. Defaults to [[MEDIUM]]
+	 */
+	public $size = self::MEDIUM;
+	
     /**
      * @var array $data the option data items. The array keys are option values, and the array values
      * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
@@ -105,12 +129,15 @@ class Select2 extends \yii\widgets\InputWidget {
                 !empty($this->pluginOptions['query']) ||
                 !empty($this->pluginOptions['ajax']) ||
                 !empty($this->pluginOptions['tags']);
-        if (isset($this->form) && !($this->form instanceof \yii\widgets\ActiveForm)) {
-            throw new InvalidConfigException("The 'form' property must be an object of type 'ActiveForm'.");
+        if (isset($this->form) && !($this->form instanceof \kartik\widgets\ActiveForm)) {
+            throw new InvalidConfigException("The 'form' property must be an object of type '\\kartik\\widgets\\ActiveForm'.");
         }
         if (isset($this->form) && !$this->hasModel()) {
             throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
         }
+		if (empty($this->data) && !$this->_hidden) {
+			throw new InvalidConfigException("No 'data' source found for Select2. Either the 'data' property must be set OR one of 'data', 'query', 'ajax', or 'tags' must be set within 'pluginOptions'.");
+		}
         if (!empty($this->options['placeholder']) && !$this->_hidden && !in_array("", $this->data) &&
                 (empty($this->options['multiple']) || $this->options['multiple'] == false)) {
             $this->data = array_merge(["" => ""], $this->data);
@@ -122,6 +149,45 @@ class Select2 extends \yii\widgets\InputWidget {
         $this->renderInput();
     }
 
+
+    /**
+     * Embeds the input group addon
+     */
+    protected function embedAddon($input) {
+        if (!empty($this->addon)) {
+            $addon = $this->addon;
+			$prepend = ArrayHelper::getValue($addon, 'prepend', ''); ;
+			$append = ArrayHelper::getValue($addon, 'append', ''); ;
+            $group = ArrayHelper::getValue($addon, 'groupOptions', []);
+			$size = isset($this->size) ? ' input-group-' . $this->size  : '';
+			if (is_array($prepend)) {
+				$content = ArrayHelper::getValue($prepend, 'content', ''); 
+				if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
+					$prepend = Html::tag('div', $content, ['class' => 'input-group-btn']);
+				}
+				else {
+					$prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
+				}
+				Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
+			}
+			if (is_array($append)) {
+				$content = ArrayHelper::getValue($append, 'content', ''); 
+				if (isset($append['asButton']) && $append['asButton'] == true) {
+					$append = Html::tag('div', $content, ['class' => 'input-group-btn']);
+				}
+				else {
+					$append = Html::tag('span', $content, ['class' => 'input-group-addon']);
+				}
+				Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
+			}
+            $addonText = $prepend . $input . $append;
+            $contentBefore = ArrayHelper::getValue($addon, 'contentBefore', '');
+            $contentAfter = ArrayHelper::getValue($addon, 'contentAfter', '');
+            return Html::tag('div', $contentBefore . $addonText . $contentAfter, $group);
+        }
+		return $input;
+    }
+	
     /**
      * Renders the source Input for the Select2 plugin.
      * Graceful fallback to a normal HTML select dropdown
@@ -129,28 +195,51 @@ class Select2 extends \yii\widgets\InputWidget {
      * the browser
      */
     protected function renderInput() {
+		if (!isset($this->addon) && isset($this->size)) {
+			Html::addCssClass($this->options, 'input-' . $this->size);
+		}
+		if (isset($this->form) && isset($this->addon)) {
+            $addon = $this->addon;
+            $type = isset($addon['type']) ? $addon['type'] : 'prepend';
+			$size = isset($this->size) ? ' input-group-' . $this->size  : '';
+            $group = ArrayHelper::getValue($addon, 'groupOptions', []);
+			if (!empty($addon['prepend'])) {
+				Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
+			}
+			if (!empty($addon['append'])) {
+				Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
+			}
+			$addon['groupOptions'] = $group;
+			$this->inputOptions['addon'] = $addon;
+		}
         if ($this->_hidden) {
             if (isset($this->form)) {
-                echo $this->form->field($this->model, $this->attribute, $this->inputOptions)->textInput($this->options);
+                $input = $this->form->field($this->model, $this->attribute, $this->inputOptions)->textInput($this->options);
             }
             elseif ($this->hasModel()) {
-                echo Html::activeTextInput($this->model, $this->attribute, $this->options);
+                $input = Html::activeTextInput($this->model, $this->attribute, $this->options);
             }
             else {
-                echo Html::textInput($this->name, $this->value, $this->options);
+                $input = Html::textInput($this->name, $this->value, $this->options);
             }
         }
         else {
             if (isset($this->form)) {
-                echo $this->form->field($this->model, $this->attribute)->dropDownList($this->data, $this->options);
+                $input = $this->form->field($this->model, $this->attribute, $this->inputOptions)->dropDownList($this->data, $this->options);
             }
             elseif ($this->hasModel()) {
-                echo Html::activeDropDownList($this->model, $this->attribute, $this->data, $this->options);
+                $input = Html::activeDropDownList($this->model, $this->attribute, $this->data, $this->options);
             }
             else {
-                echo Html::dropDownList($this->name, $this->value, $this->data, $this->options);
+                $input = Html::dropDownList($this->name, $this->value, $this->data, $this->options);
             }
         }
+		if (isset($this->form)) {
+			echo $input;
+		}
+		else {
+			echo $this->embedAddon($input);
+		}
     }
 
     /**
