@@ -28,10 +28,10 @@ use yii\web\JsExpression;
  */
 class Select2 extends \yii\widgets\InputWidget {
 
-	const LARGE = 'lg';
-	const MEDIUM = 'md';
-	const SMALL = 'sm';
-	
+    const LARGE = 'lg';
+    const MEDIUM = 'md';
+    const SMALL = 'sm';
+
     /**
      * @var mixed the locale ID (e.g. 'fr', 'de') for the language to be used by the Select2 Widget.
      * If this property set to false, the widget will use English (en).
@@ -46,31 +46,31 @@ class Select2 extends \yii\widgets\InputWidget {
     public $form;
 
     /**
-     * @var array input options for the ActiveForm input
+     * @var array field configuration for the ActiveForm input
      * applicable only if the [[form]] property is set
      */
-    public $inputOptions = [];
+    public $fieldConfig = [];
 
-	/**
-	 * @var array addon to prepend or append to the Select2 widget
-	 * - prepend: array the prepend addon configuration
-	 *     - content: string the prepend addon content
-	 *     - asButton: boolean whether the addon is a button or button group. Defaults to false.
-	 * - append: array the append addon configuration
-	 *     - content: string the append addon content
-	 *     - asButton: boolean whether the addon is a button or button group. Defaults to false.
-	 * - groupOptions: array HTML options for the input group
-	 * - contentBefore: string content placed before addon
-	 * - contentAfter: string content placed after addon
-	 */
-	public $addon = [];
+    /**
+     * @var array addon to prepend or append to the Select2 widget
+     * - prepend: array the prepend addon configuration
+     *     - content: string the prepend addon content
+     *     - asButton: boolean whether the addon is a button or button group. Defaults to false.
+     * - append: array the append addon configuration
+     *     - content: string the append addon content
+     *     - asButton: boolean whether the addon is a button or button group. Defaults to false.
+     * - groupOptions: array HTML options for the input group
+     * - contentBefore: string content placed before addon
+     * - contentAfter: string content placed after addon
+     */
+    public $addon = [];
 
-	/**
-	 * @var size of the Select2 input, must be one of the 
-	 * [[LARGE]], [[MEDIUM]] or [[SMALL]]. Defaults to [[MEDIUM]]
-	 */
-	public $size = self::MEDIUM;
-	
+    /**
+     * @var size of the Select2 input, must be one of the 
+     * [[LARGE]], [[MEDIUM]] or [[SMALL]]. Defaults to [[MEDIUM]]
+     */
+    public $size = self::MEDIUM;
+
     /**
      * @var array $data the option data items. The array keys are option values, and the array values
      * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
@@ -135,9 +135,9 @@ class Select2 extends \yii\widgets\InputWidget {
         if (isset($this->form) && !$this->hasModel()) {
             throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
         }
-		if (empty($this->data) && !$this->_hidden) {
-			throw new InvalidConfigException("No 'data' source found for Select2. Either the 'data' property must be set OR one of 'data', 'query', 'ajax', or 'tags' must be set within 'pluginOptions'.");
-		}
+        if (empty($this->data) && !$this->_hidden) {
+            throw new InvalidConfigException("No 'data' source found for Select2. Either the 'data' property must be set OR one of 'data', 'query', 'ajax', or 'tags' must be set within 'pluginOptions'.");
+        }
         if (!empty($this->options['placeholder']) && !$this->_hidden && !in_array("", $this->data) &&
                 (empty($this->options['multiple']) || $this->options['multiple'] == false)) {
             $this->data = array_merge(["" => ""], $this->data);
@@ -145,13 +145,12 @@ class Select2 extends \yii\widgets\InputWidget {
         if (($this->_hidden || !isset($this->form)) && !isset($this->options['style'])) {
             $this->options['style'] = 'width: 100%';
         }
-		if (empty($this->addon)) {
-			$this->addon = ArrayHelper::remove($this->inputOptions, 'addon', []);
-		}
+        if (empty($this->addon)) {
+            $this->addon = ArrayHelper::remove($this->fieldConfig, 'addon', []);
+        }
         $this->registerAssets();
         $this->renderInput();
     }
-
 
     /**
      * Embeds the input group addon
@@ -159,38 +158,40 @@ class Select2 extends \yii\widgets\InputWidget {
     protected function embedAddon($input) {
         if (!empty($this->addon)) {
             $addon = $this->addon;
-			$prepend = ArrayHelper::getValue($addon, 'prepend', ''); ;
-			$append = ArrayHelper::getValue($addon, 'append', ''); ;
+            $prepend = ArrayHelper::getValue($addon, 'prepend', '');
+            ;
+            $append = ArrayHelper::getValue($addon, 'append', '');
+            ;
             $group = ArrayHelper::getValue($addon, 'groupOptions', []);
-			$size = isset($this->size) ? ' input-group-' . $this->size  : '';
-			if (is_array($prepend)) {
-				$content = ArrayHelper::getValue($prepend, 'content', ''); 
-				if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
-					$prepend = Html::tag('div', $content, ['class' => 'input-group-btn']);
-				}
-				else {
-					$prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
-				}
-				Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
-			}
-			if (is_array($append)) {
-				$content = ArrayHelper::getValue($append, 'content', ''); 
-				if (isset($append['asButton']) && $append['asButton'] == true) {
-					$append = Html::tag('div', $content, ['class' => 'input-group-btn']);
-				}
-				else {
-					$append = Html::tag('span', $content, ['class' => 'input-group-addon']);
-				}
-				Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
-			}
+            $size = isset($this->size) ? ' input-group-' . $this->size : '';
+            if (is_array($prepend)) {
+                $content = ArrayHelper::getValue($prepend, 'content', '');
+                if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
+                    $prepend = Html::tag('div', $content, ['class' => 'input-group-btn']);
+                }
+                else {
+                    $prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
+                }
+                Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
+            }
+            if (is_array($append)) {
+                $content = ArrayHelper::getValue($append, 'content', '');
+                if (isset($append['asButton']) && $append['asButton'] == true) {
+                    $append = Html::tag('div', $content, ['class' => 'input-group-btn']);
+                }
+                else {
+                    $append = Html::tag('span', $content, ['class' => 'input-group-addon']);
+                }
+                Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
+            }
             $addonText = $prepend . $input . $append;
             $contentBefore = ArrayHelper::getValue($addon, 'contentBefore', '');
             $contentAfter = ArrayHelper::getValue($addon, 'contentAfter', '');
             return Html::tag('div', $contentBefore . $addonText . $contentAfter, $group);
         }
-		return $input;
+        return $input;
     }
-	
+
     /**
      * Renders the source Input for the Select2 plugin.
      * Graceful fallback to a normal HTML select dropdown
@@ -198,26 +199,26 @@ class Select2 extends \yii\widgets\InputWidget {
      * the browser
      */
     protected function renderInput() {
-		if (!isset($this->addon) && isset($this->size)) {
-			Html::addCssClass($this->options, 'input-' . $this->size);
-		}
-		if (isset($this->form) && !empty($this->addon)) {
+        if (!isset($this->addon) && isset($this->size)) {
+            Html::addCssClass($this->options, 'input-' . $this->size);
+        }
+        if (isset($this->form) && !empty($this->addon)) {
             $addon = $this->addon;
             $type = isset($addon['type']) ? $addon['type'] : 'prepend';
-			$size = isset($this->size) ? ' input-group-' . $this->size  : '';
+            $size = isset($this->size) ? ' input-group-' . $this->size : '';
             $group = ArrayHelper::getValue($addon, 'groupOptions', []);
-			if (!empty($addon['prepend'])) {
-				Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
-			}
-			if (!empty($addon['append'])) {
-				Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
-			}
-			$addon['groupOptions'] = $group;
-			$this->inputOptions['addon'] = $addon;
-		}
+            if (!empty($addon['prepend'])) {
+                Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
+            }
+            if (!empty($addon['append'])) {
+                Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
+            }
+            $addon['groupOptions'] = $group;
+            $this->fieldConfig['addon'] = $addon;
+        }
         if ($this->_hidden) {
             if (isset($this->form)) {
-                $input = $this->form->field($this->model, $this->attribute, $this->inputOptions)->textInput($this->options);
+                $input = $this->form->field($this->model, $this->attribute, $this->fieldConfig)->textInput($this->options);
             }
             elseif ($this->hasModel()) {
                 $input = Html::activeTextInput($this->model, $this->attribute, $this->options);
@@ -228,7 +229,7 @@ class Select2 extends \yii\widgets\InputWidget {
         }
         else {
             if (isset($this->form)) {
-                $input = $this->form->field($this->model, $this->attribute, $this->inputOptions)->dropDownList($this->data, $this->options);
+                $input = $this->form->field($this->model, $this->attribute, $this->fieldConfig)->dropDownList($this->data, $this->options);
             }
             elseif ($this->hasModel()) {
                 $input = Html::activeDropDownList($this->model, $this->attribute, $this->data, $this->options);
@@ -237,12 +238,12 @@ class Select2 extends \yii\widgets\InputWidget {
                 $input = Html::dropDownList($this->name, $this->value, $this->data, $this->options);
             }
         }
-		if (isset($this->form)) {
-			echo $input;
-		}
-		else {
-			echo $this->embedAddon($input);
-		}
+        if (isset($this->form)) {
+            echo $input;
+        }
+        else {
+            echo $this->embedAddon($input);
+        }
     }
 
     /**
@@ -274,7 +275,7 @@ class Select2 extends \yii\widgets\InputWidget {
             $this->addAsset($view, 'select2_locale_' . $this->language . '.js', 'js');
         }
         $id = '$("#' . $this->options['id'] . '")';
-		$this->pluginOptions['width'] = 'resolve';
+        $this->pluginOptions['width'] = 'resolve';
         $js = "{$id}.select2(" . Json::encode($this->pluginOptions) . ");";
         if (!empty($this->pluginEvents)) {
             $js .= "\n{$id}";

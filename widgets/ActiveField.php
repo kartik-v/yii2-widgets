@@ -114,26 +114,28 @@ class ActiveField extends \yii\widgets\ActiveField {
     protected function initAddon() {
         if (!empty($this->addon)) {
             $addon = $this->addon;
-			$prepend = ArrayHelper::getValue($addon, 'prepend', ''); ;
-			$append = ArrayHelper::getValue($addon, 'append', ''); ;
-			if (is_array($prepend)) {
-				$content = ArrayHelper::getValue($prepend, 'content', ''); 
-				if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
-					$prepend = Html::tag('div', $content, ['class' => 'input-group-btn']);
-				}
-				else {
-					$prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
-				}
-			}
-			if (is_array($append)) {
-				$content = ArrayHelper::getValue($append, 'content', ''); 
-				if (isset($append['asButton']) && $append['asButton'] == true) {
-					$append = Html::tag('div', $content, ['class' => 'input-group-btn']);
-				}
-				else {
-					$append = Html::tag('span', $content, ['class' => 'input-group-addon']);
-				}
-			}
+            $prepend = ArrayHelper::getValue($addon, 'prepend', '');
+            ;
+            $append = ArrayHelper::getValue($addon, 'append', '');
+            ;
+            if (is_array($prepend)) {
+                $content = ArrayHelper::getValue($prepend, 'content', '');
+                if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
+                    $prepend = Html::tag('div', $content, ['class' => 'input-group-btn']);
+                }
+                else {
+                    $prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
+                }
+            }
+            if (is_array($append)) {
+                $content = ArrayHelper::getValue($append, 'content', '');
+                if (isset($append['asButton']) && $append['asButton'] == true) {
+                    $append = Html::tag('div', $content, ['class' => 'input-group-btn']);
+                }
+                else {
+                    $append = Html::tag('span', $content, ['class' => 'input-group-addon']);
+                }
+            }
             $addonText = $prepend . '{input}' . $append;
             $group = ArrayHelper::getValue($addon, 'groupOptions', []);
             Html::addCssClass($group, 'input-group');

@@ -41,10 +41,10 @@ class DatePicker extends \yii\widgets\InputWidget {
     public $form;
 
     /**
-     * @var array input options for the ActiveForm input
+     * @var array field configuration for the ActiveForm input
      * applicable only if the [[form]] property is set
      */
-    public $inputOptions = [];
+    public $fieldConfig = [];
 
     /**
      * @var string the markup type of widget markup
@@ -175,13 +175,13 @@ class DatePicker extends \yii\widgets\InputWidget {
                 if (isset($this->size)) {
                     Html::addCssClass($this->options, 'input-' . $this->size);
                 }
-                $template = ArrayHelper::getValue($this->inputOptions, 'template', "{label}\n{input}\n{error}\n{hint}");
+                $template = ArrayHelper::getValue($this->fieldConfig, 'template', "{label}\n{input}\n{error}\n{hint}");
                 if ($this->type == self::TYPE_INLINE) {
                     $this->_id = $this->options['id'] . '-inline';
                     $this->_container['id'] = $this->_id;
-                    $this->inputOptions['template'] = str_replace('{input}', Html::tag('div', '', $this->_container) . "{input}", $template);
+                    $this->fieldConfig['template'] = str_replace('{input}', Html::tag('div', '', $this->_container) . "{input}", $template);
                 }
-                echo $this->form->field($this->model, $this->attribute, $this->inputOptions)->textInput($this->options);
+                echo $this->form->field($this->model, $this->attribute, $this->fieldConfig)->textInput($this->options);
             }
             else {
                 $type = ($this->type == self::TYPE_COMPONENT_PREPEND) ? 'prepend' : 'append';
