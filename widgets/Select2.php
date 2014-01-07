@@ -144,7 +144,7 @@ class Select2 extends \yii\widgets\InputWidget {
         }
         if (($this->_hidden || !isset($this->form)) && !isset($this->options['style'])) {
             $this->options['style'] = 'width: 100%';
-        }{
+        }
 		if (empty($this->addon)) {
 			$this->addon = ArrayHelper::remove($this->inputOptions, 'addon', []);
 		}
@@ -156,7 +156,7 @@ class Select2 extends \yii\widgets\InputWidget {
     /**
      * Embeds the input group addon
      */
-    protected function embedAddon($input) 
+    protected function embedAddon($input) {
         if (!empty($this->addon)) {
             $addon = $this->addon;
 			$prepend = ArrayHelper::getValue($addon, 'prepend', ''); ;
