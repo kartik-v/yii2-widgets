@@ -112,12 +112,13 @@ class DatePicker extends \yii\widgets\InputWidget {
      * for example:
      * ~~~
      * pluginEvents = [
-     * 		"show" => "function(e) {  # `e` here contains the extra attributes }",
-     * 		"hide" => "function(e) {  # `e` here contains the extra attributes }",
-     * 		"clearDate" => "function(e) {  # `e` here contains the extra attributes }",
-     * 		"changeDate" => "function(e) {  # `e` here contains the extra attributes }",
-     * 		"changeYear" => "function(e) {  # `e` here contains the extra attributes }",
-     * 		"changeMonth" => "function(e) {  # `e` here contains the extra attributes }",
+     *  "show" => "function(e) {  # `e` here contains the extra attributes }",
+     * 	"hide" => "function(e) {  # `e` here contains the extra attributes }",
+     * 	"clearDate" => "function(e) {  # `e` here contains the extra attributes }",
+     * 	"changeDate" => "function(e) {  # `e` here contains the extra attributes }",
+     * 	"changeYear" => "function(e) {  # `e` here contains the extra attributes }",
+     * 	"changeMonth" => "function(e) {  # `e` here contains the extra attributes }",
+     * ]
      * ~~~
      * @see http://bootstrap-datepicker.readthedocs.org/en/latest/events.html
      */
