@@ -19,13 +19,13 @@ use yii\web\AssetBundle;
  */
 class DatePickerAsset extends AssetBundle {
 
-    public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/lib/bootstrap-datepicker';
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 
     public function init() {
+        $this->sourcePath = __DIR__ . '/../lib/bootstrap-datepicker';
         $this->css = YII_DEBUG ? ['css/datepicker3.css'] : ['css/datepicker3.min.css'];
         $this->js = YII_DEBUG ? ['js/bootstrap-datepicker.js'] : ['js/bootstrap-datepicker.min.js'];
         parent::init();

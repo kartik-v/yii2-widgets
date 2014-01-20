@@ -18,13 +18,13 @@ use yii\web\AssetBundle;
  */
 class SideNavAsset extends AssetBundle {
 
-    public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/assets';
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 
     public function init() {
+        $this->sourcePath = __DIR__ . '/../assets';
         $this->css = YII_DEBUG ? ['css/sidenav.css'] : ['css/sidenav.min.css'];
         $this->js = YII_DEBUG ? ['js/sidenav.js'] : ['js/sidenav.min.js'];
         parent::init();

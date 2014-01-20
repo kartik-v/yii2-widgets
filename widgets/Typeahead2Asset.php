@@ -19,9 +19,8 @@ use yii\web\AssetBundle;
  */
 class Typeahead2Asset extends AssetBundle {
 
-    public $sourcePath = '@vendor/kartik-v/yii2-widgets/kartik/assets';
-
     public function init() {
+        $this->sourcePath = __DIR__ . '/../assets';
         $this->css = YII_DEBUG ? ['css/typeahead.css'] : ['css/typeahead.min.css'];
         $this->js = YII_DEBUG ? ['js/hogan.js'] : ['js/hogan.min.js'];
         parent::init();
