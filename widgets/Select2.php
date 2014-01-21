@@ -26,7 +26,7 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://ivaynberg.github.com/select2/
  */
-class Select2 extends \yii\widgets\InputWidget {
+class Select2 extends Widget {
 
     const LARGE = 'lg';
     const MEDIUM = 'md';
@@ -93,25 +93,6 @@ class Select2 extends \yii\widgets\InputWidget {
      * - placeholder: string placeholder for the select item.
      */
     public $options = [];
-
-    /**
-     * @var array Select2 JQuery plugin options 
-     */
-    public $pluginOptions = [];
-
-    /**
-     * @var array Select2 JQuery events. You must define events in
-     * event-name => event-function format
-     * for example:
-     * ~~~
-     * pluginEvents = [
-     * 		"change" => "function() { log("change"); }",
-     * 		"open" => "function() { log("open"); }",
-     * 		"select2-opening" => "function() { log("select2-opening"); }",
-     * ];
-     * ~~~
-     */
-    public $pluginEvents = [];
 
     /**
      * @var boolean indicator for displaying text inputs
@@ -247,47 +228,18 @@ class Select2 extends \yii\widgets\InputWidget {
     }
 
     /**
-     * Adds an asset to the view
-     */
-    protected function addAsset($view, $file, $type) {
-        if ($type == 'css' || $type == 'js') {
-            $asset = $view->getAssetManager();
-            $name = Select2Asset::classname();
-            $bundle = $asset->bundles[$name];
-            if ($type == 'css') {
-                $bundle->css[] = $file;
-            }
-            else {
-                $bundle->js[] = $file;
-            }
-            $asset->bundles[$name] = $bundle;
-            $view->setAssetManager($asset);
-        }
-    }
-
-    /**
      * Registers the needed assets
      */
     public function registerAssets() {
         $view = $this->getView();
         Select2Asset::register($view);
         if ($this->language != false) {
-            $this->addAsset($view, 'select2_locale_' . $this->language . '.js', 'js');
+            $this->addAsset($view, 'select2_locale_' . $this->language . '.js', 'js', Select2Asset::classname());
         }
-        $id = '$("#' . $this->options['id'] . '")';
         $this->pluginOptions['width'] = 'resolve';
-        $js = "{$id}.select2(" . Json::encode($this->pluginOptions) . ");";
-        if (!empty($this->pluginEvents)) {
-            $js .= "\n{$id}";
-            foreach ($this->pluginEvents as $event => $function) {
-                $func = new JsExpression($function);
-                $js .= ".on('{$event}', {$func})\n";
-            }
-        }
+		$this->registerPlugin('select2');
         if ($this->modal) {
-            $js .= "\n$.fn.modal.Constructor.prototype.enforceFocus = function() {};";
+            $view->registerJs("\n$.fn.modal.Constructor.prototype.enforceFocus = function() {};");
         }
-        $view->registerJs($js);
     }
-
 }

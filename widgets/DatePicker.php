@@ -25,7 +25,7 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://eternicode.github.io/bootstrap-datepicker/
  */
-class DatePicker extends \yii\widgets\InputWidget {
+class DatePicker extends Widget {
 
     const TYPE_INPUT = 1;
     const TYPE_COMPONENT_PREPEND = 2;
@@ -99,30 +99,6 @@ class DatePicker extends \yii\widgets\InputWidget {
      * Defaults to 'to'
      */
     public $separator = 'to';
-
-    /**
-     * @var array the datepicker plugin options
-     * @see http://bootstrap-datepicker.readthedocs.org/en/latest/options.html
-     */
-    public $pluginOptions = [];
-
-    /**
-     * @var array DatePicker JQuery events. You must define events in
-     * event-name => event-function format
-     * for example:
-     * ~~~
-     * pluginEvents = [
-     *  "show" => "function(e) {  # `e` here contains the extra attributes }",
-     * 	"hide" => "function(e) {  # `e` here contains the extra attributes }",
-     * 	"clearDate" => "function(e) {  # `e` here contains the extra attributes }",
-     * 	"changeDate" => "function(e) {  # `e` here contains the extra attributes }",
-     * 	"changeYear" => "function(e) {  # `e` here contains the extra attributes }",
-     * 	"changeMonth" => "function(e) {  # `e` here contains the extra attributes }",
-     * ]
-     * ~~~
-     * @see http://bootstrap-datepicker.readthedocs.org/en/latest/events.html
-     */
-    public $pluginEvents = [];
 
     /**
      * @var string identifier for the target datepicker element
@@ -267,45 +243,18 @@ class DatePicker extends \yii\widgets\InputWidget {
     }
 
     /**
-     * Adds an asset to the view
-     */
-    protected function addAsset($view, $file, $type) {
-        if ($type == 'css' || $type == 'js') {
-            $asset = $view->getAssetManager();
-            $name = DatePickerAsset::classname();
-            $bundle = $asset->bundles[$name];
-            if ($type == 'css') {
-                $bundle->css[] = $file;
-            }
-            else {
-                $bundle->js[] = $file;
-            }
-            $asset->bundles[$name] = $bundle;
-            $view->setAssetManager($asset);
-        }
-    }
-
-    /**
      * Registers the needed assets
      */
     public function registerAssets() {
         $view = $this->getView();
         DatePickerAsset::register($view);
         if (!empty($this->pluginOptions['language'])) {
-            $this->addAsset($view, 'js/locales/bootstrap-datepicker.' . $this->pluginOptions['language'] . '.js', 'js');
+            $this->addAsset($view, 'js/locales/bootstrap-datepicker.' . $this->pluginOptions['language'] . '.js', 'js', DatePickerAsset::classname());
         }
-        $js = "{$this->_id}.datepicker(" . Json::encode($this->pluginOptions) . ");";
         if ($this->type == self::TYPE_INLINE) {
             $this->pluginEvents = array_merge($this->pluginEvents, ['changeDate' => 'function (e) { $("#' . $this->options['id'] . '").val(e.format());} ']);
         }
-        if (!empty($this->pluginEvents)) {
-            $js .= "\n{$this->_id}";
-            foreach ($this->pluginEvents as $event => $function) {
-                $func = new JsExpression($function);
-                $js .= ".on('{$event}', {$func})\n";
-            }
-        }
-        $view->registerJs($js);
+        $this->registerPlugin('datepicker');
     }
 
 }
