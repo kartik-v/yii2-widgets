@@ -18,7 +18,7 @@ use yii\web\JsExpression;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class Widget extends \yii\widgets\InputWidget {
+class InputWidget extends \yii\widgets\InputWidget {
 
     /**
      * @var array widget plugin options 

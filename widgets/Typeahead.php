@@ -27,7 +27,7 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://twitter.github.com/typeahead.js/examples
  */
-class Typeahead extends Widget {
+class Typeahead extends InputWidget {
 
     /**
      * @var array dataset an object that defines a set of data that hydrates suggestions. 

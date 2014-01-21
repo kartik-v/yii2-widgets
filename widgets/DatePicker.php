@@ -25,7 +25,7 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://eternicode.github.io/bootstrap-datepicker/
  */
-class DatePicker extends Widget {
+class DatePicker extends InputWidget {
 
     const TYPE_INPUT = 1;
     const TYPE_COMPONENT_PREPEND = 2;
