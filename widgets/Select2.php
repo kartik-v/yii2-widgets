@@ -26,7 +26,7 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://ivaynberg.github.com/select2/
  */
-class Select2 extends InputWidget {
+class Select2 extends Widget {
 
     const LARGE = 'lg';
     const MEDIUM = 'md';
@@ -37,19 +37,6 @@ class Select2 extends InputWidget {
      * If this property set to false, the widget will use English (en).
      */
     public $language = false;
-
-    /**
-     * @var ActiveForm the form object to which this
-     * input will be attached to in case you are using 
-     * the widget within an ActiveForm
-     */
-    public $form;
-
-    /**
-     * @var array field configuration for the ActiveForm input
-     * applicable only if the [[form]] property is set
-     */
-    public $fieldConfig = [];
 
     /**
      * @var array addon to prepend or append to the Select2 widget
@@ -110,12 +97,6 @@ class Select2 extends InputWidget {
                 !empty($this->pluginOptions['query']) ||
                 !empty($this->pluginOptions['ajax']) ||
                 !empty($this->pluginOptions['tags']);
-        if (isset($this->form) && !($this->form instanceof \kartik\widgets\ActiveForm)) {
-            throw new InvalidConfigException("The 'form' property must be an object of type '\\kartik\\widgets\\ActiveForm'.");
-        }
-        if (isset($this->form) && !$this->hasModel()) {
-            throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
-        }
         if (empty($this->data) && !$this->_hidden) {
             throw new InvalidConfigException("No 'data' source found for Select2. Either the 'data' property must be set OR one of 'data', 'query', 'ajax', or 'tags' must be set within 'pluginOptions'.");
         }
@@ -123,12 +104,10 @@ class Select2 extends InputWidget {
                 (empty($this->options['multiple']) || $this->options['multiple'] == false)) {
             $this->data = array_merge(["" => ""], $this->data);
         }
-        if (($this->_hidden || !isset($this->form)) && !isset($this->options['style'])) {
+        if (!isset($this->options['style'])) {
             $this->options['style'] = 'width: 100%';
         }
-        if (empty($this->addon)) {
-            $this->addon = ArrayHelper::remove($this->fieldConfig, 'addon', []);
-        }
+
         $this->registerAssets();
         $this->renderInput();
     }
@@ -183,25 +162,8 @@ class Select2 extends InputWidget {
         if (!isset($this->addon) && isset($this->size)) {
             Html::addCssClass($this->options, 'input-' . $this->size);
         }
-        if (isset($this->form) && !empty($this->addon)) {
-            $addon = $this->addon;
-            $type = isset($addon['type']) ? $addon['type'] : 'prepend';
-            $size = isset($this->size) ? ' input-group-' . $this->size : '';
-            $group = ArrayHelper::getValue($addon, 'groupOptions', []);
-            if (!empty($addon['prepend'])) {
-                Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
-            }
-            if (!empty($addon['append'])) {
-                Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
-            }
-            $addon['groupOptions'] = $group;
-            $this->fieldConfig['addon'] = $addon;
-        }
         if ($this->_hidden) {
-            if (isset($this->form)) {
-                $input = $this->form->field($this->model, $this->attribute, $this->fieldConfig)->textInput($this->options);
-            }
-            elseif ($this->hasModel()) {
+            if ($this->hasModel()) {
                 $input = Html::activeTextInput($this->model, $this->attribute, $this->options);
             }
             else {
@@ -209,22 +171,14 @@ class Select2 extends InputWidget {
             }
         }
         else {
-            if (isset($this->form)) {
-                $input = $this->form->field($this->model, $this->attribute, $this->fieldConfig)->dropDownList($this->data, $this->options);
-            }
-            elseif ($this->hasModel()) {
+            if ($this->hasModel()) {
                 $input = Html::activeDropDownList($this->model, $this->attribute, $this->data, $this->options);
             }
             else {
                 $input = Html::dropDownList($this->name, $this->value, $this->data, $this->options);
             }
         }
-        if (isset($this->form)) {
-            echo $input;
-        }
-        else {
-            echo $this->embedAddon($input);
-        }
+        echo $this->embedAddon($input);
     }
 
     /**
@@ -237,9 +191,10 @@ class Select2 extends InputWidget {
             $this->addAsset($view, 'select2_locale_' . $this->language . '.js', 'js', Select2Asset::classname());
         }
         $this->pluginOptions['width'] = 'resolve';
-		$this->registerPlugin('select2');
+        $this->registerPlugin('select2');
         if ($this->modal) {
             $view->registerJs("\n$.fn.modal.Constructor.prototype.enforceFocus = function() {};");
         }
     }
+
 }
