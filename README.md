@@ -190,10 +190,7 @@ to the ```require``` section of your `composer.json` file.
 ### Select2
 ```php
 	// Normal select with ActiveForm & model
-	echo Select2::widget([
-		'model' => $model, 
-		'attribute' => 'state_1',
-		'form' => $form,
+	echo $form->field($model, 'city')->widget(Select2::classname(), [
 		'data' => array_merge(["" => ""], $data),
 		'language' => 'de',
 		'options' => ['placeholder' => 'Select a state ...'],
@@ -216,10 +213,7 @@ to the ```require``` section of your `composer.json` file.
 use kartik\widgets\Typeahead
 
 // usage with ActiveForm and model
-echo Typeahead::widget([
-	'model' => \$model, 
-	'attribute' => 'state_3',
-	'form' => \$form,
+echo $form->field($model, 'city')->widget(Typeahead::classname(), [
 	'options' => ['placeholder' => 'Filter as you type ...'],
 	'dataset' => [
 		[
