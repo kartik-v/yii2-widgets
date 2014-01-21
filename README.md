@@ -190,7 +190,7 @@ to the ```require``` section of your `composer.json` file.
 ### Select2
 ```php
 	// Normal select with ActiveForm & model
-	echo $form->field($model, 'city')->widget(Select2::classname(), [
+	echo $form->field($model, 'state_1')->widget(Select2::classname(), [
 		'data' => array_merge(["" => ""], $data),
 		'language' => 'de',
 		'options' => ['placeholder' => 'Select a state ...'],
