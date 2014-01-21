@@ -213,7 +213,7 @@ to the ```require``` section of your `composer.json` file.
 use kartik\widgets\Typeahead
 
 // usage with ActiveForm and model
-echo $form->field($model, 'city')->widget(Typeahead::classname(), [
+echo $form->field($model, 'state_3')->widget(Typeahead::classname(), [
 	'options' => ['placeholder' => 'Filter as you type ...'],
 	'dataset' => [
 		[
