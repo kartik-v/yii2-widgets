@@ -26,7 +26,7 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://ivaynberg.github.com/select2/
  */
-class Select2 extends Widget {
+class Select2 extends InputWidget {
 
     const LARGE = 'lg';
     const MEDIUM = 'md';
