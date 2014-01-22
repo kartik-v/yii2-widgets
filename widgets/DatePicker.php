@@ -34,19 +34,6 @@ class DatePicker extends InputWidget {
     const TYPE_INLINE = 5;
 
     /**
-     * @var ActiveForm the form object to which this
-     * input will be attached to in case you are using 
-     * the widget within an ActiveForm
-     */
-    public $form;
-
-    /**
-     * @var array field configuration for the ActiveForm input
-     * applicable only if the [[form]] property is set
-     */
-    public $fieldConfig = [];
-
-    /**
      * @var string the markup type of widget markup
      * must be one of the TYPE constants. Defaults
      * to [[TYPE_COMPONENT_PREPEND]]
@@ -112,12 +99,6 @@ class DatePicker extends InputWidget {
      */
     public function init() {
         parent::init();
-        if (isset($this->form) && !($this->form instanceof \kartik\widgets\ActiveForm)) {
-            throw new InvalidConfigException("The 'form' property must be an object of type '\\kartik\\widgets\\ActiveForm'.");
-        }
-        if (isset($this->form) && !$this->hasModel()) {
-            throw new InvalidConfigException("You must set the 'model' and 'attribute' when you are using the widget with ActiveForm.");
-        }
         if ($this->type === self::TYPE_RANGE && $this->attribute2 === null && $this->name2 === null) {
             throw new InvalidConfigException("Either 'name2' or 'attribute2' properties must be specified for a datepicker 'range' markup.");
         }
@@ -147,49 +128,7 @@ class DatePicker extends InputWidget {
             Html::addCssClass($this->options, 'form-control');
         }
 
-        if (isset($this->form)) {
-            if ($this->type == self::TYPE_INPUT || $this->type == self::TYPE_INLINE) {
-                if (isset($this->size)) {
-                    Html::addCssClass($this->options, 'input-' . $this->size);
-                }
-                $template = ArrayHelper::getValue($this->fieldConfig, 'template', "{label}\n{input}\n{error}\n{hint}");
-                if ($this->type == self::TYPE_INLINE) {
-                    $this->_id = $this->options['id'] . '-inline';
-                    $this->_container['id'] = $this->_id;
-                    $this->fieldConfig['template'] = str_replace('{input}', Html::tag('div', '', $this->_container) . "{input}", $template);
-                }
-                echo $this->form->field($this->model, $this->attribute, $this->fieldConfig)->textInput($this->options);
-            }
-            else {
-                $type = ($this->type == self::TYPE_COMPONENT_PREPEND) ? 'prepend' : 'append';
-                $class = ($this->type == self::TYPE_RANGE) ? "input-daterange" : "date";
-                $css = isset($this->size) ? "input-group-{$this->size} {$class}" : $class;
-                Html::addCssClass($group, $css);
-                if ($this->type != self::TYPE_RANGE) {
-                    echo $this->form->field($this->model, $this->attribute, [
-                        'addon' => [
-                            $type => ['content' => $this->addon],
-                            'groupOptions' => $group
-                        ]
-                    ])->textInput($this->options);
-                }
-                else {
-                    if (empty($this->options2['id'])) {
-                        $this->options2['id'] = Html::getInputId($this->model, $this->attribute2);
-                    }
-                    Html::addCssClass($this->options2, 'form-control');
-                    $input2 = Html::activeTextInput($this->model, $this->attribute2, $this->options2);
-                    echo $this->form->field($this->model, $this->attribute, [
-                        'addon' => [
-                            $type => ['content' => $this->separator],
-                            'groupOptions' => $group,
-                            'contentAfter' => $input2
-                        ]
-                    ])->textInput($this->options);
-                }
-            }
-        }
-        elseif ($this->hasModel()) {
+        if ($this->hasModel()) {
             echo $this->parseMarkup(Html::activeTextInput($this->model, $this->attribute, $this->options));
         }
         else {
