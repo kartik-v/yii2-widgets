@@ -63,13 +63,14 @@ class InputWidget extends \yii\widgets\InputWidget {
     /**
      * Registers a specific plugin and the related events
      * @param string $name the name of the plugin
+     * @param string $element the plugin target element
      */
-    protected function registerPlugin($name) {
-        $id = $this->options['id'];
+    protected function registerPlugin($name, $element = null) {
+        $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
             $options = empty($this->pluginOptions) ? '' : Json::encode($this->pluginOptions);
-            $js = "jQuery('#{$id}').{$name}({$options});";
+            $js = "{$id}.{$name}({$options});";
             $view->registerJs($js);
         }
 
@@ -77,7 +78,7 @@ class InputWidget extends \yii\widgets\InputWidget {
             $js = [];
             foreach ($this->pluginEvents as $event => $handler) {
                 $function = new JsExpression($handler);
-                $js[] = "jQuery('#{$id}').on('{$event}', {$function});";
+                $js[] = "{$id}.on('{$event}', {$function});";
             }
             $js = implode("\n", $js);
             $view->registerJs($js);
