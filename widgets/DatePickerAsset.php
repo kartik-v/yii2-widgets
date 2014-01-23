@@ -26,7 +26,7 @@ class DatePickerAsset extends AssetBundle {
 
     public function init() {
         $this->sourcePath = __DIR__ . '/../lib/bootstrap-datepicker';
-        $this->css = YII_DEBUG ? ['css/datepicker3.css'] : ['css/datepicker3.min.css'];
+        $this->css = YII_DEBUG ? ['css/datepicker3.css', 'css/datepicker-kv.css'] : ['css/datepicker3.min.css', 'css/datepicker-kv.min.css'];
         $this->js = YII_DEBUG ? ['js/bootstrap-datepicker.js'] : ['js/bootstrap-datepicker.min.js'];
         parent::init();
     }
