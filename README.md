@@ -92,7 +92,7 @@ The FileInput widget is a customized file input widget based on HTML5 file input
 * Better captioning for each file in the preview window
 * Support for previewing content other than image and text (e.g. HTML)
 
-The widget runs on all modern browsers supporting HTML5 File Inputs and File Processing API. For browser versions IE9 and below, this widget will gracefully degrade to normal HTML file input. The widget is vastly inspired by this (blog article)[http://www.abeautifulsite.net/blog/2013/08/whipping-file-inputs-into-shape-with-bootstrap-3/] and (Jasny's File Input plugin)[http://jasny.github.io/bootstrap/javascript/#fileinput].
+The widget runs on all modern browsers supporting HTML5 File Inputs and File Processing API. For browser versions IE9 and below, this widget will gracefully degrade to normal HTML file input. The widget is vastly inspired by this [blog article](http://www.abeautifulsite.net/blog/2013/08/whipping-file-inputs-into-shape-with-bootstrap-3/) and [Jasny's File Input plugin](http://jasny.github.io/bootstrap/javascript/#fileinput).
  
 ### Navigation
 
