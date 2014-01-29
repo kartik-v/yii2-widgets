@@ -71,6 +71,29 @@ the browser does not support JQuery.  This widget supports these markups:
 * Date Range Markup (from and to dates)
 * Inline / Embedded Markup
 
+#### FileInput
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/fileinput)  
+
+The FileInput widget is a customized file input widget based on HTML5 file input. The widget enhances the default HTML file input with various features including the following:
+
+* Specially styled for Twitter Bootstrap 3.0 with customizable buttons, caption, and preview
+* Ability to select and preview multiple files
+* Includes file browse and optional remove and upload buttons.
+* Ability to format your file picker button styles
+* Ability to preview files before upload - images and/or text (uses HTML5 FileReader API)
+* Ability to preview multiple files of different types (both images and text)
+* Set your upload action/route (defaults to form submit). Customize the Upload and Remove buttons.
+* Internationalization enabled for easy translation to various languages
+
+##### Future planned enhancements:
+
+* Drag and drop functionality
+* Realign/Rearrange the items in preview window
+* Better captioning for each file in the preview window
+* Support for previewing content other than image and text (e.g. HTML)
+
+The widget runs on all modern browsers supporting HTML5 File Inputs and File Processing API. For browser versions IE9 and below, this widget will gracefully degrade to normal HTML file input. The widget is vastly inspired by this (blog article)[http://www.abeautifulsite.net/blog/2013/08/whipping-file-inputs-into-shape-with-bootstrap-3/] and (Jasny's File Input plugin)[http://jasny.github.io/bootstrap/javascript/#fileinput].
+ 
 ### Navigation
 
 #### Affix
