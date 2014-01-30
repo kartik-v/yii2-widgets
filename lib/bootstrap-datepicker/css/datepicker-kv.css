@@ -15,17 +15,20 @@
 
 .datepicker-range {
     padding: 0!important;
-    border: 0;
+    border: 0!important;
+    text-align: left!important;
 }
 
 .datepicker-from {
     border-radius: 4px!important;
     border-top-right-radius: 0!important;
     border-bottom-right-radius: 0!important;
+    text-align: left!important;
 }
 
 .datepicker-to {
     border-radius: 4px!important;
     border-top-left-radius: 0!important;
     border-bottom-left-radius: 0!important;
+    text-align: left!important;
 }

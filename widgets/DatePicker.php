@@ -184,15 +184,15 @@ class DatePicker extends InputWidget {
         if ($this->type == self::TYPE_RANGE) {
             Html::addCssClass($this->_container, 'input-daterange');
             if (isset($this->form)) {
+                Html::addCssClass($this->options, 'form-control datepicker-from');
+                Html::addCssClass($this->options2, 'form-control datepicker-to');
                 $input = $this->form->field($this->model, $this->attribute, [
                             'template' => '{input}{error}',
-                            'inputOptions' => ['class' => 'form-control datepicker-from'],
                             'options' => ['class' => 'datepicker-range form-control'],
                         ])->textInput($this->options);
 
                 $input2 = $this->form->field($this->model, $this->attribute2, [
                             'template' => '{input}{error}',
-                            'inputOptions' => ['class' => 'form-control datepicker-to'],
                             'options' => ['class' => 'datepicker-range form-control'],
                         ])->textInput($this->options2);
             }
