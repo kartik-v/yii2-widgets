@@ -118,6 +118,9 @@ class DatePicker extends InputWidget {
         if (isset($this->form) && !$this->hasModel()) {
             throw new InvalidConfigException("You must set the 'model' and 'attribute' properties when the 'form' property is set.");
         }
+        if (isset($this->form) && ($this->type === self::TYPE_RANGE) && (!isset($this->attribute2))) {
+            throw new InvalidConfigException("The 'attribute2' property must be set for a 'range' type markup and a defined 'form' property.");
+        }
         $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         $this->renderInput();
