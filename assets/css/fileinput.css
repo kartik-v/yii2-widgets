@@ -27,6 +27,10 @@
     cursor: inherit;
     display: block;
 }
+.file-input .btn[disabled], .file-input .btn .disabled  {
+    filter: alpha(opacity=65)!important;
+    opacity: .65!important;
+}
 .file-preview {
     border-radius: 5px;
     border: 1px solid #ddd;
