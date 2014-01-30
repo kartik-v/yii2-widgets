@@ -46,6 +46,13 @@ class DatePicker extends InputWidget {
     public $size;
 
     /**
+     * @var ActiveForm the ActiveForm object which you can pass for seamless usage 
+     * with ActiveForm. This property is especially useful for client validation of 
+     * attribute2 for [[TYPE_RANGE]] validation
+     */
+    public $form;
+
+    /**
      * @var array the HTML attributes for the input tag.
      */
     public $options = [];
@@ -73,13 +80,6 @@ class DatePicker extends InputWidget {
      * for markup
      */
     public $value2 = null;
-
-    /**
-     * @var ActiveForm the ActiveForm object which you can pass for seamless usage 
-     * with ActiveForm. This property is especially useful for client validation of 
-     * attribute2 for [[TYPE_RANGE]] validation
-     */
-    public $form;
 
     /**
      * @var array the HTML attributes for the input number 2 tag.
