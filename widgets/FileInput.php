@@ -44,7 +44,7 @@ class FileInput extends InputWidget {
      * - icon: string the Bootstrap glyphicon suffix
      * - label: the label for the button, this will be translated by Yii's i18n
      */
-    public $buttonOptions = ['class' => 'btn btn-primary'];
+    public $buttonOptions = [];
 
     /*
      * @var array HTML attributes for the file removal/clearing button. The
@@ -52,7 +52,7 @@ class FileInput extends InputWidget {
      * - icon: string the Bootstrap glyphicon suffix
      * - label: the label for the button, this will be translated by Yii's i18n
      */
-    public $removeOptions = ['class' => 'btn btn-default'];
+    public $removeOptions = [];
 
     /*
      * @var array HTML attributes for the file upload button. The [[uploadRoute]] 
@@ -62,7 +62,7 @@ class FileInput extends InputWidget {
      * - icon: string the Bootstrap glyphicon suffix
      * - label: the label for the button, this will be translated by Yii's i18n
      */
-    public $uploadOptions = ['class' => 'btn btn-default'];
+    public $uploadOptions = [];
 
     /*
      * @var mixed The upload route/action url to process file upload when the
@@ -130,7 +130,7 @@ class FileInput extends InputWidget {
      * @var boolean whether the widget is disabled
      */
     private $_disabled = false;
-    
+
     /**
      * @var array initialize the FileInput widget
      */
@@ -198,9 +198,12 @@ class FileInput extends InputWidget {
      * @return string
      */
     protected function renderInput() {
-        Html::addCssClass($this->buttonOptions, 'btn-file');
+        $class = (empty($this->buttonOptions['class']) ? 'btn btn-primary btn-file' : 'btn-file');
+        Html::addCssClass($this->buttonOptions, $class);
         $label = ArrayHelper::remove($this->buttonOptions, 'label', Yii::t('fileinput', 'Browse') . '&hellip;');
-        $icon = '<i class="glyphicon glyphicon-' . ArrayHelper::remove($this->buttonOptions, 'icon', 'folder-open') . '"></i> &nbsp;';
+        $icon = ArrayHelper::remove($this->buttonOptions, 'icon', 'folder-open');
+        $label = ($label == false) ? '' : $label;
+        $icon = ($icon == false) ? '' : '<i class="glyphicon glyphicon-' . $icon . '"></i> &nbsp;';
         if ($this->_disabled) {
             $this->buttonOptions['disabled'] = 'disabled';
         }
@@ -218,10 +221,13 @@ class FileInput extends InputWidget {
      * @return string
      */
     protected function renderRemove() {
-        Html::addCssClass($this->removeOptions, 'fileinput-remove fileinput-remove-button');
+        $class = (empty($this->removeOptions['class']) ? 'btn btn-default fileinput-remove fileinput-remove-button' : 'fileinput-remove fileinput-remove-button');
+        Html::addCssClass($this->removeOptions, $class);
         $this->removeOptions['type'] = 'button';
         $label = ArrayHelper::remove($this->removeOptions, 'label', Yii::t('fileinput', 'Remove'));
-        $icon = '<i class="glyphicon glyphicon-' . ArrayHelper::remove($this->removeOptions, 'icon', 'ban-circle') . '"></i> ';
+        $icon = ArrayHelper::remove($this->removeOptions, 'icon', 'ban-circle');
+        $label = ($label == false) ? '' : $label;
+        $icon = ($icon == false) ? '' : '<i class="glyphicon glyphicon-' . $icon . '"></i> &nbsp;';
         return Html::button($icon . $label, $this->removeOptions);
     }
 
@@ -230,9 +236,12 @@ class FileInput extends InputWidget {
      * @return string
      */
     protected function renderUpload() {
-        Html::addCssClass($this->uploadOptions, 'fileinput-upload-button');
+        $class = (empty($this->uploadOptions['class']) ? 'btn btn-default fileinput-upload-button' : 'fileinput-upload-button');
+        Html::addCssClass($this->uploadOptions, $class);
         $label = ArrayHelper::remove($this->uploadOptions, 'label', Yii::t('fileinput', 'Upload'));
-        $icon = '<i class="glyphicon glyphicon-' . ArrayHelper::remove($this->uploadOptions, 'icon', 'upload') . '"></i> ';
+        $icon = ArrayHelper::remove($this->uploadOptions, 'icon', 'upload');
+        $label = ($label == false) ? '' : $label;
+        $icon = ($icon == false) ? '' : '<i class="glyphicon glyphicon-' . $icon . '"></i> &nbsp;';
         if (isset($this->uploadRoute) && $this->uploadRoute != null) {
             return Html::a($icon . $label, $this->uploadRoute, $this->uploadOptions);
         }
