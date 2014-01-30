@@ -75,6 +75,13 @@ class DatePicker extends InputWidget {
     public $value2 = null;
 
     /**
+     * @var ActiveForm the ActiveForm object which you can pass for seamless usage 
+     * with ActiveForm. This property is especially useful for client validation of 
+     * attribute2 for [[TYPE_RANGE]] validation
+     */
+    public $form;
+
+    /**
      * @var array the HTML attributes for the input number 2 tag.
      * if you are using [[TYPE_RANGE]] for markup
      */
@@ -105,6 +112,12 @@ class DatePicker extends InputWidget {
         if ($this->type < 1 || $this->type > 5 || !is_int($this->type)) {
             throw new InvalidConfigException("Invalid value for the property 'type'. Must be an integer between 1 and 5.");
         }
+        if (isset($this->form) && !($this->form instanceof \yii\widgets\ActiveForm)) {
+            throw new InvalidConfigException("The 'form' property must be of type \\yii\\widgets\\ActiveForm");
+        }
+        if (isset($this->form) && !$this->hasModel()) {
+            throw new InvalidConfigException("You must set the 'model' and 'attribute' properties when the 'form' property is set.");
+        }
         $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         $this->renderInput();
@@ -128,7 +141,12 @@ class DatePicker extends InputWidget {
             Html::addCssClass($this->options, 'form-control');
         }
 
-        if ($this->hasModel()) {
+        if (isset($this->form) && ($this->type !== self::TYPE_RANGE)) {
+            $vars = call_user_func('get_object_vars', $this);
+            unset($vars['form']);
+            echo $this->form->field($this->model, $this->attribute)->widget(self::classname(), $vars);
+        }
+        elseif ($this->hasModel()) {
             echo $this->parseMarkup(Html::activeTextInput($this->model, $this->attribute, $this->options));
         }
         else {
@@ -153,7 +171,7 @@ class DatePicker extends InputWidget {
             Html::addCssClass($this->_container, 'input-group');
         }
         if ($this->type == self::TYPE_INPUT) {
-            return $input;
+            $input;
         }
         if ($this->type == self::TYPE_COMPONENT_PREPEND) {
             Html::addCssClass($this->_container, 'date');
@@ -165,13 +183,28 @@ class DatePicker extends InputWidget {
         }
         if ($this->type == self::TYPE_RANGE) {
             Html::addCssClass($this->_container, 'input-daterange');
-            if (empty($this->options2['id'])) {
-                $this->options2['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute2) : $this->getId() . '-2';
+            if (isset($this->form)) {
+                $input = $this->form->field($this->model, $this->attribute, [
+                            'template' => '{input}{error}',
+                            'inputOptions' => ['class' => 'form-control datepicker-from'],
+                            'options' => ['class' => 'datepicker-range form-control'],
+                        ])->textInput($this->options);
+
+                $input2 = $this->form->field($this->model, $this->attribute2, [
+                            'template' => '{input}{error}',
+                            'inputOptions' => ['class' => 'form-control datepicker-to'],
+                            'options' => ['class' => 'datepicker-range form-control'],
+                        ])->textInput($this->options2);
             }
-            Html::addCssClass($this->options2, 'form-control');
-            $input2 = $this->hasModel() ?
-                    Html::activeTextInput($this->model, $this->attribute2, $this->options2) :
-                    Html::textInput($this->name2, $this->value2, $this->options2);
+            else {
+                if (empty($this->options2['id'])) {
+                    $this->options2['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute2) : $this->getId() . '-2';
+                }
+                Html::addCssClass($this->options2, 'form-control');
+                $input2 = $this->hasModel() ?
+                        Html::activeTextInput($this->model, $this->attribute2, $this->options2) :
+                        Html::textInput($this->name2, $this->value2, $this->options2);
+            }
             return Html::tag('div', "{$input}<span class='input-group-addon'>{$this->separator}</span>{$input2}", $this->_container);
         }
         if ($this->type == self::TYPE_INLINE) {
@@ -194,7 +227,12 @@ class DatePicker extends InputWidget {
         if ($this->type == self::TYPE_INLINE) {
             $this->pluginEvents = array_merge($this->pluginEvents, ['changeDate' => 'function (e) { ' . $id . '.val(e.format());} ']);
         }
-        $this->registerPlugin('datepicker', "{$id}.parent()");
+        if ($this->type === self::TYPE_RANGE && isset($this->form)) {
+            $this->registerPlugin('datepicker', "{$id}.parent().parent()");
+        }
+        else {
+            $this->registerPlugin('datepicker', "{$id}.parent()");
+        }
     }
 
 }

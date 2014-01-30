@@ -10,5 +10,22 @@
  * For more Yii related demos visit http://demos.krajee.com
  */
 .datepicker {
-	z-index: 1151 !important;
+    z-index: 1151 !important;
+}
+
+.datepicker-range {
+    padding: 0!important;
+    border: 0;
+}
+
+.datepicker-from {
+    border-radius: 4px!important;
+    border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+}
+
+.datepicker-to {
+    border-radius: 4px!important;
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
 }
