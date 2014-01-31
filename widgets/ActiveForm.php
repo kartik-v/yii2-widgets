@@ -129,8 +129,8 @@ class ActiveForm extends \yii\widgets\ActiveForm {
      * Initializes the widget.
      */
     public function init() {
+        $this->registerAssets();
         $this->initForm();
-
         $config = $this->_config[$this->type];
         $span = $config['labelSpan'];
         $size = $config['deviceSize'];
@@ -191,6 +191,14 @@ class ActiveForm extends \yii\widgets\ActiveForm {
 
     public function hasOffsetCss() {
         return ($this->_offsetCss != self::NOT_SET);
+    }
+
+    /**
+     * Registers the needed assets
+     */
+    public function registerAssets() {
+        $view = $this->getView();
+        ActiveFormAsset::register($view);
     }
 
 }
