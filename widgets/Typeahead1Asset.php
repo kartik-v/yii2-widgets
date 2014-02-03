@@ -19,14 +19,14 @@ use yii\web\AssetBundle;
  */
 class Typeahead1Asset extends AssetBundle {
 
-    public $sourcePath = '@vendor/twitter/typeahead.js/dist';
+    //public $sourcePath = '@vendor/twitter/typeahead.js/dist';
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 
     public function init() {
-        $this->js = YII_DEBUG ? ['typeahead.bundle.js'] : ['typeahead.bundle.min.js'];
+        //$this->js = YII_DEBUG ? ['typeahead.bundle.js'] : ['typeahead.bundle.min.js'];
         parent::init();
     }
 

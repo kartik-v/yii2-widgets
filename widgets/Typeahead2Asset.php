@@ -22,7 +22,7 @@ class Typeahead2Asset extends AssetBundle {
     public function init() {
         $this->sourcePath = __DIR__ . '/../assets';
         $this->css = YII_DEBUG ? ['css/typeahead.css'] : ['css/typeahead.min.css'];
-        $this->js = YII_DEBUG ? ['js/hogan.js'] : ['js/hogan.min.js'];
+        $this->js = YII_DEBUG ? ['js/typeahead.js', 'js/hogan.js'] : ['js/typeahead.min.js', 'js/hogan.min.js'];
         parent::init();
     }
 
