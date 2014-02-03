@@ -129,8 +129,7 @@ class Typeahead extends InputWidget {
      */
     public function registerAssets() {
         $view = $this->getView();
-        Typeahead1Asset::register($view);
-        Typeahead2Asset::register($view);
+        TypeaheadAsset::register($view);
         $this->setPluginOptions();
         $this->registerPlugin('typeahead');
     }

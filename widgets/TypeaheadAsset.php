@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class Typeahead2Asset extends AssetBundle {
+class TypeaheadAsset extends AssetBundle {
 
     public function init() {
         $this->sourcePath = __DIR__ . '/../assets';
