@@ -428,9 +428,8 @@ class ActiveField extends \yii\widgets\ActiveField {
             $container = $options['container'];
             unset($options['container']);
         }
-        Html::addCssClass($container, 'form-control');
-        $style = isset($container['style']) ? $container['style'] : '';
-        $container['style'] = $style . "height: {$height}; overflow: auto;";
+        Html::addCssClass($container, 'form-control input-multiselect');
+		$container['tabindex'] = 0;
         $this->_multiselect = Html::tag('div', '{input}', $container);
 
         if ($selector == self::TYPE_RADIO) {

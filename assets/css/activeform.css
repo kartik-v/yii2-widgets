@@ -12,3 +12,7 @@
 .form-inline .btn {
     margin-top: -10px;
 }
+.input-multiselect {
+    overflow: auto;
+    min-height: 145px!important;
+}

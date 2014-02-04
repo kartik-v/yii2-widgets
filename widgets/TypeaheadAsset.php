@@ -23,7 +23,7 @@ class TypeaheadAsset extends AssetBundle {
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
-
+	
     public function init() {
         $this->sourcePath = __DIR__ . '/../assets';
         $this->css = YII_DEBUG ? ['css/typeahead.css'] : ['css/typeahead.min.css'];

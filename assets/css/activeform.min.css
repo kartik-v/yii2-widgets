@@ -8,4 +8,4 @@
  * Author: Kartik Visweswaran
  * Year: 2013
  * For more Yii related demos visit http://demos.krajee.com
- */.form-inline .btn {margin-top: -10px;}
+ */.form-inline .btn{margin-top:-10px}.input-multiselect{overflow:auto;min-height:145px !important}

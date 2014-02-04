@@ -80,6 +80,7 @@ class Typeahead extends InputWidget {
      * case JQuery is not supported by the browser
      */
     protected function renderInput() {
+		Html::addCssClass($this->options, 'typeahead');
         if (isset($this->form)) {
             echo $this->form->field($this->model, $this->attribute, $this->fieldConfig)->textInput($this->options);
         }
