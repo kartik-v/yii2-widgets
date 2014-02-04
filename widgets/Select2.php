@@ -163,20 +163,10 @@ class Select2 extends InputWidget {
             Html::addCssClass($this->options, 'input-' . $this->size);
         }
         if ($this->_hidden) {
-            if ($this->hasModel()) {
-                $input = Html::activeTextInput($this->model, $this->attribute, $this->options);
-            }
-            else {
-                $input = Html::textInput($this->name, $this->value, $this->options);
-            }
+            $input = $this->getTextInput();
         }
         else {
-            if ($this->hasModel()) {
-                $input = Html::activeDropDownList($this->model, $this->attribute, $this->data, $this->options);
-            }
-            else {
-                $input = Html::dropDownList($this->name, $this->value, $this->data, $this->options);
-            }
+            $input = $this->getDropDownList();
         }
         echo $this->embedAddon($input);
     }

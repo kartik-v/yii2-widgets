@@ -9,11 +9,12 @@
 namespace kartik\widgets;
 
 use Yii;
+use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
 /**
- * Base widget class for yii2-widgets
+ * Base input widget class for yii2-widgets
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -57,6 +58,30 @@ class InputWidget extends \yii\widgets\InputWidget {
             }
             $asset->bundles[$class] = $bundle;
             $view->setAssetManager($asset);
+        }
+    }
+
+    /**
+     * Generates a text input
+     */
+    protected function getTextInput() {
+        if ($this->hasModel()) {
+            return Html::activeTextInput($this->model, $this->attribute, $this->options);
+        }
+        else {
+            return Html::textInput($this->name, $this->value, $this->options);
+        }
+    }
+
+    /**
+     * Generates a dropdown list
+     */
+    protected function getDropDownList() {
+        if ($this->hasModel()) {
+            return Html::activeDropDownList($this->model, $this->attribute, $this->data, $this->options);
+        }
+        else {
+            return Html::dropDownList($this->name, $this->value, $this->data, $this->options);
         }
     }
 
