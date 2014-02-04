@@ -176,7 +176,7 @@ class FileInput extends InputWidget {
         $this->registerAssets();
         if ($this->showMessage) {
             $validation = $this->showPreview ? 'file preview and multiple file upload' : 'multiple file upload';
-            $message = '<strong>' . Yii::t('fileinput', 'Note:') . '</strong> ' . Yii::t('fileinput', 'Your browser does not support {validation}. Try an alternate or more recent browser to access these features.', ['validation' => $validation]);
+            $message = '<strong>' . Yii::t('fileinput', 'Note:') . '</strong> ' . Yii::t('fileinput', 'Your browser does not support {validation}. Try an alternative or more recent browser to access these features.', ['validation' => $validation]);
             $content = Html::tag('div', $message, $this->messageOptions);
             $input .= "\n<br>" . $this->validateIE($content);
         }
