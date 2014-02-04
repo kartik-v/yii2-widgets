@@ -176,12 +176,10 @@
 .tt-suggestion p {
     margin: 0;
 }
-/*
 .twitter-typeahead input[disabled], input[readonly], fieldset[disabled] .twitter-typeahead  input {
     background-color: #EEEEEE;
     cursor: not-allowed;
 }
-*/
 .tt-hint.loading {
     background: transparent url('../img/loading.gif') no-repeat scroll right center content-box !important;
 }
