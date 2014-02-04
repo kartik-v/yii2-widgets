@@ -14,8 +14,7 @@
     ],
     "require": {
         "yiisoft/yii2": "dev-master",
-        "yiisoft/yii2-bootstrap": "dev-master",
-        "twitter/typeahead.js": "dev-master"
+        "yiisoft/yii2-bootstrap": "dev-master"
     },
     "autoload": {
         "psr-4": {"kartik\\": ""}
