@@ -71,6 +71,11 @@ the browser does not support JQuery.  This widget supports these markups:
 * Date Range Markup (from and to dates)
 * Inline / Embedded Markup
 
+#### DatePicker
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/touchspin)  
+
+The TouchSpin widget is a Yii 2 wrapper for for the [bootstrap-touchspin](http://www.virtuosoft.eu/code/bootstrap-touchspin/) plugin by István Ujj-Mészáros, with certain additional enhancements. This input widget is a mobile and touch friendly input spinner component for Twitter Bootstrap 3. You can use the widget buttons to rapidly increase and decrease numeric and/or decimal values in your input field. The widget can be setup to include model validation rules for the related model attribute. 
+
 #### FileInput
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/fileinput)  
 
@@ -261,6 +266,17 @@ echo DatePicker::widget([
 		'format' => 'dd-M-yyyy',
 		'todayHighlight' => true
 	]
+]);
+```
+
+### TouchSpin
+```php
+use kartik\widgets\TouchSpin
+
+echo TouchSpin::widget([
+    'name' => 'volume',
+    'options' => ['placeholder' => 'Adjust...'],
+    'pluginOptions' => ['step' => 1]
 ]);
 ```
 
