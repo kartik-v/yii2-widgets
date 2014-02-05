@@ -123,7 +123,7 @@ class DatePicker extends InputWidget {
         }
         $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
-        $this->renderInput();
+        echo $this->renderInput();
     }
 
     /**
@@ -147,14 +147,10 @@ class DatePicker extends InputWidget {
         if (isset($this->form) && ($this->type !== self::TYPE_RANGE)) {
             $vars = call_user_func('get_object_vars', $this);
             unset($vars['form']);
-            echo $this->form->field($this->model, $this->attribute)->widget(self::classname(), $vars);
+            return $this->form->field($this->model, $this->attribute)->widget(self::classname(), $vars);
         }
-        elseif ($this->hasModel()) {
-            echo $this->parseMarkup(Html::activeTextInput($this->model, $this->attribute, $this->options));
-        }
-        else {
-            echo $this->parseMarkup(Html::textInput($this->name, $this->value, $this->options));
-        }
+
+        return $this->parseMarkup($this->getTextInput());
     }
 
     /**
@@ -174,7 +170,7 @@ class DatePicker extends InputWidget {
             Html::addCssClass($this->_container, 'input-group');
         }
         if ($this->type == self::TYPE_INPUT) {
-            $input;
+            return $input;
         }
         if ($this->type == self::TYPE_COMPONENT_PREPEND) {
             Html::addCssClass($this->_container, 'date');
@@ -230,7 +226,10 @@ class DatePicker extends InputWidget {
         if ($this->type == self::TYPE_INLINE) {
             $this->pluginEvents = array_merge($this->pluginEvents, ['changeDate' => 'function (e) { ' . $id . '.val(e.format());} ']);
         }
-        if ($this->type === self::TYPE_RANGE && isset($this->form)) {
+        if ($this->type === self::TYPE_INPUT) {
+            $this->registerPlugin('datepicker');
+        }
+        elseif ($this->type === self::TYPE_RANGE && isset($this->form)) {
             $this->registerPlugin('datepicker', "{$id}.parent().parent()");
         }
         else {
