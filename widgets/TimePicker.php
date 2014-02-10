@@ -29,22 +29,19 @@ class TimePicker extends InputWidget {
     public $size;
 
     /**
-     * @var array/boolean the addon that will be prepended/appended
-     * to the input. Contains th
-     * - prepend array:
-     *   - content: string the prepend addon content
-     *   - options: array the HTML attributes for the prepend addon content 
-     *   - buttonOptions: array/boolean the HTML attributes for the prepend addon 
-     *     if it is to be displayed as a button. If set to false will not be displayed
-     *     as a button
-     * - append array:
-     *   - content: string the append addon content
-     *   - options: array the HTML attributes for the append addon content 
-     *   - buttonOptions: array/boolean the HTML attributes for the append addon 
-     *     if it is to be displayed as a button. If set to false will not be displayed
-     *     as a button.
+     * @var string the addon content
      */
-    public $addon = [];
+    public $addon = '<i class="glyphicon glyphicon-time"></i>';
+
+    /**
+     * @var array HTML attributes for the addon container
+     * the following special options are identified
+     * - asButton: boolean if the addon is to be displayed like a button. 
+     * - buttonOptions: array HTML attributes if the addon is to be 
+     *   displayed like a button. If [[asButton]] is true, this will
+     *   default to ['class' => 'btn btn-default']
+     */
+    public $addonOptions = [];
 
     /**
      * @var array HTML attributes for the input group container
@@ -57,14 +54,6 @@ class TimePicker extends InputWidget {
      */
     public function init() {
         parent::init();
-        if (!is_array($this->addon) || empty($this->addon) ||
-                (empty($this->addon['prepend']) && empty($this->addon['append']))) {
-            $this->addon = [
-                'append' => [
-                    'content' => '<i class="glyphicon glyphicon-time"></i>'
-                ],
-            ];
-        }
         $this->registerAssets();
         echo Html::tag('div', $this->renderInput(), $this->containerOptions);
     }
@@ -76,37 +65,25 @@ class TimePicker extends InputWidget {
     protected function renderInput() {
         Html::addCssClass($this->options, 'form-control');
         Html::addCssClass($this->containerOptions, 'bootstrap-timepicker input-group');
-        $prepend = $this->renderAddon(ArrayHelper::getValue($this->addon, 'prepend', []));
-        $append = $this->renderAddon(ArrayHelper::getValue($this->addon, 'append', []));
+        $asButton = ArrayHelper::remove($this->addonOptions, 'asButton', false);
+        $buttonOptions = ArrayHelper::remove($this->addonOptions, 'buttonOptions', []);
+        if ($asButton) {
+            Html::addCssClass($this->addonOptions, 'input-group-btn picker');
+            $buttonOptions['type'] = 'button';
+            if (empty($buttonOptions['class'])) {
+                Html::addCssClass($buttonOptions, 'btn btn-default');
+            }
+            $content = Html::button($this->addon, $buttonOptions);
+        }
+        else {
+            Html::addCssClass($this->addonOptions, 'input-group-addon picker');
+            $content = $this->addon;
+        }
+        $addon = Html::tag('span', $content, $this->addonOptions);
         if (isset($this->size)) {
             Html::addCssClass($this->containerOptions, 'input-group-' . $this->size);
         }
-        return $prepend . $this->getTextInput() . $append;
-    }
-
-    /**
-     * Returns the rendered addon
-     * @param array $addon settings
-     * @return string
-     */
-    protected function renderAddon($addon) {
-        if (empty($addon)) {
-            return '';
-        }
-        $content = ArrayHelper::getValue($addon, 'content', false);
-        $buttonOptions = ArrayHelper::getValue($addon, 'buttonOptions', false);
-        $options = ArrayHelper::getValue($addon, 'options', []);
-        if (is_array($buttonOptions)) {
-            Html::addCssClass($options, 'input-group-btn picker');
-            if (empty($buttonOptions)) {
-                Html::addCssClass($buttonOptions, 'btn btn-default');
-            }
-            $content = Html::button($content, $buttonOptions);
-        }
-        else {
-            Html::addCssClass($options, 'input-group-addon picker');
-        }
-        return Html::tag('span', $content, $options);
+        return $this->getTextInput() . $addon;
     }
 
     /**

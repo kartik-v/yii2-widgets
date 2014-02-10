@@ -28,13 +28,6 @@
 .bootstrap-timepicker .input-group-addon {
     cursor: pointer;
 }
-/*
-.bootstrap-timepicker .picker i {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-}
-*/
 .bootstrap-timepicker-widget.dropdown-menu {
     padding: 2px 3px 2px 2px;
 }
@@ -64,6 +57,10 @@
 .bootstrap-timepicker-widget a.btn,
 .bootstrap-timepicker-widget input {
     border-radius: 4px!important;
+}
+.bootstrap-timepicker input {
+    border-top-left-radius: 4px!important;
+    border-bottom-left-radius: 4px!important;
 }
 .bootstrap-timepicker-widget table {
     width: 100%;
