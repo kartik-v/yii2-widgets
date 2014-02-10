@@ -102,7 +102,7 @@ class Select2 extends InputWidget {
         }
         if (!empty($this->options['placeholder']) && !$this->_hidden && !in_array("", $this->data) &&
                 (empty($this->options['multiple']) || $this->options['multiple'] == false)) {
-            $this->data = array_merge(["" => ""], $this->data);
+            $this->data = ArrayHelper::merge(["" => ""], $this->data);
         }
         if (!isset($this->options['style'])) {
             $this->options['style'] = 'width: 100%';
@@ -119,9 +119,7 @@ class Select2 extends InputWidget {
         if (!empty($this->addon)) {
             $addon = $this->addon;
             $prepend = ArrayHelper::getValue($addon, 'prepend', '');
-            ;
             $append = ArrayHelper::getValue($addon, 'append', '');
-            ;
             $group = ArrayHelper::getValue($addon, 'groupOptions', []);
             $size = isset($this->size) ? ' input-group-' . $this->size : '';
             if (is_array($prepend)) {
