@@ -224,7 +224,7 @@ class DatePicker extends InputWidget {
         }
         $id = "$('#" . $this->options['id'] . "')";
         if ($this->type == self::TYPE_INLINE) {
-            $this->pluginEvents = array_merge($this->pluginEvents, ['changeDate' => 'function (e) { ' . $id . '.val(e.format());} ']);
+            $this->pluginEvents = ArrayHelper::merge($this->pluginEvents, ['changeDate' => 'function (e) { ' . $id . '.val(e.format());} ']);
         }
         if ($this->type === self::TYPE_INPUT) {
             $this->registerPlugin('datepicker');

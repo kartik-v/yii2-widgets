@@ -100,9 +100,9 @@ class Select2 extends InputWidget {
         if (empty($this->data) && !$this->_hidden) {
             throw new InvalidConfigException("No 'data' source found for Select2. Either the 'data' property must be set OR one of 'data', 'query', 'ajax', or 'tags' must be set within 'pluginOptions'.");
         }
-        if (!empty($this->options['placeholder']) && !$this->_hidden && !in_array("", $this->data) &&
+        if (!empty($this->options['placeholder']) && !$this->_hidden && 
                 (empty($this->options['multiple']) || $this->options['multiple'] == false)) {
-            $this->data = ArrayHelper::merge(["" => ""], $this->data);
+            $this->data = ["" => ""] + $this->data;
         }
         if (!isset($this->options['style'])) {
             $this->options['style'] = 'width: 100%';
