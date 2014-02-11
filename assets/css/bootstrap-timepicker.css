@@ -28,6 +28,9 @@
 .bootstrap-timepicker .input-group-addon {
     cursor: pointer;
 }
+.bootstrap-timepicker .addon-disabled {
+    cursor: not-allowed!important;
+}
 .bootstrap-timepicker .inline-addon {
     margin: 8px 8px 0 0;
     float: right;
@@ -90,7 +93,6 @@
 }
 .bootstrap-timepicker-widget table td:not(.separator) {
     min-width: 30px;
-    max-width: 60px;
 }
 .bootstrap-timepicker-widget table td span {
     width: 100%;
