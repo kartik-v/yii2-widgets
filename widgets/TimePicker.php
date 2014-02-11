@@ -77,7 +77,7 @@ class TimePicker extends InputWidget {
             else {
                 Html::addCssClass($this->addonOptions, 'inline-addon');
             }
-            return Html::tag('span', $this->addon, $this->addonOptions) . $this->getTextInput();
+            return $this->getTextInput() . Html::tag('span', $this->addon, $this->addonOptions);
         }
         Html::addCssClass($this->containerOptions, 'bootstrap-timepicker input-group');
         $asButton = ArrayHelper::remove($this->addonOptions, 'asButton', false);
