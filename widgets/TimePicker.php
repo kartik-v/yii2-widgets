@@ -66,7 +66,7 @@ class TimePicker extends InputWidget {
     protected function renderInput() {
         Html::addCssClass($this->options, 'form-control');
         if (!empty($this->options['disabled'])) {
-            Html::addCssClass($this->addonOptions, 'addon-disabled');
+            Html::addCssClass($this->addonOptions, 'disabled-addon');
         }
         if (ArrayHelper::getValue($this->pluginOptions, 'template', true) === false) {
             Html::addCssClass($this->containerOptions, 'bootstrap-timepicker');

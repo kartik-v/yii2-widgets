@@ -28,7 +28,7 @@
 .bootstrap-timepicker .input-group-addon {
     cursor: pointer;
 }
-.bootstrap-timepicker .addon-disabled {
+.bootstrap-timepicker .disabled-addon{
     cursor: not-allowed!important;
 }
 .bootstrap-timepicker .inline-addon {
