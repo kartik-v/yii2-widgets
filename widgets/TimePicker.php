@@ -12,9 +12,10 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
- * TimePicker widget is a Yii2 wrapper for the the JQuery plugin by rendom
- * and jdewit. Additional enhancements have been done to this timepicker input 
- * widget for compatibility with Twitter Bootstrap 3.
+ * The TimePicker widget  allows you to easily select a time for a text input using 
+ * your mouse or keyboards arrow keys. Thus widget is a wrapper enhancement over the 
+ * TimePicker JQuery plugin by rendom forked from the plugin by jdewit. Additional 
+ * enhancements have been done to this input widget for compatibility with Twitter Bootstrap 3.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -36,7 +37,7 @@ class TimePicker extends InputWidget {
     /**
      * @var array HTML attributes for the addon container
      * the following special options are identified
-     * - asButton: boolean if the addon is to be displayed like a button. 
+     * - asButton: boolean if the addon is to be displayed as a button. 
      * - buttonOptions: array HTML attributes if the addon is to be 
      *   displayed like a button. If [[asButton]] is true, this will
      *   default to ['class' => 'btn btn-default']
@@ -64,13 +65,19 @@ class TimePicker extends InputWidget {
      */
     protected function renderInput() {
         Html::addCssClass($this->options, 'form-control');
+        if (!empty($this->options['disabled'])) {
+            Html::addCssClass($this->addonOptions, 'addon-disabled');
+        }
         if (ArrayHelper::getValue($this->pluginOptions, 'template', true) === false) {
             Html::addCssClass($this->containerOptions, 'bootstrap-timepicker');
             if (isset($this->size)) {
                 Html::addCssClass($this->options, 'input-' . $this->size);
-                return '<span class="inline-addon inline-addon-' . $this->size . '">' . $this->addon . '</span>' . $this->getTextInput();
+                Html::addCssClass($this->addonOptions, 'inline-addon inline-addon-' . $this->size);
             }
-            return '<span class="inline-addon">' . $this->addon . '</span>' . $this->getTextInput();
+            else {
+                Html::addCssClass($this->addonOptions, 'inline-addon');
+            }
+            return Html::tag('span', $this->addon, $this->addonOptions) . $this->getTextInput();
         }
         Html::addCssClass($this->containerOptions, 'bootstrap-timepicker input-group');
         $asButton = ArrayHelper::remove($this->addonOptions, 'asButton', false);

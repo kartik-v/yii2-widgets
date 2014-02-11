@@ -71,6 +71,15 @@ the browser does not support JQuery.  This widget supports these markups:
 * Date Range Markup (from and to dates)
 * Inline / Embedded Markup
 
+
+#### TimePicker
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/timepicker)  
+
+The TimePicker widget  allows you to easily select a time for a text input using your mouse or keyboards arrow keys. The widget is a
+wrapper enhancement of the <a href='https://github.com/rendom/bootstrap-3-timepicker' target='_blank'>TimePicker plugin</a> by rendom 
+forked from  <a href='https://github.com/jdewit/bootstrap-timepicker' target='_blank'>jdewit's TimePicker</a>. This widget as used 
+here has been specially enhanced for Yii framework 2.0 and Twitter Bootstrap 3.
+
 #### TouchSpin
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/touchspin)  
 
@@ -260,11 +269,26 @@ use kartik\widgets\DatePicker
 echo '<label>Check Issue Date</label>';
 echo DatePicker::widget([
 	'name' => 'check_issue_date', 
-	'value' => date('d-M-Y', strtotime('+2 days')),,
+	'value' => date('d-M-Y', strtotime('+2 days')),
 	'options' => ['placeholder' => 'Select issue date ...'],
 	'pluginOptions' => [
 		'format' => 'dd-M-yyyy',
 		'todayHighlight' => true
+	]
+]);
+```
+
+### TimePicker
+```php
+use kartik\widgets\TimePicker
+
+// usage without model
+echo '<label>Start Time</label>';
+echo TimePicker::widget([
+	'name' => 'start_time', 
+	'value' => '11:24 AM',
+	'pluginOptions' => [
+		'showSeconds' => true
 	]
 ]);
 ```
