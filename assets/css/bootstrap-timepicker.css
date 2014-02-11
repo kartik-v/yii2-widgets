@@ -30,16 +30,14 @@
 }
 .bootstrap-timepicker .disabled-addon{
     cursor: not-allowed!important;
-}.span6 {
-    position: relative;
 }
 .bootstrap-timepicker .inline-addon {
-	display: inline-block;
+    display: inline-block;
     line-height: 42px;
     position: absolute;
     right: 10px;
     z-index: 3;
-	margin: -36px 0 0 0;
+    margin: -37px 0 0 0;
 }
 .bootstrap-timepicker .inline-addon-lg {
     margin: -42px 0 0 0;
