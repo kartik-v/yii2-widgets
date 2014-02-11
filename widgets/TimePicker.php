@@ -29,7 +29,7 @@ class TimePicker extends InputWidget {
     public $size;
 
     /**
-     * @var string the addon content
+     * @var string/boolean the addon content
      */
     public $addon = '<i class="glyphicon glyphicon-time"></i>';
 
@@ -64,6 +64,14 @@ class TimePicker extends InputWidget {
      */
     protected function renderInput() {
         Html::addCssClass($this->options, 'form-control');
+        if (ArrayHelper::getValue($this->pluginOptions, 'template', true) === false) {
+            Html::addCssClass($this->containerOptions, 'bootstrap-timepicker');
+            if (isset($this->size)) {
+                Html::addCssClass($this->options, 'input-' . $this->size);
+                return '<span class="inline-addon inline-addon-' . $this->size . '">' . $this->addon . '</span>' . $this->getTextInput();
+            }
+            return '<span class="inline-addon">' . $this->addon . '</span>' . $this->getTextInput();
+        }
         Html::addCssClass($this->containerOptions, 'bootstrap-timepicker input-group');
         $asButton = ArrayHelper::remove($this->addonOptions, 'asButton', false);
         $buttonOptions = ArrayHelper::remove($this->addonOptions, 'buttonOptions', []);

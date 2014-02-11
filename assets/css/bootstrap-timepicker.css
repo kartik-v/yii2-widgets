@@ -28,6 +28,18 @@
 .bootstrap-timepicker .input-group-addon {
     cursor: pointer;
 }
+.bootstrap-timepicker .inline-addon {
+    margin: 8px 8px 0 0;
+    float: right;
+}
+.bootstrap-timepicker .inline-addon-lg {
+    margin: 12px 12px 0 0;
+    font-size: 18px;
+}
+.bootstrap-timepicker .inline-addon-sm {
+    margin: 7px 7px 0 0;
+    font-size: 12px;
+}
 .bootstrap-timepicker-widget.dropdown-menu {
     padding: 2px 3px 2px 2px;
 }
