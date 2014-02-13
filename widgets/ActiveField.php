@@ -41,8 +41,6 @@ use yii\helpers\ArrayHelper;
  */
 class ActiveField extends \yii\widgets\ActiveField {
 
-    const ADDON_PREPEND = 'prepend';
-    const ADDON_APPEND = 'append';
     const TYPE_RADIO = 'radio';
     const TYPE_CHECKBOX = 'checkbox';
     const STYLE_INLINE = 'inline';
@@ -115,9 +113,7 @@ class ActiveField extends \yii\widgets\ActiveField {
         if (!empty($this->addon)) {
             $addon = $this->addon;
             $prepend = ArrayHelper::getValue($addon, 'prepend', '');
-            ;
             $append = ArrayHelper::getValue($addon, 'append', '');
-            ;
             if (is_array($prepend)) {
                 $content = ArrayHelper::getValue($prepend, 'content', '');
                 if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
@@ -429,7 +425,7 @@ class ActiveField extends \yii\widgets\ActiveField {
             unset($options['container']);
         }
         Html::addCssClass($container, 'form-control input-multiselect');
-		$container['tabindex'] = 0;
+        $container['tabindex'] = 0;
         $this->_multiselect = Html::tag('div', '{input}', $container);
 
         if ($selector == self::TYPE_RADIO) {
