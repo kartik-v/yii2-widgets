@@ -25,7 +25,7 @@ use yii\helpers\Html;
  * $form = ActiveForm::begin([
  * 		'id' => 'form-login', 
  * 		'type' => ActiveForm::TYPE_INLINE
- * 		'fieldConfig' => ['labelAsPlaceholder'=>true]
+ * 		'fieldConfig' => ['autoPlaceholder'=>true]
  * ]);
  * // Horizontal Form Configuration
  * $form = ActiveForm::begin([
