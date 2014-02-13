@@ -157,20 +157,25 @@ class ActiveField extends \yii\widgets\ActiveField {
      * Initializes template for bootstrap 3 specific styling
      */
     protected function initTemplate() {
-        $inputDivClass = $this->form->getInputCss();
-        $offsetDivClass = $this->form->getOffsetCss();
-        if ($this->form->hasInputCss()) {
+        $form = $this->form;
+        $inputDivClass = $form->getInputCss();
+        $offsetDivClass = $form->getOffsetCss();
+        $showLabels = ArrayHelper::getValue($form->formConfig, 'showLabels', true);
+        $showErrors = ArrayHelper::getValue($form->formConfig, 'showErrors', true);
+        if ($form->hasInputCss()) {
             $class = ($this->_offset) ? $offsetDivClass : $inputDivClass;
             $input = "<div class='{$class}'>{input}</div>";
-            $error = "{error}";
+            $error = ($showErrors) ? "{error}\n" : "";
             $hint = "{hint}";
-            if ($this->form->hasOffsetCss()) {
-                $error = "<div class='{$offsetDivClass}'>{error}</div>";
+            if ($form->hasOffsetCss()) {
+                $error = $showErrors ? "<div class='{$offsetDivClass}'>{error}</div>\n" : "";
                 $hint = "<div class='{$offsetDivClass}'>{hint}</div>";
             }
-            $this->template = "{label}\n{$input}\n{$error}\n{$hint}";
+            $this->template = "{label}\n{$input}\n{$error}{$hint}";
         }
-        $showLabels = isset($this->form->formConfig['showLabels']) ? $this->form->formConfig['showLabels'] : true;
+        if (!$showErrors) {
+            $this->template = str_replace("{error}\n", "", $this->template);
+        }
         if (!$showLabels || $this->autoPlaceholder) {
             $this->template = str_replace("{label}\n", "", $this->template);
         }

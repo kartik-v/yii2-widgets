@@ -9,7 +9,7 @@
  * Year: 2013
  * For more Yii related demos visit http://demos.krajee.com
  */
-.form-inline .btn {
+.form-inline-block .btn {
     margin-top: -10px;
 }
 .input-multiselect {

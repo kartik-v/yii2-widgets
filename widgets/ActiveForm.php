@@ -66,9 +66,10 @@ class ActiveForm extends \yii\widgets\ActiveForm {
     /**
      * @var array the configuration for the form
      * 	[
-     * 		'labelSpan' => 2, // must be between 1 and 12
-     * 		'deviceSize' => ActiveForm::SIZE_MEDIUM, // must be one of the SIZE modifiers
-     * 		'showLabels' => true // show or hide labels (mainly useful for inline type form)
+     *      'labelSpan' => 2, // must be between 1 and 12
+     * 	    'deviceSize' => ActiveForm::SIZE_MEDIUM, // must be one of the SIZE modifiers
+     * 	    'showLabels' => true, // show or hide labels (mainly useful for inline type form)
+     *      'showErrors' => true // show or hide errors (mainly useful for inline type form)
      * 	],
      */
     public $formConfig = [];
@@ -92,17 +93,20 @@ class ActiveForm extends \yii\widgets\ActiveForm {
         self::TYPE_VERTICAL => [
             'labelSpan' => self::NOT_SET, // must be between 1 and 12
             'deviceSize' => self::NOT_SET, // must be one of the SIZE modifiers
-            'showLabels' => true // show or hide labels (mainly useful for inline type form)
+            'showLabels' => true, // show or hide labels (mainly useful for inline type form)
+            'showErrors' => true, // show or hide errors (mainly useful for inline type form)
         ],
         self::TYPE_HORIZONTAL => [
             'labelSpan' => self::DEFAULT_LABEL_SPAN,
             'deviceSize' => self::SIZE_MEDIUM,
-            'showLabels' => true
+            'showLabels' => true,
+            'showErrors' => true,
         ],
         self::TYPE_INLINE => [
             'labelSpan' => self::NOT_SET,
             'deviceSize' => self::NOT_SET,
-            'showLabels' => false
+            'showLabels' => false,
+            'showErrors' => false,
         ],
     ];
 
@@ -114,15 +118,18 @@ class ActiveForm extends \yii\widgets\ActiveForm {
         if (!isset($this->type) || strlen($this->type) == 0) {
             $this->type = self::TYPE_VERTICAL;
         }
-        if (is_array($this->formConfig) && !empty($this->formConfig)) {
-            $this->_config[$this->type] = array_replace($this->_config[$this->type], $this->formConfig);
-        }
+        $this->formConfig = $this->formConfig + $this->_config[$this->type];
         if (!isset($this->fieldConfig['class'])) {
             $this->fieldConfig['class'] = \kartik\widgets\ActiveField::className();
         }
         $this->_inputCss = self::NOT_SET;
         $this->_offsetCss = self::NOT_SET;
-        Html::addCssClass($this->options, 'form-' . $this->type);
+        $class = 'form-' . $this->type;
+        /* Fixes the button alignment for inline forms containing error block */
+        if ($this->type == self::TYPE_INLINE && $this->formConfig['showErrors']) {
+            $class .= ' ' . $class . '-block';
+        }
+        Html::addCssClass($this->options, $class);
     }
 
     /**
@@ -131,7 +138,7 @@ class ActiveForm extends \yii\widgets\ActiveForm {
     public function init() {
         $this->registerAssets();
         $this->initForm();
-        $config = $this->_config[$this->type];
+        $config = $this->formConfig;
         $span = $config['labelSpan'];
         $size = $config['deviceSize'];
         $labelCss = self::NOT_SET;
