@@ -238,7 +238,7 @@ class ActiveField extends \yii\widgets\ActiveField {
             $captionOptions = ArrayHelper::getValue($caption, 'options', ['class' => 'input-caption']);
             $captionOptions['id'] = Html::getInputId($this->model, $this->attribute) . '-caption';
             $captionTag = ArrayHelper::getValue($caption, 'tag', 'span');
-            if (empty($options['change'])) {
+            if (empty($options['onchange'])) {
                 $options['onchange'] = '$("#' . $captionOptions['id'] . '").html(this.value)';
             }
             $prefixOptions = ArrayHelper::getValue($caption, 'prefixOptions', ['class' => 'input-caption']);
