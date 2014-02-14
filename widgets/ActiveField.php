@@ -243,9 +243,11 @@ class ActiveField extends \yii\widgets\ActiveField {
             }
             $prefixOptions = ArrayHelper::getValue($caption, 'prefixOptions', ['class' => 'input-caption']);
             $affixOptions = ArrayHelper::getValue($caption, 'affixOptions', ['class' => 'input-caption']);
-            $value = Html::tag('span', ArrayHelper::remove($caption, 'prefix', ''), $prefixOptions) .
+            $prefix = ArrayHelper::getValue($caption, 'prefix', '');
+            $affix = ArrayHelper::getValue($caption, 'affix', '');
+            $value = (($prefix == '') ? '' : Html::tag('span', $prefix, $prefixOptions)) .
                     Html::tag('span', $this->model[$this->attribute], $captionOptions) .
-                    Html::tag('span', ArrayHelper::remove($caption, 'affix', ''), $affixOptions);
+                    (($affix == '') ? '' : Html::tag('span', $affix, $affixOptions));
             $this->addon = ['append' => ['content' => $value], 'groupOptions' => ['class' => "input-group-{$type}"]];
         }
         return Html::activeInput($type, $this->model, $this->attribute, $options);
