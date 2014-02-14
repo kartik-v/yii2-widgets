@@ -205,7 +205,7 @@ class ActiveField extends \yii\widgets\ActiveField {
      */
     public function input($type, $options = []) {
         $this->initPlaceholder($options);
-        if ($type == 'range') {
+        if ($type == 'range' || $type == 'color') {
             Html::removeCssClass($this->inputOptions, 'form-control');
         }
         $options = array_merge($this->inputOptions, $options);
@@ -214,38 +214,80 @@ class ActiveField extends \yii\widgets\ActiveField {
     }
 
     /**
-     * Renders a HTML 5 range input tag.
+     * Parses a HTML 5 input tag with addons to display caption
+     * @param string $type the input type (e.g. 'range', 'color')
      * @param array $options the tag options in terms of name-value pairs. These will be rendered as
      * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
-     * The special $option variables that need to be set for range input are:
-     * - min, string - specifies the minimum value allowed
-     * - max, string - specifies the maximum value allowed
-     * - step, string - specifies the legal number of intervals
-     * - value, string - Specifies the default value
-     * - prepend, string - Label to prepend to the value (not html encoded) - default null
-     * - append, string - Label to append to the value (not html encoded) - default null
-     * - output, array - options for the output value of the slider control (including prepend and append) 
-     * - container, array - options for the entire input container
+     * The following additional options are recognized:
+     * - caption: array/boolean settings for the displaying the value for the range input. If set to false
+     *   no caption will be displayed. Following settings are recognized:
+     *   - prefix: string the content to be prefixed to the caption value
+     *   - prefixOptions: array the HTML attributes for the prefix content. 
+     *   - affix: string the content to be affixed to the caption value
+     *   - affixOptions: array the HTML attributes for the affix content. 
+     *   - options: array the HTML attributes for the caption container. 
+     *     Defaults to `['class' => 'input-caption']`
+     *   - tag: string the HTML tag to display the caption. Defaults to `span`.
+     * @return static the field object itself
+     */
+    private function parseHtml5Input($type, $options = []) {
+        $this->initPlaceholder($options);
+        $options = array_merge($this->inputOptions, $options);
+        $caption = ArrayHelper::remove($options, 'caption', []);
+        if ($caption !== false) {
+            $captionOptions = ArrayHelper::getValue($caption, 'options', ['class' => 'input-caption']);
+            $captionOptions['id'] = Html::getInputId($this->model, $this->attribute) . '-caption';
+            $captionTag = ArrayHelper::getValue($caption, 'tag', 'span');
+            $options['onchange'] = '$("#' . $captionOptions['id'] . '").html(this.value)';
+            $prefixOptions = ArrayHelper::getValue($caption, 'prefixOptions', ['class' => 'input-caption']);
+            $affixOptions = ArrayHelper::getValue($caption, 'affixOptions', ['class' => 'input-caption']);
+            $value = Html::tag('span', ArrayHelper::remove($caption, 'prefix', ''), $prefixOptions) .
+                    Html::tag('span', $this->model[$this->attribute], $captionOptions) .
+                    Html::tag('span', ArrayHelper::remove($caption, 'affix', ''), $affixOptions);
+            $this->addon = ['append' => ['content' => $value], 'groupOptions' => ['class'=>"input-group-{$type}"]];
+        }
+        return Html::activeInput($type, $this->model, $this->attribute, $options);
+    }
+
+    /**
+     * Renders a HTML 5 range input tag with addons to display caption
+     * @param array $options the tag options in terms of name-value pairs. These will be rendered as
+     * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
+     * The following additional options are recognized:
+     * - caption: array/boolean settings for the displaying the value for the range input. If set to false
+     *   no caption will be displayed. Following settings are recognized:
+     *   - options: array the HTML attributes for the caption container 
+     *     Defaults to `['class' => 'input-caption']`
+     *   - prefix: string the content to be prefixed to the caption value
+     *   - prefixOptions: array the HTML attributes for the prefix content
+     *   - affix: string the content to be affixed to the caption value
+     *   - affixOptions: array the HTML attributes for the affix content
+     *   - tag: string the HTML tag to display the caption. Defaults to `span`.
      * @return static the field object itself
      */
     public function rangeInput($options = []) {
-        $min = !isset($options['min']) ? '' : $options['min'];
-        $max = !isset($options['max']) ? '' : $options['max'];
-        $prepend = empty($options['prepend']) ? '' : $options['prepend'];
-        $append = empty($options['append']) ? '' : $options['append'];
-        $output = empty($options['output']) ? ['style' => 'font-size: 20px; color: #777;'] : $options['output'];
-        $container = empty($options['container']) ? [] : $options['container'];
-        unset($options['prepend'], $options['append'], $options['output'], $options['container']);
+        $this->parts['{input}'] = $this->parseHtml5Input('range', $options);
+        return $this;
+    }
 
-        $id = Html::getInputId($this->model, $this->attribute);
-        $container['id'] = $id . '-container';
-        $output['id'] = $id . '-output';
-        $span = $id . '-value';
-        $value = Html::tag('span', $this->model[$this->attribute], ['id' => $span]);
-        $options['onchange'] = '$("#' . $span . '").html(this.value)';
-        $html = Html::activeInput('range', $this->model, $this->attribute, $options) . '&nbsp;' .
-                Html::tag('span', $prepend . $value . $append, $output);
-        $this->parts['{input}'] = Html::tag('div', $html, $container);
+    /**
+     * Renders a HTML 5 color input tag with addons to display caption
+     * @param array $options the tag options in terms of name-value pairs. These will be rendered as
+     * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
+     * The following additional options are recognized:
+     * - caption: array/boolean settings for the displaying the value for the range input. If set to false
+     *   no caption will be displayed. Following settings are recognized:
+     *   - prefix: string the content to be prefixed to the caption value
+     *   - prefixOptions: array the HTML attributes for the prefix content. 
+     *   - affix: string the content to be affixed to the caption value
+     *   - affixOptions: array the HTML attributes for the affix content. 
+     *   - options: array the HTML attributes for the caption container. 
+     *     Defaults to `['class' => 'input-caption']`
+     *   - tag: string the HTML tag to display the caption. Defaults to `span`.
+     * @return static the field object itself
+     */
+    public function colorInput($options = []) {
+        $this->parts['{input}'] = $this->parseHtml5Input('color', $options);
         return $this;
     }
 

@@ -8,4 +8,4 @@
  * Author: Kartik Visweswaran
  * Year: 2013
  * For more Yii related demos visit http://demos.krajee.com
- */.form-inline-block .btn{margin-top:-10px}.input-multiselect{overflow:auto;min-height:145px !important}
+ */.form-inline-block .btn{margin-top:-10px}.input-multiselect{overflow:auto;min-height:145px !important}.input-caption{font-size:1.1em}.input-group-color .form-control{cursor:pointer}.input-group-color .input-group-addon{min-width:90px !important}.input-group-range .form-control{-webkit-box-shadow:none !important;border-right:0 !important;background-color:#fff !important}.input-group-range .input-group-addon{min-width:90px !important;border-left:1px solid #ddd !important}
