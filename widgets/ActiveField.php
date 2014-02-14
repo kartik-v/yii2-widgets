@@ -205,12 +205,7 @@ class ActiveField extends \yii\widgets\ActiveField {
      */
     public function input($type, $options = []) {
         $this->initPlaceholder($options);
-        if ($type === 'range') {
-            return $this->rangeInput($options);
-        }
-        else {
-            $options = array_merge($this->inputOptions, $options);
-        }
+        $options = array_merge($this->inputOptions, $options);
         $this->parts['{input}'] = Html::activeInput($type, $this->model, $this->attribute, $options);
         return $this;
     }
