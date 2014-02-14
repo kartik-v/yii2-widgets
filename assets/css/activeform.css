@@ -28,7 +28,8 @@
 .input-group-range .form-control {
     -webkit-box-shadow: none!important;
     border-right: 0!important;
-    background-color: #fff!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
 }
 .input-group-range .input-group-addon {
     min-width: 90px!important;
