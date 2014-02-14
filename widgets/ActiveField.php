@@ -238,13 +238,15 @@ class ActiveField extends \yii\widgets\ActiveField {
             $captionOptions = ArrayHelper::getValue($caption, 'options', ['class' => 'input-caption']);
             $captionOptions['id'] = Html::getInputId($this->model, $this->attribute) . '-caption';
             $captionTag = ArrayHelper::getValue($caption, 'tag', 'span');
-            $options['onchange'] = '$("#' . $captionOptions['id'] . '").html(this.value)';
+            if (empty($options['change'])) {
+                $options['onchange'] = '$("#' . $captionOptions['id'] . '").html(this.value)';
+            }
             $prefixOptions = ArrayHelper::getValue($caption, 'prefixOptions', ['class' => 'input-caption']);
             $affixOptions = ArrayHelper::getValue($caption, 'affixOptions', ['class' => 'input-caption']);
             $value = Html::tag('span', ArrayHelper::remove($caption, 'prefix', ''), $prefixOptions) .
                     Html::tag('span', $this->model[$this->attribute], $captionOptions) .
                     Html::tag('span', ArrayHelper::remove($caption, 'affix', ''), $affixOptions);
-            $this->addon = ['append' => ['content' => $value], 'groupOptions' => ['class'=>"input-group-{$type}"]];
+            $this->addon = ['append' => ['content' => $value], 'groupOptions' => ['class' => "input-group-{$type}"]];
         }
         return Html::activeInput($type, $this->model, $this->attribute, $options);
     }
