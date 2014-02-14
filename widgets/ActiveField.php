@@ -209,7 +209,6 @@ class ActiveField extends \yii\widgets\ActiveField {
             Html::removeCssClass($this->inputOptions, 'form-control');
         }
         $options = array_merge($this->inputOptions, $options);
-        
         $this->parts['{input}'] = Html::activeInput($type, $this->model, $this->attribute, $options);
         return $this;
     }
