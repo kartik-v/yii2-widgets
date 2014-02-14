@@ -19,9 +19,6 @@
 .input-caption {
     font-size: 1.1em;
 }
-.input-group-color .form-control {
-    cursor: pointer;
-}
 .input-group-color .input-group-addon {
     min-width: 90px!important;    
 }
