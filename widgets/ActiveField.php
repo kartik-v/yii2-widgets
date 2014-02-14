@@ -204,6 +204,7 @@ class ActiveField extends \yii\widgets\ActiveField {
      * @return static the field object itself
      */
     public function input($type, $options = []) {
+        $this->initPlaceholder($options);
         if ($type === 'range') {
             return $this->rangeInput($options);
         }
