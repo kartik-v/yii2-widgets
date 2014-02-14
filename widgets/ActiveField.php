@@ -205,7 +205,12 @@ class ActiveField extends \yii\widgets\ActiveField {
      */
     public function input($type, $options = []) {
         $this->initPlaceholder($options);
-        $options = array_merge($this->inputOptions, $options);
+        if ($type == 'range') {
+            Html::removeCssClass($options, 'form-control');
+        }
+        else {
+            $options = array_merge($this->inputOptions, $options);
+        }
         $this->parts['{input}'] = Html::activeInput($type, $this->model, $this->attribute, $options);
         return $this;
     }
