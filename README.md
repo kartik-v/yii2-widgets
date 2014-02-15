@@ -102,7 +102,7 @@ The FileInput widget is a customized file input widget based on HTML5 file input
 
 The ColorInput widget is a customized color input widget based on HTML5 color input. The widget enhances the default HTML range input with various features including the following:
 
-* Specially styled for Twitter Bootstrap 3.0 with caption showing the output of the control.
+* Specially styled for Twitter Bootstrap 3.0 with customizable caption showing the output of the control.
 * Ability to prepend and append addons.
 * Allow the input to be changed both via the control or the text box.
 * Automatically degrade to normal text input for unsupported Internet Explorer versions.
@@ -112,7 +112,7 @@ The ColorInput widget is a customized color input widget based on HTML5 color in
 
 The RangeInput widget is a customized range slider control widget based on HTML5 range input. The widget enhances the default HTML range input with various features including the following:
 
-* Specially styled for Twitter Bootstrap 3.0 with caption showing the output of the control.
+* Specially styled for Twitter Bootstrap 3.0 with customizable caption showing the output of the control.
 * Ability to prepend and append addons (very useful to show the min and max ranges, and the slider measurement unit).
 * Allow the input to be changed both via the control or the text box.
 * Automatically degrade to normal text input for unsupported Internet Explorer versions.

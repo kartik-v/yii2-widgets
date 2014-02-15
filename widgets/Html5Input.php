@@ -105,6 +105,9 @@ class Html5Input extends InputWidget {
         }
         else {
             ArrayHelper::merge($this->options, $this->html5Options);
+            if (isset($this->size)) {
+                Html::addCssClass($this->options, ['class' => 'input-' . $this->size]);
+            }
             echo $this->getInput();
         }
     }
@@ -181,7 +184,7 @@ class Html5Input extends InputWidget {
         $caption = '$("#' . $this->options['id'] . '")';
         $input = '$("#' . $this->html5Options['id'] . '")';
         $js = "{$caption}.change(function(){{$input}.val(this.value)});\n" .
-                "{$input}.change(function(){{$caption}.val(this.value)});";
+                "{$input}.change(function(){{$caption}.val(this.value); {$caption}.trigger('change');});";
         $view->registerJs($js);
     }
 
