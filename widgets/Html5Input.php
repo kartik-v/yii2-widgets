@@ -50,6 +50,17 @@ class Html5Input extends InputWidget {
     public $html5Container = [];
 
     /**
+     * @var string/boolean the message shown for unsupported browser. If set to false
+     * will not be displayed
+     */
+    public $noSupport = 'Its recommended you use an upgraded browser to display the {type} control properly.';
+
+    /**
+     * @var string array the HTML attributes for container displaying unsupported browser message
+     */
+    public $noSupportOptions = [];
+
+    /**
      * @var string one of the SIZE modifiers 'lg', 'md', 'sm', 'xs'
      */
     public $size;
@@ -130,7 +141,14 @@ class Html5Input extends InputWidget {
         $preCaption = static::getAddonContent(ArrayHelper::getValue($this->addon, 'preCaption', ''));
         $prepend .= Html::tag('span', $input, $this->html5Container);
         $content = Html::tag('div', $prepend . $preCaption . $caption . $append, $this->containerOptions);
-        return "<!--[if lt IE 10]>\n{$caption}\n<![endif]--><![if gt IE 9]>\n{$content}\n<![endif]>";
+        Html::addCssClass($this->noSupportOptions, 'alert alert-warning');
+        if ($this->noSupport == false) {
+            $message = '';
+        }
+        else {
+            $message = "\n<br>" . Html::tag('div', Yii::t('app', $this->noSupport, ['type' => $this->type]), $this->noSupportOptions);
+        }
+        return "<!--[if lt IE 10]>\n{$caption}{$message}\n<![endif]--><![if gt IE 9]>\n{$content}\n<![endif]>";
     }
 
     /**
