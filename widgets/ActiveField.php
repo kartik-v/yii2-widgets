@@ -22,9 +22,11 @@ use yii\helpers\ArrayHelper;
  * - prepend: array the prepend addon configuration
  *     - content: string the prepend addon content
  *     - asButton: boolean whether the addon is a button or button group. Defaults to false.
+ *     - options: array the HTML attributes to be added to the container.
  * - append: array the append addon configuration
- *     - content: string the append addon content
+ *     - content: string/array the append addon content
  *     - asButton: boolean whether the addon is a button or button group. Defaults to false.
+ *     - options: array the HTML attributes to be added to the container.
  * - groupOptions: array HTML options for the input group
  * - contentBefore: string content placed before addon
  * - contentAfter: string content placed after addon
@@ -107,31 +109,34 @@ class ActiveField extends \yii\widgets\ActiveField {
     }
 
     /**
+     * Parses and returns addon content
+     * @param string/array $addon the addon parameter
+     * @return string
+     */
+    public static function getAddonContent($addon) {
+        if (is_array($addon)) {
+            $content = ArrayHelper::getValue($addon, 'content', '');
+            $options = ArrayHelper::getValue($addon, 'options', []);
+            if (ArrayHelper::getValue($addon, 'asButton', false) == true) {
+                Html::addCssClass($options, 'input-group-btn');
+                return Html::tag('div', $content, $options);
+            }
+            else {
+                Html::addCssClass($options, 'input-group-addon');
+                return Html::tag('span', $content, $options);
+            }
+        }
+        return $addon;
+    }
+
+    /**
      * Initializes the addon for text inputs
      */
     protected function initAddon() {
         if (!empty($this->addon)) {
             $addon = $this->addon;
-            $prepend = ArrayHelper::getValue($addon, 'prepend', '');
-            $append = ArrayHelper::getValue($addon, 'append', '');
-            if (is_array($prepend)) {
-                $content = ArrayHelper::getValue($prepend, 'content', '');
-                if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
-                    $prepend = Html::tag('div', $content, ['class' => 'input-group-btn']);
-                }
-                else {
-                    $prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
-                }
-            }
-            if (is_array($append)) {
-                $content = ArrayHelper::getValue($append, 'content', '');
-                if (isset($append['asButton']) && $append['asButton'] == true) {
-                    $append = Html::tag('div', $content, ['class' => 'input-group-btn']);
-                }
-                else {
-                    $append = Html::tag('span', $content, ['class' => 'input-group-addon']);
-                }
-            }
+            $prepend = static::getAddonContent(ArrayHelper::getValue($addon, 'prepend', ''));
+            $append = static::getAddonContent(ArrayHelper::getValue($addon, 'append', ''));
             $addonText = $prepend . '{input}' . $append;
             $group = ArrayHelper::getValue($addon, 'groupOptions', []);
             Html::addCssClass($group, 'input-group');
@@ -210,88 +215,6 @@ class ActiveField extends \yii\widgets\ActiveField {
         }
         $options = array_merge($this->inputOptions, $options);
         $this->parts['{input}'] = Html::activeInput($type, $this->model, $this->attribute, $options);
-        return $this;
-    }
-
-    /**
-     * Parses a HTML 5 input tag with addons to display caption
-     * @param string $type the input type (e.g. 'range', 'color')
-     * @param array $options the tag options in terms of name-value pairs. These will be rendered as
-     * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
-     * The following additional options are recognized:
-     * - caption: array/boolean settings for the displaying the value for the range input. If set to false
-     *   no caption will be displayed. Following settings are recognized:
-     *   - prefix: string the content to be prefixed to the caption value
-     *   - prefixOptions: array the HTML attributes for the prefix content. 
-     *   - affix: string the content to be affixed to the caption value
-     *   - affixOptions: array the HTML attributes for the affix content. 
-     *   - options: array the HTML attributes for the caption container. 
-     *     Defaults to `['class' => 'input-caption']`
-     *   - tag: string the HTML tag to display the caption. Defaults to `span`.
-     * @return static the field object itself
-     */
-    private function parseHtml5Input($type, $options = []) {
-        $this->initPlaceholder($options);
-        $options = array_merge($this->inputOptions, $options);
-        $caption = ArrayHelper::remove($options, 'caption', []);
-        if ($caption !== false) {
-            $captionOptions = ArrayHelper::getValue($caption, 'options', ['class' => 'input-caption']);
-            $captionOptions['id'] = Html::getInputId($this->model, $this->attribute) . '-caption';
-            $captionTag = ArrayHelper::getValue($caption, 'tag', 'span');
-            if (empty($options['onchange'])) {
-                $options['onchange'] = '$("#' . $captionOptions['id'] . '").html(this.value)';
-            }
-            $prefixOptions = ArrayHelper::getValue($caption, 'prefixOptions', ['class' => 'input-caption']);
-            $affixOptions = ArrayHelper::getValue($caption, 'affixOptions', ['class' => 'input-caption']);
-            $prefix = ArrayHelper::getValue($caption, 'prefix', '');
-            $affix = ArrayHelper::getValue($caption, 'affix', '');
-            $value = (($prefix == '') ? '' : Html::tag('span', $prefix, $prefixOptions)) .
-                    Html::tag('span', $this->model[$this->attribute], $captionOptions) .
-                    (($affix == '') ? '' : Html::tag('span', $affix, $affixOptions));
-            $this->addon = ['append' => ['content' => $value], 'groupOptions' => ['class' => "input-group-{$type}"]];
-        }
-        return Html::activeInput($type, $this->model, $this->attribute, $options);
-    }
-
-    /**
-     * Renders a HTML 5 range input tag with addons to display caption
-     * @param array $options the tag options in terms of name-value pairs. These will be rendered as
-     * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
-     * The following additional options are recognized:
-     * - caption: array/boolean settings for the displaying the value for the range input. If set to false
-     *   no caption will be displayed. Following settings are recognized:
-     *   - options: array the HTML attributes for the caption container 
-     *     Defaults to `['class' => 'input-caption']`
-     *   - prefix: string the content to be prefixed to the caption value
-     *   - prefixOptions: array the HTML attributes for the prefix content
-     *   - affix: string the content to be affixed to the caption value
-     *   - affixOptions: array the HTML attributes for the affix content
-     *   - tag: string the HTML tag to display the caption. Defaults to `span`.
-     * @return static the field object itself
-     */
-    public function rangeInput($options = []) {
-        $this->parts['{input}'] = $this->parseHtml5Input('range', $options);
-        return $this;
-    }
-
-    /**
-     * Renders a HTML 5 color input tag with addons to display caption
-     * @param array $options the tag options in terms of name-value pairs. These will be rendered as
-     * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
-     * The following additional options are recognized:
-     * - caption: array/boolean settings for the displaying the value for the range input. If set to false
-     *   no caption will be displayed. Following settings are recognized:
-     *   - prefix: string the content to be prefixed to the caption value
-     *   - prefixOptions: array the HTML attributes for the prefix content. 
-     *   - affix: string the content to be affixed to the caption value
-     *   - affixOptions: array the HTML attributes for the affix content. 
-     *   - options: array the HTML attributes for the caption container. 
-     *     Defaults to `['class' => 'input-caption']`
-     *   - tag: string the HTML tag to display the caption. Defaults to `span`.
-     * @return static the field object itself
-     */
-    public function colorInput($options = []) {
-        $this->parts['{input}'] = $this->parseHtml5Input('color', $options);
         return $this;
     }
 

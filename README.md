@@ -31,7 +31,6 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 	* Checkbox List
 	* Radio List
 	* Static Input
-	* Range Input
 	* HTML 5 Input
 - Multi Select
 	* Vertical Form
@@ -71,7 +70,6 @@ the browser does not support JQuery.  This widget supports these markups:
 * Date Range Markup (from and to dates)
 * Inline / Embedded Markup
 
-
 #### TimePicker
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/timepicker)  
 
@@ -98,6 +96,26 @@ The FileInput widget is a customized file input widget based on HTML5 file input
 * Ability to preview multiple files of different types (both images and text)
 * Set your upload action/route (defaults to form submit). Customize the Upload and Remove buttons.
 * Internationalization enabled for easy translation to various languages
+
+#### ColorInput
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/colorinput)  
+
+The ColorInput widget is a customized color input widget based on HTML5 color input. The widget enhances the default HTML range input with various features including the following:
+
+* Specially styled for Twitter Bootstrap 3.0 with caption showing the output of the control.
+* Ability to prepend and append addons.
+* Allow the input to be changed both via the control or the text box.
+* Automatically degrade to normal text input for unsupported Internet Explorer versions.
+
+#### RangeInput
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/rangeinput)  
+
+The RangeInput widget is a customized range slider control widget based on HTML5 range input. The widget enhances the default HTML range input with various features including the following:
+
+* Specially styled for Twitter Bootstrap 3.0 with caption showing the output of the control.
+* Ability to prepend and append addons (very useful to show the min and max ranges, and the slider measurement unit).
+* Allow the input to be changed both via the control or the text box.
+* Automatically degrade to normal text input for unsupported Internet Explorer versions.
 
 ##### Future planned enhancements:
 
@@ -247,14 +265,14 @@ to the ```require``` section of your `composer.json` file.
 
 ### Typeahead
 ```php
-use kartik\widgets\Typeahead
+use kartik\widgets\Typeahead;
 
 // usage with ActiveForm and model
 echo $form->field($model, 'state_3')->widget(Typeahead::classname(), [
 	'options' => ['placeholder' => 'Filter as you type ...'],
 	'dataset' => [
 		[
-			'local' => \$data,
+			'local' => $data,
 			'limit' => 10
 		]
 	]
@@ -263,7 +281,7 @@ echo $form->field($model, 'state_3')->widget(Typeahead::classname(), [
 
 ### DatePicker
 ```php
-use kartik\widgets\DatePicker
+use kartik\widgets\DatePicker;
 
 // usage without model
 echo '<label>Check Issue Date</label>';
@@ -280,7 +298,7 @@ echo DatePicker::widget([
 
 ### TimePicker
 ```php
-use kartik\widgets\TimePicker
+use kartik\widgets\TimePicker;
 
 // usage without model
 echo '<label>Start Time</label>';
@@ -295,7 +313,7 @@ echo TimePicker::widget([
 
 ### TouchSpin
 ```php
-use kartik\widgets\TouchSpin
+use kartik\widgets\TouchSpin;
 
 echo TouchSpin::widget([
     'name' => 'volume',
@@ -306,19 +324,56 @@ echo TouchSpin::widget([
 
 ### FileInput
 ```php
-use kartik\widgets\FileInput
+use kartik\widgets\FileInput;
 
 // Usage with ActiveForm and model
-echo \$form->field(\$model, 'avatar')->widget(FileInput::classname(), [
+echo $form->field($model, 'avatar')->widget(FileInput::classname(), [
     'options' => ['accept' => 'image/*'],
 ]);
 
 // With model & without ActiveForm
 echo '<label class="control-label">Add Attachments</label>';
 echo FileInput::widget([
-    'model' => \$model,
+    'model' => $model,
     'attribute' => 'attachment_1',
     'options' => ['multiple' => true]
+]);
+```
+
+### ColorInput
+```php
+use kartik\widgets\ColorInput;
+
+// Usage with ActiveForm and model
+echo $form->field($model, 'color')->widget(ColorInput::classname(), [
+    'options' => ['placeholder' => 'Select color ...'],
+]);
+
+// With model & without ActiveForm
+echo '<label class="control-label">Select Color</label>';
+echo ColorInput::widget([
+    'model' => $model,
+    'attribute' => 'saturation',
+]);
+```
+
+### RangeInput
+```php
+use kartik\widgets\RangeInput;
+
+// Usage with ActiveForm and model
+echo $form->field($model, 'rating')->widget(RangeInput::classname(), [
+    'options' => ['placeholder' => 'Select color ...'],
+    'html5Options' => ['min'=>0, 'max'=>1, 'step'=>1],
+    'addon' => ['append'=>['content'=>'star']]
+]);
+
+// With model & without ActiveForm
+echo '<label class="control-label">Adjust Contrast</label>';
+echo RangeInput::widget([
+    'model' => $model,
+    'attribute' => 'contrast',
+    'addon' => ['append'=>['content'=>'%']]
 ]);
 ```
 
@@ -331,11 +386,11 @@ $items = [[
 	'icon' => 'play-circle',
 	'content' => $content,
 	'items' => [
-		 ['url' => '#sec-1-1', 'label' => 'Section 1.1', 'content' => $content],
-		 ['url' => '#sec-1-2', 'label' => 'Section 1.2', 'content' => $content],
-		 ['url' => '#sec-1-3', 'label' => 'Section 1.3', 'content' => $content],
-		 ['url' => '#sec-1-4', 'label' => 'Section 1.4', 'content' => $content],
-		 ['url' => '#sec-1-5', 'label' => 'Section 1.5', 'content' => $content],
+		['url' => '#sec-1-1', 'label' => 'Section 1.1', 'content' => $content],
+		['url' => '#sec-1-2', 'label' => 'Section 1.2', 'content' => $content],
+		['url' => '#sec-1-3', 'label' => 'Section 1.3', 'content' => $content],
+		['url' => '#sec-1-4', 'label' => 'Section 1.4', 'content' => $content],
+		['url' => '#sec-1-5', 'label' => 'Section 1.5', 'content' => $content],
 	],
 ]];
 
