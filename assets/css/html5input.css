@@ -17,6 +17,7 @@
     width: auto;
 }
 .input-group-html5 input[type="color"], .input-group-html5 input[type="range"] {
+    display: block;
     padding:0;
     margin:0;
     border: none;
@@ -25,10 +26,10 @@
     height: 18px;
     width: 100%;;
 }
-.input-group-lg .addon-color input[type="color"] {
+.input-group-lg  input[type="color"] {
     height: 24px!important;
 }
-.input-group-sm .addon-color input[type="color"] {
+.input-group-sm  input[type="color"] {
     height: 14px!important;
 }
 .input-group-html5 .addon-range {
