@@ -44,3 +44,7 @@
 .input-group-html5 .input-group-addon:first-child {
     border-right: 1px solid #ccc!important;
 }
+.input-group-html5 input[disabled]  {
+    opacity: .65;
+    cursor: not-allowed;
+}
