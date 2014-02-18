@@ -17,17 +17,14 @@ use yii\web\AssetBundle;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class TimePickerAsset extends AssetBundle {
+class TimePickerAsset extends AssetBundle
+{
 
-    public $depends = [
-        'yii\web\JqueryAsset',
-        'yii\bootstrap\BootstrapAsset',
-    ];
-
-    public function init() {
-        $this->sourcePath = __DIR__ . '/../assets';
-        $this->css = YII_DEBUG ? ['css/bootstrap-timepicker.css'] : ['css/bootstrap-timepicker.min.css'];
-        $this->js = YII_DEBUG ? ['js/bootstrap-timepicker.js'] : ['js/bootstrap-timepicker.min.js'];
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setupAssets('css', ['css/bootstrap-timepicker']);
+        $this->setupAssets('js', ['js/bootstrap-timepicker']);
         parent::init();
     }
 

@@ -9,18 +9,19 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for Html5Input Widget
+ * Asset bundle for Typeahead Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class Html5InputAsset extends AssetBundle
+class TypeaheadNewAsset extends AssetBundle
 {
 
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/html5input']);
+        $this->setupAssets('css', ['css/typeahead']);
+        $this->setupAssets('js', ['js/typeahead.bundle']);
         parent::init();
     }
 

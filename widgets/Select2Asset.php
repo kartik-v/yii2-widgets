@@ -8,26 +8,20 @@
 
 namespace kartik\widgets;
 
-use Yii;
-use yii\web\AssetBundle;
-
 /**
  * Asset bundle for Select2 Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class Select2Asset extends AssetBundle {
+class Select2Asset extends AssetBundle
+{
 
-    public $depends = [
-        'yii\web\JqueryAsset',
-        'yii\bootstrap\BootstrapAsset',
-    ];
-
-    public function init() {
-        $this->sourcePath = __DIR__ . '/../lib/select2';
-        $this->css = YII_DEBUG ? ['select2.css', 'select2-bootstrap3.css'] : ['select2.min.css', 'select2-bootstrap3.min.css'];
-        $this->js = YII_DEBUG ? ['select2.js'] : ['select2.min.js'];
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../lib/select2');
+        $this->setupAssets('css', ['select2', 'select2-bootstrap3']);
+        $this->setupAssets('js', ['select2']);
         parent::init();
     }
 

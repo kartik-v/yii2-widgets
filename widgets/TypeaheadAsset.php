@@ -8,26 +8,20 @@
 
 namespace kartik\widgets;
 
-use Yii;
-use yii\web\AssetBundle;
-
 /**
  * Asset bundle for Typeahead Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class TypeaheadAsset extends AssetBundle {
+class TypeaheadAsset extends AssetBundle
+{
 
-    public $depends = [
-        'yii\web\JqueryAsset',
-        'yii\bootstrap\BootstrapAsset',
-    ];
-	
-    public function init() {
-        $this->sourcePath = __DIR__ . '/../assets';
-        $this->css = YII_DEBUG ? ['css/typeahead.css'] : ['css/typeahead.min.css'];
-        $this->js = YII_DEBUG ? ['js/typeahead.js', 'js/hogan.js'] : ['js/typeahead.min.js', 'js/hogan.min.js'];
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setupAssets('css', ['css/typeahead']);
+        $this->setupAssets('js', ['js/typeahead', 'js/hogan']);
         parent::init();
     }
 
