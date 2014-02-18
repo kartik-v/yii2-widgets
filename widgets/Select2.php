@@ -26,7 +26,8 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://ivaynberg.github.com/select2/
  */
-class Select2 extends InputWidget {
+class Select2 extends InputWidget
+{
 
     const LARGE = 'lg';
     const MEDIUM = 'md';
@@ -91,7 +92,8 @@ class Select2 extends InputWidget {
      * Initializes the widget
      * @throw InvalidConfigException
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         $this->_hidden = !empty($this->pluginOptions['data']) ||
                 !empty($this->pluginOptions['query']) ||
@@ -100,7 +102,7 @@ class Select2 extends InputWidget {
         if (empty($this->data) && !$this->_hidden) {
             throw new InvalidConfigException("No 'data' source found for Select2. Either the 'data' property must be set OR one of 'data', 'query', 'ajax', or 'tags' must be set within 'pluginOptions'.");
         }
-        if (!empty($this->options['placeholder']) && !$this->_hidden && 
+        if (!empty($this->options['placeholder']) && !$this->_hidden &&
                 (empty($this->options['multiple']) || $this->options['multiple'] == false)) {
             $this->data = ["" => ""] + $this->data;
         }
@@ -115,7 +117,8 @@ class Select2 extends InputWidget {
     /**
      * Embeds the input group addon
      */
-    protected function embedAddon($input) {
+    protected function embedAddon($input)
+    {
         if (!empty($this->addon)) {
             $addon = $this->addon;
             $prepend = ArrayHelper::getValue($addon, 'prepend', '');
@@ -156,7 +159,8 @@ class Select2 extends InputWidget {
      * or text input - in case JQuery is not supported by 
      * the browser
      */
-    protected function renderInput() {
+    protected function renderInput()
+    {
         if (!isset($this->addon) && isset($this->size)) {
             Html::addCssClass($this->options, 'input-' . $this->size);
         }
@@ -172,7 +176,8 @@ class Select2 extends InputWidget {
     /**
      * Registers the needed assets
      */
-    public function registerAssets() {
+    public function registerAssets()
+    {
         $view = $this->getView();
         Select2Asset::register($view);
         if ($this->language != false) {

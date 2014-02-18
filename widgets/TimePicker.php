@@ -22,7 +22,8 @@ use yii\helpers\Html;
  * @see https://github.com/rendom/bootstrap-3-timepicker
  * @see https://github.com/jdewit/bootstrap-timepicker
  */
-class TimePicker extends InputWidget {
+class TimePicker extends InputWidget
+{
 
     /**
      * @var string the size of the input - 'lg', 'md', 'sm', 'xs'
@@ -53,7 +54,8 @@ class TimePicker extends InputWidget {
      * Initializes the widget
      * @throw InvalidConfigException
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         $this->registerAssets();
         echo Html::tag('div', $this->renderInput(), $this->containerOptions);
@@ -63,7 +65,8 @@ class TimePicker extends InputWidget {
      * Renders the input
      * @return string
      */
-    protected function renderInput() {
+    protected function renderInput()
+    {
         Html::addCssClass($this->options, 'form-control');
         if (!empty($this->options['disabled'])) {
             Html::addCssClass($this->addonOptions, 'disabled-addon');
@@ -104,7 +107,8 @@ class TimePicker extends InputWidget {
     /**
      * Registers the needed assets
      */
-    public function registerAssets() {
+    public function registerAssets()
+    {
         $view = $this->getView();
         TimePickerAsset::register($view);
         $this->registerPlugin('timepicker');

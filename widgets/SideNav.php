@@ -41,9 +41,12 @@ use yii\helpers\ArrayHelper;
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  */
-class SideNav extends \yii\widgets\Menu {
-    /* Panel contextual states */
+class SideNav extends \yii\widgets\Menu
+{
 
+    /**
+     * Panel contextual states 
+     */
     const TYPE_DEFAULT = 'default';
     const TYPE_PRIMARY = 'primary';
     const TYPE_INFO = 'info';
@@ -64,19 +67,29 @@ class SideNav extends \yii\widgets\Menu {
      */
     public $heading = false;
 
-    /* @var array options for the sidenav heading */
+    /**
+     *  @var array options for the sidenav heading 
+     */
     public $headingOptions = [];
 
-    /* @var array options for the sidenav container */
+    /**
+     *  @var array options for the sidenav container 
+     */
     public $containerOptions = [];
 
-    /* @var string indicator for a menu sub-item */
+    /**
+     *  @var string indicator for a menu sub-item 
+     */
     public $indItem = '&raquo; ';
 
-    /* @var string indicator for a opened sub-menu */
+    /**
+     * @var string indicator for a opened sub-menu 
+     */
     public $indMenuOpen = '<i class="indicator glyphicon glyphicon-chevron-down"></i>';
 
-    /* @var string indicator for a closed sub-menu */
+    /**
+     *  @var string indicator for a closed sub-menu 
+     */
     public $indMenuClose = '<i class="indicator glyphicon glyphicon-chevron-right"></i>';
 
     /**
@@ -115,7 +128,8 @@ class SideNav extends \yii\widgets\Menu {
         self::TYPE_WARNING,
     ];
 
-    public function init() {
+    public function init()
+    {
         parent::init();
         SideNavAsset::register($this->getView());
         $this->activateParents = true;
@@ -130,7 +144,8 @@ class SideNav extends \yii\widgets\Menu {
      * Renders the side navigation menu.
      * with the heading and panel containers
      */
-    public function run() {
+    public function run()
+    {
         $heading = '';
         if (isset($this->heading) && $this->heading != '') {
             Html::addCssClass($this->headingOptions, 'panel-heading');
@@ -145,7 +160,8 @@ class SideNav extends \yii\widgets\Menu {
     /**
      * Renders the main menu 
      */
-    protected function renderMenu() {
+    protected function renderMenu()
+    {
         if ($this->route === null && Yii::$app->controller !== null) {
             $this->route = Yii::$app->controller->getRoute();
         }
@@ -162,7 +178,8 @@ class SideNav extends \yii\widgets\Menu {
     /**
      * Marks each topmost level item which is not a submenu
      */
-    protected function markTopItems() {
+    protected function markTopItems()
+    {
         $items = [];
         foreach ($this->items as $item) {
             if (empty($item['items'])) {
@@ -179,7 +196,8 @@ class SideNav extends \yii\widgets\Menu {
      * @return string the rendering result
      * @throws InvalidConfigException
      */
-    protected function renderItem($item) {
+    protected function renderItem($item)
+    {
         $this->validateItems($item);
         $url = Html::url(ArrayHelper::getValue($item, 'url', '#'));
         $template = $this->linkTemplate;
@@ -208,7 +226,8 @@ class SideNav extends \yii\widgets\Menu {
      * Validates each item for a valid label and url.
      * @throws InvalidConfigException
      */
-    protected function validateItems($item) {
+    protected function validateItems($item)
+    {
         if (!isset($item['label'])) {
             throw new InvalidConfigException("The 'label' option is required.");
         }

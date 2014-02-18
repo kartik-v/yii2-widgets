@@ -22,7 +22,10 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://twitter.github.com/typeahead.js/examples
  */
-class ColorInput extends Html5Input {
+class ColorInput extends Html5Input
+{
+
     public $type = 'color';
     public $width = '60px';
+
 }

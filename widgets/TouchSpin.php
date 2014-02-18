@@ -20,7 +20,9 @@ use yii\helpers\Html;
  * @since 1.0
  * @see http://www.virtuosoft.eu/code/bootstrap-touchspin/
  */
-class TouchSpin extends InputWidget {
+class TouchSpin extends InputWidget
+{
+
     /**
      * @var array HTML attributes for the `up` button. The following special 
      * attributes are recognized
@@ -43,7 +45,8 @@ class TouchSpin extends InputWidget {
      * Initializes the widget
      * @throw InvalidConfigException
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         $this->setPluginOptions();
         $this->registerAssets();
@@ -53,7 +56,8 @@ class TouchSpin extends InputWidget {
     /**
      * Set the plugin options
      */
-    protected function setPluginOptions() {
+    protected function setPluginOptions()
+    {
         $defaults = [];
         Html::addCssClass($this->upOptions, 'bootstrap-touchspin-up');
         Html::addCssClass($this->downOptions, 'bootstrap-touchspin-down');
@@ -67,7 +71,8 @@ class TouchSpin extends InputWidget {
      * @param array $options the button html options
      * @return string
      */
-    protected function renderButton($options = []) {
+    protected function renderButton($options = [])
+    {
         if (!empty($this->options['disabled']) && $this->options['disabled'] == true) {
             $options['disabled'] = true;
         }
@@ -83,7 +88,8 @@ class TouchSpin extends InputWidget {
     /**
      * Registers the needed assets
      */
-    public function registerAssets() {
+    public function registerAssets()
+    {
         $view = $this->getView();
         $id = '$("#' . $this->options['id'] . '").parent()';
         TouchSpinAsset::register($view);

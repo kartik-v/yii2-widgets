@@ -42,7 +42,8 @@ use yii\helpers\ArrayHelper;
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  */
-class Affix extends \yii\widgets\Menu {
+class Affix extends \yii\widgets\Menu
+{
 
     /**
      * @var string, the type of content to display. By default displays the navigation menu
@@ -72,23 +73,24 @@ class Affix extends \yii\widgets\Menu {
 
     /* @var string the body main section template */
     public $secTemplate = <<<EOT
-	<div class="kv-section">
-		<div class="page-header">
-			<h1 id="{id}">{header}</h1>
-		</div>
-		{content}{subSection}
-	</div>
+<div class="kv-section">
+    <div class="page-header">
+        <h1 id="{id}">{header}</h1>
+    </div>
+    {content}{subSection}
+</div>
 EOT;
 
     /* @var string the body sub section template */
     public $subTemplate = <<<EOT
-		<div class="kv-sub-section">
-			<h3 id="{id}">{header}</h3>
-			{content}
-		</div>
+<div class="kv-sub-section">
+    <h3 id="{id}">{header}</h3>
+    {content}
+</div>
 EOT;
 
-    public function init() {
+    public function init()
+    {
         parent::init();
         AffixAsset::register($this->getView());
         $this->activateParents = true;
@@ -99,7 +101,8 @@ EOT;
         Html::addCssClass($this->container, 'kv-sidebar hidden-print-affix');
     }
 
-    public function run() {
+    public function run()
+    {
         if ($this->type == 'body') {
             echo $this->renderBody($this->items);
         }
@@ -123,7 +126,8 @@ EOT;
      * @param array $items the items to be rendered as body content
      * @return string the rendering result
      */
-    protected function renderBody($items) {
+    protected function renderBody($items)
+    {
         $body = '';
         foreach ($items as $item) {
             $body .= $this->renderSection($item) . "\n";
@@ -138,7 +142,8 @@ EOT;
      * @return string the rendering result
      * @throws InvalidConfigException
      */
-    protected function renderSection($item) {
+    protected function renderSection($item)
+    {
         $this->validateItems($item);
         $id = str_replace('#', '', $item['url']);
         $header = ArrayHelper::getValue($item, 'header', $item['label']);
@@ -167,7 +172,8 @@ EOT;
      * @return string the rendering result
      * @throws InvalidConfigException
      */
-    protected function renderSubSection($item) {
+    protected function renderSubSection($item)
+    {
         $this->validateItems($item);
         $id = str_replace('#', '', $item['url']);
         $header = ArrayHelper::getValue($item, 'header', $item['label']);
@@ -189,7 +195,8 @@ EOT;
      * @return string the rendering result
      * @throws InvalidConfigException
      */
-    protected function renderItem($item) {
+    protected function renderItem($item)
+    {
         $this->validateItems($item);
         $template = ArrayHelper::getValue($item, 'template', $this->linkTemplate);
         $icon = empty($item['icon']) ? '' : '<i class="glyphicon glyphicon-' . $item['icon'] . '"></i> ';
@@ -204,7 +211,8 @@ EOT;
      * Validates each item for a valid label and url.
      * @throws InvalidConfigException
      */
-    protected function validateItems($item) {
+    protected function validateItems($item)
+    {
         if (!isset($item['label'])) {
             throw new InvalidConfigException("The 'label' option is required.");
         }

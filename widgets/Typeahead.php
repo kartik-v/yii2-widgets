@@ -27,7 +27,8 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://twitter.github.com/typeahead.js/examples
  */
-class Typeahead extends InputWidget {
+class Typeahead extends InputWidget
+{
 
     /**
      * @var array dataset an object that defines a set of data that hydrates suggestions. 
@@ -62,7 +63,8 @@ class Typeahead extends InputWidget {
      * Initializes the widget
      * @throw InvalidConfigException
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         if (empty($this->dataset) || !is_array($this->dataset)) {
             throw new InvalidConfigException("You must define the 'dataset' property for Typeahead which must be an array.");
@@ -79,7 +81,8 @@ class Typeahead extends InputWidget {
      * Graceful fallback to a normal HTML  text input - in 
      * case JQuery is not supported by the browser
      */
-    protected function renderInput() {
+    protected function renderInput()
+    {
         Html::addCssClass($this->options, 'typeahead');
         echo $this->getTextInput();
     }
@@ -87,7 +90,8 @@ class Typeahead extends InputWidget {
     /**
      * Validates and sets plugin options
      */
-    protected function setPluginOptions() {
+    protected function setPluginOptions()
+    {
         $i = 1;
         $data = [];
         foreach ($this->dataset as $d) {
@@ -120,7 +124,8 @@ class Typeahead extends InputWidget {
     /**
      * Registers the needed assets
      */
-    public function registerAssets() {
+    public function registerAssets()
+    {
         $view = $this->getView();
         TypeaheadAsset::register($view);
         $this->setPluginOptions();

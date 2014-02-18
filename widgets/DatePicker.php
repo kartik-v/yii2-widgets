@@ -25,7 +25,8 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://eternicode.github.io/bootstrap-datepicker/
  */
-class DatePicker extends InputWidget {
+class DatePicker extends InputWidget
+{
 
     const TYPE_INPUT = 1;
     const TYPE_COMPONENT_PREPEND = 2;
@@ -104,7 +105,8 @@ class DatePicker extends InputWidget {
      * Initializes the widget
      * @throw InvalidConfigException
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         if ($this->type === self::TYPE_RANGE && $this->attribute2 === null && $this->name2 === null) {
             throw new InvalidConfigException("Either 'name2' or 'attribute2' properties must be specified for a datepicker 'range' markup.");
@@ -131,7 +133,8 @@ class DatePicker extends InputWidget {
      * Graceful fallback to a normal HTML  text input - in 
      * case JQuery is not supported by the browser
      */
-    protected function renderInput() {
+    protected function renderInput()
+    {
         if ($this->type == self::TYPE_INLINE) {
             if (empty($this->options['readonly'])) {
                 $this->options['readonly'] = true;
@@ -157,7 +160,8 @@ class DatePicker extends InputWidget {
      * Parses the input to render based on markup type
      * @param the input
      */
-    protected function parseMarkup($input) {
+    protected function parseMarkup($input)
+    {
         if ($this->type == self::TYPE_INPUT || $this->type == self::TYPE_INLINE) {
             if (isset($this->size)) {
                 Html::addCssClass($this->options, 'input-' . $this->size);
@@ -216,7 +220,8 @@ class DatePicker extends InputWidget {
     /**
      * Registers the needed assets
      */
-    public function registerAssets() {
+    public function registerAssets()
+    {
         $view = $this->getView();
         DatePickerAsset::register($view);
         if (!empty($this->pluginOptions['language'])) {

@@ -22,6 +22,9 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://twitter.github.com/typeahead.js/examples
  */
-class RangeInput extends Html5Input {
+class RangeInput extends Html5Input
+{
+
     public $type = 'range';
+
 }

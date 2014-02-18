@@ -22,7 +22,8 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://twitter.github.com/typeahead.js/examples
  */
-class Html5Input extends InputWidget {
+class Html5Input extends InputWidget
+{
 
     /**
      * @var string the HTML 5 input type
@@ -96,7 +97,8 @@ class Html5Input extends InputWidget {
      * Initializes the widget
      * @throw InvalidConfigException
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         if (in_array($this->type, self::$_specialInputs)) {
             $this->html5Options['id'] = $this->options['id'] . '-source';
@@ -116,7 +118,8 @@ class Html5Input extends InputWidget {
      * Gets the HTML5 input
      * return string
      */
-    protected function getInput() {
+    protected function getInput()
+    {
         if ($this->hasModel) {
             return Html::activeInput($this->type, $this->model, $this->attribute, $this->options);
         }
@@ -127,7 +130,8 @@ class Html5Input extends InputWidget {
      * Renders the special HTML5 input 
      * Mainly useful for the color and range inputs
      */
-    protected function renderInput() {
+    protected function renderInput()
+    {
         Html::addCssClass($this->options, 'form-control');
         $size = isset($this->size) ? ' input-group-' . $this->size : '';
         Html::addCssClass($this->containerOptions, 'input-group input-group-html5' . $size);
@@ -159,7 +163,8 @@ class Html5Input extends InputWidget {
      * @param string/array $addon the addon parameter
      * @return string
      */
-    protected static function getAddonContent($addon) {
+    protected static function getAddonContent($addon)
+    {
         if (is_array($addon)) {
             $content = ArrayHelper::getValue($addon, 'content', '');
             $options = ArrayHelper::getValue($addon, 'options', []);
@@ -178,7 +183,8 @@ class Html5Input extends InputWidget {
     /**
      * Registers the needed assets
      */
-    public function registerAssets() {
+    public function registerAssets()
+    {
         $view = $this->getView();
         Html5InputAsset::register($view);
         $caption = '$("#' . $this->options['id'] . '")';

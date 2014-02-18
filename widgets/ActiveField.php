@@ -41,7 +41,8 @@ use yii\helpers\ArrayHelper;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class ActiveField extends \yii\widgets\ActiveField {
+class ActiveField extends \yii\widgets\ActiveField
+{
 
     const TYPE_RADIO = 'radio';
     const TYPE_CHECKBOX = 'checkbox';
@@ -71,7 +72,8 @@ class ActiveField extends \yii\widgets\ActiveField {
     /**
      * Initializes the widget
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         if ($this->form->type === ActiveForm::TYPE_INLINE && !isset($this->autoPlaceholder)) {
             $this->autoPlaceholder = true;
@@ -101,7 +103,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      *
      * @return string the rendering result
      */
-    public function render($content = null) {
+    public function render($content = null)
+    {
         $this->initTemplate();
         $this->initPlaceholder($this->inputOptions);
         $this->initAddon();
@@ -113,7 +116,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * @param string/array $addon the addon parameter
      * @return string
      */
-    public static function getAddonContent($addon) {
+    public static function getAddonContent($addon)
+    {
         if (is_array($addon)) {
             $content = ArrayHelper::getValue($addon, 'content', '');
             $options = ArrayHelper::getValue($addon, 'options', []);
@@ -132,7 +136,8 @@ class ActiveField extends \yii\widgets\ActiveField {
     /**
      * Initializes the addon for text inputs
      */
-    protected function initAddon() {
+    protected function initAddon()
+    {
         if (!empty($this->addon)) {
             $addon = $this->addon;
             $prepend = static::getAddonContent(ArrayHelper::getValue($addon, 'prepend', ''));
@@ -150,7 +155,8 @@ class ActiveField extends \yii\widgets\ActiveField {
     /**
      * Initializes placeholder based on $autoPlaceholder
      */
-    protected function initPlaceholder(&$options) {
+    protected function initPlaceholder(&$options)
+    {
         if ($this->autoPlaceholder) {
             $label = Html::encode($this->model->getAttributeLabel($this->attribute));
             $this->inputOptions['placeholder'] = $label;
@@ -161,7 +167,8 @@ class ActiveField extends \yii\widgets\ActiveField {
     /**
      * Initializes template for bootstrap 3 specific styling
      */
-    protected function initTemplate() {
+    protected function initTemplate()
+    {
         $form = $this->form;
         $inputDivClass = $form->getInputCss();
         $offsetDivClass = $form->getOffsetCss();
@@ -194,7 +201,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * @param array $options the tag options in terms of name-value pairs.
      * @return static the field object itself
      */
-    public function staticInput($options = []) {
+    public function staticInput($options = [])
+    {
         Html::addCssClass($options, 'form-control-static');
         $content = isset($this->model[$this->attribute]) ? $this->model[$this->attribute] : '-';
         $this->parts['{input}'] = Html::tag('p', $content, $options);
@@ -208,7 +216,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
      * @return static the field object itself
      */
-    public function input($type, $options = []) {
+    public function input($type, $options = [])
+    {
         $this->initPlaceholder($options);
         if ($type == 'range' || $type == 'color') {
             Html::removeCssClass($this->inputOptions, 'form-control');
@@ -226,7 +235,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
      * @return static the field object itself
      */
-    public function passwordInput($options = []) {
+    public function passwordInput($options = [])
+    {
         $this->initPlaceholder($options);
         return parent::passwordInput($options);
     }
@@ -238,7 +248,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * the attributes of the resulting tag. The values will be HTML-encoded using [[Html::encode()]].
      * @return static the field object itself
      */
-    public function textarea($options = []) {
+    public function textarea($options = [])
+    {
         $this->initPlaceholder($options);
         return parent::textarea($options);
     }
@@ -264,7 +275,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * except that the radio is enclosed by the label tag.
      * @return static the field object itself
      */
-    public function radio($options = [], $enclosedByLabel = true) {
+    public function radio($options = [], $enclosedByLabel = true)
+    {
         $this->_offset = true;
         return parent::radio($options, $enclosedByLabel);
     }
@@ -290,7 +302,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * except that the checkbox is enclosed by the label tag.
      * @return static the field object itself
      */
-    public function checkbox($options = [], $enclosedByLabel = true) {
+    public function checkbox($options = [], $enclosedByLabel = true)
+    {
         $this->_offset = true;
         return parent::checkbox($options, $enclosedByLabel);
     }
@@ -321,7 +334,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * value and the checked status of the checkbox input.
      * @return static the field object itself
      */
-    public function checkboxList($items, $options = []) {
+    public function checkboxList($items, $options = [])
+    {
         if (isset($options['inline']) && $options['inline'] == true) {
             Html::addCssClass($options['itemOptions']['labelOptions'], self::TYPE_CHECKBOX . '-' . self::STYLE_INLINE);
             $options['itemOptions']['container'] = false;
@@ -355,7 +369,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * value and the checked status of the radio button input.
      * @return static the field object itself
      */
-    public function radioList($items, $options = []) {
+    public function radioList($items, $options = [])
+    {
         if (isset($options['inline']) && $options['inline'] == true) {
             Html::addCssClass($options['itemOptions']['labelOptions'], self::TYPE_RADIO . '-' . self::STYLE_INLINE);
             $options['itemOptions']['container'] = false;
@@ -380,7 +395,8 @@ class ActiveField extends \yii\widgets\ActiveField {
      * - inline: boolean, whether the list should be displayed as a series on the same line, default is false	 * @param string $selector 
      *
      */
-    public function multiselect($items, $options = []) {
+    public function multiselect($items, $options = [])
+    {
         $height = self::MULTI_SELECT_HEIGHT;
         $selector = self::TYPE_CHECKBOX;
         $container = [];

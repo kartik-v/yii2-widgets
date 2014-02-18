@@ -19,7 +19,8 @@ use yii\web\JsExpression;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class InputWidget extends \yii\widgets\InputWidget {
+class InputWidget extends \yii\widgets\InputWidget
+{
 
     /**
      * @var array widget plugin options 
@@ -46,7 +47,8 @@ class InputWidget extends \yii\widgets\InputWidget {
      * @param $file string the asset file type (css or js)
      * @param $class string the class name of the AssetBundle
      */
-    protected function addAsset($view, $file, $type, $class) {
+    protected function addAsset($view, $file, $type, $class)
+    {
         if ($type == 'css' || $type == 'js') {
             $asset = $view->getAssetManager();
             $bundle = $asset->bundles[$class];
@@ -64,7 +66,8 @@ class InputWidget extends \yii\widgets\InputWidget {
     /**
      * Generates a text input
      */
-    protected function getTextInput() {
+    protected function getTextInput()
+    {
         if ($this->hasModel()) {
             return Html::activeTextInput($this->model, $this->attribute, $this->options);
         }
@@ -76,7 +79,8 @@ class InputWidget extends \yii\widgets\InputWidget {
     /**
      * Generates a dropdown list
      */
-    protected function getDropDownList() {
+    protected function getDropDownList()
+    {
         if ($this->hasModel()) {
             return Html::activeDropDownList($this->model, $this->attribute, $this->data, $this->options);
         }
@@ -90,7 +94,8 @@ class InputWidget extends \yii\widgets\InputWidget {
      * @param string $name the name of the plugin
      * @param string $element the plugin target element
      */
-    protected function registerPlugin($name, $element = null) {
+    protected function registerPlugin($name, $element = null)
+    {
         $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {

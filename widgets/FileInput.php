@@ -31,14 +31,15 @@ use yii\web\JsExpression;
  * @since 1.0
  * @see http://twitter.github.com/typeahead.js/examples
  */
-class FileInput extends InputWidget {
-    /*
+class FileInput extends InputWidget
+{
+
+    /**
      * @var array HTML attributes for the main widget container
      */
-
     public $containerOptions = [];
 
-    /*
+    /**
      * @var array HTML attributes for the file picker button. The following
      * special options are additionally recognized:
      * - icon: string the Bootstrap glyphicon suffix
@@ -54,7 +55,7 @@ class FileInput extends InputWidget {
      */
     public $removeOptions = [];
 
-    /*
+    /**
      * @var array HTML attributes for the file upload button. The [[uploadRoute]] 
      * parameter if passed will be used as an action, else this button will 
      * default to a submit button. The following special options are additionally 
@@ -64,7 +65,7 @@ class FileInput extends InputWidget {
      */
     public $uploadOptions = [];
 
-    /*
+    /**
      * @var mixed The upload route/action url to process file upload when the
      * upload button is clicked. If this variable is not set, the upload button
      * action will default to a 'form submit'. This can be set to false to 
@@ -78,7 +79,7 @@ class FileInput extends InputWidget {
      */
     public $previewOptions = [];
 
-    /*
+    /**
      * @var array HTML attributes for the bootstrap input group enclosing the 
      * file caption, file picker button, removal button, and the upload button
      */
@@ -89,17 +90,17 @@ class FileInput extends InputWidget {
      */
     public $captionOptions = ['class' => 'form-control'];
 
-    /*
+    /**
      * @var boolean whether to display the file caption. Defaults to true.
      */
     public $showCaption = true;
 
-    /*
+    /**
      * @var boolean whether to display the file preview. Defaults to true.
      */
     public $showPreview = true;
 
-    /*
+    /**
      * @var boolean whether to display the remove button. Defaults to true.
      */
     public $showRemove = true;
@@ -109,7 +110,7 @@ class FileInput extends InputWidget {
      */
     public $showUpload = true;
 
-    /*
+    /**
      * @var boolean whether to display a warning message for browsers running 
      * IE9 and below. Defaults to true.
      */
@@ -134,7 +135,8 @@ class FileInput extends InputWidget {
     /**
      * @var array initialize the FileInput widget
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         Yii::setAlias('@fileinput', dirname(__FILE__));
         if (empty($this->i18n)) {
@@ -189,7 +191,8 @@ class FileInput extends InputWidget {
      * @param string $validation    
      * @return string
      */
-    protected function validateIE($content, $validation = 'lt IE 10') {
+    protected function validateIE($content, $validation = 'lt IE 10')
+    {
         return "<!--[if {$validation}]>{$content}<![endif]-->";
     }
 
@@ -197,7 +200,8 @@ class FileInput extends InputWidget {
      * Renders the file picker input
      * @return string
      */
-    protected function renderInput() {
+    protected function renderInput()
+    {
         $class = (empty($this->buttonOptions['class']) ? 'btn btn-primary btn-file' : 'btn-file');
         Html::addCssClass($this->buttonOptions, $class);
         $label = ArrayHelper::remove($this->buttonOptions, 'label', Yii::t('fileinput', 'Browse') . '&hellip;');
@@ -220,7 +224,8 @@ class FileInput extends InputWidget {
      * Renders the file(s) removal button
      * @return string
      */
-    protected function renderRemove() {
+    protected function renderRemove()
+    {
         $class = (empty($this->removeOptions['class']) ? 'btn btn-default fileinput-remove fileinput-remove-button' : 'fileinput-remove fileinput-remove-button');
         Html::addCssClass($this->removeOptions, $class);
         $this->removeOptions['type'] = 'button';
@@ -235,7 +240,8 @@ class FileInput extends InputWidget {
      * Renders the file upload button
      * @return string
      */
-    protected function renderUpload() {
+    protected function renderUpload()
+    {
         $class = (empty($this->uploadOptions['class']) ? 'btn btn-default fileinput-upload-button' : 'fileinput-upload-button');
         Html::addCssClass($this->uploadOptions, $class);
         $label = ArrayHelper::remove($this->uploadOptions, 'label', Yii::t('fileinput', 'Upload'));
@@ -257,7 +263,8 @@ class FileInput extends InputWidget {
      * Renders the file caption
      * @return string
      */
-    protected function renderCaption() {
+    protected function renderCaption()
+    {
         Html::addCssClass($this->captionOptions, 'file-caption');
         if ($this->_disabled) {
             $this->captionOptions['disabled'] = 'disabled';
@@ -269,7 +276,8 @@ class FileInput extends InputWidget {
      * Renders the preview container for the selected file(s)
      * @return string
      */
-    protected function renderPreview() {
+    protected function renderPreview()
+    {
         Html::addCssClass($this->previewOptions, 'file-preview');
         $previewProgress = "<div class='file-preview-status text-center text-success'></div>\n";
         $previewContent = "<div class='close fileinput-remove text-right'>&times;</div>\n
@@ -282,7 +290,8 @@ class FileInput extends InputWidget {
     /**
      * Registers the needed assets
      */
-    public function registerAssets() {
+    public function registerAssets()
+    {
         $view = $this->getView();
         FileInputAsset::register($view);
         /*

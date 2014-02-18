@@ -37,7 +37,8 @@ use yii\helpers\Html;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class ActiveForm extends \yii\widgets\ActiveForm {
+class ActiveForm extends \yii\widgets\ActiveForm
+{
 
     const NOT_SET = '';
     const DEFAULT_LABEL_SPAN = 2;  // this will offset the adjacent input accordingly
@@ -114,7 +115,8 @@ class ActiveForm extends \yii\widgets\ActiveForm {
      * Initializes the form configuration array
      * and parameters for the form.
      */
-    protected function initForm() {
+    protected function initForm()
+    {
         if (!isset($this->type) || strlen($this->type) == 0) {
             $this->type = self::TYPE_VERTICAL;
         }
@@ -135,7 +137,8 @@ class ActiveForm extends \yii\widgets\ActiveForm {
     /**
      * Initializes the widget.
      */
-    public function init() {
+    public function init()
+    {
         $this->registerAssets();
         $this->initForm();
         $config = $this->formConfig;
@@ -176,34 +179,41 @@ class ActiveForm extends \yii\widgets\ActiveForm {
         parent::init();
     }
 
-    public function getInputCss() {
+    public function getInputCss()
+    {
         return $this->_inputCss;
     }
 
-    public function setInputCss($class) {
+    public function setInputCss($class)
+    {
         $this->_inputCss = $class;
     }
 
-    public function hasInputCss() {
+    public function hasInputCss()
+    {
         return ($this->_inputCss != self::NOT_SET);
     }
 
-    public function getOffsetCss() {
+    public function getOffsetCss()
+    {
         return $this->_offsetCss;
     }
 
-    public function setOffsetCss($class) {
+    public function setOffsetCss($class)
+    {
         $this->_offsetCss = $class;
     }
 
-    public function hasOffsetCss() {
+    public function hasOffsetCss()
+    {
         return ($this->_offsetCss != self::NOT_SET);
     }
 
     /**
      * Registers the needed assets
      */
-    public function registerAssets() {
+    public function registerAssets()
+    {
         $view = $this->getView();
         ActiveFormAsset::register($view);
     }
