@@ -382,7 +382,6 @@ echo RangeInput::widget([
 ]);
 ```
 
-
 ### SwitchInput
 ```php
 use kartik\widgets\RangeInput;
