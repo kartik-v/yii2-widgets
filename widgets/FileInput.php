@@ -211,12 +211,7 @@ class FileInput extends InputWidget
         if ($this->_disabled) {
             $this->buttonOptions['disabled'] = 'disabled';
         }
-        if ($this->hasModel()) {
-            $input = Html::activeFileInput($this->model, $this->attribute, $this->options);
-        }
-        else {
-            $input = Html::fileInput($this->name, $this->value, $this->options);
-        }
+        $input = $this->getInput('fileInput');
         return Html::tag('div', $icon . $label . $input, $this->buttonOptions);
     }
 

@@ -110,7 +110,7 @@ class Html5Input extends InputWidget
             if (isset($this->size)) {
                 Html::addCssClass($this->options, ['class' => 'input-' . $this->size]);
             }
-            echo $this->getInput();
+            echo $this->getHtml5Input();
         }
     }
 
@@ -118,7 +118,7 @@ class Html5Input extends InputWidget
      * Gets the HTML5 input
      * return string
      */
-    protected function getInput()
+    protected function getHtml5Input()
     {
         if ($this->hasModel) {
             return Html::activeInput($this->type, $this->model, $this->attribute, $this->options);
@@ -140,7 +140,7 @@ class Html5Input extends InputWidget
             $this->html5Container['style'] = $style . 'width:' . $this->width . ';';
         }
         Html::addCssClass($this->html5Container, 'input-group-addon addon-' . $this->type);
-        $caption = $this->getTextInput();
+        $caption = $this->getInput('textInput');
         $value = $this->hasModel() ? $this->model[$this->attribute] : $this->value;
         $input = Html::input($this->type, $this->html5Options['id'], $value, $this->html5Options);
         $prepend = static::getAddonContent(ArrayHelper::getValue($this->addon, 'prepend', ''));

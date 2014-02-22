@@ -50,7 +50,7 @@ class TouchSpin extends InputWidget
         parent::init();
         $this->setPluginOptions();
         $this->registerAssets();
-        echo $this->getTextInput();
+        echo $this->getInput('textInput');
     }
 
     /**

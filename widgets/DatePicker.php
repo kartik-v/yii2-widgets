@@ -153,7 +153,7 @@ class DatePicker extends InputWidget
             return $this->form->field($this->model, $this->attribute)->widget(self::classname(), $vars);
         }
 
-        return $this->parseMarkup($this->getTextInput());
+        return $this->parseMarkup($this->getInput('textInput'));
     }
 
     /**

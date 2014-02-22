@@ -84,7 +84,7 @@ class Typeahead extends InputWidget
     protected function renderInput()
     {
         Html::addCssClass($this->options, 'typeahead');
-        echo $this->getTextInput();
+        echo $this->getInput('textInput');
     }
 
     /**

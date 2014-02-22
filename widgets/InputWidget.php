@@ -23,6 +23,11 @@ class InputWidget extends \yii\widgets\InputWidget
 {
 
     /**
+     * @var array the data (for list inputs)
+     */
+    public $data = [];
+
+    /**
      * @var array widget plugin options 
      */
     public $pluginOptions = [];
@@ -64,29 +69,20 @@ class InputWidget extends \yii\widgets\InputWidget
     }
 
     /**
-     * Generates a text input
+     * Generates an input
      */
-    protected function getTextInput()
+    protected function getInput($type, $list = false)
     {
         if ($this->hasModel()) {
-            return Html::activeTextInput($this->model, $this->attribute, $this->options);
+            $input = 'active' . ucfirst($type);
+            return $list ?
+                    Html::$input($this->model, $this->attribute, $this->data, $this->options) :
+                    Html::$input($this->model, $this->attribute, $this->options);
         }
-        else {
-            return Html::textInput($this->name, $this->value, $this->options);
-        }
-    }
-
-    /**
-     * Generates a dropdown list
-     */
-    protected function getDropDownList()
-    {
-        if ($this->hasModel()) {
-            return Html::activeDropDownList($this->model, $this->attribute, $this->data, $this->options);
-        }
-        else {
-            return Html::dropDownList($this->name, $this->value, $this->data, $this->options);
-        }
+        $input = $type;
+        return $list ?
+                Html::$input($this->name, $this->value, $this->data, $this->options) :
+                Html::$input($this->name, $this->value, $this->options);
     }
 
     /**

@@ -165,10 +165,10 @@ class Select2 extends InputWidget
             Html::addCssClass($this->options, 'input-' . $this->size);
         }
         if ($this->_hidden) {
-            $input = $this->getTextInput();
+            $input = $this->getInput('textInput');
         }
         else {
-            $input = $this->getDropDownList();
+            $input = $this->getInput('dropDownList', true);
         }
         echo $this->embedAddon($input);
     }
