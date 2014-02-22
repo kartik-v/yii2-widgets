@@ -384,7 +384,7 @@ echo RangeInput::widget([
 
 ### SwitchInput
 ```php
-use kartik\widgets\RangeInput;
+use kartik\widgets\SwitchInput;
 
 // Usage with ActiveForm and model
 echo $form->field($model, 'status')->widget(SwitchInput::classname(), [
