@@ -97,6 +97,15 @@ The FileInput widget is a customized file input widget based on HTML5 file input
 * Set your upload action/route (defaults to form submit). Customize the Upload and Remove buttons.
 * Internationalization enabled for easy translation to various languages
 
+##### Future planned enhancements:
+
+* Drag and drop functionality
+* Realign/Rearrange the items in preview window
+* Better captioning for each file in the preview window
+* Support for previewing content other than image and text (e.g. HTML)
+
+The widget runs on all modern browsers supporting HTML5 File Inputs and File Processing API. For browser versions IE9 and below, this widget will gracefully degrade to normal HTML file input. The widget is vastly inspired by this [blog article](http://www.abeautifulsite.net/blog/2013/08/whipping-file-inputs-into-shape-with-bootstrap-3/) and [Jasny's File Input plugin](http://jasny.github.io/bootstrap/javascript/#fileinput).
+
 #### ColorInput
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/colorinput)  
 
@@ -117,15 +126,11 @@ The RangeInput widget is a customized range slider control widget based on HTML5
 * Allow the input to be changed both via the control or the text box.
 * Automatically degrade to normal text input for unsupported Internet Explorer versions.
 
-##### Future planned enhancements:
+#### SwitchInput
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/switchinput)  
 
-* Drag and drop functionality
-* Realign/Rearrange the items in preview window
-* Better captioning for each file in the preview window
-* Support for previewing content other than image and text (e.g. HTML)
+The SwitchInput widget turns checkboxes and radio buttons into toggle switches. The plugin is a wrapper for the [Bootstrap Switch Plugin](http://www.bootstrap-switch.org) and is specially styled for Twitter Bootstrap 3.
 
-The widget runs on all modern browsers supporting HTML5 File Inputs and File Processing API. For browser versions IE9 and below, this widget will gracefully degrade to normal HTML file input. The widget is vastly inspired by this [blog article](http://www.abeautifulsite.net/blog/2013/08/whipping-file-inputs-into-shape-with-bootstrap-3/) and [Jasny's File Input plugin](http://jasny.github.io/bootstrap/javascript/#fileinput).
- 
 ### Navigation
 
 #### Affix
@@ -374,6 +379,24 @@ echo RangeInput::widget([
     'model' => $model,
     'attribute' => 'contrast',
     'addon' => ['append'=>['content'=>'%']]
+]);
+```
+
+
+### SwitchInput
+```php
+use kartik\widgets\RangeInput;
+
+// Usage with ActiveForm and model
+echo $form->field($model, 'status')->widget(SwitchInput::classname(), [
+    'type' => SwitchInput::CHECKBOX
+]);
+
+
+// With model & without ActiveForm
+echo SwitchInput::widget([
+    'name' => 'status_1',
+    'type' => SwitchInput::RADIO
 ]);
 ```
 
