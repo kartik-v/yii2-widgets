@@ -9,7 +9,6 @@
 namespace kartik\widgets;
 
 use Yii;
-use yii\web\AssetBundle;
 
 /**
  * Asset bundle for TimePicker Widget
