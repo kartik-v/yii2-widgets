@@ -109,8 +109,8 @@ class SwitchInput extends InputWidget
             $options = ArrayHelper::getValue($item, 'options', []) + $this->itemOptions;
             $labelOptions = ArrayHelper::getValue($item, 'labelOptions', []) + $this->labelOptions;
             $value = ArrayHelper::getValue($item, 'value', null);
-            $output .= Html::label($label, $this->_name, $labelOptions) . "\n" .
-                    Html::radio($this->_name, $value, $options) . "\n" .
+            $output .= Html::label($label, $this->name, $labelOptions) . "\n" .
+                    Html::radio($this->name, $value, $options) . "\n" .
                     $this->separator;
         }
         if (empty($this->containerOptions['class'])) {
@@ -129,11 +129,11 @@ class SwitchInput extends InputWidget
         if (!isset($this->pluginOptions['animate'])) {
             $this->pluginOptions['animate'] = true;
         }
-        if (empty($this->_name)) {
+        if (empty($this->name)) {
             $this->registerPlugin('bootstrapSwitch');
         }
         else {
-            $this->registerPlugin('bootstrapSwitch', '$("[name = \'' . $this->_name . '\']")');
+            $this->registerPlugin('bootstrapSwitch', '$("[name = \'' . $this->name . '\']")');
         }
     }
 
