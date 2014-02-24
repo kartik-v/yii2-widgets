@@ -120,7 +120,7 @@ class Html5Input extends InputWidget
      */
     protected function getHtml5Input()
     {
-        if ($this->hasModel) {
+        if ($this->hasModel()) {
             return Html::activeInput($this->type, $this->model, $this->attribute, $this->options);
         }
         return Html::input($this->type, $this->name, $this->value, $this->options);
