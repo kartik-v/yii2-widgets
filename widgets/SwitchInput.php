@@ -72,11 +72,6 @@ class SwitchInput extends InputWidget
     public $containerOptions = [];
 
     /**
-     * @var string the generated name of the radio switch element(s)
-     */
-    private $_name;
-
-    /**
      * Initializes the widget
      * @throw InvalidConfigException
      */
@@ -90,8 +85,7 @@ class SwitchInput extends InputWidget
             if (empty($this->items) || !is_array($this->items)) {
                 throw new InvalidConfigException("You must setup the 'items' array for the 'radio' type.");
             }
-            $this->_name = $this->hasModel() ? ArrayHelper::remove($this->options, 'name', static::getInputName($model, $attribute)) : $this->name;
-        }
+         }
         $this->registerAssets();
         echo $this->renderInput();
     }

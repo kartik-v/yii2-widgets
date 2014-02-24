@@ -11,6 +11,7 @@ namespace kartik\widgets;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
 
 /**
@@ -44,6 +45,17 @@ class InputWidget extends \yii\widgets\InputWidget
      * ~~~
      */
     public $pluginEvents = [];
+
+    /**
+     * @var string the generated name of the radio switch element(s)
+     */
+    protected $_name;
+
+    public function init()
+    {
+        parent::init();
+        $this->_name = $this->hasModel() ? ArrayHelper::remove($this->options, 'name', Html::getInputName($this->model, $this->attribute)) : $this->name;
+    }
 
     /**
      * Adds an asset to the view
