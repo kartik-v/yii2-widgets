@@ -49,6 +49,12 @@ class SwitchInput extends InputWidget
     public $items = [];
 
     /**
+     * @var boolean whether label is aligned on same line. Defaults to true.
+     * If set to false, the label and input will be on separate lines.
+     */
+    public $inlineLabel = true;
+
+    /**
      * @var array default HTML attributes for each radio item
      * (applicable only if `type` = 2)
      */
@@ -85,7 +91,7 @@ class SwitchInput extends InputWidget
             if (empty($this->items) || !is_array($this->items)) {
                 throw new InvalidConfigException("You must setup the 'items' array for the 'radio' type.");
             }
-         }
+        }
         $this->registerAssets();
         echo $this->renderInput();
     }
@@ -98,7 +104,8 @@ class SwitchInput extends InputWidget
     protected function renderInput()
     {
         if ($this->type == self::CHECKBOX) {
-            return $this->getInput('checkbox');
+            $input = $this->getInput('checkbox');
+            return ($this->inlineLabel) ? $input : Html::tag('div', $input);
         }
         $output = '';
         foreach ($this->items as $item) {
