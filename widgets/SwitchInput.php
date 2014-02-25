@@ -129,11 +129,11 @@ class SwitchInput extends InputWidget
         if (!isset($this->pluginOptions['animate'])) {
             $this->pluginOptions['animate'] = true;
         }
-        if (empty($this->name)) {
-            $this->registerPlugin('bootstrapSwitch');
+        if ($this->type == self::RADIO) {
+            $this->registerPlugin('bootstrapSwitch', '$("[name = \'' . $this->name . '\']")');
         }
         else {
-            $this->registerPlugin('bootstrapSwitch', '$("[name = \'' . $this->name . '\']")');
+            $this->registerPlugin('bootstrapSwitch');
         }
     }
 
