@@ -131,6 +131,11 @@ The RangeInput widget is a customized range slider control widget based on HTML5
 
 The SwitchInput widget turns checkboxes and radio buttons into toggle switches. The plugin is a wrapper for the [Bootstrap Switch Plugin](http://www.bootstrap-switch.org) and is specially styled for Twitter Bootstrap 3.
 
+#### StarRating
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/star-rating)  
+
+The StarRating widget is a wrapper for the [Bootstrap Star Rating Plugin](http://plugins.krajee.com/star-rating) JQuery Plugin designed by Krajee. This plugin is a simple yet powerful JQuery star rating plugin for Twitter Bootstrap. Developed with a focus on utlizing pure CSS-3 styling to render the control.
+
 ### Navigation
 
 #### Affix
@@ -396,6 +401,23 @@ echo $form->field($model, 'status')->widget(SwitchInput::classname(), [
 echo SwitchInput::widget([
     'name' => 'status_1',
     'type' => SwitchInput::RADIO
+]);
+```
+
+### StarRating
+```php
+use kartik\widgets\StarRating;
+
+// Usage with ActiveForm and model
+echo $form->field($model, 'rating')->widget(SwitchInput::classname(), [
+    'pluginOptions' => ['size'=>'lg']
+]);
+
+
+// With model & without ActiveForm
+echo SwitchInput::widget([
+    'name' => 'rating_1',
+    'pluginOptions' => ['disabled'=>true, 'showClear'=>false]
 ]);
 ```
 
