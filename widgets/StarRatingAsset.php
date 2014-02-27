@@ -21,7 +21,7 @@ class StarRatingAsset extends AssetBundle
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setSourcePath('@vendor/kartik-v/bootstrap-star-rating');
         $this->setupAssets('css', ['css/star-rating']);
         $this->setupAssets('js', ['js/star-rating']);
         parent::init();
