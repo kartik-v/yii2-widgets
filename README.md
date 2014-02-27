@@ -409,13 +409,13 @@ echo SwitchInput::widget([
 use kartik\widgets\StarRating;
 
 // Usage with ActiveForm and model
-echo $form->field($model, 'rating')->widget(SwitchInput::classname(), [
+echo $form->field($model, 'rating')->widget(StarRating::classname(), [
     'pluginOptions' => ['size'=>'lg']
 ]);
 
 
 // With model & without ActiveForm
-echo SwitchInput::widget([
+echo StarRating::widget([
     'name' => 'rating_1',
     'pluginOptions' => ['disabled'=>true, 'showClear'=>false]
 ]);
