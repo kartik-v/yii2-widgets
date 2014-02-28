@@ -20,7 +20,7 @@ use yii\web\JsExpression;
  * Select2 widget is a Yii2 wrapper for the Select2 jQuery plugin. This
  * input widget is a jQuery based replacement for select boxes. It supports
  * searching, remote data sets, and infinite scrolling of results. The widget
- * is specially styled for Twitter Bootstrap 3.
+ * is specially styled for Bootstrap 3.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0

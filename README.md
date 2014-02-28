@@ -1,7 +1,7 @@
 yii2-widgets
 ============
 
-This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Twitter Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras. The widgets currently available are:
+This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras. The widgets currently available are:
 
 ### Forms/Inputs
 
@@ -43,7 +43,7 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 
 The Select2 widget is a Yii 2 wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2/). 
 This input widget is a jQuery based replacement for select boxes. It supports searching, remote data sets, 
-and infinite scrolling of results. The widget is specially styled for Twitter Bootstrap 3. The widget allows
+and infinite scrolling of results. The widget is specially styled for Bootstrap 3. The widget allows
 graceful degradation to a normal HTML select or text input, if the browser does not support JQuery.
 
 #### Typeahead
@@ -52,7 +52,7 @@ graceful degradation to a normal HTML select or text input, if the browser does 
 The Typeahead widget is a Yii 2 wrapper for for the [Twitter Typeahead.js](http://twitter.github.com/typeahead.js/examples) 
 plugin with certain custom enhancements. This input widget is a jQuery based replacement for text inputs providing search and 
 typeahead functionality. It is inspired by twitter.com's autocomplete search functionality and based on Twitter's `typeahead.js` 
-which is described as as a fast and fully-featured autocomplete library. The widget is specially styled for Twitter Bootstrap 3. 
+which is described as as a fast and fully-featured autocomplete library. The widget is specially styled for Bootstrap 3. 
 The widget allows graceful degradation to a normal HTML text input, if the browser does not support JQuery. You can setup model 
 validation rules for a model attribute that uses Typeahead widget for input like any other field.
 
@@ -61,7 +61,7 @@ validation rules for a model attribute that uses Typeahead widget for input like
 
 The DatePicker widget is a Yii 2 wrapper for the [Bootstrap DatePicker plugin](http://eternicode.github.io/bootstrap-datepicker/). 
 The plugin is a fork of Stefan Petre's DatePicker (of eyecon.ro), with improvements by @eternicode. This widget is specially 
-styled for Yii framework 2.0 and Twitter Bootstrap 3. The widget allows graceful degradation to a normal HTML text input, if 
+styled for Yii framework 2.0 and Bootstrap 3. The widget allows graceful degradation to a normal HTML text input, if 
 the browser does not support JQuery.  This widget supports these markups:
 
 * Simple Input Markup
@@ -76,19 +76,19 @@ the browser does not support JQuery.  This widget supports these markups:
 The TimePicker widget  allows you to easily select a time for a text input using your mouse or keyboards arrow keys. The widget is a
 wrapper enhancement of the <a href='https://github.com/rendom/bootstrap-3-timepicker' target='_blank'>TimePicker plugin</a> by rendom 
 forked from  <a href='https://github.com/jdewit/bootstrap-timepicker' target='_blank'>jdewit's TimePicker</a>. This widget as used 
-here has been specially enhanced for Yii framework 2.0 and Twitter Bootstrap 3.
+here has been specially enhanced for Yii framework 2.0 and Bootstrap 3.
 
 #### TouchSpin
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/touchspin)  
 
-The TouchSpin widget is a Yii 2 wrapper for for the [bootstrap-touchspin](http://www.virtuosoft.eu/code/bootstrap-touchspin/) plugin by István Ujj-Mészáros, with certain additional enhancements. This input widget is a mobile and touch friendly input spinner component for Twitter Bootstrap 3. You can use the widget buttons to rapidly increase and decrease numeric and/or decimal values in your input field. The widget can be setup to include model validation rules for the related model attribute. 
+The TouchSpin widget is a Yii 2 wrapper for for the [bootstrap-touchspin](http://www.virtuosoft.eu/code/bootstrap-touchspin/) plugin by István Ujj-Mészáros, with certain additional enhancements. This input widget is a mobile and touch friendly input spinner component for Bootstrap 3. You can use the widget buttons to rapidly increase and decrease numeric and/or decimal values in your input field. The widget can be setup to include model validation rules for the related model attribute. 
 
 #### FileInput
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/fileinput)  
 
 The FileInput widget is a customized file input widget based on HTML5 file input. The widget enhances the default HTML file input with various features including the following:
 
-* Specially styled for Twitter Bootstrap 3.0 with customizable buttons, caption, and preview
+* Specially styled for Bootstrap 3.0 with customizable buttons, caption, and preview
 * Ability to select and preview multiple files
 * Includes file browse and optional remove and upload buttons.
 * Ability to format your file picker button styles
@@ -111,7 +111,7 @@ The widget runs on all modern browsers supporting HTML5 File Inputs and File Pro
 
 The ColorInput widget is a customized color input widget based on HTML5 color input. The widget enhances the default HTML range input with various features including the following:
 
-* Specially styled for Twitter Bootstrap 3.0 with customizable caption showing the output of the control.
+* Specially styled for Bootstrap 3.0 with customizable caption showing the output of the control.
 * Ability to prepend and append addons.
 * Allow the input to be changed both via the control or the text box.
 * Automatically degrade to normal text input for unsupported Internet Explorer versions.
@@ -121,7 +121,7 @@ The ColorInput widget is a customized color input widget based on HTML5 color in
 
 The RangeInput widget is a customized range slider control widget based on HTML5 range input. The widget enhances the default HTML range input with various features including the following:
 
-* Specially styled for Twitter Bootstrap 3.0 with customizable caption showing the output of the control.
+* Specially styled for Bootstrap 3.0 with customizable caption showing the output of the control.
 * Ability to prepend and append addons (very useful to show the min and max ranges, and the slider measurement unit).
 * Allow the input to be changed both via the control or the text box.
 * Automatically degrade to normal text input for unsupported Internet Explorer versions.
@@ -129,12 +129,12 @@ The RangeInput widget is a customized range slider control widget based on HTML5
 #### SwitchInput
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/switchinput)  
 
-The SwitchInput widget turns checkboxes and radio buttons into toggle switches. The plugin is a wrapper for the [Bootstrap Switch Plugin](http://www.bootstrap-switch.org) and is specially styled for Twitter Bootstrap 3.
+The SwitchInput widget turns checkboxes and radio buttons into toggle switches. The plugin is a wrapper for the [Bootstrap Switch Plugin](http://www.bootstrap-switch.org) and is specially styled for Bootstrap 3.
 
 #### StarRating
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/star-rating)  
 
-The StarRating widget is a wrapper for the [Bootstrap Star Rating Plugin](http://plugins.krajee.com/star-rating) JQuery Plugin designed by Krajee. This plugin is a simple yet powerful JQuery star rating plugin for Twitter Bootstrap. Developed with a focus on utlizing pure CSS-3 styling to render the control.
+The StarRating widget is a wrapper for the [Bootstrap Star Rating Plugin](http://plugins.krajee.com/star-rating) JQuery Plugin designed by Krajee. This plugin is a simple yet powerful JQuery star rating plugin for Bootstrap. Developed with a focus on utlizing pure CSS-3 styling to render the control.
 
 ### Navigation
 
@@ -158,7 +158,7 @@ The parameters to pass are:
 #### SideNav
 [```VIEW DEMO```](http://demos.krajee.com/sidenav-demo/profile/default)  
 
-This widget is a collapsible side navigation menu built to seamlessly work with Twitter Bootstrap framework. It is built over Twitter Bootstrap [stacked nav](http://getbootstrap.com/components/#nav-pills) component. This widget class extends the [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/widgets/Menu.php). Upto 3 levels of submenus are by default supported by the CSS styles to balance performance and useability. You can choose to extend it to more or less levels by customizing the [CSS](https://github.com/kartik-v/yii2-widgets/blob/master/assets/css/sidenav.css).
+This widget is a collapsible side navigation menu built to seamlessly work with Bootstrap framework. It is built over Bootstrap [stacked nav](http://getbootstrap.com/components/#nav-pills) component. This widget class extends the [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/widgets/Menu.php). Upto 3 levels of submenus are by default supported by the CSS styles to balance performance and useability. You can choose to extend it to more or less levels by customizing the [CSS](https://github.com/kartik-v/yii2-widgets/blob/master/assets/css/sidenav.css).
 
 ### Demo
 You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of these widgets with documentation and examples.

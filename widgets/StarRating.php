@@ -18,7 +18,7 @@ use yii\web\JsExpression;
 /**
  * StarRating widget is a wrapper widget for the Bootstrap Star Rating plugin by Krajee. 
  * This plugin is a simple star rating yet powerful control that converts a  'number' input 
- * to a star rating control using JQuery. The widget is styled for Twitter Bootstrap 3.0.
+ * to a star rating control using JQuery. The widget is styled for Bootstrap 3.0.
  *
  * @see http://plugins.krajee.com/star-rating
  * @see http://github.com/kartik-v/bootstrap-star-rating

@@ -15,7 +15,7 @@ use yii\helpers\Html;
  * The TimePicker widget  allows you to easily select a time for a text input using 
  * your mouse or keyboards arrow keys. Thus widget is a wrapper enhancement over the 
  * TimePicker JQuery plugin by rendom forked from the plugin by jdewit. Additional 
- * enhancements have been done to this input widget for compatibility with Twitter Bootstrap 3.
+ * enhancements have been done to this input widget for compatibility with Bootstrap 3.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
