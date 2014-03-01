@@ -8,6 +8,8 @@
 
 namespace kartik\widgets;
 
+use Yii;
+
 /**
  * Asset bundle for Select2 Widget
  *

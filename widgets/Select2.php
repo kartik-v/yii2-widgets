@@ -179,9 +179,11 @@ class Select2 extends InputWidget
     public function registerAssets()
     {
         $view = $this->getView();
-        Select2Asset::register($view);
-        if ($this->language != false) {
-            $this->addAsset($view, 'select2_locale_' . $this->language . '.js', 'js', Select2Asset::classname());
+        if (!empty($this->language) && $this->language != 'en' && $this->language != 'en_US') {
+            Select2Asset::register($view)->js[] = 'select2_locale_' . $this->language . '.js';
+        }
+        else {
+            Select2Asset::register($view);
         }
         $this->pluginOptions['width'] = 'resolve';
         $this->registerPlugin('select2');
