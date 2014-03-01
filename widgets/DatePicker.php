@@ -223,9 +223,11 @@ class DatePicker extends InputWidget
     public function registerAssets()
     {
         $view = $this->getView();
-        DatePickerAsset::register($view);
         if (!empty($this->pluginOptions['language'])) {
-            $this->addAsset($view, 'js/locales/bootstrap-datepicker.' . $this->pluginOptions['language'] . '.js', 'js', DatePickerAsset::classname());
+            DatePickerAsset::register($view)->js[] = 'js/locales/bootstrap-datepicker.' . $this->pluginOptions['language'] . '.js';
+        }
+        else {
+            DatePickerAsset::register($view);
         }
         $id = "$('#" . $this->options['id'] . "')";
         if ($this->type == self::TYPE_INLINE) {
