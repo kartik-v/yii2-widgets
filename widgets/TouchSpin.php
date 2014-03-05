@@ -82,6 +82,7 @@ class TouchSpin extends InputWidget
             $icon = "<i class='glyphicon glyphicon-{$icon}'></i>";
             $label = ($label != '') ? $icon . ' ' . $label : $icon;
         }
+        $options['type'] = 'button';
         return Html::button($label, $options);
     }
 
