@@ -204,7 +204,7 @@ class ActiveField extends \yii\widgets\ActiveField
     public function staticInput($options = [])
     {
         Html::addCssClass($options, 'form-control-static');
-        $content = isset($this->model[$this->attribute]) ? $this->model[$this->attribute] : '-';
+        $content = isset($this->model[Html::getAttributeName($this->attribute)]) ? $this->model[Html::getAttributeName($this->attribute)] : '-';
         $this->parts['{input}'] = Html::tag('p', $content, $options);
         return $this;
     }
