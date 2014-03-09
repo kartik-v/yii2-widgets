@@ -51,7 +51,7 @@ class InputWidget extends \yii\widgets\InputWidget
         parent::init();
         if ($this->hasModel()) {
             $this->name = ArrayHelper::remove($this->options, 'name', Html::getInputName($this->model, $this->attribute));
-            $this->value = $this->model[$this->attribute];
+            $this->value = $this->model[Html::getAttributeName($this->attribute)];
         }
     }
 
