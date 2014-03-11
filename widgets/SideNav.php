@@ -11,6 +11,7 @@ namespace kartik\widgets;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -98,7 +99,7 @@ class SideNav extends \yii\widgets\Menu
      * - label: string, optional, specifies the menu item label. When [[encodeLabels]] is true, the label
      *   will be HTML-encoded. If the label is not specified, an empty string will be used.
      * - icon: string, optional, specifies the glyphicon name to be placed before label.
-     * - url: string or array, optional, specifies the URL of the menu item. It will be processed by [[Html::url]].
+     * - url: string or array, optional, specifies the URL of the menu item. It will be processed by [[Url::to]].
      *   When this is set, the actual menu item content will be generated using [[linkTemplate]];
      *   otherwise, [[labelTemplate]] will be used.
      * - visible: boolean, optional, whether this menu item is visible. Defaults to true.
@@ -199,7 +200,7 @@ class SideNav extends \yii\widgets\Menu
     protected function renderItem($item)
     {
         $this->validateItems($item);
-        $url = Html::url(ArrayHelper::getValue($item, 'url', '#'));
+        $url = Url::to(ArrayHelper::getValue($item, 'url', '#'));
         $template = $this->linkTemplate;
         if (empty($item['top'])) {
             if (empty($item['items'])) {
