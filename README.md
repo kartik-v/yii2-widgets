@@ -109,7 +109,7 @@ The widget runs on all modern browsers supporting HTML5 File Inputs and File Pro
 #### ColorInput
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/colorinput)  
 
-The ColorInput widget is an advanced ColorPicker input styled for Twitter Bootstrap. It uses a combination of the HTML5 color input and/or the [JQuery Spectrum Plugin](http://bgrins.github.io/spectrum/) for rendering the color picker. You can use the Native HTML5 color input by setting the `useNative` option to `true`. Else, the Spectrum plugin polyfills for unsupported browser versions.
+The ColorInput widget is an advanced ColorPicker input styled for Bootstrap. It uses a combination of the HTML5 color input and/or the [JQuery Spectrum Plugin](http://bgrins.github.io/spectrum/) for rendering the color picker. You can use the Native HTML5 color input by setting the `useNative` option to `true`. Else, the Spectrum plugin polyfills for unsupported browser versions.
 
 * Specially styled for Bootstrap 3.0 with customizable caption showing the output of the control.
 * Ability to prepend and append addons.
