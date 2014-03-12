@@ -25,9 +25,18 @@ use yii\web\JsExpression;
 class ColorInput extends Html5Input
 {
 
-    public $type = 'color';
-    public $width = '60px';
+    /**
+     * @var boolean whether to use the native HTML5 color input
+     */
     public $useNative = false;
+
+    /**
+     * @var boolean whether to automatically polyfill for 
+     * the HTML5 color input in an unsupported browser when
+     * you have set `useNative` to true
+     */    
+    public $polyFill = false;
+    
     private $_defaultOptions = [
         'showInput' => true,
         'showInitial' => true,
@@ -56,6 +65,8 @@ class ColorInput extends Html5Input
 
     public function init()
     {
+        $this->type = 'color';
+        $this->width = '60px';
         if (!$this->useNative) {
             Html::addCssClass($this->html5Container, 'input-group-sp');
         }
@@ -63,6 +74,9 @@ class ColorInput extends Html5Input
         if (!$this->useNative) {
             $this->pluginOptions += $this->_defaultOptions;
             $this->registerPluginAssets();
+        }
+        if ($this->polyfill & $this->useNative) {
+            ColorInputAsset::register($this->getView());
         }
     }
 
