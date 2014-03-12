@@ -84,7 +84,7 @@ class Html5Input extends InputWidget
      *   - asButton: boolean whether the addon is a button
      *   - options: array the HTML attributes for the append addon     */
     public $addon = [];
-
+    
     /**
      * @var array the special inputs which need captions
      */
@@ -94,12 +94,15 @@ class Html5Input extends InputWidget
     ];
 
     /**
-     * Initializes the widget
-     * @throw InvalidConfigException
+     * Runs the widget
      */
     public function init()
     {
         parent::init();
+        $this->initInput();
+    }
+
+    protected function initInput() {
         if (in_array($this->type, self::$_specialInputs)) {
             $this->html5Options['id'] = $this->options['id'] . '-source';
             $this->registerAssets();
@@ -111,9 +114,9 @@ class Html5Input extends InputWidget
                 Html::addCssClass($this->options, ['class' => 'input-' . $this->size]);
             }
             echo $this->getHtml5Input();
-        }
+        }        
     }
-
+    
     /**
      * Gets the HTML5 input
      * return string
