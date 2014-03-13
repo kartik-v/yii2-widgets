@@ -75,7 +75,7 @@ class ColorInput extends Html5Input
             $this->pluginOptions += $this->_defaultOptions;
             $this->registerPluginAssets();
         }
-        if ($this->polyfill & $this->useNative) {
+        if ($this->polyFill & $this->useNative) {
             ColorInputAsset::register($this->getView());
         }
     }
