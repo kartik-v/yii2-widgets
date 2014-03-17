@@ -102,6 +102,14 @@ class DatePicker extends InputWidget
     private $_container = [];
 
     /**
+    * @var boolean whether the widget should try to convert the date format from
+    * http://php.net/manual/en/function.date.php
+    * to
+    * http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
+    */
+    public $convertFormat = false;
+
+    /**
      * Initializes the widget
      * @throw InvalidConfigException
      */
@@ -123,9 +131,36 @@ class DatePicker extends InputWidget
         if (isset($this->form) && ($this->type === self::TYPE_RANGE) && (!isset($this->attribute2))) {
             throw new InvalidConfigException("The 'attribute2' property must be set for a 'range' type markup and a defined 'form' property.");
         }
+        if ($this->convertFormat && isset($this->pluginOptions['format'])) {
+            $this->pluginOptions['format'] = $this->convertDateFormat($this->pluginOptions['format']);
+        }
         $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         echo $this->renderInput();
+    }
+
+    protected function convertDateFormat($format)
+    {
+        return strtr($format, [
+            // day of month (no leading zero)
+            'j' => 'd',
+            // day of month (two digit)
+            'd' => 'dd',
+            // day name short is always 'D'
+            // day name long
+            'l' => 'DD',
+            // month of year (no leading zero)
+            'n' => 'm',
+            // month of year (two digit)
+            'm' => 'mm',
+            // month name short is always 'M'
+            // month name long
+            'F' => 'MM',
+            // year (two digit)
+            'y' => 'yy',
+            // year (four digit)
+            'Y' => 'yyyy',
+        ]);
     }
 
     /**
