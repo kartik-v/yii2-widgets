@@ -1,0 +1,53 @@
+/*!
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
+ * @package yii2-widgets
+ * @version 1.0.0
+ *
+ * HTML 5 input styling for Twitter Bootstrap 3.0
+ * Covers color and range inputs
+ * Built for Yii Framework 2.0
+ * Author: Kartik Visweswaran
+ * Year: 2013
+ * For more Yii related demos visit http://demos.krajee.com
+ */
+.input-group-html5 {
+    width: 100%!important;
+}
+.input-group-html5 .input-group-addon {
+    width: auto;
+}
+.input-group-html5 input[type="color"], .input-group-html5 input[type="range"] {
+    display: block;
+    padding:0;
+    margin:0;
+    border: none;
+    box-shadow: none;
+    background: none;
+    height: 18px;
+    width: 100%;;
+}
+.input-group  .addon-color {
+    padding:2px;
+}
+.input-group-lg  input[type="color"] {
+    height: 24px!important;
+}
+.input-group-sm  input[type="color"] {
+    height: 14px!important;
+}
+.input-group-html5 .addon-range {
+    min-width: 50%;
+}
+.input-group-html5 .input-group-addon + .input-group-addon {
+    border-left: 0!important;
+}
+.input-group-html5 .input-group-addon + .form-control {
+    border-left: 0!important;
+}
+.input-group-html5 .input-group-addon:first-child {
+    border-right: 1px solid #ccc!important;
+}
+.input-group-html5 input[disabled]  {
+    opacity: .65;
+    cursor: not-allowed;
+}
