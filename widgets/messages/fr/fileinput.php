@@ -17,11 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Note:' => 'Remarque:',
-    'multiple file upload' => 'téléchargement de fichiers multiples',
-    'file preview and multiple file upload' => 'déposer prévisualisation et le téléchargement de fichiers multiples',
-    'Your browser does not support {validation}. Try an alternative or more recent browser to access these features.' => 'Votre navigateur ne supporte pas les {validation}. Essayez une alternative ou un navigateur plus récent pour accéder à ces fonctions.',
-    'Browse' => 'feuilleter',
-    'Remove' => 'supprimer',
-    'Upload' => 'Télécharger',
+    'Note:' => 'Remarque :',
+    'multiple file upload' => 'Dépôt de fichiers multiples',
+    'file preview and multiple file upload' => 'Prévisualisation et dépôt de fichiers multiples',
+    'Your browser does not support {validation}. Try an alternative or more recent browser to access these features.' => 'Votre navigateur ne supporte pas les {validation}. Essayez un navigateur alternatif ou plus récent pour accéder à ces fonctions.',
+    'Browse' => 'Parcourir',
+    'Remove' => 'Supprimer',
+    'Upload' => 'Déposer',
 ];
