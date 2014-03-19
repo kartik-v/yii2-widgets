@@ -10,40 +10,51 @@
  * For more Yii related demos visit http://demos.krajee.com
  */
 .kv-sidenav ul {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
+
 .kv-sidenav li a {
-    border-radius: 0;
-    border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	border-bottom: 1px solid #ddd;
 }
+
 .kv-sidenav .opened, .kv-sidenav .closed {
-    float: right;
+	float: right;
 }
+
 .kv-sidenav .indicator {
-    color: #999999;
+	color: #999999;
 }
+
 .kv-sidenav .active > a > span > .indicator {
-    color: #ffffff;
+	color: #ffffff;
 }
+
 .kv-sidenav .active > ul {
-    background-color: #f3f8fC;
+	background-color: #f3f8fC;
 }
+
 .kv-sidenav .nav {
-    display:none;
+	display: none;
 }
+
 .kv-sidenav .nav .nav {
-    display:none;
+	display: none;
 }
+
 .kv-sidenav .nav a {
-    padding-left: 9%;
-}	
+	padding-left: 9%;
+}
+
 .kv-sidenav .nav .nav a {
-    padding-left: 18%;
+	padding-left: 18%;
 }
+
 .kv-sidenav .active > ul {
-    display:block;
+	display: block;
 }
+
 .kv-sidenav .nav .active > ul {
-    display:block;
+	display: block;
 }

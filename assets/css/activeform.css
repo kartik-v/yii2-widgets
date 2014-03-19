@@ -10,9 +10,10 @@
  * For more Yii related demos visit http://demos.krajee.com
  */
 .form-inline-block .btn {
-    margin-top: -10px;
+	margin-top: -10px;
 }
+
 .input-multiselect {
-    overflow: auto;
-    min-height: 145px!important;
+	overflow: auto;
+	min-height: 145px !important;
 }

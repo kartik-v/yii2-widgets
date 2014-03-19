@@ -17,11 +17,11 @@ namespace kartik\widgets;
 class ActiveFormAsset extends AssetBundle
 {
 
-    public function init()
-    {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/activeform']);
-        parent::init();
-    }
+	public function init()
+	{
+		$this->setSourcePath(__DIR__ . '/../assets');
+		$this->setupAssets('css', ['css/activeform']);
+		parent::init();
+	}
 
 }

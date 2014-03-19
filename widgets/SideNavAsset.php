@@ -17,12 +17,12 @@ namespace kartik\widgets;
 class SideNavAsset extends AssetBundle
 {
 
-    public function init()
-    {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/sidenav']);
-        $this->setupAssets('js', ['js/sidenav']);
-        parent::init();
-    }
+	public function init()
+	{
+		$this->setSourcePath(__DIR__ . '/../assets');
+		$this->setupAssets('css', ['css/sidenav']);
+		$this->setupAssets('js', ['js/sidenav']);
+		parent::init();
+	}
 
 }

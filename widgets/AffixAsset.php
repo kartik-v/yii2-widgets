@@ -17,12 +17,12 @@ namespace kartik\widgets;
 class AffixAsset extends AssetBundle
 {
 
-    public function init()
-    {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/affix']);
-        $this->setupAssets('js', ['js/affix']);
-        parent::init();
-    }
+	public function init()
+	{
+		$this->setSourcePath(__DIR__ . '/../assets');
+		$this->setupAssets('css', ['css/affix']);
+		$this->setupAssets('js', ['js/affix']);
+		parent::init();
+	}
 
 }

@@ -19,12 +19,12 @@ use Yii;
 class TimePickerAsset extends AssetBundle
 {
 
-    public function init()
-    {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/bootstrap-timepicker']);
-        $this->setupAssets('js', ['js/bootstrap-timepicker']);
-        parent::init();
-    }
+	public function init()
+	{
+		$this->setSourcePath(__DIR__ . '/../assets');
+		$this->setupAssets('css', ['css/bootstrap-timepicker']);
+		$this->setupAssets('js', ['js/bootstrap-timepicker']);
+		parent::init();
+	}
 
 }

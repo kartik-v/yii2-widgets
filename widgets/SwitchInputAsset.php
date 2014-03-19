@@ -17,12 +17,12 @@ namespace kartik\widgets;
 class SwitchInputAsset extends AssetBundle
 {
 
-    public function init()
-    {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/bootstrap-switch']);
-        $this->setupAssets('js', ['js/bootstrap-switch']);
-        parent::init();
-    }
+	public function init()
+	{
+		$this->setSourcePath(__DIR__ . '/../assets');
+		$this->setupAssets('css', ['css/bootstrap-switch']);
+		$this->setupAssets('js', ['js/bootstrap-switch']);
+		parent::init();
+	}
 
 }

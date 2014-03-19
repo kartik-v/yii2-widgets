@@ -25,6 +25,6 @@ use yii\web\JsExpression;
 class RangeInput extends Html5Input
 {
 
-    public $type = 'range';
+	public $type = 'range';
 
 }

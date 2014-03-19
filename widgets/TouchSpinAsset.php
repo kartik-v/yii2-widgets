@@ -17,11 +17,11 @@ namespace kartik\widgets;
 class TouchSpinAsset extends AssetBundle
 {
 
-    public function init()
-    {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('js', ['js/bootstrap.touchspin']);
-        parent::init();
-    }
+	public function init()
+	{
+		$this->setSourcePath(__DIR__ . '/../assets');
+		$this->setupAssets('js', ['js/bootstrap.touchspin']);
+		parent::init();
+	}
 
 }
