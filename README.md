@@ -86,7 +86,7 @@ The TouchSpin widget is a Yii 2 wrapper for for the [bootstrap-touchspin](http:/
 #### FileInput
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/fileinput)  
 
-The FileInput widget is a customized file input widget based on HTML5 file input. The widget enhances the default HTML file input with various features including the following:
+The FileInput widget is a customized file input widget based on Krajee's [Bootstrap FileInput JQuery Plugin](http://plugins.krajee.com/file-input). The widget enhances the default HTML file input with various features including the following:
 
 * Specially styled for Bootstrap 3.0 with customizable buttons, caption, and preview
 * Ability to select and preview multiple files
