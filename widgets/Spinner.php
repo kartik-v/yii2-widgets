@@ -62,7 +62,7 @@ class Spinner extends \yii\base\Widget
 
 	/**
 	 * @var string caption embedded inside the spinner. This is not HTML encoded.
-	 * If you set it to a null string, this will not be displayed.
+	 * If you set it to an empty string, this will not be displayed.
 	 */
 	public $caption = '';
 
