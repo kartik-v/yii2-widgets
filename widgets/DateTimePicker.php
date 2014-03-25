@@ -194,7 +194,10 @@ class DateTimePicker extends InputWidget
 		$icon = ($type === 'picker') ? 'calendar' : 'remove';
 		$icon = '<span class="glyphicon glyphicon-' . ArrayHelper::remove($options, 'icon', $icon) . '"></span>';
 		if (empty($options['title'])) {
-			$options['title'] = ($type === 'picker') ? Yii::t('app', 'Select date & time') : Yii::t('app', 'Clear field');
+			$title = ($type === 'picker') ? Yii::t('app', 'Select date & time') : Yii::t('app', 'Clear field');
+			if ($title != false) {
+				$options['title'] = $title;
+			}
 		}
 		return Html::tag('span', $icon, $options);
 	}
