@@ -31,8 +31,8 @@ class DatePicker extends InputWidget
 	const TYPE_INPUT = 1;
 	const TYPE_COMPONENT_PREPEND = 2;
 	const TYPE_COMPONENT_APPEND = 3;
-	const TYPE_RANGE = 4;
-	const TYPE_INLINE = 5;
+	const TYPE_INLINE = 4;
+	const TYPE_RANGE = 5;
 
 	/**
 	 * @var string the markup type of widget markup

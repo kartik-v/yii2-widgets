@@ -60,15 +60,15 @@ validation rules for a model attribute that uses Typeahead widget for input like
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/datepicker)  
 
 The DatePicker widget is a Yii 2 wrapper for the [Bootstrap DatePicker plugin](http://eternicode.github.io/bootstrap-datepicker/). 
-The plugin is a fork of Stefan Petre's DatePicker (of eyecon.ro), with improvements by @eternicode. This widget is specially 
-styled for Yii framework 2.0 and Bootstrap 3. The widget allows graceful degradation to a normal HTML text input, if 
-the browser does not support JQuery.  This widget supports these markups:
+The plugin is a fork of Stefan Petre's DatePicker (of eyecon.ro), with improvements by @eternicode. The widget is specially 
+styled for Yii framework 2.0 and Bootstrap 3 and allows graceful degradation to a normal HTML text input, if 
+the browser does not support JQuery. The widget supports these markups:
 
 * Simple Input Markup
 * Component Markup - Addon Prepended
 * Component Markup - Addon Appended
-* Date Range Markup (from and to dates)
 * Inline / Embedded Markup
+* Date Range Markup (from and to dates)
 
 #### TimePicker
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/timepicker)  
@@ -77,6 +77,20 @@ The TimePicker widget  allows you to easily select a time for a text input using
 wrapper enhancement of the <a href='https://github.com/rendom/bootstrap-3-timepicker' target='_blank'>TimePicker plugin</a> by rendom 
 forked from  <a href='https://github.com/jdewit/bootstrap-timepicker' target='_blank'>jdewit's TimePicker</a>. This widget as used 
 here has been specially enhanced for Yii framework 2.0 and Bootstrap 3.
+
+#### DateTimePicker
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/datetimepicker)  
+
+The DateTimePicker widget is a Yii 2 wrapper for the [Bootstrap DateTimePicker plugin](http://www.malot.fr/bootstrap-datetimepicker/). 
+The plugin is a fork of the DateTimePicker plugin by @eternicode and adds the time functionality. The widget is similar to the DatePicker
+widget in most aspects, except that it adds the time functionality and does not support ranges. The widget is specially styled for Yii 
+framework 2.0 and Bootstrap 3 and allows graceful degradation to a normal HTML text input, if the browser does not support JQuery. 
+The widget supports these markups:
+
+* Simple Input Markup
+* Component Markup - Addon Prepended
+* Component Markup - Addon Appended
+* Inline / Embedded Markup
 
 #### TouchSpin
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/touchspin)  
@@ -135,6 +149,16 @@ The SwitchInput widget turns checkboxes and radio buttons into toggle switches. 
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/star-rating)  
 
 The StarRating widget is a wrapper for the [Bootstrap Star Rating Plugin](http://plugins.krajee.com/star-rating) JQuery Plugin designed by Krajee. This plugin is a simple yet powerful JQuery star rating plugin for Bootstrap. Developed with a focus on utlizing pure CSS-3 styling to render the control.
+
+### Progress
+
+#### Spinner
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/spinner)  
+
+The Spinner widget is a wrapper for the [spin.js](http://fgnass.github.io/spin.js/). It enables you to add an animated CSS3 loading spinner which allows VML fallback for IE.
+Since, its not image based, it allows you to configure the spinner style, size, color, and other CSS attributes. The major advantage of using the CSS3 based spinner, is
+that the animation can be made visible to user for non-ajax based scenarios. For example on  events like window.load or window.unload (thereby enabling you to show a 
+page loading progress without using ajax).
 
 ### Navigation
 
@@ -321,6 +345,24 @@ echo TimePicker::widget([
 ]);
 ```
 
+### DateTimePicker
+```php
+use kartik\widgets\DateTimePicker;
+
+// usage without model
+echo '<label>Start Date/Time</label>';
+echo DateTimePicker::widget([
+    'name' => 'datetime_10',
+    'options' => ['placeholder' => 'Select operating time ...'],
+    'convertFormat' => true,
+    'pluginOptions' => [
+        'format' => 'd-M-Y g:i A',
+        'startDate' => '01-Mar-2014 12:00 AM',
+        'todayHighlight' => true
+    ]
+]);
+```
+
 ### TouchSpin
 ```php
 use kartik\widgets\TouchSpin;
@@ -419,6 +461,18 @@ echo StarRating::widget([
     'name' => 'rating_1',
     'pluginOptions' => ['disabled'=>true, 'showClear'=>false]
 ]);
+```
+
+### Spinner
+```php
+use kartik\widgets\Spinner;
+<div class="well">
+<?= Spinner::widget([
+    'preset' => Spinner::LARGE,
+    'color' => 'blue',
+    'align' => 'left'
+])?>
+</div>
 ```
 
 ### Affix
