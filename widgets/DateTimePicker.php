@@ -37,7 +37,7 @@ class DateTimePicker extends InputWidget
 	 * must be one of the TYPE constants. Defaults
 	 * to [[TYPE_COMPONENT_PREPEND]]
 	 */
-	public $type = self::TYPE_COMPONENT_APPEND;
+	public $type = self::TYPE_COMPONENT_PREPEND;
 
 	/**
 	 * @var the size of the input - 'lg', 'md', 'sm', 'xs'
@@ -104,7 +104,6 @@ class DateTimePicker extends InputWidget
 		}
 		$this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
 		$this->registerAssets();
-		echo '<pre>' . $this->pluginOptions['format'] . '</pre>';
 		echo $this->renderInput();
 	}
 
@@ -250,7 +249,10 @@ class DateTimePicker extends InputWidget
 		}
 		$id = "$('#" . $this->options['id'] . "')";
 		if ($this->type == self::TYPE_INLINE) {
-			$this->pluginEvents = ArrayHelper::merge($this->pluginEvents, ['changeDate' => 'function (e) { ' . $id . '.val(e.format());} ']);
+			$this->pluginOptions['linkField'] = $this->options['id'];
+			if (!empty($this->pluginOptions['format'])) {
+				$this->pluginOptions['linkFormat'] = $this->pluginOptions['format'];
+			}
 		}
 		if ($this->type === self::TYPE_INPUT) {
 			$this->registerPlugin('datetimepicker');
