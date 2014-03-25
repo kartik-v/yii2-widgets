@@ -11,5 +11,9 @@ The fileinput routines and rendering have been enhanced and offers ability to co
 version 2.1.0
 =============
 
-1. Added DateTimePicker widget enhanced for Bootstrap 3.x based on the [Bootstrap DateTimePicker Plugin](http://www.malot.fr/bootstrap-datetimepicker/) by smalot.
-2. Added Spinner widget based on spin.js - an animated CSS3 loading spinner with VML fallback for IE.
+1. Widgets categorized as
+   - Input Widgets
+   - Progress Widgets
+   - Navigation Widgets
+2. Added DateTimePicker widget enhanced for Bootstrap 3.x based on the [Bootstrap DateTimePicker Plugin](http://www.malot.fr/bootstrap-datetimepicker/) by smalot.
+3. Added Spinner widget based on spin.js - an animated CSS3 loading spinner with VML fallback for IE.
