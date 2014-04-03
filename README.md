@@ -184,6 +184,19 @@ The parameters to pass are:
 
 This widget is a collapsible side navigation menu built to seamlessly work with Bootstrap framework. It is built over Bootstrap [stacked nav](http://getbootstrap.com/components/#nav-pills) component. This widget class extends the [Yii Menu widget](https://github.com/yiisoft/yii2/blob/master/framework/widgets/Menu.php). Upto 3 levels of submenus are by default supported by the CSS styles to balance performance and useability. You can choose to extend it to more or less levels by customizing the [CSS](https://github.com/kartik-v/yii2-widgets/blob/master/assets/css/sidenav.css).
 
+### Notification
+
+### Alert
+Extends the \yii\bootstrap\Alert widget with more easy styling and auto fade out options.
+
+### Growl
+A widget that turns standard Bootstrap alerts into "Growl-like" notifications. This widget is a wrapper for the Bootstrap Growl [plugin by remabledesigns](@http://bootstrap-growl.remabledesigns.com/).
+ 
+### AlertBlock
+Alert block widget that groups multiple `\kartik\widget\Alert` or `kartik\widget\Growl` widgets inside a block and renders them stacked vertically on the current page. 
+You can choose the `TYPE_ALERT` style or the `TYPE_GROWL` style for your notifications. You can also set the widget to automatically read and display session flash 
+messages (which is the default setting). Alternatively, you can setup and configure your own block of custom alerts.
+ 
 ### Demo
 You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of these widgets with documentation and examples.
 
@@ -527,6 +540,41 @@ echo SideNav::widget([
 			],
 		],
 	],
+]);
+```
+
+### Alert
+```php
+use kartik\widgets\Alert;
+     
+echo Alert::widget([
+	'type' => Alert::TYPE_INFO,
+	'title' => 'Note',
+	'titleOptions' => ['icon' => 'info-sign'],
+    'body' => 'This is an informative alert'
+]);
+```
+
+### Growl
+```php
+use kartik\widgets\Growl;
+     
+echo Growl::widget([
+	'type' => Growl::TYPE_SUCCESS,
+	'icon' => 'glyphicon glyphicon-ok-sign',
+	'title' => 'Note',
+    'showSeparator' => true,
+    'body' => 'This is a successful alert.'
+]);
+```
+
+### AlertBlock
+```php
+use kartik\widgets\AlertBlock;
+     
+echo AlertBlock::widget([
+	'type' => TYPE_ALERT,
+	'useSessionFlash' => true
 ]);
 ```
 
