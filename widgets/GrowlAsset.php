@@ -17,12 +17,12 @@ namespace kartik\widgets;
 class GrowlAsset extends AssetBundle
 {
 
-	public function init()
-	{
-		$this->setSourcePath(__DIR__ . '/../assets');
-		$this->setupAssets('css', ['css/growl']);
-		$this->setupAssets('js', ['js/bootstrap-growl']);
-		parent::init();
-	}
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setupAssets('css', ['css/growl']);
+        $this->setupAssets('js', ['js/bootstrap-growl']);
+        parent::init();
+    }
 
 }

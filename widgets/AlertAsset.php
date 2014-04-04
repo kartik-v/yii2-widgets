@@ -17,11 +17,11 @@ namespace kartik\widgets;
 class AlertAsset extends AssetBundle
 {
 
-	public function init()
-	{
-		$this->setSourcePath(__DIR__ . '/../assets');
-		$this->setupAssets('css', ['css/alert']);
-		parent::init();
-	}
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setupAssets('css', ['css/alert']);
+        parent::init();
+    }
 
 }
