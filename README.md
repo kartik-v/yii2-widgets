@@ -196,7 +196,7 @@ A widget that turns standard Bootstrap alerts into "Growl-like" notifications. T
  
 ### AlertBlock
 [```VIEW DEMO```](http://demos.krajee.com/alert-block-demo/)  
-Alert block widget that groups multiple `\kartik\widget\Alert` or `kartik\widget\Growl` widgets inside a block and renders them stacked vertically on the current page. 
+Alert block widget that groups multiple `\kartik\widget\Alert` or `kartik\widget\Growl` widgets in one single block and renders them stacked vertically on the current page. 
 You can choose the `TYPE_ALERT` style or the `TYPE_GROWL` style for your notifications. You can also set the widget to automatically read and display session flash 
 messages (which is the default setting). Alternatively, you can setup and configure your own block of custom alerts.
  

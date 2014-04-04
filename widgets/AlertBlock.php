@@ -12,7 +12,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 /**
- * Alert block widget that groups multiple `\kartik\widget\Alert` or `kartik\widget\Growl` widgets inside a block.
+ * Alert block widget that groups multiple `\kartik\widget\Alert` or `kartik\widget\Growl` widgets as one single block.
  * You can choose to automatically read and display session flash messages (which is the default setting) or setup
  * your own block of custom alerts.
  *
