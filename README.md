@@ -188,14 +188,17 @@ This widget is a collapsible side navigation menu built to seamlessly work with 
 
 #### Alert
 [```VIEW DEMO```](http://demos.krajee.com/alert-demo/)  
+
 Extends the \yii\bootstrap\Alert widget with more easy styling and auto fade out options.
 
 #### Growl
 [```VIEW DEMO```](http://demos.krajee.com/growl-demo/)  
+
 A widget that turns standard Bootstrap alerts into "Growl-like" notifications. This widget is a wrapper for the Bootstrap Growl [plugin by remabledesigns](@http://bootstrap-growl.remabledesigns.com/).
  
 #### AlertBlock
 [```VIEW DEMO```](http://demos.krajee.com/alert-block-demo/)  
+
 Alert block widget that groups multiple `\kartik\widget\Alert` or `kartik\widget\Growl` widgets in one single block and renders them stacked vertically on the current page. 
 You can choose the `TYPE_ALERT` style or the `TYPE_GROWL` style for your notifications. You can also set the widget to automatically read and display session flash 
 messages (which is the default setting). Alternatively, you can setup and configure your own block of custom alerts.
