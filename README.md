@@ -187,17 +187,17 @@ This widget is a collapsible side navigation menu built to seamlessly work with 
 ### Notification
 
 #### Alert
-[```VIEW DEMO```](http://demos.krajee.com/alert-demo/)  
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/alert/)  
 
 Extends the \yii\bootstrap\Alert widget with more easy styling and auto fade out options.
 
 #### Growl
-[```VIEW DEMO```](http://demos.krajee.com/growl-demo/)  
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/growl/)  
 
-A widget that turns standard Bootstrap alerts into "Growl-like" notifications. This widget is a wrapper for the Bootstrap Growl [plugin by remabledesigns](@http://bootstrap-growl.remabledesigns.com/).
+A widget that turns standard Bootstrap alerts into "Growl-like" notifications. This widget is a wrapper for the Bootstrap Growl [plugin by remabledesigns](http://bootstrap-growl.remabledesigns.com/).
  
 #### AlertBlock
-[```VIEW DEMO```](http://demos.krajee.com/alert-block-demo/)  
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/alert-block/)  
 
 Alert block widget that groups multiple `\kartik\widget\Alert` or `kartik\widget\Growl` widgets in one single block and renders them stacked vertically on the current page. 
 You can choose the `TYPE_ALERT` style or the `TYPE_GROWL` style for your notifications. You can also set the widget to automatically read and display session flash 
@@ -552,34 +552,35 @@ echo SideNav::widget([
 #### Alert
 ```php
 use kartik\widgets\Alert;
-     
+
 echo Alert::widget([
 	'type' => Alert::TYPE_INFO,
 	'title' => 'Note',
 	'titleOptions' => ['icon' => 'info-sign'],
-    'body' => 'This is an informative alert'
+	'body' => 'This is an informative alert'
 ]);
+
 ```
 
 #### Growl
 ```php
 use kartik\widgets\Growl;
-     
+
 echo Growl::widget([
 	'type' => Growl::TYPE_SUCCESS,
 	'icon' => 'glyphicon glyphicon-ok-sign',
 	'title' => 'Note',
-    'showSeparator' => true,
-    'body' => 'This is a successful alert.'
+	'showSeparator' => true,
+	'body' => 'This is a successful growling alert.'
 ]);
 ```
 
 #### AlertBlock
 ```php
 use kartik\widgets\AlertBlock;
-     
+
 echo AlertBlock::widget([
-	'type' => TYPE_ALERT,
+	'type' => AlertBlock::TYPE_ALERT,
 	'useSessionFlash' => true
 ]);
 ```
