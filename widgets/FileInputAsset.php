@@ -17,12 +17,12 @@ namespace kartik\widgets;
 class FileInputAsset extends AssetBundle
 {
 
-	public function init()
-	{
-		$this->setSourcePath('@vendor/kartik-v/bootstrap-fileinput');
-		$this->setupAssets('css', ['css/fileinput']);
-		$this->setupAssets('js', ['js/fileinput']);
-		parent::init();
-	}
+    public function init()
+    {
+        $this->setSourcePath('@vendor/kartik-v/bootstrap-fileinput');
+        $this->setupAssets('css', ['css/fileinput']);
+        $this->setupAssets('js', ['js/fileinput']);
+        parent::init();
+    }
 
 }

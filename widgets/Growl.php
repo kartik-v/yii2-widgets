@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
 
 /**
  * Widget that wraps the Bootstrap Growl plugin by remabledesigns.
+ *
  * @http://bootstrap-growl.remabledesigns.com/
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
@@ -34,24 +35,24 @@ class Growl extends \yii\bootstrap\Widget
 	public $type = self::TYPE_INFO;
 
 	/**
-	 * @var string the title for the alert
-	 */
-	public $title = '';
-
-	/**
 	 * @var string the class name for the icon
 	 */
 	public $icon = '';
 
 	/**
-	 * @var string the alert message body
+	 * @var string the title for the alert
 	 */
-	public $body = '';
+	public $title = '';
 
 	/**
 	 * @var bool show title separator. Only applicable if `title` is set.
 	 */
 	public $showSeparator = false;
+
+	/**
+	 * @var string the alert message body
+	 */
+	public $body = '';
 
 	/**
 	 * @var integer the delay in microseconds after which the alert will be displayed.
@@ -66,10 +67,10 @@ class Growl extends \yii\bootstrap\Widget
 	public $closeButton = [];
 
 	/**
-	 * @var array the growl configuration options
+	 * @var array the bootstrap growl plugin configuration options
 	 * @see http://bootstrap-growl.remabledesigns.com/
 	 */
-	public $config = [];
+	public $pluginOptions = [];
 
 	private $_settings;
 
@@ -91,42 +92,34 @@ class Growl extends \yii\bootstrap\Widget
 		if (empty($this->options['id'])) {
 			$this->options['id'] = $this->getId();
 		}
+		if (empty($this->title)) {
+			$this->title = '';
+		}
+		if (empty($this->icon)) {
+			$this->icon = '';
+		}
 		$this->_settings = [
 			'message' => $this->body,
 			'icon' => $this->icon,
-			'title' => $this->title,
+			'title' => $this->title
 		];
-		$this->config['type'] = $this->type;
+		$this->pluginOptions['type'] = $this->type;
 		Html::addCssClass($this->options, 'col-xs-10 col-sm-10 col-md-3 alert kv-growl-animated');
-		$this->config['template']['container'] = Html::beginTag('div', $this->options);
-		if ($this->closeButton === null ) {
-			$this->config['template']['dismiss'] = '';
+		$this->pluginOptions['template']['container'] = Html::beginTag('div', $this->options);
+		if ($this->closeButton === null) {
+			$this->pluginOptions['template']['dismiss'] = '';
+		} elseif (!empty($this->closeButton)) {
+			$this->pluginOptions['template']['dismiss'] = $this->renderCloseButton();
 		}
-		elseif (!empty($this->closeButton)) {
-			$this->config['template']['dismiss'] = $this->renderCloseButton();
-		}
-		if (!empty($this->showSeparator)) {
-			$this->config['template']['title_divider'] = '<hr class="kv-alert-separator">';
+		if (!empty($this->showSeparator) && !empty($this->title)) {
+			$this->pluginOptions['template']['title_divider'] = '<hr class="kv-alert-separator">';
 		}
 		$this->registerAssets();
 	}
 
 	/**
-	 * Register client assets
-	 */
-	protected function registerAssets()
-	{
-		$view = $this->getView();
-		GrowlAsset::register($view);
-		$js = '$.growl(' . Json::encode($this->_settings) . ', ' . Json::encode($this->config) . ');';
-		if (!empty($this->delay) && $this->delay > 0) {
-			$js = 'setTimeout(function () {' . $js . '}, ' . $this->delay . ');';
-		}
-		$view->registerJs($js);
-	}
-
-	/**
 	 * Renders the close button.
+	 *
 	 * @return string the rendering result
 	 */
 	protected function renderCloseButton()
@@ -142,6 +135,20 @@ class Growl extends \yii\bootstrap\Widget
 		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * Register client assets
+	 */
+	protected function registerAssets()
+	{
+		$view = $this->getView();
+		GrowlAsset::register($view);
+		$js = '$.growl(' . Json::encode($this->_settings) . ', ' . Json::encode($this->pluginOptions) . ');';
+		if (!empty($this->delay) && $this->delay > 0) {
+			$js = 'setTimeout(function () {' . $js . '}, ' . $this->delay . ');';
+		}
+		$view->registerJs($js);
 	}
 
 }

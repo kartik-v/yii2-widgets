@@ -33,39 +33,77 @@ class Alert extends \yii\bootstrap\Alert
 	public $type = self::TYPE_INFO;
 
 	/**
-	 * @var string whether to display a title for the alert. This will help display a title with a message separator
-	 * and an optional bootstrap icon. If this is null or not set, it will not be displayed.
+	 * @var string the icon type. Can be either 'class' or 'image'. Defaults to 'class'.
 	 */
-	public $title;
+	public $iconType = 'class';
+
+	/**
+	 * @var string the class name for the icon to be displayed. If set to empty or null, will not be
+	 * displayed.
+	 */
+	public $icon = '';
+
+	/**
+	 * @var array the HTML attributes for the icon.
+	 */
+	public $iconOptions = [];
+
+	/**
+	 * @var string the title for the alert. If set to empty or null, will not be
+	 * displayed.
+	 */
+	public $title = '';
 
 	/**
 	 * @var array the HTML attributes for the title. The following options are additionally recognized:
-	 * - tag: the tag to display the title. Defaults to 'div'.
-	 * - icon: the bootstrap icon name suffix.
+	 * - tag: the tag to display the title. Defaults to 'span'.
 	 */
-	public $titleOptions = [];
+	public $titleOptions = ['class' => 'kv-alert-title'];
 
 	/**
-	 * @var integer|bool time in milliseconds after which alert fades out. If set to `0` or `false`, alerts will
-	 * never fade out and will be displayed forever. Defaults to `false`.
+	 * @var bool show title separator. Only applicable if `title` is set.
 	 */
-	public $fade = false;
+	public $showSeparator = false;
+
+	/**
+	 * @var integer the delay in microseconds after which the alert will be displayed.
+	 * Will be useful when multiple alerts are to be shown.
+	 */
+	public $delay;
 
 	/**
 	 * Runs the widget
 	 */
 	public function run()
 	{
-		if (!empty($this->title)) {
-			$tag = ArrayHelper::remove($this->titleOptions, 'tag', 'div');
-			$icon = ArrayHelper::remove($this->titleOptions, 'icon', '');
-			Html::addCssClass($this->titleOptions, 'kv-alert-title');
-			if ($icon != '') {
-				$icon = '<span class="glyphicon glyphicon-' . $icon . '"></span> ';
-			}
-			echo Html::tag($tag, $icon . $this->title, $this->titleOptions) . "\n<hr class='kv-alert-separator'>\n";
-		}
+		echo $this->getTitle();
 		parent::run();
+	}
+
+	/**
+	 * Gets the title section
+	 *
+	 * @return string
+	 */
+	protected function getTitle()
+	{
+		$icon = '';
+		$title = '';
+		$separator = '';
+		if (!empty($this->icon) && $this->iconType == 'image') {
+			$icon = Html::img($this->icon, $this->iconOptions);
+		} elseif (!empty($this->icon)) {
+			$this->iconOptions['class'] = $this->icon . ' ' . (empty($this->iconOptions['class']) ? 'kv-alert-title' : $this->iconOptions['class']);
+			$icon = Html::tag('span', '', $this->iconOptions) . ' ';
+		}
+		if (!empty($this->title)) {
+			$tag = ArrayHelper::remove($this->titleOptions, 'tag', 'span');
+			$title = Html::tag($tag, $this->title, $this->titleOptions);
+			if ($this->showSeparator) {
+				$separator = '<hr class="kv-alert-separator">' . "\n";
+			}
+		}
+		return $icon . $title . $separator;
 	}
 
 	/**
@@ -90,8 +128,8 @@ class Alert extends \yii\bootstrap\Alert
 		$view = $this->getView();
 		AlertAsset::register($view);
 
-		if ($this->fade > 0) {
-			$js = '$("#' . $this->options['id'] . '").fadeTo(' . $this->fade . ', 0.00, function() {
+		if ($this->delay > 0) {
+			$js = '$("#' . $this->options['id'] . '").fadeTo(' . $this->delay . ', 0.00, function() {
 				$(this).slideUp("slow", function() {
 					$(this).remove();
 				});

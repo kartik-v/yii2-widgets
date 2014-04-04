@@ -27,123 +27,123 @@ use yii\web\JsExpression;
 class SwitchInput extends InputWidget
 {
 
-	const CHECKBOX = 1;
-	const RADIO = 2;
+    const CHECKBOX = 1;
+    const RADIO = 2;
 
-	/**
-	 * @var integer the input type - one
-	 * of the constants above.
-	 */
-	public $type = self::CHECKBOX;
+    /**
+     * @var integer the input type - one
+     * of the constants above.
+     */
+    public $type = self::CHECKBOX;
 
-	/**
-	 * @var array the list of items for radio input
-	 * (applicable only if `type` = 2). The following
-	 * keys could be setup:
-	 * - label: string the label of each radio item. If this is
-	 *   set to false or null, the label will not be displayed.
-	 * - value: string the value of each radio item
-	 * - options: HTML attributes for the radio item
-	 * - labelOptions: HTML attributes for each radio item label
-	 */
-	public $items = [];
+    /**
+     * @var array the list of items for radio input
+     * (applicable only if `type` = 2). The following
+     * keys could be setup:
+     * - label: string the label of each radio item. If this is
+     *   set to false or null, the label will not be displayed.
+     * - value: string the value of each radio item
+     * - options: HTML attributes for the radio item
+     * - labelOptions: HTML attributes for each radio item label
+     */
+    public $items = [];
 
-	/**
-	 * @var boolean whether label is aligned on same line. Defaults to true.
-	 * If set to false, the label and input will be on separate lines.
-	 */
-	public $inlineLabel = true;
+    /**
+     * @var boolean whether label is aligned on same line. Defaults to true.
+     * If set to false, the label and input will be on separate lines.
+     */
+    public $inlineLabel = true;
 
-	/**
-	 * @var array default HTML attributes for each radio item
-	 * (applicable only if `type` = 2)
-	 */
-	public $itemOptions = [];
+    /**
+     * @var array default HTML attributes for each radio item
+     * (applicable only if `type` = 2)
+     */
+    public $itemOptions = [];
 
-	/**
-	 * @var array default HTML attributes for each radio item label
-	 */
-	public $labelOptions = [];
+    /**
+     * @var array default HTML attributes for each radio item label
+     */
+    public $labelOptions = [];
 
-	/**
-	 * @var string the separator content between each radio item
-	 * (applicable only if `type` = 2)
-	 */
-	public $separator = " &nbsp;";
+    /**
+     * @var string the separator content between each radio item
+     * (applicable only if `type` = 2)
+     */
+    public $separator = " &nbsp;";
 
-	/**
-	 * @var array HTML attributes for the radio group container
-	 * (applicable only if `type` = 2)
-	 */
-	public $containerOptions = [];
+    /**
+     * @var array HTML attributes for the radio group container
+     * (applicable only if `type` = 2)
+     */
+    public $containerOptions = [];
 
-	/**
-	 * Initializes the widget
-	 *
-	 * @throw InvalidConfigException
-	 */
-	public function init()
-	{
-		parent::init();
-		if (empty($this->type) && $this->type !== self::CHECKBOX && $this->type !== self::RADIO) {
-			throw new InvalidConfigException("You must define a valid 'type' which must be either 1 (for checkbox) or 2 (for radio).");
-		}
-		if ($this->type == self::RADIO) {
-			if (empty($this->items) || !is_array($this->items)) {
-				throw new InvalidConfigException("You must setup the 'items' array for the 'radio' type.");
-			}
-		}
-		$this->registerAssets();
-		echo $this->renderInput();
-	}
+    /**
+     * Initializes the widget
+     *
+     * @throw InvalidConfigException
+     */
+    public function init()
+    {
+        parent::init();
+        if (empty($this->type) && $this->type !== self::CHECKBOX && $this->type !== self::RADIO) {
+            throw new InvalidConfigException("You must define a valid 'type' which must be either 1 (for checkbox) or 2 (for radio).");
+        }
+        if ($this->type == self::RADIO) {
+            if (empty($this->items) || !is_array($this->items)) {
+                throw new InvalidConfigException("You must setup the 'items' array for the 'radio' type.");
+            }
+        }
+        $this->registerAssets();
+        echo $this->renderInput();
+    }
 
-	/**
-	 * Renders the source Input for the Switch plugin.
-	 * Graceful fallback to a normal HTML checkbox or radio input
-	 * in case JQuery is not supported by the browser
-	 */
-	protected function renderInput()
-	{
-		if ($this->type == self::CHECKBOX) {
-			$input = $this->getInput('checkbox');
-			return ($this->inlineLabel) ? $input : Html::tag('div', $input);
-		}
-		$output = '';
-		foreach ($this->items as $item) {
-			if (!is_array($item)) {
-				continue;
-			}
-			$label = ArrayHelper::getValue($item, 'label', false);
-			$options = ArrayHelper::getValue($item, 'options', []) + $this->itemOptions;
-			$labelOptions = ArrayHelper::getValue($item, 'labelOptions', []) + $this->labelOptions;
-			$value = ArrayHelper::getValue($item, 'value', null);
-			$input = Html::radio($this->name, $value, $options);
+    /**
+     * Renders the source Input for the Switch plugin.
+     * Graceful fallback to a normal HTML checkbox or radio input
+     * in case JQuery is not supported by the browser
+     */
+    protected function renderInput()
+    {
+        if ($this->type == self::CHECKBOX) {
+            $input = $this->getInput('checkbox');
+            return ($this->inlineLabel) ? $input : Html::tag('div', $input);
+        }
+        $output = '';
+        foreach ($this->items as $item) {
+            if (!is_array($item)) {
+                continue;
+            }
+            $label = ArrayHelper::getValue($item, 'label', false);
+            $options = ArrayHelper::getValue($item, 'options', []) + $this->itemOptions;
+            $labelOptions = ArrayHelper::getValue($item, 'labelOptions', []) + $this->labelOptions;
+            $value = ArrayHelper::getValue($item, 'value', null);
+            $input = Html::radio($this->name, $value, $options);
 
-			$output .= Html::label($label, $this->name, $labelOptions) . "\n" .
-				(($this->inlineLabel) ? $input : Html::tag('div', $input)) . "\n" .
-				$this->separator;
-		}
-		if (empty($this->containerOptions['class'])) {
-			$this->containerOptions['class'] = 'form-group';
-		}
-		return Html::tag('div', $output, $this->containerOptions) . "\n";
-	}
+            $output .= Html::label($label, $this->name, $labelOptions) . "\n" .
+                (($this->inlineLabel) ? $input : Html::tag('div', $input)) . "\n" .
+                $this->separator;
+        }
+        if (empty($this->containerOptions['class'])) {
+            $this->containerOptions['class'] = 'form-group';
+        }
+        return Html::tag('div', $output, $this->containerOptions) . "\n";
+    }
 
-	/**
-	 * Registers the needed assets
-	 */
-	public function registerAssets()
-	{
-		$view = $this->getView();
-		SwitchInputAsset::register($view);
-		if (!isset($this->pluginOptions['animate'])) {
-			$this->pluginOptions['animate'] = true;
-		}
-		if ($this->type == self::RADIO) {
-			$this->registerPlugin('bootstrapSwitch', '$("[name = \'' . $this->name . '\']")');
-		} else {
-			$this->registerPlugin('bootstrapSwitch');
-		}
-	}
+    /**
+     * Registers the needed assets
+     */
+    public function registerAssets()
+    {
+        $view = $this->getView();
+        SwitchInputAsset::register($view);
+        if (!isset($this->pluginOptions['animate'])) {
+            $this->pluginOptions['animate'] = true;
+        }
+        if ($this->type == self::RADIO) {
+            $this->registerPlugin('bootstrapSwitch', '$("[name = \'' . $this->name . '\']")');
+        } else {
+            $this->registerPlugin('bootstrapSwitch');
+        }
+    }
 
 }

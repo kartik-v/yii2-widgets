@@ -19,12 +19,12 @@ use Yii;
 class StarRatingAsset extends AssetBundle
 {
 
-	public function init()
-	{
-		$this->setSourcePath('@vendor/kartik-v/bootstrap-star-rating');
-		$this->setupAssets('css', ['css/star-rating']);
-		$this->setupAssets('js', ['js/star-rating']);
-		parent::init();
-	}
+    public function init()
+    {
+        $this->setSourcePath('@vendor/kartik-v/bootstrap-star-rating');
+        $this->setupAssets('css', ['css/star-rating']);
+        $this->setupAssets('js', ['js/star-rating']);
+        parent::init();
+    }
 
 }

@@ -17,12 +17,12 @@ namespace kartik\widgets;
 class DateTimePickerAsset extends AssetBundle
 {
 
-	public function init()
-	{
-		$this->setSourcePath(__DIR__ . '/../lib/bootstrap-datetimepicker');
-		$this->setupAssets('css', ['css/bootstrap-datetimepicker']);
-		$this->setupAssets('js', ['js/bootstrap-datetimepicker']);
-		parent::init();
-	}
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../lib/bootstrap-datetimepicker');
+        $this->setupAssets('css', ['css/bootstrap-datetimepicker']);
+        $this->setupAssets('js', ['js/bootstrap-datetimepicker']);
+        parent::init();
+    }
 
 }

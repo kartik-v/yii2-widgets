@@ -17,11 +17,11 @@ namespace kartik\widgets;
 class Html5InputAsset extends AssetBundle
 {
 
-	public function init()
-	{
-		$this->setSourcePath(__DIR__ . '/../assets');
-		$this->setupAssets('css', ['css/html5input']);
-		parent::init();
-	}
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setupAssets('css', ['css/html5input']);
+        parent::init();
+    }
 
 }

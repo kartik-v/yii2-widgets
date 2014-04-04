@@ -35,90 +35,91 @@ use yii\web\JsExpression;
  */
 class FileInput extends InputWidget
 {
-	/**
-	 * @var bool whether to show 'plugin unsupported' message for IE browser versions 9 & below
-	 */
-	public $showMessage = true;
+    /**
+     * @var bool whether to show 'plugin unsupported' message for IE browser versions 9 & below
+     */
+    public $showMessage = true;
 
-	/*
-	 * @var array HTML attributes for the container for the warning
-	 * message for browsers running IE9 and below.
-	 */
-	public $messageOptions = ['class' => 'alert alert-warning'];
+    /*
+     * @var array HTML attributes for the container for the warning
+     * message for browsers running IE9 and below.
+     */
+    public $messageOptions = ['class' => 'alert alert-warning'];
 
-	/**
-	 * @var array the internalization configuration for this widget
-	 */
-	public $i18n = [];
+    /**
+     * @var array the internalization configuration for this widget
+     */
+    public $i18n = [];
 
-	/**
-	 * @var array initialize the FileInput widget
-	 */
-	public function init()
-	{
-		parent::init();
-		Yii::setAlias('@fileinput', dirname(__FILE__));
-		if (empty($this->i18n)) {
-			$this->i18n = [
-				'class' => 'yii\i18n\PhpMessageSource',
-				'basePath' => '@fileinput/messages'
-			];
-		}
-		Yii::$app->i18n->translations['fileinput'] = $this->i18n;
-		$this->registerAssets();
-		$input = $this->getInput('fileInput');
-		if ($this->showMessage) {
-			$validation = ArrayHelper::getValue($this->pluginOptions, 'showPreview', true) ? 'file preview and multiple file upload' : 'multiple file upload';
-			$message = '<strong>' . Yii::t('fileinput', 'Note:') . '</strong> ' . Yii::t('fileinput', 'Your browser does not support {validation}. Try an alternative or more recent browser to access these features.', ['validation' => $validation]);
-			$content = Html::tag('div', $message, $this->messageOptions);
-			$input .= "\n<br>" . $this->validateIE($content);
-		}
-		echo $input;
-	}
+    /**
+     * @var array initialize the FileInput widget
+     */
+    public function init()
+    {
+        parent::init();
+        Yii::setAlias('@fileinput', dirname(__FILE__));
+        if (empty($this->i18n)) {
+            $this->i18n = [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@fileinput/messages'
+            ];
+        }
+        Yii::$app->i18n->translations['fileinput'] = $this->i18n;
+        $this->registerAssets();
+        $input = $this->getInput('fileInput');
+        if ($this->showMessage) {
+            $validation = ArrayHelper::getValue($this->pluginOptions, 'showPreview', true) ? 'file preview and multiple file upload' : 'multiple file upload';
+            $message = '<strong>' . Yii::t('fileinput', 'Note:') . '</strong> ' . Yii::t('fileinput', 'Your browser does not support {validation}. Try an alternative or more recent browser to access these features.', ['validation' => $validation]);
+            $content = Html::tag('div', $message, $this->messageOptions);
+            $input .= "\n<br>" . $this->validateIE($content);
+        }
+        echo $input;
+    }
 
-	/**
-	 * Validates and returns content based on IE browser version validation
-	 *
-	 * @param string $content
-	 * @param string $validation
-	 * @return string
-	 */
-	protected function validateIE($content, $validation = 'lt IE 10')
-	{
-		return "<!--[if {$validation}]>{$content}<![endif]-->";
-	}
+    /**
+     * Validates and returns content based on IE browser version validation
+     *
+     * @param string $content
+     * @param string $validation
+     * @return string
+     */
+    protected function validateIE($content, $validation = 'lt IE 10')
+    {
+        return "<!--[if {$validation}]>{$content}<![endif]-->";
+    }
 
-	/**
-	 * Set the default plugin option
-	 * @param string $key the array key in [[pluginOptions]]
-	 * @param string $value the value for the key in [[pluginOptions]]
-	 */
-	private function setPluginDefault($key, $value)
-	{
-		if (empty($this->pluginOptions[$key])) {
-			$this->pluginOptions[$key] = $value;
-		}
-	}
+    /**
+     * Set the default plugin option
+     *
+     * @param string $key the array key in [[pluginOptions]]
+     * @param string $value the value for the key in [[pluginOptions]]
+     */
+    private function setPluginDefault($key, $value)
+    {
+        if (empty($this->pluginOptions[$key])) {
+            $this->pluginOptions[$key] = $value;
+        }
+    }
 
-	/**
-	 * Registers the needed assets
-	 */
-	public function registerAssets()
-	{
-		$view = $this->getView();
-		FileInputAsset::register($view);
+    /**
+     * Registers the needed assets
+     */
+    public function registerAssets()
+    {
+        $view = $this->getView();
+        FileInputAsset::register($view);
 
-		$this->setPluginDefault('browseLabel', Yii::t('fileinput', 'Browse') . '&hellip;');
-		$this->setPluginDefault('uploadLabel', Yii::t('fileinput', 'Upload'));
-		$this->setPluginDefault('removeLabel', Yii::t('fileinput', 'Remove'));
+        $this->setPluginDefault('browseLabel', Yii::t('fileinput', 'Browse') . '&hellip;');
+        $this->setPluginDefault('uploadLabel', Yii::t('fileinput', 'Upload'));
+        $this->setPluginDefault('removeLabel', Yii::t('fileinput', 'Remove'));
 
-		foreach ($this->pluginOptions as $key => $value) {
-			if (substr($key, 0, 2) === "el" && !($value instanceof JsExpression)) {
-				$this->pluginOptions[$key] = new JsExpression($value);
-			}
-		}
+        foreach ($this->pluginOptions as $key => $value) {
+            if (substr($key, 0, 2) === "el" && !($value instanceof JsExpression)) {
+                $this->pluginOptions[$key] = new JsExpression($value);
+            }
+        }
 
-		$this->registerPlugin('fileinput');
-	}
+        $this->registerPlugin('fileinput');
+    }
 
 }

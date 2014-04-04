@@ -19,12 +19,12 @@ use Yii;
 class SpinnerAsset extends AssetBundle
 {
 
-	public function init()
-	{
-		$this->setSourcePath(__DIR__ . '/../assets');
-		$this->setupAssets('css', ['css/spin']);
-		$this->setupAssets('js', ['js/spin', 'js/jquery.spin']);
-		parent::init();
-	}
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setupAssets('css', ['css/spin']);
+        $this->setupAssets('js', ['js/spin', 'js/jquery.spin']);
+        parent::init();
+    }
 
 }

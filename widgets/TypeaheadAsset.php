@@ -17,12 +17,12 @@ namespace kartik\widgets;
 class TypeaheadAsset extends AssetBundle
 {
 
-	public function init()
-	{
-		$this->setSourcePath(__DIR__ . '/../assets');
-		$this->setupAssets('css', ['css/typeahead']);
-		$this->setupAssets('js', ['js/typeahead', 'js/hogan']);
-		parent::init();
-	}
+    public function init()
+    {
+        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setupAssets('css', ['css/typeahead']);
+        $this->setupAssets('js', ['js/typeahead', 'js/hogan']);
+        parent::init();
+    }
 
 }
