@@ -90,9 +90,14 @@ class InputWidget extends \yii\widgets\InputWidget
                 Html::$input($this->model, $this->attribute, $this->options);
         }
         $input = $type;
+        if ($type == 'checkbox' || $type == 'radio') {
+            $this->options['value'] = $this->value;
+        }
         return $list ?
             Html::$input($this->name, $this->value, $this->data, $this->options) :
-            Html::$input($this->name, $this->value, $this->options);
+            (($type == 'checkbox' || $type == 'radio') ? 
+              Html::$input($this->name, false, $this->options) : 
+              Html::$input($this->name, $this->value, $this->options));
     }
 
     /**
