@@ -20,7 +20,7 @@ class TypeaheadNewAsset extends AssetBundle
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/typeahead']);
+        $this->setupAssets('css', ['css/typeahead-new']);
         $this->setupAssets('js', ['js/typeahead.bundle']);
         parent::init();
     }

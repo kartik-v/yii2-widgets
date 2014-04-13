@@ -98,24 +98,25 @@ class TypeaheadNew extends InputWidget
             throw new InvalidConfigException("The 'dataset' array must contain an array of datums. Invalid data found.");
         }
         $this->registerAssets();
-        $this->renderInput();
+        Html::addCssClass($this->options, 'form-control');
+        echo $this->getInput('textInput');
     }
 
     /**
-     * Renders the source Input for the Typeahead plugin.
-     * Graceful fallback to a normal HTML  text input - in
-     * case JQuery is not supported by the browser
+     * Convert Yii dropDownList array to Typeahead format
+     *
+     * @param $srcArr
+     * @return array
      */
-    protected function renderInput()
+    protected static function convertArray($srcArr, $key)
     {
-        Html::addCssClass($this->options, 'typeahead');
-        if (isset($this->form)) {
-            echo $this->form->field($this->model, $this->attribute, $this->fieldConfig)->textInput($this->options);
-        } elseif ($this->hasModel()) {
-            echo Html::activeTextInput($this->model, $this->attribute, $this->options);
-        } else {
-            echo Html::textInput($this->name, $this->value, $this->options);
+        $i = 0;
+        $newArr = [];
+        foreach (array_values($srcArr) as $val) {
+            $newArr[$i] = [$key => $val];
+            $i++;
         }
+        return $newArr;
     }
 
     /**
@@ -126,7 +127,7 @@ class TypeaheadNew extends InputWidget
      */
     protected function parseSource($source = [], $key)
     {
-        $datumTokenizer = ArrayHelper::remove($source, 'datumTokenizer', new JsExpression('function(d) { return d.' . $key . '}'));
+        $datumTokenizer = ArrayHelper::remove($source, 'datumTokenizer', new JsExpression("Bloodhound.tokenizers.obj.whitespace('{$key}')"));
         if (!$datumTokenizer instanceof JsExpression) {
             $datumTokenizer = new JsExpression($datumTokenizer);
         }
@@ -145,7 +146,7 @@ class TypeaheadNew extends InputWidget
             $sorter = new JsExpression($source['sorter']);
         }
         if (!empty($source['local'])) {
-            $local = $source['local'];
+            $local = static::convertArray($source['local'], 'value');
         }
         if (!empty($source['prefetch'])) {
             $prefetch = $source['prefetch'];
@@ -179,9 +180,9 @@ class TypeaheadNew extends InputWidget
                 $d['name'] = str_replace('-', '_', $this->options['id'] . '_ta_' . $i);
             }
             if (empty($d['displayKey'])) {
-                $d['displayKey'] = 'name';
+                $d['displayKey'] = 'value';
             }
-            $source = $d['name']; //str_replace('-', '_', $this->options['id'] . '_src_' . $i);
+            $source = $d['name'];
             $config = Json::encode($this->parseSource($d['source'], $d['displayKey']));
             $this->_bloodhound[] = "var {$source} = new Bloodhound({$config});\n{$source}.initialize();\n";
             $d['source'] = new JsExpression("{$source}.ttAdapter()");
@@ -199,7 +200,7 @@ class TypeaheadNew extends InputWidget
         TypeaheadNewAsset::register($view);
         $this->setPluginOptions();
         $js = implode("\n", $this->_bloodhound);
-        $js .= "\n" . '$("#' . $this->options['id'] . '").typeahead(' . Json::encode($this->pluginOptions) . ',' . Json::encode($this->_datasets) . ');';
+        $js .= "\n" . '$("#' . $this->options['id'] . '").typeahead(' . Json::encode($this->pluginOptions) . ',' . Json::encode(array_values($this->_datasets)) . ');';
         $view->registerJs($js);
         //$this->registerPlugin('typeahead');
     }
