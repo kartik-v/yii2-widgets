@@ -46,6 +46,16 @@ class InputWidget extends \yii\widgets\InputWidget
      */
     public $pluginEvents = [];
 
+    /**
+     * @var string the hashed variable to store the pluginOptions
+     */
+    protected $_hashVar;
+
+    /**
+     * @var string the Json encoded options
+     */
+    protected $_encOptions = '';
+
     public function init()
     {
         parent::init();
@@ -95,9 +105,21 @@ class InputWidget extends \yii\widgets\InputWidget
         }
         return $list ?
             Html::$input($this->name, $this->value, $this->data, $this->options) :
-            (($type == 'checkbox' || $type == 'radio') ? 
-              Html::$input($this->name, false, $this->options) : 
-              Html::$input($this->name, $this->value, $this->options));
+            (($type == 'checkbox' || $type == 'radio') ?
+                Html::$input($this->name, false, $this->options) :
+                Html::$input($this->name, $this->value, $this->options));
+    }
+
+    /**
+     * Generates a hashed variable to store the pluginOptions. The hashed variable name is also
+     * made available through a 'data-hashvar' attribute for the input widget.
+     */
+    protected function hashPluginOptions()
+    {
+        $this->_encOptions = empty($this->pluginOptions) ? '' : Json::encode($this->pluginOptions);
+        $this->_hashVar = 'options_' . hash('adler32', $this->_encOptions);
+        $this->options['data-hashvar'] = $this->_hashVar;
+
     }
 
     /**
@@ -111,9 +133,9 @@ class InputWidget extends \yii\widgets\InputWidget
         $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
-            $options = empty($this->pluginOptions) ? '' : Json::encode($this->pluginOptions);
-            $js = "{$id}.{$name}({$options});";
-            $view->registerJs($js);
+            $this->hashPluginOptions();
+            $view->registerJs("var {$this->_hashVar} = {$this->_encOptions};\n", $view::POS_HEAD);
+            $view->registerJs("{$id}.{$name}({$this->_hashVar});");
         }
 
         if (!empty($this->pluginEvents)) {
