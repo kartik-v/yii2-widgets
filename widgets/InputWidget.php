@@ -111,9 +111,10 @@ class InputWidget extends \yii\widgets\InputWidget
     }
 
     /**
-     * Generates a hashed variable to store the pluginOptions. The hashed variable name is also
-     * made available through a 'data-hashvar' attribute for the input widget.
-     *
+     * Generates a hashed variable to store the pluginOptions. The following special data attributes
+     * will also be setup for the input widget, that can be accessed through javascript:
+     * - 'data-plugin-options' will store the hashed variable storing the plugin options.
+     * - 'data-plugin-name' the name of the plugin
      * @param string $name the name of the plugin
      */
     protected function hashPluginOptions($name)
