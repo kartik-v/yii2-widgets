@@ -120,8 +120,8 @@ class InputWidget extends \yii\widgets\InputWidget
     {
         $this->_encOptions = empty($this->pluginOptions) ? '' : Json::encode($this->pluginOptions);
         $this->_hashVar = $name . hash('crc32', $this->_encOptions);
-        $this->options['data-hashvar'] = $this->_hashVar;
-
+        $this->options['data-plugin-name'] = $name;
+        $this->options['data-plugin-options'] = $this->_hashVar;
     }
 
     /**
