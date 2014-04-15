@@ -100,13 +100,15 @@ class InputWidget extends \yii\widgets\InputWidget
                 Html::$input($this->model, $this->attribute, $this->options);
         }
         $input = $type;
-        if ($type == 'checkbox' || $type == 'radio') {
+        $checked = false;
+        if ($type == 'radio' || $type == 'checkbox') {
             $this->options['value'] = $this->value;
+            $checked = ArrayHelper::remove($this->options, 'checked', false);
         }
         return $list ?
             Html::$input($this->name, $this->value, $this->data, $this->options) :
             (($type == 'checkbox' || $type == 'radio') ?
-                Html::$input($this->name, false, $this->options) :
+                Html::$input($this->name, $checked, $this->options) :
                 Html::$input($this->name, $this->value, $this->options));
     }
 
@@ -115,6 +117,7 @@ class InputWidget extends \yii\widgets\InputWidget
      * will also be setup for the input widget, that can be accessed through javascript:
      * - 'data-plugin-options' will store the hashed variable storing the plugin options.
      * - 'data-plugin-name' the name of the plugin
+     *
      * @param string $name the name of the plugin
      */
     protected function hashPluginOptions($name)
