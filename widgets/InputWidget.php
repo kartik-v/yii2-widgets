@@ -113,11 +113,13 @@ class InputWidget extends \yii\widgets\InputWidget
     /**
      * Generates a hashed variable to store the pluginOptions. The hashed variable name is also
      * made available through a 'data-hashvar' attribute for the input widget.
+     *
+     * @param string $name the name of the plugin
      */
-    protected function hashPluginOptions()
+    protected function hashPluginOptions($name)
     {
         $this->_encOptions = empty($this->pluginOptions) ? '' : Json::encode($this->pluginOptions);
-        $this->_hashVar = 'options_' . hash('adler32', $this->_encOptions);
+        $this->_hashVar = $name . hash('crc32', $this->_encOptions);
         $this->options['data-hashvar'] = $this->_hashVar;
 
     }
@@ -133,7 +135,7 @@ class InputWidget extends \yii\widgets\InputWidget
         $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
-            $this->hashPluginOptions();
+            $this->hashPluginOptions($name);
             $view->registerJs("var {$this->_hashVar} = {$this->_encOptions};\n", $view::POS_HEAD);
             $view->registerJs("{$id}.{$name}({$this->_hashVar});");
         }
