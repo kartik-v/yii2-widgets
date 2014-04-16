@@ -14,14 +14,14 @@ namespace kartik\widgets;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class TypeaheadNewAsset extends AssetBundle
+class TypeaheadOldAsset extends AssetBundle
 {
 
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/typeahead-new']);
-        $this->setupAssets('js', ['js/typeahead.bundle']);
+        $this->setupAssets('css', ['css/typeahead-old']);
+        $this->setupAssets('js', ['js/typeahead-old', 'js/hogan']);
         parent::init();
     }
 
