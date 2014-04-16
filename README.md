@@ -54,7 +54,17 @@ plugin with certain custom enhancements. This input widget is a jQuery based rep
 typeahead functionality. It is inspired by twitter.com's autocomplete search functionality and based on Twitter's `typeahead.js` 
 which is described as as a fast and fully-featured autocomplete library. The widget is specially styled for Bootstrap 3. 
 The widget allows graceful degradation to a normal HTML text input, if the browser does not support JQuery. You can setup model 
-validation rules for a model attribute that uses Typeahead widget for input like any other field.
+validation rules for a model attribute that uses Typeahead widget for input like any other field. The widget comes in two 
+variants:
+
+- `TypeaheadBasic`: This widget is a basic implementation of the *typeahead.js* plugin without any suggestion engine. 
+  It uses a javascript substring matcher and Regular Expression matching to query and display suggestions. 
+  [```VIEW DEMO```](http://demos.krajee.com/widget-details/typeahead-basic)
+  
+- `Typeahead`: This widget is an advanced implementation of the *typeahead.js* plugin with the *BloodHound* suggestion
+   engine and the *Handlebars* template compiler.
+  [```VIEW DEMO```](http://demos.krajee.com/widget-details/typeahead)
+  
 
 #### DatePicker
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/datepicker)  
@@ -320,15 +330,23 @@ to the ```require``` section of your `composer.json` file.
 ```php
 use kartik\widgets\Typeahead;
 
-// usage with ActiveForm and model
+// TypeaheadBasic usage with ActiveForm and model
 echo $form->field($model, 'state_3')->widget(Typeahead::classname(), [
+	'data' => $data,
+    'pluginOptions' => ['highlight' => true],
 	'options' => ['placeholder' => 'Filter as you type ...'],
+]);
+
+// Typeahead usage with ActiveForm and model
+echo $form->field($model, 'state_4')->widget(Typeahead::classname(), [
 	'dataset' => [
 		[
 			'local' => $data,
 			'limit' => 10
 		]
-	]
+	],
+    'pluginOptions' => ['highlight' => true],
+	'options' => ['placeholder' => 'Filter as you type ...'],
 ]);
 ```
 
