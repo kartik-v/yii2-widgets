@@ -140,12 +140,8 @@ class InputWidget extends \yii\widgets\InputWidget
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
             $this->hashPluginOptions($name);
-            if (!empty($this->_encOptions)) {
-                $view->registerJs("var {$this->_hashVar} = {$this->_encOptions};\n", $view::POS_HEAD);
-            }
-            else {
-                $view->registerJs("var {$this->_hashVar} = {};\n", $view::POS_HEAD);
-            }
+            $encOptions = empty($this->_encOptions) ? '{}' : $this->_encOptions;
+            $view->registerJs("var {$this->_hashVar} = {$encOptions};\n", $view::POS_HEAD);
             $view->registerJs("{$id}.{$name}({$this->_hashVar});");
         }
 
