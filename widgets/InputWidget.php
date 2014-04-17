@@ -132,6 +132,7 @@ class InputWidget extends \yii\widgets\InputWidget
      * Registers plugin options by storing it in a hashed javascript variable
      */
     protected function registerPluginOptions($name) {
+        $view = $this->getView();
         $this->hashPluginOptions($name);
         $encOptions = empty($this->_encOptions) ? '{}' : $this->_encOptions;
         $view->registerJs("var {$this->_hashVar} = {$encOptions};\n", $view::POS_HEAD);    
