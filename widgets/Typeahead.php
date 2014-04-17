@@ -194,13 +194,7 @@ class Typeahead extends TypeaheadBasic
     {
         $view = $this->getView();
         TypeaheadAsset::register($view);
-        $this->hashPluginOptions('typeahead');
-        if (!empty($this->_encOptions)) {
-            $view->registerJs("var {$this->_hashVar} = {$this->_encOptions};\n", $view::POS_HEAD);
-        }
-        else {
-            $view->registerJs("var {$this->_hashVar} = {};\n", $view::POS_HEAD);
-        }
+        $this->registerPluginOptions('typeahead');
         $view->registerJs($this->_bloodhound);
         $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $this->_dataset . ');');
     }

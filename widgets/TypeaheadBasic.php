@@ -79,9 +79,7 @@ class TypeaheadBasic extends InputWidget
     {
         $view = $this->getView();
         TypeaheadBasicAsset::register($view);
-        $this->hashPluginOptions('typeahead');
-        $encOptions = empty($this->_encOptions) ? '{}' : $this->_encOptions;
-        $view->registerJs("var {$this->_hashVar} = {$encOptions};\n", $view::POS_HEAD);
+        $this->registerPluginOptions('typeahead');
         $dataVar = str_replace('-', '_', $this->options['id'] . '_data');
         $view->registerJs('var ' . $dataVar . ' = ' . Json::encode(array_values($this->data)) . ';', View::POS_HEAD);
         $dataset = Json::encode(['name' => $dataVar, 'source' => new JsExpression('substringMatcher(' . $dataVar . ')')]);

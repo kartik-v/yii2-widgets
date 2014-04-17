@@ -129,6 +129,15 @@ class InputWidget extends \yii\widgets\InputWidget
     }
 
     /**
+     * Registers plugin options by storing it in a hashed javascript variable
+     */
+    protected function registerPluginOptions($name) {
+        $this->hashPluginOptions($name);
+        $encOptions = empty($this->_encOptions) ? '{}' : $this->_encOptions;
+        $view->registerJs("var {$this->_hashVar} = {$encOptions};\n", $view::POS_HEAD);    
+    }
+    
+    /**
      * Registers a specific plugin and the related events
      *
      * @param string $name the name of the plugin
@@ -139,9 +148,7 @@ class InputWidget extends \yii\widgets\InputWidget
         $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
-            $this->hashPluginOptions($name);
-            $encOptions = empty($this->_encOptions) ? '{}' : $this->_encOptions;
-            $view->registerJs("var {$this->_hashVar} = {$encOptions};\n", $view::POS_HEAD);
+            $this->registerPluginOptions($name);
             $view->registerJs("{$id}.{$name}({$this->_hashVar});");
         }
 
