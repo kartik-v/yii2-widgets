@@ -80,8 +80,8 @@ class TypeaheadBasic extends InputWidget
      */
     protected function registerPluginEvents($view)
     {
-        $id = '$("#' . $this->options['id'] . '")';
         if (!empty($this->pluginEvents)) {
+            $id = '$("#' . $this->options['id'] . '")';
             $js = [];
             foreach ($this->pluginEvents as $event => $handler) {
                 $function = new JsExpression($handler);
