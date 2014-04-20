@@ -46,10 +46,12 @@ class TypeaheadBasic extends InputWidget
 
     /**
      * Runs the widget
+     *
      * @return string|void
      * @throws \yii\base\InvalidConfigException
      */
-    public function run() {
+    public function run()
+    {
         if (empty($this->data) || !is_array($this->data)) {
             throw new InvalidConfigException("You must define the 'data' property for Typeahead which must be a single dimensional array.");
         }
@@ -61,7 +63,8 @@ class TypeaheadBasic extends InputWidget
     /**
      * Initializes options
      */
-    protected function initOptions() {
+    protected function initOptions()
+    {
         Html::addCssClass($this->options, 'form-control');
         if ($this->scrollable) {
             Html::addCssClass($this->container, 'tt-scrollable-menu');
@@ -69,6 +72,23 @@ class TypeaheadBasic extends InputWidget
         if ($this->rtl) {
             $this->options['dir'] = 'rtl';
             Html::addCssClass($this->container, 'tt-rtl');
+        }
+    }
+
+    /**
+     * Registers plugin events
+     */
+    protected function registerPluginEvents($view)
+    {
+        $id = '$("#' . $this->options['id'] . '")';
+        if (!empty($this->pluginEvents)) {
+            $js = [];
+            foreach ($this->pluginEvents as $event => $handler) {
+                $function = new JsExpression($handler);
+                $js[] = "{$id}.on('{$event}', {$function});";
+            }
+            $js = implode("\n", $js);
+            $view->registerJs($js);
         }
     }
 
@@ -84,6 +104,7 @@ class TypeaheadBasic extends InputWidget
         $view->registerJs('var ' . $dataVar . ' = ' . Json::encode(array_values($this->data)) . ';', View::POS_HEAD);
         $dataset = Json::encode(['name' => $dataVar, 'source' => new JsExpression('substringMatcher(' . $dataVar . ')')]);
         $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $dataset . ');');
+        $this->registerPluginEvents($view);
     }
 
 }

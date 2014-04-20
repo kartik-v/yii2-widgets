@@ -97,7 +97,7 @@ class Typeahead extends TypeaheadBasic
     protected function validateConfig()
     {
         foreach ($this->dataset as $datum) {
-            if (empty($datum['local']) &&  empty($datum['prefetch']) && empty($datum['remote'])) {
+            if (empty($datum['local']) && empty($datum['prefetch']) && empty($datum['remote'])) {
                 throw new InvalidConfigException("No data source found for the Typeahead. The 'dataset' array must have one of 'local', 'prefetch', or 'remote' settings enabled.");
             }
         }
@@ -119,10 +119,10 @@ class Typeahead extends TypeaheadBasic
                 "{$dataVar}.initialize();\n";
             $d = ['name' => $dataVar, 'source' => new JsExpression($dataVar . '.ttAdapter()')];
             if (!empty($datum['displayKey'])) {
-                $d += ['displayKey'=>$datum['displayKey']];
+                $d += ['displayKey' => $datum['displayKey']];
             }
             if (!empty($datum['templates'])) {
-                $d += ['templates'=>$datum['templates']];
+                $d += ['templates' => $datum['templates']];
             }
             $dataset[] = $d;
             $index++;
@@ -197,6 +197,7 @@ class Typeahead extends TypeaheadBasic
         $this->registerPluginOptions('typeahead');
         $view->registerJs($this->_bloodhound);
         $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $this->_dataset . ');');
+        $this->registerPluginEvents($view);
     }
 
 }
