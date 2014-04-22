@@ -13,6 +13,7 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
+use yii\web\View;
 
 /**
  * Base input widget class for yii2-widgets
