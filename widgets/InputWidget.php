@@ -140,7 +140,7 @@ class InputWidget extends \yii\widgets\InputWidget
         $view = $this->getView();
         $this->hashPluginOptions($name);
         $encOptions = empty($this->_encOptions) ? '{}' : $this->_encOptions;
-        $view->registerJs("var {$this->_hashVar} = {$encOptions};\n");
+        $view->registerJs("var {$this->_hashVar} = {$encOptions};\n", View::POS_HEAD);
     }
     
     /**
@@ -168,4 +168,5 @@ class InputWidget extends \yii\widgets\InputWidget
             $view->registerJs($js);
         }
     }
+
 }
