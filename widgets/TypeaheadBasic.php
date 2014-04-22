@@ -101,9 +101,9 @@ class TypeaheadBasic extends InputWidget
         TypeaheadBasicAsset::register($view);
         $this->registerPluginOptions('typeahead');
         $dataVar = str_replace('-', '_', $this->options['id'] . '_data');
-        $view->registerJs('var ' . $dataVar . ' = ' . Json::encode(array_values($this->data)) . ';', View::POS_HEAD);
+        $view->registerJs('var ' . $dataVar . ' = ' . Json::encode(array_values($this->data)) . ';');
         $dataset = Json::encode(['name' => $dataVar, 'source' => new JsExpression('substringMatcher(' . $dataVar . ')')]);
-        $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $dataset . ');');
+        $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $dataset . ');', View::POS_HEAD);
         $this->registerPluginEvents($view);
     }
 
