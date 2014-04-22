@@ -10,12 +10,9 @@ namespace kartik\widgets;
 
 use Yii;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\helpers\Json;
-use yii\helpers\Inflector;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use yii\web\View;
 use yii\web\JsExpression;
 
 /**
@@ -91,7 +88,7 @@ class Typeahead extends TypeaheadBasic
     }
 
     /**
-     * @return validate if configuration is valid
+     * @return void Validate if configuration is valid
      * @throws \yii\base\InvalidConfigException
      */
     protected function validateConfig()
@@ -177,10 +174,12 @@ class Typeahead extends TypeaheadBasic
                 $r['beforeSend'] = new JsExpression("function (xhr) { alert('before'); {$hint}.addClass('loading'); }");
             }
             if (empty($r['filter'])) {
-                $r['filter'] = new JsExpression("function(list) {
-                    alert('after');
-                    {$hint}.removeClass('loading');
-                }");;
+                $r['filter'] = new JsExpression(
+                    "function(list) {
+                        alert('after');
+                        {$hint}.removeClass('loading');
+                    }"
+                );
             }
             $d['remote'] = $r;
         }
@@ -199,5 +198,4 @@ class Typeahead extends TypeaheadBasic
         $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $this->_dataset . ');');
         $this->registerPluginEvents($view);
     }
-
 }

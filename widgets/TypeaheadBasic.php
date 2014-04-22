@@ -8,11 +8,11 @@
 
 namespace kartik\widgets;
 
-use yii\web\View;
 use yii\web\JsExpression;
 use yii\helpers\Json;
 use yii\helpers\Html;
 use yii\base\InvalidConfigException;
+use yii\web\View;
 
 /**
  * Typeahead widget is a Yii2 wrapper for the Twitter typeahead.js plugin. This
@@ -77,6 +77,7 @@ class TypeaheadBasic extends InputWidget
 
     /**
      * Registers plugin events
+     * @param View $view The View object
      */
     protected function registerPluginEvents($view)
     {
@@ -106,5 +107,4 @@ class TypeaheadBasic extends InputWidget
         $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $dataset . ');');
         $this->registerPluginEvents($view);
     }
-
 }

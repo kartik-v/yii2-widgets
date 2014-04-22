@@ -11,9 +11,6 @@ namespace kartik\widgets;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * Html5Input widget is a widget encapsulating the HTML 5 inputs.
@@ -195,5 +192,4 @@ class Html5Input extends InputWidget
             "{$input}.change(function(){{$caption}.val(this.value); {$caption}.trigger('change');});";
         $view->registerJs($js);
     }
-
 }

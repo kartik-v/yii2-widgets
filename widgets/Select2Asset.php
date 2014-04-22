@@ -26,5 +26,4 @@ class Select2Asset extends AssetBundle
         $this->setupAssets('js', ['select2']);
         parent::init();
     }
-
 }

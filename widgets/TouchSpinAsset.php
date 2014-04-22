@@ -23,5 +23,4 @@ class TouchSpinAsset extends AssetBundle
         $this->setupAssets('js', ['js/bootstrap.touchspin']);
         parent::init();
     }
-
 }

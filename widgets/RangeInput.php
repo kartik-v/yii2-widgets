@@ -9,11 +9,6 @@
 namespace kartik\widgets;
 
 use Yii;
-use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
-use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * RangeInput widget is an enhanced widget encapsulating the HTML 5 range input.
@@ -26,5 +21,4 @@ class RangeInput extends Html5Input
 {
 
     public $type = 'range';
-
 }

@@ -24,5 +24,4 @@ class TypeaheadBasicAsset extends AssetBundle
         $this->setupAssets('js', ['js/typeahead.jquery', 'js/typeahead-kv']);
         parent::init();
     }
-
 }

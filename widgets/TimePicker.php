@@ -113,5 +113,4 @@ class TimePicker extends InputWidget
         TimePickerAsset::register($view);
         $this->registerPlugin('timepicker');
     }
-
 }

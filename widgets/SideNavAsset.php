@@ -24,5 +24,4 @@ class SideNavAsset extends AssetBundle
         $this->setupAssets('js', ['js/sidenav']);
         parent::init();
     }
-
 }

@@ -24,5 +24,4 @@ class ColorInputAsset extends AssetBundle
         $this->setupAssets('js', ['js/spectrum']);
         parent::init();
     }
-
 }

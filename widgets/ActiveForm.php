@@ -122,7 +122,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
         }
         $this->formConfig = $this->formConfig + $this->_config[$this->type];
         if (!isset($this->fieldConfig['class'])) {
-            $this->fieldConfig['class'] = \kartik\widgets\ActiveField::className();
+            $this->fieldConfig['class'] = ActiveField::className();
         }
         $this->_inputCss = self::NOT_SET;
         $this->_offsetCss = self::NOT_SET;
@@ -216,5 +216,4 @@ class ActiveForm extends \yii\widgets\ActiveForm
         $view = $this->getView();
         ActiveFormAsset::register($view);
     }
-
 }

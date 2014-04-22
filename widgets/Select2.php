@@ -10,11 +10,8 @@ namespace kartik\widgets;
 
 use Yii;
 use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * Select2 widget is a Yii2 wrapper for the Select2 jQuery plugin. This
@@ -54,7 +51,7 @@ class Select2 extends InputWidget
     public $addon = [];
 
     /**
-     * @var size of the Select2 input, must be one of the
+     * @var string Size of the Select2 input, must be one of the
      * [[LARGE]], [[MEDIUM]] or [[SMALL]]. Defaults to [[MEDIUM]]
      */
     public $size = self::MEDIUM;
@@ -189,5 +186,4 @@ class Select2 extends InputWidget
             $view->registerJs("\n$.fn.modal.Constructor.prototype.enforceFocus = function() {};");
         }
     }
-
 }

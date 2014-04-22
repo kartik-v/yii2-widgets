@@ -24,5 +24,4 @@ class TypeaheadAsset extends AssetBundle
         $this->setupAssets('js', ['js/typeahead.bundle', 'js/handlebars']);
         parent::init();
     }
-
 }

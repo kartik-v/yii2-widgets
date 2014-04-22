@@ -12,8 +12,6 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * Switch widget is a Yii2 wrapper for the Bootstrap Switch plugin by Mattia, Peter, & Emanuele.
@@ -146,5 +144,4 @@ class SwitchInput extends InputWidget
             $this->registerPlugin('bootstrapSwitch');
         }
     }
-
 }

@@ -24,5 +24,4 @@ class DatePickerAsset extends AssetBundle
         $this->setupAssets('js', ['js/bootstrap-datepicker']);
         parent::init();
     }
-
 }

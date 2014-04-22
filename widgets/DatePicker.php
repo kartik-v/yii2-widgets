@@ -10,11 +10,8 @@ namespace kartik\widgets;
 
 use Yii;
 use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * DatePicker widget is a Yii2 wrapper for the Bootstrap DatePicker plugin. The
@@ -42,7 +39,7 @@ class DatePicker extends InputWidget
     public $type = self::TYPE_COMPONENT_PREPEND;
 
     /**
-     * @var the size of the input - 'lg', 'md', 'sm', 'xs'
+     * @var string The size of the input - 'lg', 'md', 'sm', 'xs'
      */
     public $size;
 
@@ -59,7 +56,7 @@ class DatePicker extends InputWidget
     public $options = [];
 
     /**
-     * @var the addon that will be prepended/appended for a
+     * @var string The addon that will be prepended/appended for a
      * [[TYPE_COMPONENT_PREPEND]] and [[TYPE_COMPONENT_APPEND]]
      */
     public $addon = '<i class="glyphicon glyphicon-calendar"></i>';
@@ -206,7 +203,7 @@ class DatePicker extends InputWidget
     /**
      * Parses the input to render based on markup type
      *
-     * @param the input
+     * @param string $input
      * @return string
      */
     protected function parseMarkup($input)
@@ -286,5 +283,4 @@ class DatePicker extends InputWidget
             $this->registerPlugin('datepicker', "{$id}.parent()");
         }
     }
-
 }

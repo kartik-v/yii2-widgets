@@ -24,5 +24,4 @@ class DateTimePickerAsset extends AssetBundle
         $this->setupAssets('js', ['js/bootstrap-datetimepicker']);
         parent::init();
     }
-
 }

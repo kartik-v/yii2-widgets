@@ -10,11 +10,8 @@ namespace kartik\widgets;
 
 use Yii;
 use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * DateTimePicker widget is a Yii2 wrapper for the Bootstrap DateTimePicker plugin by smalot
@@ -40,7 +37,7 @@ class DateTimePicker extends InputWidget
     public $type = self::TYPE_COMPONENT_PREPEND;
 
     /**
-     * @var the size of the input - 'lg', 'md', 'sm', 'xs'
+     * @var string The size of the input - 'lg', 'md', 'sm', 'xs'
      */
     public $size;
     /**
@@ -205,7 +202,7 @@ class DateTimePicker extends InputWidget
     /**
      * Parses the input to render based on markup type
      *
-     * @param the input
+     * @param string $input
      * @return string
      */
     protected function parseMarkup($input)
@@ -263,5 +260,4 @@ class DateTimePicker extends InputWidget
             $this->registerPlugin('datetimepicker', "{$id}.parent()");
         }
     }
-
 }

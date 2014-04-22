@@ -224,5 +224,4 @@ EOT;
             throw new InvalidConfigException("The 'url' option is required and must point to a bookmarked content on the same page.");
         }
     }
-
 }
