@@ -8,7 +8,7 @@
 $(document).ready(function() {
     $('.kv-toggle').click(function(event) {
         event.preventDefault(); // cancel the event
-        var $this = $(this); // cache the selector avoid reproccess the DOM
+        var $this = $(this); // cache the selector avoid reprocessing the DOM
 		$this.children('.opened').toggle();
 		$this.children('.closed').toggle();
 		$this.parent().children('ul').toggle();
