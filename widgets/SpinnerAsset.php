@@ -26,5 +26,4 @@ class SpinnerAsset extends AssetBundle
         $this->setupAssets('js', ['js/spin', 'js/jquery.spin']);
         parent::init();
     }
-
 }

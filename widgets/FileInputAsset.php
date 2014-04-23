@@ -24,5 +24,4 @@ class FileInputAsset extends AssetBundle
         $this->setupAssets('js', ['js/fileinput']);
         parent::init();
     }
-
 }

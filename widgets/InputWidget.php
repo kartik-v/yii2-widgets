@@ -57,6 +57,9 @@ class InputWidget extends \yii\widgets\InputWidget
      */
     protected $_encOptions = '';
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
@@ -69,10 +72,10 @@ class InputWidget extends \yii\widgets\InputWidget
     /**
      * Adds an asset to the view
      *
-     * @param $view View object
-     * @param $file string the asset file name
-     * @param $file string the asset file type (css or js)
-     * @param $class string the class name of the AssetBundle
+     * @param View $view The View object
+     * @param string $file The asset file name
+     * @param string $type The asset file type (css or js)
+     * @param string $class The class name of the AssetBundle
      */
     protected function addAsset($view, $file, $type, $class)
     {
@@ -132,7 +135,8 @@ class InputWidget extends \yii\widgets\InputWidget
     /**
      * Registers plugin options by storing it in a hashed javascript variable
      */
-    protected function registerPluginOptions($name) {
+    protected function registerPluginOptions($name)
+    {
         $view = $this->getView();
         $this->hashPluginOptions($name);
         $encOptions = empty($this->_encOptions) ? '{}' : $this->_encOptions;

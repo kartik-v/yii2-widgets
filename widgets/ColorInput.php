@@ -10,10 +10,6 @@ namespace kartik\widgets;
 
 use Yii;
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
-use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * ColorInput widget is an enhanced widget encapsulating the HTML 5 color input.
@@ -92,5 +88,4 @@ class ColorInput extends Html5Input
         $input = '$("#' . $this->html5Options['id'] . '")';
         $view->registerJs("{$caption}.change(function(){{$input}.spectrum('set', this.value)});\n");
     }
-
 }

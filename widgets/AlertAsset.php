@@ -23,5 +23,4 @@ class AlertAsset extends AssetBundle
         $this->setupAssets('css', ['css/alert']);
         parent::init();
     }
-
 }

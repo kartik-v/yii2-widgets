@@ -24,5 +24,4 @@ class AffixAsset extends AssetBundle
         $this->setupAssets('js', ['js/affix']);
         parent::init();
     }
-
 }

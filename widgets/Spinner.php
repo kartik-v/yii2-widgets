@@ -9,7 +9,6 @@
 namespace kartik\widgets;
 
 use Yii;
-use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -74,7 +73,7 @@ class Spinner extends \yii\base\Widget
     public $captionOptions = [];
 
     /**
-     * @var options the HTML attributes for the spinner container. The following
+     * @var array Options the HTML attributes for the spinner container. The following
      * additional attributes can be set:
      * - `tag`: string the `tag` for rendering the container. Defaults to `div`,
      */
@@ -139,5 +138,4 @@ class Spinner extends \yii\base\Widget
         }
         $view->registerJs($js);
     }
-
 }

@@ -234,5 +234,4 @@ class SideNav extends \yii\widgets\Menu
             throw new InvalidConfigException("The 'label' option is required.");
         }
     }
-
 }

@@ -24,5 +24,4 @@ class GrowlAsset extends AssetBundle
         $this->setupAssets('js', ['js/bootstrap-growl']);
         parent::init();
     }
-
 }

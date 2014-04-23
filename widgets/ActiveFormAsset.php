@@ -23,5 +23,4 @@ class ActiveFormAsset extends AssetBundle
         $this->setupAssets('css', ['css/activeform']);
         parent::init();
     }
-
 }

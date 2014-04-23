@@ -170,6 +170,8 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     protected function initTemplate()
     {
+        /**
+         * @var ActiveForm $form */
         $form = $this->form;
         $inputDivClass = $form->getInputCss();
         $offsetDivClass = $form->getOffsetCss();
@@ -424,12 +426,12 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     public function multiselect($items, $options = [])
     {
-        $height = self::MULTI_SELECT_HEIGHT;
+        $height = self::MULTI_SELECT_HEIGHT;  //unused variable
         $selector = self::TYPE_CHECKBOX;
         $container = [];
         $options['encode'] = false;
         if (isset($options['height'])) {
-            $height = $options['height'];
+            $height = $options['height'];  //unused variable
             unset($options['height']);
         }
         if (isset($options['selector'])) {
@@ -450,5 +452,4 @@ class ActiveField extends \yii\widgets\ActiveField
             return $this->checkboxList($items, $options);
         }
     }
-
 }

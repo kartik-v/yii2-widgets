@@ -52,5 +52,4 @@ class AssetBundle extends \yii\web\AssetBundle
             $this->sourcePath = $path;
         }
     }
-
 }

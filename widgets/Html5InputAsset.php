@@ -23,5 +23,4 @@ class Html5InputAsset extends AssetBundle
         $this->setupAssets('css', ['css/html5input']);
         parent::init();
     }
-
 }

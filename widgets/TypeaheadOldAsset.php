@@ -24,5 +24,4 @@ class TypeaheadOldAsset extends AssetBundle
         $this->setupAssets('js', ['js/typeahead-old', 'js/hogan']);
         parent::init();
     }
-
 }

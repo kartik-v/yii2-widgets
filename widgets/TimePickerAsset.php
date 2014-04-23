@@ -26,5 +26,4 @@ class TimePickerAsset extends AssetBundle
         $this->setupAssets('js', ['js/bootstrap-timepicker']);
         parent::init();
     }
-
 }

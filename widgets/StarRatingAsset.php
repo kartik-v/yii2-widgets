@@ -26,5 +26,4 @@ class StarRatingAsset extends AssetBundle
         $this->setupAssets('js', ['js/star-rating']);
         parent::init();
     }
-
 }

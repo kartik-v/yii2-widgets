@@ -150,5 +150,4 @@ class Growl extends \yii\bootstrap\Widget
         }
         $view->registerJs($js);
     }
-
 }

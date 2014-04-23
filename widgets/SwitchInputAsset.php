@@ -24,5 +24,4 @@ class SwitchInputAsset extends AssetBundle
         $this->setupAssets('js', ['js/bootstrap-switch']);
         parent::init();
     }
-
 }

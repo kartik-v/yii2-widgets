@@ -170,5 +170,4 @@ class AlertBlock extends \yii\bootstrap\Widget
             return null;
         }
     }
-
 }

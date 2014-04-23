@@ -10,10 +10,7 @@ namespace kartik\widgets;
 
 use Yii;
 use yii\helpers\Html;
-use yii\helpers\Json;
-use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use yii\web\View;
 use yii\web\JsExpression;
 
 /**
@@ -132,5 +129,4 @@ class TypeaheadOld extends InputWidget
         $this->setPluginOptions();
         $this->registerPlugin('typeahead');
     }
-
 }
