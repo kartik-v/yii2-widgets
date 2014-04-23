@@ -178,31 +178,57 @@ class ActiveForm extends \yii\widgets\ActiveForm
         parent::init();
     }
 
+    /**
+     * Gets input css property
+     *
+     * @return string
+     */
     public function getInputCss()
     {
         return $this->_inputCss;
     }
 
+    /**
+     * Sets input css property
+     */
     public function setInputCss($class)
     {
         $this->_inputCss = $class;
     }
 
+    /**
+     * Checks if input css property is set
+     *
+     * @return bool
+     */
     public function hasInputCss()
     {
         return ($this->_inputCss != self::NOT_SET);
     }
 
+    /**
+     * Gets offset css property
+     *
+     * @return string
+     */
     public function getOffsetCss()
     {
         return $this->_offsetCss;
     }
 
+    /**
+     * Sets offset css property
+     */
     public function setOffsetCss($class)
     {
         $this->_offsetCss = $class;
     }
 
+    /**
+     * Checks if offset css property is set
+     *
+     * @return bool
+     */
     public function hasOffsetCss()
     {
         return ($this->_offsetCss != self::NOT_SET);
