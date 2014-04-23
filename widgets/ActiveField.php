@@ -171,7 +171,8 @@ class ActiveField extends \yii\widgets\ActiveField
     protected function initTemplate()
     {
         /**
-         * @var ActiveForm $form */
+         * @var ActiveForm $form
+         */
         $form = $this->form;
         $inputDivClass = $form->getInputCss();
         $offsetDivClass = $form->getOffsetCss();
@@ -212,7 +213,7 @@ class ActiveField extends \yii\widgets\ActiveField
         $this->parts['{input}'] = Html::tag('p', $content, $options);
         return $this;
     }
-    
+
     /**
      * Renders an input tag.
      *
@@ -247,7 +248,7 @@ class ActiveField extends \yii\widgets\ActiveField
         $this->initPlaceholder($options);
         return parent::textInput($options);
     }
-    
+
     /**
      * Renders a password input.
      * This method will generate the "name" and "value" tag attributes automatically for the model attribute
@@ -426,30 +427,14 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     public function multiselect($items, $options = [])
     {
-        $height = self::MULTI_SELECT_HEIGHT;  //unused variable
-        $selector = self::TYPE_CHECKBOX;
-        $container = [];
         $options['encode'] = false;
-        if (isset($options['height'])) {
-            $height = $options['height'];  //unused variable
-            unset($options['height']);
-        }
-        if (isset($options['selector'])) {
-            $selector = $options['selector'];
-            unset($options['selector']);
-        }
-        if (isset($options['container'])) {
-            $container = $options['container'];
-            unset($options['container']);
-        }
+        $height = ArrayHelper::remove($options, 'height', self::MULTI_SELECT_HEIGHT);
+        $selector = ArrayHelper::remove($options, 'selector', self::TYPE_CHECKBOX);
+        $container = ArrayHelper::remove($options, 'container', []);
+        Html::addCssStyle($options, 'height:' . $height, true);
         Html::addCssClass($container, 'form-control input-multiselect');
         $container['tabindex'] = 0;
         $this->_multiselect = Html::tag('div', '{input}', $container);
-
-        if ($selector == self::TYPE_RADIO) {
-            return $this->radioList($items, $options);
-        } else {
-            return $this->checkboxList($items, $options);
-        }
+        return $selector == self::TYPE_RADIO ? $this->radioList($items, $options) : $this->checkboxList($items, $options);
     }
 }
