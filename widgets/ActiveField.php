@@ -431,7 +431,7 @@ class ActiveField extends \yii\widgets\ActiveField
         $height = ArrayHelper::remove($options, 'height', self::MULTI_SELECT_HEIGHT);
         $selector = ArrayHelper::remove($options, 'selector', self::TYPE_CHECKBOX);
         $container = ArrayHelper::remove($options, 'container', []);
-        Html::addCssStyle($options, 'height:' . $height, true);
+        Html::addCssStyle($container, 'height:' . $height, true);
         Html::addCssClass($container, 'form-control input-multiselect');
         $container['tabindex'] = 0;
         $this->_multiselect = Html::tag('div', '{input}', $container);
