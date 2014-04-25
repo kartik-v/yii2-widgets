@@ -50,7 +50,6 @@ class StarRating extends InputWidget
     protected function renderInput()
     {
         $options = $this->options;
-        Html::addCssClass($options, 'form-control');
         if ($this->hasModel()) {
             $input = Html::activeInput('number', $this->model, $this->attribute, $options);
         } else {
