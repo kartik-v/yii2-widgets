@@ -1,6 +1,7 @@
 version 2.4.0
 =============
 1. Upgrade Select2 Widget to v3.4.6 of the `select2` plugin.
+2. Star Rating Widget upgraded as a result of the base Krajee StarRating JQuery plugin upgrade.
 
 version 2.3.0
 =============
