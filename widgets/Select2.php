@@ -66,13 +66,6 @@ class Select2 extends InputWidget
     public $data;
 
     /**
-     * @var boolean whether the widget will be used inside a bootstrap modal window.
-     * Fixes [issue # 6](https://github.com/kartik-v/yii2-widgets/issues/6) on an
-     * interoperability issue with bootstrap modal.
-     */
-    public $modal = false;
-
-    /**
      * @var array the HTML attributes for the input tag. The following options are important:
      * - multiple: boolean whether multiple or single item should be selected. Defaults to false.
      * - placeholder: string placeholder for the select item.
@@ -182,8 +175,5 @@ class Select2 extends InputWidget
         }
         $this->pluginOptions['width'] = 'resolve';
         $this->registerPlugin('select2');
-        if ($this->modal) {
-            $view->registerJs("\n$.fn.modal.Constructor.prototype.enforceFocus = function() {};");
-        }
     }
 }
