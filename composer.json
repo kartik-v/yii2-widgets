@@ -16,7 +16,8 @@
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
         "kartik-v/bootstrap-star-rating": "*",
-        "kartik-v/bootstrap-fileinput": "*"
+        "kartik-v/bootstrap-fileinput": "*",
+        "kartik-v/dependent-dropdown": "*"
     },
     "autoload": {
         "psr-4": {
