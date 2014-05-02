@@ -9,11 +9,7 @@
 namespace kartik\widgets;
 
 use Yii;
-use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * Dependent Dropdown widget is a wrapper widget for the dependent-dropdown
@@ -34,6 +30,15 @@ class DepDrop extends InputWidget
      */
     public function init()
     {
+        if (empty($this->data) || !is_array($this->data)) {
+            throw new InvalidConfigException("You must enter the 'data' property which must be an array as required in any Yii dropdownList.");
+        }
+        if (empty($this->pluginOptions['url'])) {
+            throw new InvalidConfigException("The 'pluginOptions[\"url\"]' property has not been set.");
+        }
+        if (empty($this->pluginOptions['depends']) || !is_array($this->pluginOptions['depends'])) {
+            throw new InvalidConfigException("The 'pluginOptions[\"depends\"]' property must be set and must be an array of dependent dropdown element ID.");
+        }
         parent::init();
         $this->registerAssets();
         if (empty($this->options['class'])) {

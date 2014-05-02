@@ -77,6 +77,7 @@ class TypeaheadBasic extends InputWidget
 
     /**
      * Registers plugin events
+     *
      * @param View $view The View object
      */
     protected function registerPluginEvents($view)
