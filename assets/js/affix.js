@@ -6,14 +6,15 @@
  * documentation site at http://getbootstrap.com/
  *
  * Author: Kartik Visweswaran
- * Year: 2013
+ * Year: 2014
  * For more Yii related demos visit http://demos.krajee.com
  */
 !function ($) {
     $(function () {
-        var $window = $(window)
-        var $body = $(document.body)
-        var navHeight = $('.navbar').outerHeight(true) + 10
+        var $window = $(window),
+            $body = $(document.body),
+            $sideBar = $('.kv-sidebar'),
+            navHeight = $('.navbar').outerHeight(true) + 10;
 
         $body.scrollspy({
             target: '.kv-sidebar',
@@ -30,8 +31,6 @@
 
         // back to top
         setTimeout(function () {
-            var $sideBar = $('.kv-sidebar')
-
             $sideBar.affix({
                 offset: {
                     top: function () {
@@ -47,5 +46,11 @@
                 }
             })
         }, 100)
+
+        $sideBar.width($sideBar.parent().width());
+
+        $window.resize(function () {
+            $sideBar.width($sideBar.parent().width());
+        });
     })
 }(window.jQuery)
