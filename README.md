@@ -39,7 +39,7 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 	* Display Options
 
 #### DepDrop
-[```VIEW DEMO```](http://demos.krajee.com/widget-details/dep-drop)
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/depdrop)
 
 The DepDrop widget is a Yii 2 wrapper for the [dependent-dropdown jQuery plugin by Krajee](http://plugins.krajee.com/dependent-dropdown).
 This plugin allows multi level dependent dropdown with nested dependencies. The plugin thus enables to convert normal
