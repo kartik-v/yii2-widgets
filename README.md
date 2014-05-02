@@ -38,6 +38,15 @@ Extends [Yii ActiveField widget](https://github.com/yiisoft/yii2/blob/master/fra
 	* Radio List
 	* Display Options
 
+#### DepDrop
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/dep-drop)
+
+The DepDrop widget is a Yii 2 wrapper for the [dependent-dropdown jQuery plugin by Krajee](http://plugins.krajee.com/dependent-dropdown/).
+This plugin allows multi level dependent dropdown with nested dependencies. The plugin thus enables to convert normal
+select inputs to a dependent input field, whose options are derived based on value selected in another input/or a
+group of inputs. It works both with normal select options and select with optgroups as well.
+
+
 #### Select2
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/select2)  
 
@@ -303,6 +312,22 @@ to the ```require``` section of your `composer.json` file.
 			'asButton' => true
 		]
 	]);
+```
+
+### DepDrop
+```php
+	// Normal parent select
+	echo $form->field($model, 'cat')->dropDownList($catList, ['id'=>'cat-id']);
+
+	// Dependent Dropdown
+    echo $form->field($model, 'subcat')->widget(DepDrop::classname(), [
+         'options' => ['id'=>'subcat-id'],
+         'pluginOptions'=>[
+             'depends'=>['cat-id'],
+             'placeholder' => 'Select...',
+             'url' => Url::to(['/site/subcat'])
+         ]
+     ]);
 ```
 
 ### Select2
