@@ -50,7 +50,7 @@ group of inputs. It works both with normal select options and select with optgro
 #### Select2
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/select2)  
 
-The Select2 widget is a Yii 2 wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2/). 
+The Select2 widget is a Yii 2 wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2). 
 This input widget is a jQuery based replacement for select boxes. It supports searching, remote data sets, 
 and infinite scrolling of results. The widget is specially styled for Bootstrap 3. The widget allows
 graceful degradation to a normal HTML select or text input, if the browser does not support JQuery.
@@ -78,7 +78,7 @@ variants:
 #### DatePicker
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/datepicker)  
 
-The DatePicker widget is a Yii 2 wrapper for the [Bootstrap DatePicker plugin](http://eternicode.github.io/bootstrap-datepicker/). 
+The DatePicker widget is a Yii 2 wrapper for the [Bootstrap DatePicker plugin](http://eternicode.github.io/bootstrap-datepicker). 
 The plugin is a fork of Stefan Petre's DatePicker (of eyecon.ro), with improvements by @eternicode. The widget is specially 
 styled for Yii framework 2.0 and Bootstrap 3 and allows graceful degradation to a normal HTML text input, if 
 the browser does not support JQuery. The widget supports these markups:
@@ -100,7 +100,7 @@ here has been specially enhanced for Yii framework 2.0 and Bootstrap 3.
 #### DateTimePicker
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/datetimepicker)  
 
-The DateTimePicker widget is a Yii 2 wrapper for the [Bootstrap DateTimePicker plugin](http://www.malot.fr/bootstrap-datetimepicker/). 
+The DateTimePicker widget is a Yii 2 wrapper for the [Bootstrap DateTimePicker plugin](http://www.malot.fr/bootstrap-datetimepicker). 
 The plugin is a fork of the DateTimePicker plugin by @eternicode and adds the time functionality. The widget is similar to the DatePicker
 widget in most aspects, except that it adds the time functionality and does not support ranges. The widget is specially styled for Yii 
 framework 2.0 and Bootstrap 3 and allows graceful degradation to a normal HTML text input, if the browser does not support JQuery. 
@@ -114,7 +114,7 @@ The widget supports these markups:
 #### TouchSpin
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/touchspin)  
 
-The TouchSpin widget is a Yii 2 wrapper for for the [bootstrap-touchspin](http://www.virtuosoft.eu/code/bootstrap-touchspin/) plugin by István Ujj-Mészáros, with certain additional enhancements. This input widget is a mobile and touch friendly input spinner component for Bootstrap 3. You can use the widget buttons to rapidly increase and decrease numeric and/or decimal values in your input field. The widget can be setup to include model validation rules for the related model attribute. 
+The TouchSpin widget is a Yii 2 wrapper for for the [bootstrap-touchspin](http://www.virtuosoft.eu/code/bootstrap-touchspin) plugin by István Ujj-Mészáros, with certain additional enhancements. This input widget is a mobile and touch friendly input spinner component for Bootstrap 3. You can use the widget buttons to rapidly increase and decrease numeric and/or decimal values in your input field. The widget can be setup to include model validation rules for the related model attribute. 
 
 #### FileInput
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/fileinput)  
@@ -137,12 +137,12 @@ The FileInput widget is a customized file input widget based on Krajee's [Bootst
 * Better captioning for each file in the preview window
 * Support for previewing content other than image and text (e.g. HTML)
 
-The widget runs on all modern browsers supporting HTML5 File Inputs and File Processing API. For browser versions IE9 and below, this widget will gracefully degrade to normal HTML file input. The widget is vastly inspired by this [blog article](http://www.abeautifulsite.net/blog/2013/08/whipping-file-inputs-into-shape-with-bootstrap-3/) and [Jasny's File Input plugin](http://jasny.github.io/bootstrap/javascript/#fileinput).
+The widget runs on all modern browsers supporting HTML5 File Inputs and File Processing API. For browser versions IE9 and below, this widget will gracefully degrade to normal HTML file input. The widget is vastly inspired by this [blog article](http://www.abeautifulsite.net/blog/2013/08/whipping-file-inputs-into-shape-with-bootstrap-3) and [Jasny's File Input plugin](http://jasny.github.io/bootstrap/javascript/#fileinput).
 
 #### ColorInput
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/colorinput)  
 
-The ColorInput widget is an advanced ColorPicker input styled for Bootstrap. It uses a combination of the HTML5 color input and/or the [JQuery Spectrum Plugin](http://bgrins.github.io/spectrum/) for rendering the color picker. You can use the Native HTML5 color input by setting the `useNative` option to `true`. Else, the Spectrum plugin polyfills for unsupported browser versions.
+The ColorInput widget is an advanced ColorPicker input styled for Bootstrap. It uses a combination of the HTML5 color input and/or the [JQuery Spectrum Plugin](http://bgrins.github.io/spectrum) for rendering the color picker. You can use the Native HTML5 color input by setting the `useNative` option to `true`. Else, the Spectrum plugin polyfills for unsupported browser versions.
 
 * Specially styled for Bootstrap 3.0 with customizable caption showing the output of the control.
 * Ability to prepend and append addons.
@@ -174,7 +174,7 @@ The StarRating widget is a wrapper for the [Bootstrap Star Rating Plugin](http:/
 #### Spinner
 [```VIEW DEMO```](http://demos.krajee.com/widget-details/spinner)  
 
-The Spinner widget is a wrapper for the [spin.js](http://fgnass.github.io/spin.js/). It enables you to add an animated CSS3 loading spinner which allows VML fallback for IE.
+The Spinner widget is a wrapper for the [spin.js](http://fgnass.github.io/spin.js). It enables you to add an animated CSS3 loading spinner which allows VML fallback for IE.
 Since, its not image based, it allows you to configure the spinner style, size, color, and other CSS attributes. The major advantage of using the CSS3 based spinner, is
 that the animation can be made visible to user for non-ajax based scenarios. For example on  events like window.load or window.unload (thereby enabling you to show a 
 page loading progress without using ajax).
@@ -206,17 +206,17 @@ This widget is a collapsible side navigation menu built to seamlessly work with 
 ### Notification
 
 #### Alert
-[```VIEW DEMO```](http://demos.krajee.com/widget-details/alert/)  
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/alert)  
 
 Extends the \yii\bootstrap\Alert widget with more easy styling and auto fade out options.
 
 #### Growl
-[```VIEW DEMO```](http://demos.krajee.com/widget-details/growl/)  
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/growl)  
 
-A widget that turns standard Bootstrap alerts into "Growl-like" notifications. This widget is a wrapper for the Bootstrap Growl [plugin by remabledesigns](http://bootstrap-growl.remabledesigns.com/).
+A widget that turns standard Bootstrap alerts into "Growl-like" notifications. This widget is a wrapper for the Bootstrap Growl [plugin by remabledesigns](http://bootstrap-growl.remabledesigns.com).
  
 #### AlertBlock
-[```VIEW DEMO```](http://demos.krajee.com/widget-details/alert-block/)  
+[```VIEW DEMO```](http://demos.krajee.com/widget-details/alert-block)  
 
 Alert block widget that groups multiple `\kartik\widget\Alert` or `kartik\widget\Growl` widgets in one single block and renders them stacked vertically on the current page. 
 You can choose the `TYPE_ALERT` style or the `TYPE_GROWL` style for your notifications. You can also set the widget to automatically read and display session flash 
@@ -227,7 +227,7 @@ You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of 
 
 ## Installation
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+The preferred way to install this extension is through [composer](http://getcomposer.org/download).
 
 Either run
 
