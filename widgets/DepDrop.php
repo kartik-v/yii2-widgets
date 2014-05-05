@@ -8,6 +8,7 @@
 
 namespace kartik\widgets;
 
+use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
 
 /**
@@ -22,6 +23,30 @@ use yii\base\InvalidConfigException;
  */
 class DepDrop extends InputWidget
 {
+    const TYPE_DEFAULT = 1;
+    const TYPE_SELECT2 = 2;
+
+    /**
+     * @var int the type of the dropdown element.
+     * - 1 or [[DepDrop::TYPE_DEFAULT]] will render using \yii\helpers\Html::dropDownList
+     * - 2 or [[DepDrop::TYPE_SELECT2]] will render using \kartik\widgets\Select2 widget
+     */
+    public $type = self::TYPE_DEFAULT;
+
+    /**
+     * @var array the configuration options for the Select2 widget. Applicable
+     * only if the `type` property is set to [[DepDrop::TYPE_SELECT2]].
+     * The following additional options are recognized:
+     * - loadingText: string, the text to be displayed while the results are being fetched and loaded.
+     *   Defaults to 'Loading ...'.
+     */
+    public $select2Options = [];
+
+    /**
+     * @var \yii\web\View instance
+     */
+    private $_view;
+
     /**
      * Initializes the widget
      *
@@ -38,9 +63,44 @@ class DepDrop extends InputWidget
         if (empty($this->options['class'])) {
             $this->options['class'] = 'form-control';
         }
+        if ($this->type === self::TYPE_SELECT2 &&
+            (!empty($this->options['placeholder']) || !empty($this->select2Options['options']['placeholder']))
+        ) {
+            $this->pluginOptions['placeholder'] = '';
+        } elseif ($this->type === self::TYPE_SELECT2 && !empty($this->pluginOptions['placeholder']) && $this->pluginOptions['placeholder'] !== false) {
+            $this->options['placeholder'] = $this->pluginOptions['placeholder'];
+            $this->pluginOptions['placeholder'] = '';
+        }
         parent::init();
+        $this->_view = $this->getView();
         $this->registerAssets();
-        echo $this->getInput('dropdownList', true);
+        if ($this->type === self::TYPE_SELECT2) {
+            if (empty($this->data)) {
+                $this->data = ['' => ''];
+            }
+            if ($this->hasModel()) {
+                echo Select2::widget([
+                        'model' => $this->model,
+                        'attribute' => $this->attribute,
+                        'data' => $this->data,
+                        'options' => $this->options
+                    ] + $this->select2Options);
+            } else {
+                echo Select2::widget([
+                        'name' => $this->name,
+                        'value' => $this->value,
+                        'data' => $this->data,
+                        'options' => $this->options
+                    ] + $this->select2Options);
+            }
+
+            $id = '$("#' . $this->options['id'] . '")';
+            $text = ArrayHelper::remove($this->select2Options, 'loadingText', 'Loading ...');
+            $this->_view->registerJs("{$id}.on('depdrop.beforeChange',function(e,v){{$id}.select2('data',{text: '{$text}'});});");
+            $this->_view->registerJs("{$id}.on('depdrop.change',function(e,i,v,c){{$id}.select2('val',{$id}.val());});");
+        } else {
+            echo $this->getInput('dropdownList', true);
+        }
     }
 
     /**
@@ -48,8 +108,7 @@ class DepDrop extends InputWidget
      */
     public function registerAssets()
     {
-        $view = $this->getView();
-        DepDropAsset::register($view);
+        DepDropAsset::register($this->_view);
         $this->registerPlugin('depdrop');
     }
 

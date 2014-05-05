@@ -1,3 +1,7 @@
+version 2.5.1
+=============
+1. Updated DepDrop widget to support rendering of \kartik\widgets\Select2 widget.
+
 version 2.5.0
 =============
 1. New DepDrop widget based on [dependent-dropdown plugin](http://plugins.krajee.com/dependent-dropdown).
