@@ -36,9 +36,6 @@ class DepDrop extends InputWidget
     /**
      * @var array the configuration options for the Select2 widget. Applicable
      * only if the `type` property is set to [[DepDrop::TYPE_SELECT2]].
-     * The following additional options are recognized:
-     * - loadingText: string, the text to be displayed while the results are being fetched and loaded.
-     *   Defaults to 'Loading ...'.
      */
     public $select2Options = [];
 
@@ -95,7 +92,7 @@ class DepDrop extends InputWidget
             }
 
             $id = '$("#' . $this->options['id'] . '")';
-            $text = ArrayHelper::remove($this->select2Options, 'loadingText', 'Loading ...');
+            $text = ArrayHelper::getValue($this->pluginOptions, 'loadingText', 'Loading ...');
             $this->_view->registerJs("{$id}.on('depdrop.beforeChange',function(e,i,v){{$id}.select2('data',{text: '{$text}'});});");
             $this->_view->registerJs("{$id}.on('depdrop.change',function(e,i,v,c){{$id}.select2('val',{$id}.val());});");
         } else {
