@@ -96,7 +96,7 @@ class DepDrop extends InputWidget
 
             $id = '$("#' . $this->options['id'] . '")';
             $text = ArrayHelper::remove($this->select2Options, 'loadingText', 'Loading ...');
-            $this->_view->registerJs("{$id}.on('depdrop.beforeChange',function(e,v){{$id}.select2('data',{text: '{$text}'});});");
+            $this->_view->registerJs("{$id}.on('depdrop.beforeChange',function(e,i,v){{$id}.select2('data',{text: '{$text}'});});");
             $this->_view->registerJs("{$id}.on('depdrop.change',function(e,i,v,c){{$id}.select2('val',{$id}.val());});");
         } else {
             echo $this->getInput('dropdownList', true);
