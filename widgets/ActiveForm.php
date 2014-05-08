@@ -8,6 +8,7 @@
 
 namespace kartik\widgets;
 
+use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 
 /**
@@ -63,6 +64,11 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * Defaults to 'vertical'.
      */
     public $type;
+
+    /**
+     * @var int set the bootstrap grid width. Defaults to [[ActiveForm::FULL_SPAN]].
+     */
+    public $fullSpan = self::FULL_SPAN;
 
     /**
      * @var array the configuration for the form
@@ -136,9 +142,13 @@ class ActiveForm extends \yii\widgets\ActiveForm
 
     /**
      * Initializes the widget.
+     * @throws \yii\base\InvalidConfigException
      */
     public function init()
     {
+        if (!is_int($this->fullSpan) && $this->fullSpan < 1) {
+            throw new InvalidConfigException("The 'fullSpan' property must be a valid positive integer.");
+        }
         $this->registerAssets();
         $this->initForm();
         $config = $this->formConfig;
@@ -150,7 +160,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
             $span = intval($span);
 
             /* Validate if invalid labelSpan is passed - else set to DEFAULT_LABEL_SPAN */
-            if ($span <= 0 && $span >= self::FULL_SPAN) {
+            if ($span <= 0 && $span >= $this->fullSpan) {
                 $span = self::DEFAULT_LABEL_SPAN;
             }
 
@@ -161,7 +171,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
 
             $prefix = "col-{$size}-";
             $labelCss = $prefix . $span;
-            $this->_inputCss = $prefix . (self::FULL_SPAN - $span);
+            $this->_inputCss = $prefix . ($this->fullSpan - $span);
             $this->_offsetCss = "col-" . $size . "-offset-" . $span . " " . $this->_inputCss;
         }
 
