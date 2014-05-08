@@ -56,6 +56,11 @@ class ActiveField extends \yii\widgets\ActiveField
     public $addon = [];
 
     /**
+     * @var string CSS classname to add to the input
+     */
+    public $addClass;
+
+    /**
      * @var boolean whether the label is to be hidden and auto-displayed as a placeholder
      */
     public $autoPlaceholder;
@@ -83,6 +88,9 @@ class ActiveField extends \yii\widgets\ActiveField
         }
         if ($this->form->type === ActiveForm::TYPE_HORIZONTAL) {
             Html::addCssClass($this->labelOptions, 'control-label');
+        }
+        if (!empty($this->addClass)) {
+            Html::addCssClass($this->inputOptions, $this->addClass);
         }
     }
 
