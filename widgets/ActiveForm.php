@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.5.0
  */
 
 namespace kartik\widgets;
@@ -19,20 +19,20 @@ use yii\helpers\Html;
  * ```php
  * // Horizontal Form
  * $form = ActiveForm::begin([
- *        'id' => 'form-signup',
- *        'type' => ActiveForm::TYPE_HORIZONTAL
+ *      'id' => 'form-signup',
+ *      'type' => ActiveForm::TYPE_HORIZONTAL
  * ]);
  * // Inline Form
  * $form = ActiveForm::begin([
- *        'id' => 'form-login',
- *        'type' => ActiveForm::TYPE_INLINE
- *        'fieldConfig' => ['autoPlaceholder'=>true]
+ *      'id' => 'form-login',
+ *      'type' => ActiveForm::TYPE_INLINE
+ *      'fieldConfig' => ['autoPlaceholder'=>true]
  * ]);
  * // Horizontal Form Configuration
  * $form = ActiveForm::begin([
- *        'id' => 'form-signup',
- *        'type' => ActiveForm::TYPE_HORIZONTAL
- *        'formConfig' => ['labelSpan' => 2, 'deviceSize' => ActiveForm::SIZE_SMALL]
+ *      'id' => 'form-signup',
+ *      'type' => ActiveForm::TYPE_HORIZONTAL
+ *      'formConfig' => ['labelSpan' => 2, 'deviceSize' => ActiveForm::SIZE_SMALL]
  * ]);
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
@@ -72,12 +72,15 @@ class ActiveForm extends \yii\widgets\ActiveForm
 
     /**
      * @var array the configuration for the form
-     *    [
+     *
+     * ```
+     * [
      *      'labelSpan' => 2, // must be between 1 and 12
-     *        'deviceSize' => ActiveForm::SIZE_MEDIUM, // must be one of the SIZE modifiers
-     *        'showLabels' => true, // show or hide labels (mainly useful for inline type form)
+     *      'deviceSize' => ActiveForm::SIZE_MEDIUM, // must be one of the SIZE modifiers
+     *      'showLabels' => true, // show or hide labels (mainly useful for inline type form)
      *      'showErrors' => true // show or hide errors (mainly useful for inline type form)
-     *    ],
+     * ],
+     * ```
      */
     public $formConfig = [];
 
@@ -142,6 +145,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
 
     /**
      * Initializes the widget.
+     *
      * @throws \yii\base\InvalidConfigException
      */
     public function init()
