@@ -3,10 +3,11 @@ yii2-widgets
 
 This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras. The widgets currently available are:
 
-> NOTE: This extension depends on the [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. 
-Check the composer.json in the root folder for extension dependencies. Note: Yii 2 framework is still in active development, and until a 
-fullly stable Yii2 release, your core yii2-bootstrap packages (and its dependency versions) may be updated when you install or update this extension. 
-You need to lock your composer package versions for your specific app and test for extension break if you do not wish to auto update dependencies.
+> NOTE: This extension depends on the [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. Check the 
+[composer.json](https://github.com/kartik-v/yii2-widgets/blob/master/composer.json) for this extension's requirements and dependencies. 
+Note: Yii 2 framework is still in active development, and until a fully stable Yii2 release, your core yii2-bootstrap packages (and its dependencies) 
+may be updated when you install or update this extension. You may need to lock your composer package versions for your specific app, and test 
+for extension break if you do not wish to auto update dependencies.
 
 ### Forms/Inputs
 
