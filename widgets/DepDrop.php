@@ -60,6 +60,10 @@ class DepDrop extends InputWidget
         if (empty($this->options['class'])) {
             $this->options['class'] = 'form-control';
         }
+        parent::init();
+        if ($this->type !== self::TYPE_SELECT2 && !empty($this->options['placeholder'])) {
+            $this->data = ['' => $this->options['placeholder']] + $this->data;
+        }
         if ($this->type === self::TYPE_SELECT2 &&
             (!empty($this->options['placeholder']) || !empty($this->select2Options['options']['placeholder']))
         ) {
@@ -68,7 +72,6 @@ class DepDrop extends InputWidget
             $this->options['placeholder'] = $this->pluginOptions['placeholder'];
             $this->pluginOptions['placeholder'] = '';
         }
-        parent::init();
         $this->_view = $this->getView();
         $this->registerAssets();
         if ($this->type === self::TYPE_SELECT2) {
