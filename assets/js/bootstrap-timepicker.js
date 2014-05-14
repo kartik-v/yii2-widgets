@@ -262,10 +262,11 @@
                 templateContent;
 
             if (this.showInputs) {
-                hourTemplate = '<input type="text" name="hour" class="bootstrap-timepicker-hour form-control" maxlength="2"/>';
-                minuteTemplate = '<input type="text" name="minute" class="bootstrap-timepicker-minute form-control" maxlength="2"/>';
-                secondTemplate = '<input type="text" name="second" class="bootstrap-timepicker-second form-control" maxlength="2"/>';
-                meridianTemplate = '<input type="text" name="meridian" class="bootstrap-timepicker-meridian form-control" maxlength="2"/>';
+                var inputName = this.$element.prop('name');
+                hourTemplate = '<input type="text" name="' + inputName + '[hour]" class="bootstrap-timepicker-hour form-control" maxlength="2"/>';
+                minuteTemplate = '<input type="text" name="' + inputName + '[minute]" class="bootstrap-timepicker-minute form-control" maxlength="2"/>';
+                secondTemplate = '<input type="text" name="' + inputName + '[second]" class="bootstrap-timepicker-second form-control" maxlength="2"/>';
+                meridianTemplate = '<input type="text" name="' + inputName + '[meridian]" class="bootstrap-timepicker-meridian form-control" maxlength="2"/>';
             } else {
                 hourTemplate = '<span class="bootstrap-timepicker-hour"></span>';
                 minuteTemplate = '<span class="bootstrap-timepicker-minute"></span>';
