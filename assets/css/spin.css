@@ -16,6 +16,10 @@
     padding: 14px 20px;
 }
 
+.kv-hide {
+    display:none;
+}
+
 .kv-spin {
     position: relative;
 }

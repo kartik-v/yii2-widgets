@@ -112,7 +112,8 @@ class Spinner extends \yii\base\Widget
         $tag = ArrayHelper::remove($this->captionOptions, 'tag', ($this->align == 'left' || $this->align == 'right') ? 'span' : 'div');
         Html::addCssClass($this->captionOptions, (($this->_validPreset) ? "kv-spin-{$this->preset}-{$this->align}" : ''));
         $caption = (trim($this->caption) == '') ? '' : Html::tag($tag, $this->caption, $this->captionOptions);
-        echo '<div class="kv-spin-' . $this->align . '">' . $spinner . "\n" . $caption . '</div>';
+        $class = "kv-spin-{$this->align}" . ($this->hidden ? " kv-hide" : "");
+        echo "<div class='{$class }'>{$spinner} \n {$caption}</div>";
         $this->registerAssets();
     }
 
