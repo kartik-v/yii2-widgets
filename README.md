@@ -13,7 +13,7 @@ for extension break if you do not wish to auto update dependencies.
 
 This extension has now matured to contain the most needed basic widgets for Yii 2 input and navigation controls. In order to support this extension better, any
  additional input and navigation widgets will be created separately. Listed below are the additional widgets that are related to similar functionality like the 
- yii2-widgets, but have been created as separate extensions (these widgets depend on kartik-v\yii2-widgets).
+ `yii2-widgets`, but have been created as separate extensions (these widgets depend on `kartik-v/yii2-widgets`).
 
 - [yii2-dropdown-x](http://demos.krajee.com/dropdown-x): Extended Bootstrap 3 dropdown menu for Yii Framework 2.0
 - [yii2-nav-x](http://demos.krajee.com/nav-x): Extended Bootstrap 3 navigation menu for Yii Framework 2.0
