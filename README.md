@@ -9,6 +9,24 @@ Note: Yii 2 framework is still in active development, and until a fully stable Y
 may be updated when you install or update this extension. You may need to lock your composer package versions for your specific app, and test 
 for extension break if you do not wish to auto update dependencies.
 
+## Installation
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+
+Either run
+
+```
+$ php composer.phar require kartik-v/yii2-widgets "dev-master"
+```
+
+or add
+
+```
+"kartik-v/yii2-widgets": "dev-master"
+```
+
+to the ```require``` section of your `composer.json` file.
+
 ## Additional Widgets
 
 This extension has now matured to contain the most needed basic widgets for Yii 2 input and navigation controls. In order to support this extension better, any
