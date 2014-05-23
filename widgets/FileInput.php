@@ -109,13 +109,6 @@ class FileInput extends InputWidget
         $this->setPluginDefault('browseLabel', Yii::t('fileinput', 'Browse') . '&hellip;');
         $this->setPluginDefault('uploadLabel', Yii::t('fileinput', 'Upload'));
         $this->setPluginDefault('removeLabel', Yii::t('fileinput', 'Remove'));
-
-        foreach ($this->pluginOptions as $key => $value) {
-            if (substr($key, 0, 2) === "el" && !($value instanceof JsExpression)) {
-                $this->pluginOptions[$key] = new JsExpression($value);
-            }
-        }
-
         $this->registerPlugin('fileinput');
     }
 }

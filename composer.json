@@ -14,6 +14,7 @@
     ],
     "require": {
         "yiisoft/yii2-bootstrap": "*",
+        "kartik-v/yii2-field-range": "*",        
         "kartik-v/bootstrap-star-rating": "*",
         "kartik-v/bootstrap-fileinput": "*",
         "kartik-v/dependent-dropdown": "*"
