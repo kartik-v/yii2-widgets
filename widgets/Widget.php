@@ -40,6 +40,11 @@ class Widget extends \yii\base\Widget
     public $pluginEvents = [];
 
     /**
+     * @var array the options for the widget
+     */
+    public $options = [];
+
+    /**
      * @var string the hashed variable to store the pluginOptions
      */
     protected $_hashVar;
@@ -55,7 +60,7 @@ class Widget extends \yii\base\Widget
     public function init()
     {
         parent::init();
-        if (empty($this->options['id']) {
+        if (empty($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
     }
