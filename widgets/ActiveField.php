@@ -61,6 +61,16 @@ class ActiveField extends \yii\widgets\ActiveField
     public $addClass;
 
     /**
+     * @var boolean whether to show labels for the field
+     */
+    public $showLabels;
+
+    /**
+     * @var boolean whether to show errors for the field
+     */
+    public $showErrors;
+
+    /**
      * @var boolean whether the label is to be hidden and auto-displayed as a placeholder
      */
     public $autoPlaceholder;
@@ -184,14 +194,14 @@ class ActiveField extends \yii\widgets\ActiveField
         $form = $this->form;
         $inputDivClass = $form->getInputCss();
         $offsetDivClass = $form->getOffsetCss();
-        $showLabels = ArrayHelper::getValue($form->formConfig, 'showLabels', true);
-        $showErrors = ArrayHelper::getValue($form->formConfig, 'showErrors', true);
+        $showLabels = isset($this->showLabels) ? $this->showLabels : ArrayHelper::getValue($form->formConfig, 'showLabels', true);
+        $showErrors = isset($this->showErrors) ? $this->showErrors : ArrayHelper::getValue($form->formConfig, 'showErrors', true);
         if ($form->hasInputCss()) {
             $class = ($this->_offset) ? $offsetDivClass : $inputDivClass;
-            $input = "<div class='{$class}'>{input}</div>";
-            $error = ($showErrors) ? "{error}\n" : "";
+            $input = $showLabels ? "<div class='{$class}'>{input}</div>" : "{input}";
+            $error = $showErrors ? "{error}\n" : "";
             $hint = "{hint}";
-            if ($form->hasOffsetCss()) {
+            if ($form->hasOffsetCss() && $showLabels) {
                 $error = $showErrors ? "<div class='{$offsetDivClass}'>{error}</div>\n" : "";
                 $hint = "<div class='{$offsetDivClass}'>{hint}</div>";
             }
