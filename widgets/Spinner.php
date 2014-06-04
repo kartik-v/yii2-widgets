@@ -73,11 +73,18 @@ class Spinner extends \yii\base\Widget
     public $captionOptions = [];
 
     /**
-     * @var array Options the HTML attributes for the spinner container. The following
-     * additional attributes can be set:
+     * @var array the HTML attributes for the combined container enclosing the spinner
+     * and caption. The following additional attributes can be set:
      * - `tag`: string the `tag` for rendering the container. Defaults to `div`,
      */
     public $options = [];
+
+    /**
+     * @var array the HTML attributes for the spinner container. The following
+     * additional attributes can be set:
+     * - `tag`: string the `tag` for rendering the container. Defaults to `div`,
+     */
+    public $spinOptions = [];
 
     /**
      * @var array the widths for each preset.
@@ -103,17 +110,25 @@ class Spinner extends \yii\base\Widget
     {
         parent::init();
         $this->_validPreset = (!empty($this->preset) && in_array($this->preset, $this->_presets));
-        Html::addCssClass($this->options, 'kv-spin kv-spin-' . $this->align);
-        if (!isset($this->options['id'])) {
+        if (empty($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
-        $tag = ArrayHelper::remove($this->options, 'tag', 'div');
-        $spinner = Html::tag($tag, '&nbsp;', $this->options);
+
+        // Spinner
+        $tag = ArrayHelper::remove($this->spinOptions, 'tag', 'div');
+        Html::addCssClass($this->spinOptions, 'kv-spin kv-spin-' . $this->align);
+        $spinner = Html::tag($tag, '&nbsp;', $this->spinOptions);
+
+        // Caption
         $tag = ArrayHelper::remove($this->captionOptions, 'tag', ($this->align == 'left' || $this->align == 'right') ? 'span' : 'div');
-        Html::addCssClass($this->captionOptions, (($this->_validPreset) ? "kv-spin-{$this->preset}-{$this->align}" : ''));
-        $caption = (trim($this->caption) == '') ? '' : Html::tag($tag, $this->caption, $this->captionOptions);
-        $class = "kv-spin-{$this->align}" . ($this->hidden ? " kv-hide" : "");
-        echo "<div class='{$class }'>{$spinner} \n {$caption}</div>";
+        Html::addCssClass($this->captionOptions, ($this->_validPreset ? "kv-spin-{$this->preset}-{$this->align}" : ''));
+        $caption = empty(trim($this->caption)) ? '' : Html::tag($tag, $this->caption, $this->captionOptions);
+
+        // Spinner + Caption
+        Html::addCssClass($this->options, "kv-spin-{$this->align}" . ($this->hidden ? " kv-hide" : ""));
+        $tag = ArrayHelper::remove($this->options, 'tag', 'div');
+        echo Html::tag($tag, $spinner . "\n" . $caption, $this->options);
+
         $this->registerAssets();
     }
 
@@ -124,7 +139,7 @@ class Spinner extends \yii\base\Widget
     {
         $view = $this->getView();
         SpinnerAsset::register($view);
-        $id = '$("#' . $this->options['id'] . '")';
+        $id = '$("#' . $this->options['id'] . '").find(".kv-spin")';
 
         if ($this->_validPreset) {
             $js = (isset($this->color)) ? "{$id}.spin('{$this->preset}', '{$this->color}');" : "{$id}.spin('{$this->preset}');";
