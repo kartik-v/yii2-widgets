@@ -124,6 +124,7 @@ class InputWidget extends \yii\widgets\InputWidget
      * - 'data-plugin-name' the name of the plugin
      *
      * @param string $name the name of the plugin
+     * @author [Thiago Talma](https://github.com/thiagotalma)
      */
     protected function hashPluginOptions($name)
     {
