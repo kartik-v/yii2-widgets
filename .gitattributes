@@ -1,7 +1,7 @@
 # Autodetect text files
 * text=auto
 
-# ...Unless the name matches the following overriding patterns
+# Unless the name matches the following overriding patterns
 
 # Definitively text files
 *.php  text
