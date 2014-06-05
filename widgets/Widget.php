@@ -15,6 +15,7 @@ use yii\web\View;
 
 /**
  * Base widget class for yii2-widgets
+ * Plugin options hashing based on inputs by [Thiago Talma](https://github.com/thiagotalma)
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
