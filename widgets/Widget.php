@@ -15,7 +15,6 @@ use yii\web\View;
 
 /**
  * Base widget class for yii2-widgets
- * Plugin options hashing based on inputs by [Thiago Talma](https://github.com/thiagotalma)
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -96,6 +95,7 @@ class Widget extends \yii\base\Widget
      * - 'data-plugin-name' the name of the plugin
      *
      * @param string $name the name of the plugin
+     * @author [Thiago Talma](https://github.com/thiagotalma) 
      */
     protected function hashPluginOptions($name)
     {
