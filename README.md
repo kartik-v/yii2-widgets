@@ -262,24 +262,6 @@ messages (which is the default setting). Alternatively, you can setup and config
 ### Demo
 You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of these widgets with documentation and examples.
 
-## Installation
-
-The preferred way to install this extension is through [composer](http://getcomposer.org/download).
-
-Either run
-
-```
-$ php composer.phar require kartik-v/yii2-widgets "dev-master"
-```
-
-or add
-
-```
-"kartik-v/yii2-widgets": "dev-master"
-```
-
-to the ```require``` section of your `composer.json` file.
-
 ## Usage
 
 ### How to call?
