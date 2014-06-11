@@ -10,6 +10,7 @@ namespace kartik\widgets;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 
 /**
  * ColorInput widget is an enhanced widget encapsulating the HTML 5 color input.
@@ -68,7 +69,7 @@ class ColorInput extends Html5Input
         }
         parent::init();
         if (!$this->useNative) {
-            $this->pluginOptions += $this->_defaultOptions;
+            $this->pluginOptions = ArrayHelper::merge($this->_defaultOptions, $this->pluginOptions);
             $this->registerPluginAssets();
         } elseif ($this->polyFill) {
             ColorInputAsset::register($this->getView());

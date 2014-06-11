@@ -116,10 +116,10 @@ class Typeahead extends TypeaheadBasic
                 "{$dataVar}.initialize();\n";
             $d = ['name' => $dataVar, 'source' => new JsExpression($dataVar . '.ttAdapter()')];
             if (!empty($datum['displayKey'])) {
-                $d += ['displayKey' => $datum['displayKey']];
+                $d = ArrayHelper::merge(['displayKey' => $datum['displayKey']], $d);
             }
             if (!empty($datum['templates'])) {
-                $d += ['templates' => $datum['templates']];
+                $d = ArrayHelper::merge(['templates' => $datum['templates']], $d);
             }
             $dataset[] = $d;
             $index++;

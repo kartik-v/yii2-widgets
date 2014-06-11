@@ -10,6 +10,7 @@ namespace kartik\widgets;
 
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 
 /**
  * Extends the ActiveForm widget to handle various
@@ -129,7 +130,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
         if (!isset($this->type) || strlen($this->type) == 0) {
             $this->type = self::TYPE_VERTICAL;
         }
-        $this->formConfig = $this->formConfig + $this->_config[$this->type];
+        $this->formConfig = ArrayHelper::merge($this->_config[$this->type], $this->formConfig);
         if (!isset($this->fieldConfig['class'])) {
             $this->fieldConfig['class'] = ActiveField::className();
         }

@@ -79,20 +79,21 @@ class DepDrop extends InputWidget
                 $this->data = ['' => ''];
             }
             if ($this->hasModel()) {
-                echo Select2::widget([
-                        'model' => $this->model,
-                        'attribute' => $this->attribute,
-                        'data' => $this->data,
-                        'options' => $this->options
-                    ] + $this->select2Options);
+                $settings = ArrayHelper::merge($this->select2Options, [
+                    'model' => $this->model,
+                    'attribute' => $this->attribute,
+                    'data' => $this->data,
+                    'options' => $this->options
+                ]);
             } else {
-                echo Select2::widget([
-                        'name' => $this->name,
-                        'value' => $this->value,
-                        'data' => $this->data,
-                        'options' => $this->options
-                    ] + $this->select2Options);
+                $settings = ArrayHelper::merge($this->select2Options, [
+                    'name' => $this->name,
+                    'value' => $this->value,
+                    'data' => $this->data,
+                    'options' => $this->options
+                ]);
             }
+            echo Select2::widget($settings);
 
             $id = '$("#' . $this->options['id'] . '")';
             $text = ArrayHelper::getValue($this->pluginOptions, 'loadingText', 'Loading ...');

@@ -112,8 +112,8 @@ class SwitchInput extends InputWidget
                 continue;
             }
             $label = ArrayHelper::getValue($item, 'label', false);
-            $options = ArrayHelper::getValue($item, 'options', []) + $this->itemOptions;
-            $labelOptions = ArrayHelper::getValue($item, 'labelOptions', []) + $this->labelOptions;
+            $options = ArrayHelper::merge($this->itemOptions, ArrayHelper::getValue($item, 'options', []));
+            $labelOptions = ArrayHelper::merge($this->labelOptions, ArrayHelper::getValue($item, 'labelOptions', []));
             $value = ArrayHelper::getValue($item, 'value', null);
             $options['value'] = $value;
             $input = Html::radio($this->name, false, $options);
