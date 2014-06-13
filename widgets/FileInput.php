@@ -63,6 +63,7 @@ class FileInput extends InputWidget
         }
         Yii::$app->i18n->translations['fileinput'] = $this->i18n;
         $this->registerAssets();
+        Html::addCssClass($this->options, 'file-loading');
         $input = $this->getInput('fileInput');
         if ($this->showMessage) {
             $validation = ArrayHelper::getValue($this->pluginOptions, 'showPreview', true) ? 'file preview and multiple file upload' : 'multiple file upload';
