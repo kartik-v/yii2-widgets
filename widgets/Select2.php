@@ -151,15 +151,18 @@ class Select2 extends InputWidget
      */
     protected function renderInput()
     {
+        $loader = '<div class="kv-plugin-loading"></div>';
+        $class = 'kv-hide';
         if (!isset($this->addon) && isset($this->size)) {
-            Html::addCssClass($this->options, 'input-' . $this->size);
+            $class .= ' input-' . $this->size;
         }
+        Html::addCssClass($this->options, $class);
         if ($this->_hidden) {
             $input = $this->getInput('textInput');
         } else {
             $input = $this->getInput('dropDownList', true);
         }
-        echo $this->embedAddon($input);
+        echo $loader . $this->embedAddon($input);
     }
 
     /**
@@ -168,12 +171,20 @@ class Select2 extends InputWidget
     public function registerAssets()
     {
         $view = $this->getView();
+        $id = '$("#' . $this->options['id'] . '")';
         if (!empty($this->language) && $this->language != 'en' && $this->language != 'en_US') {
             Select2Asset::register($view)->js[] = 'select2_locale_' . $this->language . '.js';
         } else {
             Select2Asset::register($view);
         }
         $this->pluginOptions['width'] = 'resolve';
-        $this->registerPlugin('select2');
+        $callback = <<< JS
+function(){
+    var \$container = {$id}.select2('container');
+    {$id}.removeClass('kv-hide').prev('.kv-plugin-loading').remove();
+    \$container.removeClass('kv-hide').prev('.kv-plugin-loading').remove();
+}
+JS;
+        $this->registerPlugin('select2', null, $callback);
     }
 }

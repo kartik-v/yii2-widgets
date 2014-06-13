@@ -68,6 +68,8 @@ class InputWidget extends \yii\widgets\InputWidget
             $this->name = ArrayHelper::remove($this->options, 'name', Html::getInputName($this->model, $this->attribute));
             $this->value = $this->model[Html::getAttributeName($this->attribute)];
         }
+        $view = $this->getView();
+        WidgetAsset::register($view);
     }
 
     /**
@@ -150,14 +152,17 @@ class InputWidget extends \yii\widgets\InputWidget
      *
      * @param string $name the name of the plugin
      * @param string $element the plugin target element
+     * @param string $callback the javascript callback function to be called after plugin loads
      */
-    protected function registerPlugin($name, $element = null)
+    protected function registerPlugin($name, $element = null, $callback = null)
     {
         $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
             $this->registerPluginOptions($name);
-            $view->registerJs("{$id}.{$name}({$this->_hashVar});");
+            $script = "{$id}.{$name}({$this->_hashVar})";
+            $script = ($callback == null) ? "{$script};" : "\$.when({$script}).done({$callback});";
+            $view->registerJs($script);
         }
 
         if (!empty($this->pluginEvents)) {
