@@ -176,7 +176,6 @@ class Select2 extends InputWidget
     public function registerAssets()
     {
         $view = $this->getView();
-        $id = '$("#' . $this->options['id'] . '")';
         if (!empty($this->language) && $this->language != 'en' && $this->language != 'en_US') {
             Select2Asset::register($view)->js[] = 'select2_locale_' . $this->language . '.js';
         } else {
@@ -184,13 +183,15 @@ class Select2 extends InputWidget
         }
         $this->pluginOptions['width'] = 'resolve';
         if ($this->pluginLoading) {
-            $loading = '$(".kv-plugin-loading.loading-' . $this->options['id'] . '")';
-            $groupCss = 'group-' . $this->options['id'];
-            $group = '$(".kv-hide.' . $groupCss . '")';
+            $id = $this->options['id'];
+            $loading = "\$('.kv-plugin-loading.loading-{$id}')";
+            $groupCss = "group-{$id}";
+            $group = "\$('.kv-hide.{$groupCss}')";
+            $el = "\$('#{$id}')";
             $callback = <<< JS
 function(){
-    var \$container = {$id}.select2('container');
-    {$id}.removeClass('kv-hide');
+    var \$container = {$el}.select2('container');
+    {$el}.removeClass('kv-hide');
     \$container.removeClass('kv-hide');
     {$loading}.remove();
     if (Object.keys({$group}).length > 0) {
