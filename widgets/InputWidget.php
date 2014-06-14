@@ -25,6 +25,8 @@ use yii\web\View;
 class InputWidget extends \yii\widgets\InputWidget
 {
 
+    const LOAD_PROGRESS = '<div class="kv-plugin-loading">&nbsp;</div>';
+    
     /**
      * @var array the data (for list inputs)
      */

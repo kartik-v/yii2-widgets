@@ -151,7 +151,6 @@ class Select2 extends InputWidget
      */
     protected function renderInput()
     {
-        $loader = '<div class="kv-plugin-loading"></div>';
         $class = 'kv-hide';
         if (!isset($this->addon) && isset($this->size)) {
             $class .= ' input-' . $this->size;
@@ -162,7 +161,7 @@ class Select2 extends InputWidget
         } else {
             $input = $this->getInput('dropDownList', true);
         }
-        echo $loader . $this->embedAddon($input);
+        echo self::LOAD_PROGRESS . $this->embedAddon($input);
     }
 
     /**
