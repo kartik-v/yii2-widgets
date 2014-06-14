@@ -193,7 +193,9 @@ function(){
     {$id}.removeClass('kv-hide');
     \$container.removeClass('kv-hide');
     {$loading}.remove();
-    {$group}.removeClass('kv-hide').removeClass('{$groupCss}');
+    if (Object.keys({$group}).length > 0) {
+        {$group}.removeClass('kv-hide').removeClass('{$groupCss}');
+    }
 }
 JS;
             $this->registerPlugin('select2', null, $callback);
