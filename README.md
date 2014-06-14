@@ -39,6 +39,7 @@ This extension has now matured to contain the most needed basic widgets for Yii 
 - [yii2-slider](http://demos.krajee.com/slider): Bootstrap 3 Slider control for Yii Framework 2.0
 - [yii2-sortable](http://demos.krajee.com/sortable): Create sortable lists and grids using simple drag and drop.
 - [yii2-money](http://demos.krajee.com/money): Masked money input widget for Yii Framework 2.0.
+- [yii2-checkbox-x](http://demos.krajee.com/checkbox-x): Bootstrap 3 extended checkbox widget with 3 states and more styles for Yii Framework 2.0.
 
 ### Forms/Inputs
 
