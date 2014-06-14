@@ -35,7 +35,7 @@ class Select2 extends InputWidget
      * If this property set to false, the widget will use English (en).
      */
     public $language = false;
-    
+
     /**
      * @var array addon to prepend or append to the Select2 widget
      * - prepend: array the prepend addon configuration
@@ -155,6 +155,9 @@ class Select2 extends InputWidget
         if (!isset($this->addon) && isset($this->size)) {
             $class .= 'input-' . $this->size;
         }
+        if ($this->pluginLoading) {
+            $this->_loadIndicator = '<div class="kv-plugin-loading loading-' . $this->options['id'] . '">&nbsp;</div>';
+        }
         Html::addCssClass($this->options, $class);
         if ($this->_hidden) {
             $input = $this->getInput('textInput');
@@ -177,12 +180,14 @@ class Select2 extends InputWidget
             Select2Asset::register($view);
         }
         $this->pluginOptions['width'] = 'resolve';
+        $loading = '$(".kv-plugin-loading.loading-' . $this->options['id'] . '")';
         if ($this->pluginLoading) {
             $callback = <<< JS
 function(){
     var \$container = {$id}.select2('container');
-    {$id}.removeClass('kv-hide').prev('.kv-plugin-loading').remove();
-    \$container.removeClass('kv-hide').prev('.kv-plugin-loading').remove();
+    {$id}.removeClass('kv-hide');
+    \$container.removeClass('kv-hide');
+    {$loading}.remove();
 }
 JS;
             $this->registerPlugin('select2', null, $callback);
