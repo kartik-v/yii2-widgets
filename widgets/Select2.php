@@ -180,8 +180,8 @@ class Select2 extends InputWidget
             Select2Asset::register($view);
         }
         $this->pluginOptions['width'] = 'resolve';
-        $loading = '$(".kv-plugin-loading.loading-' . $this->options['id'] . '")';
         if ($this->pluginLoading) {
+            $loading = '$(".kv-plugin-loading.loading-' . $this->options['id'] . '")';
             $callback = <<< JS
 function(){
     var \$container = {$id}.select2('container');
