@@ -117,6 +117,9 @@ class Select2 extends InputWidget
             $append = ArrayHelper::getValue($addon, 'append', '');
             $group = ArrayHelper::getValue($addon, 'groupOptions', []);
             $size = isset($this->size) ? ' input-group-' . $this->size : '';
+            if ($this->pluginLoading) {
+                Html::addCssClass($group, 'kv-hide group-' . $this->options['id']);
+            }
             if (is_array($prepend)) {
                 $content = ArrayHelper::getValue($prepend, 'content', '');
                 if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
@@ -182,12 +185,15 @@ class Select2 extends InputWidget
         $this->pluginOptions['width'] = 'resolve';
         if ($this->pluginLoading) {
             $loading = '$(".kv-plugin-loading.loading-' . $this->options['id'] . '")';
+            $groupCss = 'group-' . $this->options['id'];
+            $group = '$(".kv-hide.' . $groupCss . '")';
             $callback = <<< JS
 function(){
     var \$container = {$id}.select2('container');
     {$id}.removeClass('kv-hide');
     \$container.removeClass('kv-hide');
     {$loading}.remove();
+    {$group}.removeClass('kv-hide').removeClass('{$groupCss}');
 }
 JS;
             $this->registerPlugin('select2', null, $callback);
