@@ -199,7 +199,7 @@ function(){
     }
 }
 JS;
-            $this->registerPlugin('select2', null, $callback);
+            $this->registerPlugin('select2', $el, $callback);
         } else {
             $this->registerPlugin('select2');
         }
