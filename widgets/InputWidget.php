@@ -17,7 +17,6 @@ use yii\web\View;
 
 /**
  * Base input widget class for yii2-widgets
- * Plugin options hashing based on inputs by [Thiago Talma](https://github.com/thiagotalma)
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -26,6 +25,11 @@ class InputWidget extends \yii\widgets\InputWidget
 {
 
     const LOAD_PROGRESS = '<div class="kv-plugin-loading">&nbsp;</div>';
+
+    /**
+     * @var mixed show loading indicator while plugin loads
+     */
+    public $pluginLoading = true;
     
     /**
      * @var array the data (for list inputs)
@@ -61,11 +65,20 @@ class InputWidget extends \yii\widgets\InputWidget
     protected $_encOptions = '';
 
     /**
+     * @var string the indicator for loading
+     */
+    protected $_loadIndicator = '';
+    
+    
+    /**
      * @inheritdoc
      */
     public function init()
     {
         parent::init();
+        if ($this->pluginLoading) {
+            $this->_loadIndicator =  self::LOAD_PROGRESS;
+        }
         if ($this->hasModel()) {
             $this->name = ArrayHelper::remove($this->options, 'name', Html::getInputName($this->model, $this->attribute));
             $this->value = $this->model[Html::getAttributeName($this->attribute)];

@@ -63,7 +63,9 @@ class FileInput extends InputWidget
         }
         Yii::$app->i18n->translations['fileinput'] = $this->i18n;
         $this->registerAssets();
-        Html::addCssClass($this->options, 'file-loading');
+        if ($this->pluginLoading) {
+            Html::addCssClass($this->options, 'file-loading');
+        }
         $input = $this->getInput('fileInput');
         $id = '$("#' . $this->options['id'] . '")';
         if ($this->showMessage) {

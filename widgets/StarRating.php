@@ -40,7 +40,9 @@ class StarRating extends InputWidget
     {
         parent::init();
         $this->registerAssets();
-        Html::addCssClass($this->options, 'rating-loading');
+        if ($this->pluginLoading) {
+            Html::addCssClass($this->options, 'rating-loading');
+        }
         echo $this->getInput('textInput');
     }
 
