@@ -65,6 +65,10 @@ class TouchSpin extends InputWidget
         $defaults['buttonup'] = $this->renderButton($this->upOptions);
         $defaults['buttondown'] = $this->renderButton($this->downOptions);
         $this->pluginOptions = array_replace($defaults, $this->pluginOptions);
+        if (ArrayHelper::getValue($this->pluginOptions, 'verticalbuttons', false) 
+            && empty($this->pluginOptions['prefix'])) {
+            Html::addCssClass($this->options, 'input-left-rounded');
+        }
     }
 
     /**
