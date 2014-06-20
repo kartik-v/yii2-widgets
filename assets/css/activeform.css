@@ -19,6 +19,5 @@
 }
 
 .fieldset-inline .form-group {
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
 }
