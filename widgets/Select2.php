@@ -90,7 +90,7 @@ class Select2 extends InputWidget
             !empty($this->pluginOptions['query']) ||
             !empty($this->pluginOptions['ajax']) ||
             !empty($this->pluginOptions['tags']);
-        if (empty($this->data) && !$this->_hidden) {
+        if (!isset($this->data) && !$this->_hidden) {
             throw new InvalidConfigException("No 'data' source found for Select2. Either the 'data' property must be set OR one of 'data', 'query', 'ajax', or 'tags' must be set within 'pluginOptions'.");
         }
         if (!empty($this->options['placeholder']) && !$this->_hidden &&
