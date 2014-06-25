@@ -96,6 +96,7 @@ class DateTimePicker extends InputWidget
         if ($this->type < 1 || $this->type > 4 || !is_int($this->type)) {
             throw new InvalidConfigException("Invalid value for the property 'type'. Must be an integer between 1 and 4.");
         }
+        $this->initLanguage();
         if ($this->convertFormat && isset($this->pluginOptions['format'])) {
             $this->pluginOptions['format'] = static::convertDateFormat($this->pluginOptions['format']);
         }

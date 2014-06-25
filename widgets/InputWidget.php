@@ -27,6 +27,12 @@ class InputWidget extends \yii\widgets\InputWidget
     const LOAD_PROGRESS = '<div class="kv-plugin-loading">&nbsp;</div>';
 
     /**
+     * @var string the locale ID (e.g. 'fr', 'de') for the language to be used by the Select2 Widget.
+     * If this property not set, then the current application language will be used.
+     */
+    public $language;
+
+    /**
      * @var mixed show loading indicator while plugin loads
      */
     public $pluginLoading = true;
@@ -84,9 +90,25 @@ class InputWidget extends \yii\widgets\InputWidget
             $this->value = $this->model[Html::getAttributeName($this->attribute)];
         }
         $view = $this->getView();
+        if (!isset($this->language)) {
+            $this->language = Yii::$app->language;
+        }
         WidgetAsset::register($view);
     }
 
+    /**
+     * Initialize the plugin language
+     *
+     * @param string $property the name of language property in [[pluginOptions]].
+     * Defaults to 'language'.
+     */
+    protected function initLanguage($property = 'language') {
+        $lang = substr($this->language, 0, 2);
+        if (empty($this->pluginOptions[$property]) && $lang != 'en') {
+            $this->pluginOptions[$property] = $lang;
+        }
+    }
+    
     /**
      * Adds an asset to the view
      *

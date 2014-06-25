@@ -31,10 +31,10 @@ class Select2 extends InputWidget
     const SMALL = 'sm';
 
     /**
-     * @var mixed the locale ID (e.g. 'fr', 'de') for the language to be used by the Select2 Widget.
-     * If this property set to false, the widget will use English (en).
+     * @var string the locale ID (e.g. 'fr', 'de') for the language to be used by the Select2 Widget.
+     * If this property not set, then the current application language will be used.
      */
-    public $language = false;
+    public $language;
 
     /**
      * @var array addon to prepend or append to the Select2 widget
@@ -176,7 +176,7 @@ class Select2 extends InputWidget
     public function registerAssets()
     {
         $view = $this->getView();
-        if (!empty($this->language) && $this->language != 'en' && $this->language != 'en_US') {
+        if (!empty($this->language) && substr($this->language, 0, 2) != 'en') {
             Select2Asset::register($view)->js[] = 'select2_locale_' . $this->language . '.js';
         } else {
             Select2Asset::register($view);

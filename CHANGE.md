@@ -1,3 +1,9 @@
+version 2.6.0
+=============
+1. Issue Fixes from #73 to #95.
+2. Added `language` property to `InputWidget` along with `initLanguage` method for automatic language setting in `pluginOptions`.
+   The `language` property will be auto defaulted to `Yii::$app->language` if not set.
+
 version 2.5.1
 =============
 1. Updated DepDrop widget to support rendering of \kartik\widgets\Select2 widget.
