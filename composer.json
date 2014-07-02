@@ -17,7 +17,8 @@
         "kartik-v/yii2-field-range": "*",        
         "kartik-v/bootstrap-star-rating": "*",
         "kartik-v/bootstrap-fileinput": "*",
-        "kartik-v/dependent-dropdown": "*"
+        "kartik-v/dependent-dropdown": "*",
+        "ivaynberg/select2": "3.5.0"
     },
     "autoload": {
         "psr-4": {
