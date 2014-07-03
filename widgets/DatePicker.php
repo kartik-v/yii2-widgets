@@ -32,6 +32,7 @@ class DatePicker extends InputWidget
     const TYPE_COMPONENT_APPEND = 3;
     const TYPE_INLINE = 4;
     const TYPE_RANGE = 5;
+    const TYPE_INLINE_HIDDEN = 6;
 
     /**
      * @var string the markup type of widget markup
@@ -113,6 +114,11 @@ class DatePicker extends InputWidget
     private $_container = [];
 
     /**
+     * @var string the type for the input tag when using [[TYPE_INLINE_HIDDEN]].
+     */
+    private $_inlineInputType = 'textInput';
+
+    /**
      * Initializes the widget
      *
      * @throw InvalidConfigException
@@ -124,7 +130,7 @@ class DatePicker extends InputWidget
         if ($this->type === self::TYPE_RANGE && $this->attribute2 === null && $this->name2 === null) {
             throw new InvalidConfigException("Either 'name2' or 'attribute2' properties must be specified for a datepicker 'range' markup.");
         }
-        if ($this->type < 1 || $this->type > 5 || !is_int($this->type)) {
+        if ($this->type < 1 || $this->type > 6 || !is_int($this->type)) {
             throw new InvalidConfigException("Invalid value for the property 'type'. Must be an integer between 1 and 5.");
         }
         if (isset($this->form) && !($this->form instanceof \yii\widgets\ActiveForm)) {
@@ -139,6 +145,10 @@ class DatePicker extends InputWidget
         $this->initLanguage();
         if ($this->convertFormat && isset($this->pluginOptions['format'])) {
             $this->pluginOptions['format'] = static::convertDateFormat($this->pluginOptions['format']);
+        }
+        if ($this->type === self::TYPE_INLINE_HIDDEN) {
+            $this->_inlineInputType = 'hiddenInput';
+            $this->type = self::TYPE_INLINE;
         }
         $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
@@ -201,7 +211,7 @@ class DatePicker extends InputWidget
             return $this->form->field($this->model, $this->attribute)->widget(self::classname(), $vars);
         }
 
-        return $this->parseMarkup($this->getInput('textInput'));
+        return $this->parseMarkup($this->getInput($this->_inlineInputType));
     }
 
     /**
