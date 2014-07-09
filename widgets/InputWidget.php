@@ -197,13 +197,13 @@ class InputWidget extends \yii\widgets\InputWidget
         $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
-            $this->registerPluginOptions($name);
-            $script = "{$id}.{$name}({$this->_hashVar});";
+            $this->registerPluginOptions($name, View::POS_HEAD);
+            $script = "{$id}.{$name}({$this->_hashVar})";
             if ($callbackCon != null) {
-                $script = "{$id}.{$name}({$this->_hashVar}, {$callbackCon});";
+                $script = "{$id}.{$name}({$this->_hashVar}, {$callbackCon})";
             }
             if ($callback != null) {
-                $script = "\$.when({$script}).done({$callback});";
+                $script = "\$.when({$script}).done({$callback})";
             }
             $view->registerJs($script);
         }
@@ -223,6 +223,7 @@ class InputWidget extends \yii\widgets\InputWidget
      * Automatically convert the date format from PHP DateTime to Javascript DateTime format
      *
      * @see http://php.net/manual/en/function.date.php
+     * @see http://bootstrap-datetimepicker.readthedocs.org/en/release/options.html#format
      * @param string $format the PHP date format string
      * @return string
      */
