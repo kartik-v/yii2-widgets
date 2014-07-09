@@ -220,10 +220,9 @@ class InputWidget extends \yii\widgets\InputWidget
     }
 
     /**
-     * Automatically convert the date format from PHP DateTime to DateTimePicker plugin format
+     * Automatically convert the date format from PHP DateTime to Javascript DateTime format
      *
      * @see http://php.net/manual/en/function.date.php
-     * @see http://bootstrap-datetimepicker.readthedocs.org/en/release/options.html#format
      * @param string $format the PHP date format string
      * @return string
      */
