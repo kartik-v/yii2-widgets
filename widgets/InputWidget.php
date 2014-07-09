@@ -190,15 +190,21 @@ class InputWidget extends \yii\widgets\InputWidget
      * @param string $name the name of the plugin
      * @param string $element the plugin target element
      * @param string $callback the javascript callback function to be called after plugin loads
+     * @param string $callbackCon the javascript callback function to be passed to the plugin constructor
      */
-    protected function registerPlugin($name, $element = null, $callback = null)
+    protected function registerPlugin($name, $element = null, $callback = null, $callbackCon = null)
     {
         $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
             $this->registerPluginOptions($name);
-            $script = "{$id}.{$name}({$this->_hashVar})";
-            $script = ($callback == null) ? "{$script};" : "\$.when({$script}).done({$callback});";
+            $script = "{$id}.{$name}({$this->_hashVar});";
+            if ($callbackCon != null) {
+                $script = "{$id}.{$name}({$this->_hashVar}, {$callbackCon});";
+            }
+            if ($callback != null) {
+                $script = "\$.when({$script}).done({$callback});";
+            }
             $view->registerJs($script);
         }
 
