@@ -119,7 +119,6 @@ class DatePicker extends InputWidget
      */
     public function init()
     {
-        $this->options['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute) : $this->getId();
         parent::init();
         if ($this->type === self::TYPE_RANGE && $this->attribute2 === null && $this->name2 === null) {
             throw new InvalidConfigException("Either 'name2' or 'attribute2' properties must be specified for a datepicker 'range' markup.");
@@ -143,38 +142,6 @@ class DatePicker extends InputWidget
         $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         echo $this->renderInput();
-    }
-
-    /**
-     * Automatically convert the date format from PHP DateTime to DatePicker plugin format
-     *
-     * @see http://php.net/manual/en/function.date.php
-     * @see http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
-     * @param string $format the PHP date format string
-     * @return string
-     */
-    protected static function convertDateFormat($format)
-    {
-        return strtr($format, [
-            // day of month (no leading zero)
-            'j' => 'd',
-            // day of month (two digit)
-            'd' => 'dd',
-            // day name short is always 'D'
-            // day name long
-            'l' => 'DD',
-            // month of year (no leading zero)
-            'n' => 'm',
-            // month of year (two digit)
-            'm' => 'mm',
-            // month name short is always 'M'
-            // month name long
-            'F' => 'MM',
-            // year (two digit)
-            'y' => 'yy',
-            // year (four digit)
-            'Y' => 'yyyy',
-        ]);
     }
 
     /**
@@ -264,7 +231,7 @@ class DatePicker extends InputWidget
     }
 
     /**
-     * Registers the needed assets
+     * Registers the needed client assets
      */
     public function registerAssets()
     {
