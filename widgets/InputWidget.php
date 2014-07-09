@@ -205,7 +205,7 @@ class InputWidget extends \yii\widgets\InputWidget
             if ($callback != null) {
                 $script = "\$.when({$script}).done({$callback})";
             }
-            $view->registerJs($script);
+            $view->registerJs($script . ';');
         }
 
         if (!empty($this->pluginEvents)) {
