@@ -95,14 +95,6 @@ class DatePicker extends InputWidget
     public $separator = 'to';
 
     /**
-     * @var boolean whether the widget should automatically format the date from
-     * the PHP DateTime format to the Bootstrap DatePicker plugin format
-     * @see http://php.net/manual/en/function.date.php
-     * @see http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
-     */
-    public $convertFormat = false;
-
-    /**
      * @var string identifier for the target DatePicker element
      */
     private $_id;

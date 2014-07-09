@@ -61,6 +61,13 @@ class InputWidget extends \yii\widgets\InputWidget
     public $pluginEvents = [];
 
     /**
+     * @var boolean whether the widget should automatically format the date from
+     * the PHP DateTime format to the javascript/jquery plugin format
+     * @see http://php.net/manual/en/function.date.php
+     */
+    public $convertFormat = false;
+
+    /**
      * @var string the hashed variable to store the pluginOptions
      */
     protected $_hashVar;
@@ -205,7 +212,7 @@ class InputWidget extends \yii\widgets\InputWidget
             if ($callback != null) {
                 $script = "\$.when({$script}).done({$callback})";
             }
-            $view->registerJs($script . ';');
+            $view->registerJs($script);
         }
 
         if (!empty($this->pluginEvents)) {
@@ -223,6 +230,7 @@ class InputWidget extends \yii\widgets\InputWidget
      * Automatically convert the date format from PHP DateTime to Javascript DateTime format
      *
      * @see http://php.net/manual/en/function.date.php
+     * @see http://bootstrap-datetimepicker.readthedocs.org/en/release/options.html#format
      * @param string $format the PHP date format string
      * @return string
      */

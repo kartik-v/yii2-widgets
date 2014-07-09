@@ -68,14 +68,6 @@ class DateTimePicker extends InputWidget
     public $removeButton = [];
 
     /**
-     * @var boolean whether the widget should automatically format the date from
-     * the PHP DateTime format to the Bootstrap DateTimePicker plugin format
-     * @see http://php.net/manual/en/function.date.php
-     * @see http://www.malot.fr/bootstrap-datetimepicker/#options
-     */
-    public $convertFormat = false;
-
-    /**
      * @var string identifier for the target DateTimePicker element
      */
     private $_id;
