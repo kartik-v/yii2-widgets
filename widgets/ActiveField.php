@@ -366,9 +366,9 @@ class ActiveField extends \yii\widgets\ActiveField
      * - unselect: string, the value that should be submitted when none of the checkboxes is selected.
      *   By setting this option, a hidden input will be generated.
      * - separator: string, the HTML code that separates items.
+     * - inline: boolean, whether the list should be displayed as a series on the same line, default is false
      * - item: callable, a callback that can be used to customize the generation of the HTML code
      *   corresponding to a single item in $items. The signature of this callback must be:
-     * - inline: boolean, whether the list should be displayed as a series on the same line, default is false
      *
      * ~~~
      * function ($index, $label, $name, $checked, $value)
@@ -402,9 +402,9 @@ class ActiveField extends \yii\widgets\ActiveField
      * - unselect: string, the value that should be submitted when none of the radio buttons is selected.
      *   By setting this option, a hidden input will be generated.
      * - separator: string, the HTML code that separates items.
+     * - inline: boolean, whether the list should be displayed as a series on the same line, default is false
      * - item: callable, a callback that can be used to customize the generation of the HTML code
      *   corresponding to a single item in $items. The signature of this callback must be:
-     * - inline: boolean, whether the list should be displayed as a series on the same line, default is false
      *
      * ~~~
      * function ($index, $label, $name, $checked, $value)
