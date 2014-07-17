@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 namespace kartik\widgets;
@@ -63,6 +63,13 @@ class SideNav extends \yii\widgets\Menu
     public $type = self::TYPE_DEFAULT;
 
     /**
+     * @var string prefix for the icon in [[items]]. This string will be prepended
+     * before the icon name to get the icon CSS class. This defaults to `glyphicon glyphicon-`
+     * for usage with glyphicons available with Bootstrap.
+     */
+    public $iconPrefix = 'glyphicon glyphicon-';
+    
+    /**
      * @var array string/boolean the sidenav heading. This is not HTML encoded
      * When set to false or null, no heading container will be displayed.
      */
@@ -101,7 +108,6 @@ class SideNav extends \yii\widgets\Menu
      * - icon: string, optional, specifies the glyphicon name to be placed before label.
      * - url: string or array, optional, specifies the URL of the menu item. It will be processed by [[Url::to]].
      *   When this is set, the actual menu item content will be generated using [[linkTemplate]];
-     *   otherwise, [[labelTemplate]] will be used.
      * - visible: boolean, optional, whether this menu item is visible. Defaults to true.
      * - items: array, optional, specifies the sub-menu items. Its format is the same as the parent items.
      * - active: boolean, optional, whether this menu item is in active state (currently selected).
@@ -111,7 +117,7 @@ class SideNav extends \yii\widgets\Menu
      * - template: string, optional, the template used to render the content of this menu item.
      *   The token `{url}` will be replaced by the URL associated with this menu item,
      *   and the token `{label}` will be replaced by the label of the menu item.
-     *   If this option is not set, [[linkTemplate]] or [[labelTemplate]] will be used instead.
+     *   If this option is not set, [[linkTemplate]] will be used instead.
      * - options: array, optional, the HTML attributes for the menu item tag.
      *
      */
@@ -201,8 +207,8 @@ class SideNav extends \yii\widgets\Menu
     protected function renderItem($item)
     {
         $this->validateItems($item);
+        $template = ArrayHelper::getValue($item, 'template', $this->linkTemplate);
         $url = Url::to(ArrayHelper::getValue($item, 'url', '#'));
-        $template = $this->linkTemplate;
         if (empty($item['top'])) {
             if (empty($item['items'])) {
                 $template = str_replace('{icon}', $this->indItem . '{icon}', $template);
@@ -214,7 +220,7 @@ class SideNav extends \yii\widgets\Menu
                 $template = str_replace('{icon}', $indicator . '{icon}', $template);
             }
         }
-        $icon = empty($item['icon']) ? '' : '<i class="glyphicon glyphicon-' . $item['icon'] . '"></i> &nbsp;';
+        $icon = empty($item['icon']) ? '' : '<span class="' . $this->iconPrefix . $item['icon'] . '"></span> &nbsp;';
         unset($item['icon'], $item['top']);
         return strtr($template, [
             '{url}' => $url,

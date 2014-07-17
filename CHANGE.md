@@ -1,5 +1,20 @@
+version 2.7.0
+=============
+**Date:** 18-Jul-2014
+
+1. enh #96: Enhanced DatePicker, DateTimePicker, and TimePicker to work along with the new `autoWidgetSettings` for DateControl module .
+2. enh #98: Added `language` configuration property for  DatePicker, DateTimePicker, and TimePicker.
+3. bug #99: Fix DateControl to work for date time formatting with DateTimePicker. 
+4. enh #104: Add more information to documentation for Select2 widget and explain placeholder setting when `allowClear` is `true`. 
+5. enh #106: Added Turkish translations for FileInput widget.
+6. bug #110: Allow use of Select2 with tags, when tags are empty.
+7. enh #111: Allow configuring of template for each item in SideNav.
+8. Added `iconPrefix` property in SideNav to easily configure with more icon frameworks (other than glyphicon).
+
 version 2.6.0
 =============
+**Date:** 01-Jul-2014
+
 1. Issue Fixes from #73 to #95.
 2. Added `language` property to `InputWidget` along with `initLanguage` method for automatic language setting in `pluginOptions`.
    The `language` property will be auto defaulted to `Yii::$app->language` if not set.
