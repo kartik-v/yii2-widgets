@@ -137,7 +137,7 @@
 	border-color: #C09853;
 }
 
-.has-warning .select2-container-active .select2-choice, .has-warning .select2-container-multi.select2-container-active .select2-choices {
+.has-warning .select2-container-active .select2-choice, .has-warning .select2-container-multi.select2-container-active .select2-choices, .has-warning .select2-container-multi.select2-dropdown-open .select2-choices {
 	border-color: #A47E3C;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #DBC59E;
 }
@@ -154,7 +154,7 @@
 	border-color: #B94A48;
 }
 
-.has-error .select2-container-active .select2-choice, .has-error .select2-container-multi.select2-container-active .select2-choices {
+.has-error .select2-container-active .select2-choice, .has-error .select2-container-multi.select2-container-active .select2-choices, .has-error .select2-container-multi.select2-dropdown-open .select2-choices {
 	border-color: #953B39;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #D59392;
 }
@@ -171,7 +171,7 @@
 	border-color: #468847;
 }
 
-.has-success .select2-container-active .select2-choice, .has-success .select2-container-multi.select2-container-active .select2-choices {
+.has-success .select2-container-active .select2-choice, .has-success .select2-container-multi.select2-container-active .select2-choices, .has-success .select2-container-multi.select2-dropdown-open .select2-choices {
 	border-color: #356635;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #7ABA7B;
 }
@@ -184,7 +184,7 @@
 	border-top-color: #356635;
 }
 
-.select2-container-active .select2-choice, .select2-container-multi.select2-container-active .select2-choices {
+.select2-container-active .select2-choice, .select2-container-multi.select2-container-active .select2-choices, .select2-container-multi.select2-dropdown-open .select2-choices{
 	border-color: #66AFE9;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
 	outline: medium none;
@@ -217,6 +217,8 @@
 .select2-dropdown-open.select2-drop-above [class^="select2-choice"] {
 	border-top-left-radius: 0 !important;
 	border-top-right-radius: 0 !important;
+	border-bottom-left-radius: 4px !important;
+	border-bottom-right-radius: 4px !important;
 }
 
 .select2-results .select2-highlighted {
