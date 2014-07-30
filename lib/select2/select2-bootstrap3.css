@@ -3,7 +3,7 @@
  * for JQuery Select2 Plugin
  *
  * Author: Kartik Visweswaran 
- * Year: 2013
+ * Year: 2014
  */
 .select2-container.form-control {
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -219,6 +219,18 @@
 	border-top-right-radius: 0 !important;
 	border-bottom-left-radius: 4px !important;
 	border-bottom-right-radius: 4px !important;
+}
+
+.select2-dropdown-open .select2-choice,
+.select2-dropdown-open .select2-choices {
+    border: 1px solid #5897fb;
+    border-bottom-color: transparent;
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(0.5, #eee));
+    background-image: -webkit-linear-gradient(center bottom, #fff 0%, #eee 50%);
+    background-image: -moz-linear-gradient(center bottom, #fff 0%, #eee 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
+    background-image: linear-gradient(to top, #fff 0%, #eee 50%);
 }
 
 .select2-results .select2-highlighted {
