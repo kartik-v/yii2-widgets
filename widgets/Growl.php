@@ -2,7 +2,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.8.0
  */
 
 namespace kartik\widgets;

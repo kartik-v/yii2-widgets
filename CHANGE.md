@@ -1,3 +1,11 @@
+version 2.8.0
+=============
+**Date:** 31-Jul-2014
+
+1. enh #119, #121: Various styling enhancements to Select2.
+2. enh #122: Upgrade bootstrap growl to latest plugin version with various related enhancements
+3. enh #71: Created separate [yii2-editable](https://github.com/kartik-v/yii2-editable) extension
+
 version 2.7.0
 =============
 **Date:** 18-Jul-2014

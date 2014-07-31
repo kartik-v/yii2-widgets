@@ -155,7 +155,7 @@ class Select2 extends InputWidget
     protected function renderInput()
     {
         $class = $this->pluginLoading ? 'kv-hide ' : '';
-        if (!isset($this->addon) && isset($this->size)) {
+        if (empty($this->addon) && isset($this->size)) {
             $class .= 'input-' . $this->size;
         }
         if ($this->pluginLoading) {
