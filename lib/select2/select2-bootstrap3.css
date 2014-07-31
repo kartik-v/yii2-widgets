@@ -38,7 +38,7 @@
 
 .select2-container .select2-choice {
     height: 34px;
-    line-height: 1.42857;
+    line-height: 1.45;
 }
 
 .select2-container.select2-container-multi.form-control {
@@ -93,11 +93,13 @@
 .input-group-sm .select2-choice,
 .select2-container-multi.input-sm .select2-choices,
 .input-group-sm .select2-choices {
+    padding-top: 0;
+    padding-bottom: 0;
     font-size: 12px;
     height: 30px !important;
     border-radius: 3px;
+    line-height: 1.5;
 }
-
 .input-sm .select2-search-choice, .input-group-sm .select2-search-choice {
     margin: 4px !important;
     margin-right: 0 !important;
@@ -113,8 +115,8 @@
     background-position: -18px 1px;
 }
 
-.select2-container.input-sm .select2-choice .select2-search-field input , .select2-container-multi.input-sm .select2-choices .select2-search-field input {
-    height: 30px;
+.select2-container-multi.input-sm .select2-input, .input-group-sm .select2-container-multi .select2-input {
+    height: 30px!important;
 }
 
 .select2-container.input-lg, .select2-container-multi.input-lg {
