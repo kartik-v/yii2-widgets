@@ -44,6 +44,7 @@ This extension has now matured to contain the most needed basic widgets for Yii 
 - [yii2-money](http://demos.krajee.com/money): Masked money input widget for Yii 2.0.
 - [yii2-checkbox-x](http://demos.krajee.com/checkbox-x): Bootstrap 3 extended checkbox widget with 3 states and more styles for Yii 2.0.
 - [yii2-date-range](http://demos.krajee.com/date-range): An extended bootstrap 3 date range picker widget for Yii 2.0.
+- [yii2-editable](http://demos.krajee.com/editable): Convert any displayed content to editable using inputs, widgets, and more features for Yii 2.0.
 
 ### Forms/Inputs
 
