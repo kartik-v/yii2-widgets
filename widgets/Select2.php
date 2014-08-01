@@ -79,12 +79,26 @@ class Select2 extends InputWidget
     private $_hidden = false;
 
     /**
+     *
+     * @var string the option to bind select2 to existing HTML element. No new input will be rendered.
+     */
+    public $selector = null;
+
+    /**
      * Initializes the widget
      *
      * @throw InvalidConfigException
      */
     public function init()
     {
+        if($this->selector){
+            // we do not want forcing to enter useless data
+            $this->name = substr($this->selector, 1);
+            parent::init();
+            $this->registerAssets();
+            return;
+        }
+        
         parent::init();
         $this->_hidden = !empty($this->pluginOptions['data']) ||
             !empty($this->pluginOptions['query']) ||
@@ -187,7 +201,7 @@ class Select2 extends InputWidget
             $loading = "\$('.kv-plugin-loading.loading-{$id}')";
             $groupCss = "group-{$id}";
             $group = "\$('.kv-hide.{$groupCss}')";
-            $el = "\$('#{$id}')";
+            $el = $this->selector ? "\$('{$this->selector}')" : "\$('#{$id}')";
             $callback = <<< JS
 function(){
     var \$container = {$el}.select2('container');
