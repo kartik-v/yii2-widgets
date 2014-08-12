@@ -169,7 +169,7 @@ class Typeahead extends TypeaheadBasic
             $remote = $source['remote'];
             /* Add a spinning indicator for remote calls */
             $r = is_array($remote) ? $remote : ['url' => $remote];
-            $hint = '$("#' . $this->options['id'] . '")';
+            $hint = 'jQuery("#' . $this->options['id'] . '")';
             if (empty($r['beforeSend'])) {
                 $r['beforeSend'] = new JsExpression("function (xhr) { alert('before'); {$hint}.addClass('loading'); }");
             }
@@ -195,7 +195,7 @@ class Typeahead extends TypeaheadBasic
         TypeaheadAsset::register($view);
         $this->registerPluginOptions('typeahead');
         $view->registerJs($this->_bloodhound);
-        $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $this->_dataset . ');');
+        $view->registerJs('jQuery("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $this->_dataset . ');');
         $this->registerPluginEvents($view);
     }
 }

@@ -140,7 +140,7 @@ class Spinner extends \yii\base\Widget
     {
         $view = $this->getView();
         SpinnerAsset::register($view);
-        $id = '$("#' . $this->options['id'] . '").find(".kv-spin")';
+        $id = 'jQuery("#' . $this->options['id'] . '").find(".kv-spin")';
 
         if ($this->_validPreset) {
             $js = (isset($this->color)) ? "{$id}.spin('{$this->preset}', '{$this->color}');" : "{$id}.spin('{$this->preset}');";

@@ -104,7 +104,7 @@ class TypeaheadOld extends InputWidget
             /* Add a spinning indicator for remote calls */
             if (!empty($d['remote'])) {
                 $r = is_array($d['remote']) ? $d['remote'] : ['url' => $d['remote']];
-                $hint = '$("#' . $this->options['id'] . '").parent().children(".tt-hint")';
+                $hint = 'jQuery("#' . $this->options['id'] . '").parent().children(".tt-hint")';
                 if (empty($r['beforeSend'])) {
                     $r['beforeSend'] = new JsExpression("function (xhr) { {$hint}.addClass('loading'); }");
                 }

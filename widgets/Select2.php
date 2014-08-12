@@ -184,10 +184,10 @@ class Select2 extends InputWidget
         $this->pluginOptions['width'] = 'resolve';
         if ($this->pluginLoading) {
             $id = $this->options['id'];
-            $loading = "\$('.kv-plugin-loading.loading-{$id}')";
+            $loading = "jQuery('.kv-plugin-loading.loading-{$id}')";
             $groupCss = "group-{$id}";
-            $group = "\$('.kv-hide.{$groupCss}')";
-            $el = "\$('#{$id}')";
+            $group = "jQuery('.kv-hide.{$groupCss}')";
+            $el = "jQuery('#{$id}')";
             $callback = <<< JS
 function(){
     var \$container = {$el}.select2('container');

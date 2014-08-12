@@ -98,7 +98,7 @@ class TouchSpin extends InputWidget
     public function registerAssets()
     {
         $view = $this->getView();
-        $id = '$("#' . $this->options['id'] . '").parent()';  //unused
+        $id = 'jQuery("#' . $this->options['id'] . '").parent()';  //unused
         TouchSpinAsset::register($view);
         $this->registerPlugin('TouchSpin');
     }

@@ -83,7 +83,7 @@ class TypeaheadBasic extends InputWidget
     protected function registerPluginEvents($view)
     {
         if (!empty($this->pluginEvents)) {
-            $id = '$("#' . $this->options['id'] . '")';
+            $id = 'jQuery("#' . $this->options['id'] . '")';
             $js = [];
             foreach ($this->pluginEvents as $event => $handler) {
                 $function = new JsExpression($handler);
@@ -105,7 +105,7 @@ class TypeaheadBasic extends InputWidget
         $dataVar = str_replace('-', '_', $this->options['id'] . '_data');
         $view->registerJs('var ' . $dataVar . ' = ' . Json::encode(array_values($this->data)) . ';');
         $dataset = Json::encode(['name' => $dataVar, 'source' => new JsExpression('substringMatcher(' . $dataVar . ')')]);
-        $view->registerJs('$("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $dataset . ');');
+        $view->registerJs('jQuery("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $dataset . ');');
         $this->registerPluginEvents($view);
     }
 }

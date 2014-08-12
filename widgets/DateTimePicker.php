@@ -92,7 +92,7 @@ class DateTimePicker extends InputWidget
         if ($this->convertFormat && isset($this->pluginOptions['format'])) {
             $this->pluginOptions['format'] = static::convertDateFormat($this->pluginOptions['format']);
         }
-        $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
+        $this->_id = ($this->type == self::TYPE_INPUT) ? 'jQuery("#' . $this->options['id'] . '")' : 'jQuery("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         echo $this->renderInput();
     }
@@ -192,7 +192,7 @@ class DateTimePicker extends InputWidget
         } else {
             DateTimePickerAsset::register($view);
         }
-        $id = "$('#" . $this->options['id'] . "')";
+        $id = "jQuery('#" . $this->options['id'] . "')";
         if ($this->type == self::TYPE_INLINE) {
             $this->pluginOptions['linkField'] = $this->options['id'];
             if (!empty($this->pluginOptions['format'])) {

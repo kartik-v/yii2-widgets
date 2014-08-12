@@ -131,7 +131,7 @@ class DatePicker extends InputWidget
         if ($this->convertFormat && isset($this->pluginOptions['format'])) {
             $this->pluginOptions['format'] = static::convertDateFormat($this->pluginOptions['format']);
         }
-        $this->_id = ($this->type == self::TYPE_INPUT) ? '$("#' . $this->options['id'] . '")' : '$("#' . $this->options['id'] . '").parent()';
+        $this->_id = ($this->type == self::TYPE_INPUT) ? 'jQuery("#' . $this->options['id'] . '")' : 'jQuery("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         echo $this->renderInput();
     }
@@ -233,7 +233,7 @@ class DatePicker extends InputWidget
         } else {
             DatePickerAsset::register($view);
         }
-        $id = "$('#" . $this->options['id'] . "')";
+        $id = "jQuery('#" . $this->options['id'] . "')";
         if ($this->type == self::TYPE_INLINE) {
             $this->pluginEvents = ArrayHelper::merge($this->pluginEvents, ['changeDate' => 'function (e) { ' . $id . '.val(e.format());} ']);
         }

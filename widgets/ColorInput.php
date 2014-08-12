@@ -83,10 +83,10 @@ class ColorInput extends Html5Input
     {
         $view = $this->getView();
         ColorInputAsset::register($view);
-        $input = '$("#' . $this->html5Options['id'] . '")';
+        $input = 'jQuery("#' . $this->html5Options['id'] . '")';
         $this->registerPlugin('spectrum', $input);
-        $caption = '$("#' . $this->options['id'] . '")';
-        $input = '$("#' . $this->html5Options['id'] . '")';
+        $caption = 'jQuery("#' . $this->options['id'] . '")';
+        $input = 'jQuery("#' . $this->html5Options['id'] . '")';
         $view->registerJs("{$caption}.change(function(){{$input}.spectrum('set', this.value)});\n");
     }
 }
