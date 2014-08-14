@@ -1,3 +1,11 @@
+version 2.9.0
+=============
+**Date:** 14-Aug-2014
+
+1. bug #132: Enhance growl widget for major changes to core plugin.
+2. Separate animation enhancements added to growl.
+
+
 version 2.8.0
 =============
 **Date:** 31-Jul-2014

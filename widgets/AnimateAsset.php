@@ -9,19 +9,18 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for \kartik\widgets\Growl
+ * Asset bundle for loading animations
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class GrowlAsset extends AssetBundle
+class AnimateAsset extends AssetBundle
 {
 
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/growl']);
-        $this->setupAssets('js', ['js/bootstrap-growl']);
+        $this->setupAssets('css', ['css/animate']);
         parent::init();
     }
 }
