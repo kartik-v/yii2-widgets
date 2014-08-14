@@ -2,7 +2,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-widgets
- * @version 2.9.0
+ * @version 2.8.0
  */
 
 namespace kartik\widgets;
@@ -46,9 +46,10 @@ class Growl extends Widget
     public $title = '';
     
     /**
-     * @var string the url for navigation on clicking the alert
+     * @var string the url to redirect to on clicking the alert. If this is <code>null</code> or not set, 
+     * the alert will not be clickable.
      */
-    public $url = '';
+    public $linkUrl = '';
 
     /**
      * @var bool show title separator. Only applicable if `title` is set.
@@ -75,6 +76,26 @@ class Growl extends Widget
      * @var use animations
      */
     public $useAnimation = true;
+    
+    /**
+     * @var array the HTML attributes for the growl icon container.
+     */
+    public $iconOptions = [];
+    
+    /**
+     * @var array the HTML attributes for the growl title container.
+     */
+    public $titleOptions = [];
+    
+    /**
+     * @var array the HTML attributes for the growl message body.
+     */
+    public $bodyOptions = [];
+    
+    /**
+     * @var array the HTML attributes for the growl url link
+     */
+    public $linkOptions = [];
     
     /**
      * @var array the bootstrap growl plugin configuration options
@@ -109,7 +130,7 @@ class Growl extends Widget
             'message' => $this->body,
             'icon' => $this->icon,
             'title' => $this->title,
-            'url' => $this->url
+            'url' => $this->linkUrl
         ];
         $this->pluginOptions['type'] = $this->type;
         if (empty($this->options['class'])) {
@@ -117,15 +138,17 @@ class Growl extends Widget
         } else {
             Html::addCssClass($this->options, 'alert');
         }
-        $divider = !empty($this->showSeparator) && !empty($this->title) ? '<hr class="kv-alert-separator">' : '';
-        $content = $this->renderCloseButton();
-        $content .= <<< HTML
-    <span data-growl="icon"></span>
-    <span data-growl="title"></span>
-    {$divider}
-    <span data-growl="message"></span>
-    <a href="#" data-growl="url"></a>
-HTML;
+        $divider = !empty($this->showSeparator) && !empty($this->title) ? '<hr class="kv-alert-separator">' . "\n" : '';
+        $this->iconOptions['data-growl'] = 'icon';
+        $this->titleOptions['data-growl'] = 'title';
+        $this->bodyOptions['data-growl'] = 'message';
+        $this->linkOptions['data-growl'] = 'url';
+        $content = $this->renderCloseButton() . "\n" .
+            Html::tag('span', '', $this->iconOptions) . "\n" .
+            Html::tag('span', '', $this->titleOptions) . "\n" .
+            $divider . 
+            Html::tag('span', '', $this->bodyOptions) . "\n" .
+            Html::a('', '#', $this->linkOptions);
         $this->pluginOptions['template'] = Html::tag('div', $content, $this->options);
         $this->registerAssets();
     }
