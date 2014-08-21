@@ -213,7 +213,7 @@ class SideNav extends \yii\widgets\Menu
             if (empty($item['items'])) {
                 $template = str_replace('{icon}', $this->indItem . '{icon}', $template);
             } else {
-                $template = '<a href="{url}" class="kv-toggle">{icon}{label}</a>';
+                $template = isset($item['template']) ? $item['template'] :'<a href="{url}" class="kv-toggle">{icon}{label}</a>';
                 $openOptions = ($item['active']) ? ['class' => 'opened'] : ['class' => 'opened', 'style' => 'display:none'];
                 $closeOptions = ($item['active']) ? ['class' => 'closed', 'style' => 'display:none'] : ['class' => 'closed'];
                 $indicator = Html::tag('span', $this->indMenuOpen, $openOptions) . Html::tag('span', $this->indMenuClose, $closeOptions);
