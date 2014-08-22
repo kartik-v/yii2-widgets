@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.9.0
  */
 
 namespace kartik\widgets;
@@ -16,7 +16,8 @@ namespace kartik\widgets;
  */
 class AssetBundle extends \yii\web\AssetBundle
 {
-
+    const EMPTY_ASSET = 'N0/@$$3T$';
+    
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\web\YiiAsset',
@@ -30,7 +31,7 @@ class AssetBundle extends \yii\web\AssetBundle
      * @param array $files the list of 'css' or 'js' basefile names
      */
     protected function setupAssets($type, $files = [])
-    {        
+    {
         if (empty($this->$type)) {
             $srcFiles = [];
             $minFiles = [];
@@ -39,6 +40,8 @@ class AssetBundle extends \yii\web\AssetBundle
                 $minFiles[] = "{$file}.min.{$type}";
             }
             $this->$type = YII_DEBUG ? $srcFiles : $minFiles;
+        } elseif ($this->$type === self::EMPTY_ASSET) {
+            $this->$type = [];
         }
     }
 
@@ -51,6 +54,8 @@ class AssetBundle extends \yii\web\AssetBundle
     {
         if (empty($this->sourcePath)) {
             $this->sourcePath = $path;
+        } elseif ($this->$type === self::EMPTY_ASSET) {
+            $this->$type = [];
         }
     }
 }
