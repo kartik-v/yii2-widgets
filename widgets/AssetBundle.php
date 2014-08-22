@@ -30,14 +30,14 @@ class AssetBundle extends \yii\web\AssetBundle
      * @param array $files the list of 'css' or 'js' basefile names
      */
     protected function setupAssets($type, $files = [])
-    {
-        $srcFiles = [];
-        $minFiles = [];
-        foreach ($files as $file) {
-            $srcFiles[] = "{$file}.{$type}";
-            $minFiles[] = "{$file}.min.{$type}";
-        }
-        if (empty($this->$type)) {
+    {        
+        if (!isset($this->$type)) {
+            $srcFiles = [];
+            $minFiles = [];
+            foreach ($files as $file) {
+                $srcFiles[] = "{$file}.{$type}";
+                $minFiles[] = "{$file}.min.{$type}";
+            }
             $this->$type = YII_DEBUG ? $srcFiles : $minFiles;
         }
     }
@@ -49,7 +49,7 @@ class AssetBundle extends \yii\web\AssetBundle
      */
     protected function setSourcePath($path)
     {
-        if (empty($this->sourcePath)) {
+        if (!isset($this->sourcePath)) {
             $this->sourcePath = $path;
         }
     }
