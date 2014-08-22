@@ -17,6 +17,7 @@ namespace kartik\widgets;
 class AssetBundle extends \yii\web\AssetBundle
 {
     const EMPTY_ASSET = 'N0/@$$3T$';
+    const EMPTY_PATH = 'N0/P@TH';
     
     public $depends = [
         'yii\web\JqueryAsset',
@@ -54,8 +55,8 @@ class AssetBundle extends \yii\web\AssetBundle
     {
         if (empty($this->sourcePath)) {
             $this->sourcePath = $path;
-        } elseif ($this->$type === self::EMPTY_ASSET) {
-            $this->$type = [];
+        } elseif ($this->sourcePath === self::EMPTY_PATH) {
+            $this->sourcePath = '';
         }
     }
 }
