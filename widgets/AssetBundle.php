@@ -31,7 +31,7 @@ class AssetBundle extends \yii\web\AssetBundle
      */
     protected function setupAssets($type, $files = [])
     {        
-        if (!isset($this->$type)) {
+        if (empty($this->$type)) {
             $srcFiles = [];
             $minFiles = [];
             foreach ($files as $file) {
@@ -49,7 +49,7 @@ class AssetBundle extends \yii\web\AssetBundle
      */
     protected function setSourcePath($path)
     {
-        if (!isset($this->sourcePath)) {
+        if (empty($this->sourcePath)) {
             $this->sourcePath = $path;
         }
     }
