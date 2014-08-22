@@ -17,7 +17,7 @@ namespace kartik\widgets;
 class AssetBundle extends \yii\web\AssetBundle
 {
     const EMPTY_ASSET = 'N0/@$$3T$';
-    const EMPTY_PATH = 'N0/P@TH';
+    const EMPTY_PATH = 'N0/P@T#';
     
     public $depends = [
         'yii\web\JqueryAsset',
