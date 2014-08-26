@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.9.0
  */
 
 namespace kartik\widgets;
@@ -201,16 +201,16 @@ class InputWidget extends \yii\widgets\InputWidget
      */
     protected function registerPlugin($name, $element = null, $callback = null, $callbackCon = null)
     {
-        $id = ($element == null) ? "jQuery('#" . $this->options['id'] . "')" : $element;
+        $id = $element == null ? "jQuery('#" . $this->options['id'] . "')" : $element;
         $view = $this->getView();
         if ($this->pluginOptions !== false) {
             $this->registerPluginOptions($name, View::POS_HEAD);
-            $script = "{$id}.{$name}({$this->_hashVar})";
+            $script = "{$id}.{$name}({$this->_hashVar});";
             if ($callbackCon != null) {
-                $script = "{$id}.{$name}({$this->_hashVar}, {$callbackCon})";
+                $script = "{$id}.{$name}({$this->_hashVar}, {$callbackCon});";
             }
             if ($callback != null) {
-                $script = "\$.when({$script}).done({$callback})";
+                $script = "jQuery.when({$script}).done({$callback});";
             }
             $view->registerJs($script);
         }
