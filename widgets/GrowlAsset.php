@@ -20,7 +20,7 @@ class GrowlAsset extends AssetBundle
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/growl']);
+        $this->setupAssets('css', ['css/growl', 'css/animate']);
         $this->setupAssets('js', ['js/bootstrap-growl']);
         parent::init();
     }
