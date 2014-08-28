@@ -21,7 +21,7 @@ class SideNavAsset extends AssetBundle
     {
         $this->setSourcePath(__DIR__ . '/../assets');
         $this->setupAssets('css', ['css/sidenav']);
--        $this->setupAssets('js', ['js/sidenav']);
+        $this->setupAssets('js', ['js/sidenav']);
         parent::init();
     }
 }
