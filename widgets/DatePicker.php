@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.9.0
  */
 
 namespace kartik\widgets;
@@ -12,7 +12,6 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use kartik\field\FieldRangeAsset;
 use kartik\datecontrol\DateControl;
 
 /**
@@ -114,6 +113,9 @@ class DatePicker extends InputWidget
         parent::init();
         if ($this->type === self::TYPE_RANGE && $this->attribute2 === null && $this->name2 === null) {
             throw new InvalidConfigException("Either 'name2' or 'attribute2' properties must be specified for a datepicker 'range' markup.");
+        }
+        if ($this->type === self::TYPE_RANGE && !class_exists('\\kartik\\field\\FieldRangeAsset')) {
+            throw new InvalidConfigException("The yii2-field-range extension is not installed and is a pre-requisite for a DatePicker RANGE type. To install this extension run this command on your console: \n\nphp composer.phar require kartik-v/yii2-field-range \"*\"");
         }
         if ($this->type < 1 || $this->type > 5 || !is_int($this->type)) {
             throw new InvalidConfigException("Invalid value for the property 'type'. Must be an integer between 1 and 5.");
@@ -245,7 +247,7 @@ class DatePicker extends InputWidget
             $this->registerPlugin('datepicker', "{$id}.parent()");
         }
         if ($this->type === self::TYPE_RANGE) {
-            FieldRangeAsset::register($view);
+            \kartik\field\FieldRangeAsset::register($view);
         }
     }
 }
