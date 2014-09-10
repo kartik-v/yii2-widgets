@@ -93,8 +93,8 @@ class ColorInput extends Html5Input
         $view = $this->getView();
         $value = $this->hasModel() ? Html::getAttributeValue($this->model, $this->attribute) : $this->value;
         $this->html5Options['value'] = $value;
+        ColorInputAsset::register($view);
         if ($this->useNative) {
-            ColorInputAsset::register($view);
             parent::registerAssets();
             return;
         }
