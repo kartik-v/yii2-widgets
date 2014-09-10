@@ -4,6 +4,7 @@ version 2.9.0
 
 1. bug #132: Enhance growl widget for major changes to core plugin.
 2. Separate animation enhancements added to growl.
+3. enh # 150: Enhance `ColorInput` widget to allow controlling display of default palette of colors.
 
 
 version 2.8.0

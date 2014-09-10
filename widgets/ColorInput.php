@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.9.0
  */
 
 namespace kartik\widgets;
@@ -28,6 +28,11 @@ class ColorInput extends Html5Input
     public $useNative = false;
 
     /**
+     * @var boolean whether to show a default palette of colors
+     */
+    public $showDefaultPalette = true;
+    
+    /**
      * @var boolean whether to automatically polyfill for
      * the HTML5 color input in an unsupported browser when
      * you have set `useNative` to true
@@ -41,7 +46,10 @@ class ColorInput extends Html5Input
         'showSelectionPalette' => true,
         'showAlpha' => true,
         'allowEmpty' => true,
-        'preferredFormat' => 'hex',
+        'preferredFormat' => 'hex'
+    ];
+    
+    private $_defaultPalette = [
         'palette' => [
             ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)",
                 "rgb(204, 204, 204)", "rgb(217, 217, 217)", "rgb(255, 255, 255)"],
@@ -59,7 +67,7 @@ class ColorInput extends Html5Input
                 "rgb(12, 52, 61)", "rgb(28, 69, 135)", "rgb(7, 55, 99)", "rgb(32, 18, 77)", "rgb(76, 17, 48)"]
         ]
     ];
-
+    
     public function init()
     {
         $this->type = 'color';
@@ -69,7 +77,9 @@ class ColorInput extends Html5Input
         }
         parent::init();
         if (!$this->useNative) {
-            $this->pluginOptions = ArrayHelper::merge($this->_defaultOptions, $this->pluginOptions);
+            $this->pluginOptions = $this->showDefaultPalette ? 
+                ArrayHelper::merge($this->_defaultOptions, $this->_defaultPalette, $this->pluginOptions) :
+                ArrayHelper::merge($this->_defaultOptions, $this->pluginOptions) ;
             $this->registerPluginAssets();
         } elseif ($this->polyFill) {
             ColorInputAsset::register($this->getView());
