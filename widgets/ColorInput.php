@@ -11,6 +11,7 @@ namespace kartik\widgets;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use yii\web\JsExpression;
 
 /**
  * ColorInput widget is an enhanced widget encapsulating the HTML 5 color input.
@@ -74,29 +75,40 @@ class ColorInput extends Html5Input
         $this->width = '60px';
         if (!$this->useNative) {
             Html::addCssClass($this->html5Container, 'input-group-sp');
-        }
-        parent::init();
-        if (!$this->useNative) {
+            if (!isset($this->pluginOptions['preferredFormat'])) {
+                $this->pluginOptions['preferredFormat'] = 'hex';
+            }
             $this->pluginOptions = $this->showDefaultPalette ? 
                 ArrayHelper::merge($this->_defaultOptions, $this->_defaultPalette, $this->pluginOptions) :
                 ArrayHelper::merge($this->_defaultOptions, $this->pluginOptions) ;
-            $this->registerPluginAssets();
-        } elseif ($this->polyFill) {
-            ColorInputAsset::register($this->getView());
         }
+        parent::init();
     }
 
     /**
      * Registers the needed assets
      */
-    public function registerPluginAssets()
+    public function registerAssets()
     {
         $view = $this->getView();
-        ColorInputAsset::register($view);
-        $input = 'jQuery("#' . $this->html5Options['id'] . '")';
-        $this->registerPlugin('spectrum', $input);
+        $value = $this->hasModel() ? Html::getAttributeValue($this->model, $this->attribute) : $this->value;
+        $this->html5Options['value'] = $value;
+        if ($this->useNative) {
+            ColorInputAsset::register($view);
+            parent::registerAssets();
+            return;
+        }
+        Html5InputAsset::register($view);
         $caption = 'jQuery("#' . $this->options['id'] . '")';
         $input = 'jQuery("#' . $this->html5Options['id'] . '")';
-        $view->registerJs("{$caption}.change(function(){{$input}.spectrum('set', this.value)});\n");
+        $this->pluginOptions['change'] = new JsExpression("function(color){{$caption}.val(color.toString());}");
+        $this->registerPlugin('spectrum', $input);
+        $js = <<< JS
+{$input}.spectrum('set','{$value}');
+{$caption}.on('change', function(){
+    {$input}.spectrum('set',{$caption}.val());
+});
+JS;
+        $view->registerJs($js);
     }
 }
