@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.9.0
  */
 
 namespace kartik\widgets;
@@ -177,7 +177,7 @@ class ActiveField extends \yii\widgets\ActiveField
     protected function initPlaceholder(&$options)
     {
         if ($this->autoPlaceholder) {
-            $label = Html::encode($this->model->getAttributeLabel($this->attribute));
+            $label = $this->model->getAttributeLabel($this->attribute);
             $this->inputOptions['placeholder'] = $label;
             $options['placeholder'] = $label;
         }
