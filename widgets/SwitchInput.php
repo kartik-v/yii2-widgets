@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.9.0
  */
 
 namespace kartik\widgets;
@@ -103,6 +103,9 @@ class SwitchInput extends InputWidget
     protected function renderInput()
     {
         if ($this->type == self::CHECKBOX) {
+            if (empty($this->options['label'])) {
+                $this->options['label'] = null;
+            }
             $input = $this->getInput('checkbox');
             return ($this->inlineLabel) ? $input : Html::tag('div', $input);
         }
