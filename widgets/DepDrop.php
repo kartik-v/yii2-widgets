@@ -67,7 +67,7 @@ class DepDrop extends InputWidget
         if ($this->type === self::TYPE_SELECT2 &&
             (!empty($this->options['placeholder']) || !empty($this->select2Options['options']['placeholder']))
         ) {
-            $this->pluginOptions['placeholder'] = '';
+            $this->pluginOptions['placeholder'] = false;
         } elseif ($this->type === self::TYPE_SELECT2 && !empty($this->pluginOptions['placeholder']) && $this->pluginOptions['placeholder'] !== false) {
             $this->options['placeholder'] = $this->pluginOptions['placeholder'];
             $this->pluginOptions['placeholder'] = '';
