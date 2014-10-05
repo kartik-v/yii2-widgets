@@ -9,19 +9,19 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for TouchSpin Widget
+ * Asset bundle for Affix Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class TouchSpinAsset extends AssetBundle
+class AffixAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/bootstrap-touchspin']);
-        $this->setupAssets('js', ['js/bootstrap-touchspin']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/affix']);
+        $this->setupAssets('js', ['js/affix']);
         parent::init();
     }
 }

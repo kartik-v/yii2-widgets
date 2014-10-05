@@ -8,22 +8,20 @@
 
 namespace kartik\widgets;
 
-use Yii;
-
 /**
- * Asset bundle for Select2 Widget
+ * Asset bundle for Typeahead advanced widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class Select2Asset extends AssetBundle
+class TypeaheadAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../lib/select2');
-        $this->setupAssets('css', ['select2', 'select2-bootstrap3']);
-        $this->setupAssets('js', ['select2']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/typeahead', 'css/typeahead-kv']);
+        $this->setupAssets('js', ['js/typeahead.bundle', 'js/handlebars']);
         parent::init();
     }
 }

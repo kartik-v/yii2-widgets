@@ -8,22 +8,19 @@
 
 namespace kartik\widgets;
 
-use Yii;
-
 /**
- * Asset bundle for TimePicker Widget
+ * Asset bundle for Html5Input Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class TimePickerAsset extends AssetBundle
+class Html5InputAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/bootstrap-timepicker']);
-        $this->setupAssets('js', ['js/bootstrap-timepicker']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/html5input']);
         parent::init();
     }
 }

@@ -8,20 +8,22 @@
 
 namespace kartik\widgets;
 
+use Yii;
+
 /**
- * Asset bundle for Typeahead Widget (Basic)
+ * Asset bundle for Spinner Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class TypeaheadBasicAsset extends AssetBundle
+class SpinnerAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/typeahead', 'css/typeahead-kv']);
-        $this->setupAssets('js', ['js/typeahead.jquery', 'js/typeahead-kv']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/spin']);
+        $this->setupAssets('js', ['js/spin', 'js/jquery.spin']);
         parent::init();
     }
 }

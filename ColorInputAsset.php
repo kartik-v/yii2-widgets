@@ -8,22 +8,20 @@
 
 namespace kartik\widgets;
 
-use Yii;
-
 /**
- * Asset bundle for Spinner Widget
+ * Asset bundle for ColorInput Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class SpinnerAsset extends AssetBundle
+class ColorInputAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/spin']);
-        $this->setupAssets('js', ['js/spin', 'js/jquery.spin']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/spectrum']);
+        $this->setupAssets('js', ['js/spectrum']);
         parent::init();
     }
 }
