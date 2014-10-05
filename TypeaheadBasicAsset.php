@@ -9,18 +9,19 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for \kartik\widgets\Alert
+ * Asset bundle for Typeahead Widget (Basic)
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class AlertAsset extends AssetBundle
+class TypeaheadBasicAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/alert']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/typeahead', 'css/typeahead-kv']);
+        $this->setupAssets('js', ['js/typeahead.jquery', 'js/typeahead-kv']);
         parent::init();
     }
 }

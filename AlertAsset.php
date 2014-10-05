@@ -9,19 +9,18 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for DatePicker Widget
+ * Asset bundle for \kartik\widgets\Alert
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class DatePickerAsset extends AssetBundle
+class AlertAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../lib/bootstrap-datepicker');
-        $this->setupAssets('css', ['css/datepicker3', 'css/datepicker-kv']);
-        $this->setupAssets('js', ['js/bootstrap-datepicker']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/alert']);
         parent::init();
     }
 }

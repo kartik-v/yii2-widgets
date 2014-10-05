@@ -9,19 +9,19 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for ColorInput Widget
+ * Asset bundle for DateTimePicker Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class ColorInputAsset extends AssetBundle
+class DateTimePickerAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/spectrum']);
-        $this->setupAssets('js', ['js/spectrum']);
+        $this->setSourcePath(__DIR__ . '/lib/bootstrap-datetimepicker');
+        $this->setupAssets('css', ['css/bootstrap-datetimepicker']);
+        $this->setupAssets('js', ['js/bootstrap-datetimepicker']);
         parent::init();
     }
 }

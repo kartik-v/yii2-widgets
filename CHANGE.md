@@ -8,6 +8,7 @@ version 2.9.0
 4. bug # 151: Remove duplicate encoding for placeholder.
 5. enh # 153: Various enhancements to `ColorInput` widget to read colors correctly based on plugin `preferredFormat`.
 6. bug # 157: Correct duplicate `label` displayed after SwitchInput.
+7. PSR4 alias change
 
 
 version 2.8.0

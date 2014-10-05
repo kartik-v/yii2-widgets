@@ -9,19 +9,18 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for SideNav Widget
+ * Asset bundle for ActiveForm Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class SideNavAsset extends AssetBundle
+class ActiveFormAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/sidenav']);
-        $this->setupAssets('js', ['js/sidenav']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/activeform']);
         parent::init();
     }
 }

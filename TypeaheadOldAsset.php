@@ -9,19 +9,19 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for Affix Widget
+ * Asset bundle for Typeahead Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class AffixAsset extends AssetBundle
+class TypeaheadOldAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/affix']);
-        $this->setupAssets('js', ['js/affix']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/typeahead-old']);
+        $this->setupAssets('js', ['js/typeahead-old', 'js/hogan']);
         parent::init();
     }
 }

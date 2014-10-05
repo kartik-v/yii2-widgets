@@ -3,26 +3,25 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 2.9.0
  */
 
 namespace kartik\widgets;
 
-use Yii;
-
 /**
- * Common Asset bundle for all widgets
+ * Asset bundle for \kartik\widgets\Growl
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class WidgetAsset extends AssetBundle
+class GrowlAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/kv-widgets']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/growl']);
+        $this->setupAssets('js', ['js/bootstrap-growl']);
         parent::init();
     }
 }

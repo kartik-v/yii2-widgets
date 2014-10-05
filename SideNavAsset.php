@@ -9,19 +9,19 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for Typeahead Widget
+ * Asset bundle for SideNav Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class TypeaheadOldAsset extends AssetBundle
+class SideNavAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/typeahead-old']);
-        $this->setupAssets('js', ['js/typeahead-old', 'js/hogan']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/sidenav']);
+        $this->setupAssets('js', ['js/sidenav']);
         parent::init();
     }
 }

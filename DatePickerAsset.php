@@ -9,18 +9,19 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for ActiveForm Widget
+ * Asset bundle for DatePicker Widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class ActiveFormAsset extends AssetBundle
+class DatePickerAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
-        $this->setupAssets('css', ['css/activeform']);
+        $this->setSourcePath(__DIR__ . '/lib/bootstrap-datepicker');
+        $this->setupAssets('css', ['css/datepicker3', 'css/datepicker-kv']);
+        $this->setupAssets('js', ['js/bootstrap-datepicker']);
         parent::init();
     }
 }
