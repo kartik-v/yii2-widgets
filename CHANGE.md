@@ -4,7 +4,7 @@ version 3.0.0
 
 1. PSR4 alias change
 2. enh #162: Add Russian locale and translation for DatePicker plugin.
-2. enh #165, #166, #168: Various Select2 styling enhancements for Bootstrap.
+3. enh #165, #166, #168: Various Select2 styling enhancements for Bootstrap.
 
 version 2.9.0
 =============
