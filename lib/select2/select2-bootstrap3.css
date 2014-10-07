@@ -139,14 +139,20 @@
     padding: 0;
 }
 
+
 .select2-container.input-lg .select2-choice,
 .input-group-lg .select2-choice,
 .select2-container-multi.input-lg .select2-choices,
 .input-group-lg .select2-choices {
     padding: 3px 0;
-    min-height: 46px;
+    height: 46px;
     font-size: 18px;
     border-radius: 6px;
+}
+
+.select2-container-multi.input-lg .select2-choices,
+.input-group-lg .select2-choices {
+    padding: 0;
 }
 
 .select2-container-multi.input-lg .select2-choices,
@@ -155,8 +161,7 @@
 }
 
 .input-lg .select2-search-choice, .input-group-lg .select2-search-choice {
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
+    margin-top: 10px!important;
 }
 
 .select2-container.input-lg .select2-choice .select2-arrow b,
