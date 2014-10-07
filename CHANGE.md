@@ -1,3 +1,11 @@
+version 3.0.0
+=============
+**Date:** 08-Oct-2014
+
+1. PSR4 alias change
+2. enh #162: Add Russian locale and translation for DatePicker plugin.
+2. enh #165, #166, #168: Various Select2 styling enhancements for Bootstrap.
+
 version 2.9.0
 =============
 **Date:** 14-Aug-2014
@@ -8,7 +16,6 @@ version 2.9.0
 4. bug # 151: Remove duplicate encoding for placeholder.
 5. enh # 153: Various enhancements to `ColorInput` widget to read colors correctly based on plugin `preferredFormat`.
 6. bug # 157: Correct duplicate `label` displayed after SwitchInput.
-7. PSR4 alias change
 
 
 version 2.8.0

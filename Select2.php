@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 3.0.0
  */
 
 namespace kartik\widgets;
@@ -176,12 +176,35 @@ class Select2 extends InputWidget
     public function registerAssets()
     {
         $view = $this->getView();
+        
+        // set locale and language
         if (!empty($this->language) && substr($this->language, 0, 2) != 'en') {
             Select2Asset::register($view)->js[] = 'select2_locale_' . $this->language . '.js';
         } else {
             Select2Asset::register($view);
         }
+        
+        // set default width
         $this->pluginOptions['width'] = 'resolve';
+        
+        // validate bootstrap has-success & has-error states
+        $js = <<< 'JS'
+function() {
+    var $el = $(this), $drop = $("#select2-drop"), cssClasses;
+    $drop.removeClass("has-success has-error has-warning");
+    if ($el.parents("[class*='has-']").length) {
+        cssClasses = $el.parents("[class*='has-']")[0].className.split(/\s+/);
+        for (var i = 0; i < cssClasses.length; i++) {
+            if (cssClasses[i].match("has-")) {
+                $drop.addClass(cssClasses[i]);
+            }
+        }
+    }
+}
+JS;
+        $this->pluginEvents += ['select2-open' => $js];
+        
+        // register plugin
         if ($this->pluginLoading) {
             $id = $this->options['id'];
             $loading = "jQuery('.kv-plugin-loading.loading-{$id}')";
@@ -203,5 +226,6 @@ JS;
         } else {
             $this->registerPlugin('select2');
         }
+        
     }
 }
