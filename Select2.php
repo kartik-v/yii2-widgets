@@ -98,10 +98,8 @@ class Select2 extends InputWidget
         ) {
             $this->data = ["" => ""] + $this->data;
         }
-        if (!isset($this->options['style'])) {
-            $this->options['style'] = 'width: 100%';
-        }
-
+        Html::addCssClass($this->options, 'form-control');
+        Html::addCssStyle($this->options, 'width:100%', false);
         $this->registerAssets();
         $this->renderInput();
     }
