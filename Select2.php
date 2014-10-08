@@ -176,6 +176,7 @@ class Select2 extends InputWidget
     public function registerAssets()
     {
         $view = $this->getView();
+        $id = $this->options['id'];
         
         // set locale and language
         if (!empty($this->language) && substr($this->language, 0, 2) != 'en') {
@@ -188,41 +189,11 @@ class Select2 extends InputWidget
         $this->pluginOptions['width'] = 'resolve';
         
         // validate bootstrap has-success & has-error states
-        $js = <<< 'JS'
-function() {
-    var $el = $(this), $drop = $("#select2-drop"), cssClasses;
-    $drop.removeClass("has-success has-error has-warning");
-    if ($el.parents("[class*='has-']").length) {
-        cssClasses = $el.parents("[class*='has-']")[0].className.split(/\s+/);
-        for (var i = 0; i < cssClasses.length; i++) {
-            if (cssClasses[i].match("has-")) {
-                $drop.addClass(cssClasses[i]);
-            }
-        }
-    }
-}
-JS;
-        $this->pluginEvents += ['select2-open' => $js];
+        $this->pluginEvents += ['select2-open' => "function(){initSelect2DropStyle('{$id}')}"];
         
         // register plugin
         if ($this->pluginLoading) {
-            $id = $this->options['id'];
-            $loading = "jQuery('.kv-plugin-loading.loading-{$id}')";
-            $groupCss = "group-{$id}";
-            $group = "jQuery('.kv-hide.{$groupCss}')";
-            $el = "jQuery('#{$id}')";
-            $callback = <<< JS
-function(){
-    var \$container = {$el}.select2('container');
-    {$el}.removeClass('kv-hide');
-    \$container.removeClass('kv-hide');
-    {$loading}.remove();
-    if (Object.keys({$group}).length > 0) {
-        {$group}.removeClass('kv-hide').removeClass('{$groupCss}');
-    }
-}
-JS;
-            $this->registerPlugin('select2', $el, $callback);
+            $this->registerPlugin('select2', "jQuery('#{$id}')", "initSelect2Loading('{$id}')");
         } else {
             $this->registerPlugin('select2');
         }

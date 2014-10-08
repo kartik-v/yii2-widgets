@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 3.0.0
  */
 
 namespace kartik\widgets;
@@ -22,8 +22,8 @@ class Select2Asset extends AssetBundle
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/lib/select2');
-        $this->setupAssets('css', ['select2', 'select2-bootstrap3']);
-        $this->setupAssets('js', ['select2']);
+        $this->setupAssets('css', ['select2', 'select2-kv']);
+        $this->setupAssets('js', ['select2', 'select2-kv']);
         parent::init();
     }
 }
