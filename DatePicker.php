@@ -10,6 +10,7 @@ namespace kartik\widgets;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\FormatConverter;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
 use kartik\datecontrol\DateControl;
@@ -130,7 +131,15 @@ class DatePicker extends InputWidget
             throw new InvalidConfigException("The 'attribute2' property must be set for a 'range' type markup and a defined 'form' property.");
         }
         $this->initLanguage();
-        if ($this->convertFormat && isset($this->pluginOptions['format'])) {
+        if (!isset($this->pluginOptions['format'])){
+            $format = Yii::$app->formatter->dateFormat;
+            if (strncmp($this->dateFormat, 'php:', 4) === 0) {
+                $this->pluginOptions['format'] = static::convertDateFormat(substr($format, 4));
+            } else {
+                $format = FormatConverter::convertDateIcuToPhp($format, 'date');
+                $this->pluginOptions['format'] = static::convertDateFormat($format);
+            }
+        } elseif ($this->convertFormat && isset($this->pluginOptions['format'])) {
             $this->pluginOptions['format'] = static::convertDateFormat($this->pluginOptions['format']);
         }
         $this->_id = ($this->type == self::TYPE_INPUT) ? 'jQuery("#' . $this->options['id'] . '")' : 'jQuery("#' . $this->options['id'] . '").parent()';
