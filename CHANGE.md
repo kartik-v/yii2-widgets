@@ -1,3 +1,8 @@
+version 3.1.0
+**Date:** 09-Oct-2014
+
+1. enh: If DatePicker/DateTimePicker pluginOption['format'] isn't configured it takes format from Yii formatter according to app's language setting.
+
 version 3.0.0
 =============
 **Date:** 08-Oct-2014
