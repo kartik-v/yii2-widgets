@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-widgets
- * @version 2.9.0
+ * @version 3.1.0
  */
 
 namespace kartik\widgets;
@@ -272,5 +272,35 @@ class InputWidget extends \yii\widgets\InputWidget
             // year (four digit)
             'Y' => 'yyyy',
         ]);
+    }
+    
+    /**
+     * Parses date format based on attribute type using yii\helpers\FormatConverter
+     * Used only within DatePicker and DateTimePicker.
+     *
+     * @param string $type the attribute type whether date, datetime, or time
+     * @return mixed|string
+     * @throws InvalidConfigException
+     */
+    protected function parseDateFormat($type)
+    {
+        if (!$this->convertFormat) {
+            return;
+        }
+        if (isset($this->pluginOptions['format'])) {
+            $format = static::convertDateFormat($this->pluginOptions['format']);
+            $this->pluginOptions['format'] = $format;
+            return;
+        }
+        $attrib = $type . 'Format';
+        $format = isset(Yii::$app->formatter->$attrib) ? Yii::$app->formatter->$attrib : '';
+        if (isset($this->dateFormat) && strncmp($this->dateFormat, 'php:', 4) === 0) {
+            $this->pluginOptions['format'] = static::convertDateFormat(substr($format, 4));
+        } elseif ($format != '') {
+            $format = FormatConverter::convertDateIcuToPhp($format, $type);
+            $this->pluginOptions['format'] = static::convertDateFormat($format);
+        } else {
+           throw InvalidConfigException("Error parsing '{$type}' format.");
+        }
     }
 }

@@ -1,3 +1,9 @@
+version 3.1.0
+=============
+**Date:** 10-Oct-2014
+
+1. enh #169: Enhancement for ICU format conversion for DatePicker and DateTimePicker (enrica, kartik-v).
+
 version 3.0.0
 =============
 **Date:** 08-Oct-2014
@@ -5,7 +11,7 @@ version 3.0.0
 1. PSR4 alias change
 2. enh #162: Add Russian locale and translation for DatePicker plugin.
 3. enh #165, #166, #168: Various Select2 styling enhancements for Bootstrap.
-4. Updated Select2 plugin version to latest.
+4. Updated Select2 plugin version to latest version.
 
 version 2.9.0
 =============
