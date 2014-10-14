@@ -3,6 +3,7 @@ version 3.1.0
 **Date:** 10-Oct-2014
 
 1. enh #169: Enhancement for ICU format conversion for DatePicker and DateTimePicker (enrica, kartik-v).
+2. bug #172: More correct InputWidget name field parsing.
 
 version 3.0.0
 =============

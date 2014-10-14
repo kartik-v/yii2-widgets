@@ -93,7 +93,7 @@ class InputWidget extends \yii\widgets\InputWidget
             $this->_loadIndicator =  self::LOAD_PROGRESS;
         }
         if ($this->hasModel()) {
-            $this->name = ArrayHelper::remove($this->options, 'name', Html::getInputName($this->model, $this->attribute));
+            $this->name = empty($this->options['name']) ? Html::getInputName($this->model, $this->attribute) : $this->options['name'];
             $this->value = $this->model[Html::getAttributeName($this->attribute)];
         }
         $view = $this->getView();
