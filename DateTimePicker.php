@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 3.1.0
  */
 
 namespace kartik\widgets;
@@ -89,9 +89,7 @@ class DateTimePicker extends InputWidget
             throw new InvalidConfigException("Invalid value for the property 'type'. Must be an integer between 1 and 4.");
         }
         $this->initLanguage();
-        if ($this->convertFormat && isset($this->pluginOptions['format'])) {
-            $this->pluginOptions['format'] = static::convertDateFormat($this->pluginOptions['format']);
-        }
+        $this->parseDateFormat('datetime');
         $this->_id = ($this->type == self::TYPE_INPUT) ? 'jQuery("#' . $this->options['id'] . '")' : 'jQuery("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         echo $this->renderInput();

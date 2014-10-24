@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 1.0.0
+ * @version 3.1.0
  */
 
 namespace kartik\widgets;
@@ -26,8 +26,7 @@ use yii\web\JsExpression;
  * @see https://github.com/kartik-v/bootstrap-fileinput
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 2.0: C
- *
+ * @since 2.0
  * @see http://twitter.github.com/typeahead.js/examples
  */
 class FileInput extends InputWidget
@@ -72,7 +71,7 @@ class FileInput extends InputWidget
             $validation = ArrayHelper::getValue($this->pluginOptions, 'showPreview', true) ? 'file preview and multiple file upload' : 'multiple file upload';
             $message = '<strong>' . Yii::t('fileinput', 'Note:') . '</strong> ' . Yii::t('fileinput', 'Your browser does not support {validation}. Try an alternative or more recent browser to access these features.', ['validation' => $validation]);
             $content = Html::tag('div', $message, $this->messageOptions) . "<script>{$id}.removeClass('file-loading');</script>";
-            $input .= "\n<br>" . $this->validateIE($content);
+            $input .= "\n" . $this->validateIE($content);
         }
         echo $input;
     }
@@ -86,7 +85,7 @@ class FileInput extends InputWidget
      */
     protected function validateIE($content, $validation = 'lt IE 10')
     {
-        return "<!--[if {$validation}]>{$content}<![endif]-->";
+        return "<!--[if {$validation}]><br>{$content}<![endif]-->";
     }
 
     /**

@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-widgets
- * @version 2.9.0
+ * @version 3.1.0
  */
 
 namespace kartik\widgets;
@@ -130,9 +130,7 @@ class DatePicker extends InputWidget
             throw new InvalidConfigException("The 'attribute2' property must be set for a 'range' type markup and a defined 'form' property.");
         }
         $this->initLanguage();
-        if ($this->convertFormat && isset($this->pluginOptions['format'])) {
-            $this->pluginOptions['format'] = static::convertDateFormat($this->pluginOptions['format']);
-        }
+        $this->parseDateFormat('date');
         $this->_id = ($this->type == self::TYPE_INPUT) ? 'jQuery("#' . $this->options['id'] . '")' : 'jQuery("#' . $this->options['id'] . '").parent()';
         $this->registerAssets();
         echo $this->renderInput();
