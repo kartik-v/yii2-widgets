@@ -5,6 +5,7 @@ version 3.1.0
 1. enh #169: Enhancement for ICU format conversion for DatePicker and DateTimePicker (enrica, kartik-v).
 2. bug #172: More correct InputWidget name field parsing.
 3. enh #173: Fix styling for FileInput additional line feed.
+4. enh #177: Add Italian translations.
 
 version 3.0.0
 =============
