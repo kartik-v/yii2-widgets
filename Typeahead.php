@@ -167,21 +167,16 @@ class Typeahead extends TypeaheadBasic
         }
         if (!empty($source['remote'])) {
             $remote = $source['remote'];
+            $hint = 'jQuery("#' . $this->options['id'] . '")';
             /* Add a spinning indicator for remote calls */
             $r = is_array($remote) ? $remote : ['url' => $remote];
-            $hint = 'jQuery("#' . $this->options['id'] . '")';
-            if (empty($r['beforeSend'])) {
-                $r['beforeSend'] = new JsExpression("function (xhr) { alert('before'); {$hint}.addClass('loading'); }");
+            if (empty($r['ajax']['beforeSend'])) {
+                $r['ajax']['beforeSend'] = new JsExpression("function(){{$hint}.addClass('loading');}");
             }
-            if (empty($r['filter'])) {
-                $r['filter'] = new JsExpression(
-                    "function(list) {
-                        alert('after');
-                        {$hint}.removeClass('loading');
-                    }"
-                );
+            if (empty($r['ajax']['complete'])) {
+               $r['ajax']['complete'] = new JsExpression("function(){{$hint}.removeClass('loading');}");
             }
-            $d['remote'] = $r;
+            $remote = $r;
         }
         return compact('datumTokenizer', 'queryTokenizer', 'limit', 'dupDetector', 'sorter', 'local', 'prefetch', 'remote');
     }

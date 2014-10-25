@@ -1,11 +1,11 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
- * @version 3.1.0
+ * @version 3.2.0
  *
  * typeahead.js additional styling
- *
+ * 
  * Author: Kartik Visweswaran
  * Copyright: 2013, Kartik Visweswaran, Krajee.com
  * For more JQuery plugins visit http://plugins.krajee.com
  * For more Yii related demos visit http://demos.krajee.com
- */.tt-scrollable-menu .tt-dropdown-menu{max-height:140px;overflow-y:auto}.tt-rtl .tt-dropdown-menu{text-align:right}.tt-hint.loading{background:transparent url('../img/loading.gif') no-repeat scroll right center content-box !important}.twitter-typeahead input[disabled],input[readonly],fieldset[disabled] .twitter-typeahead input{background-color:#eee;cursor:not-allowed}
+ */.tt-scrollable-menu .tt-dropdown-menu{max-height:140px;overflow-y:auto}.tt-rtl .tt-dropdown-menu{text-align:right}.tt-input.loading{background:transparent url(../img/loading.gif) no-repeat scroll right center content-box!important}.twitter-typeahead input[disabled],fieldset[disabled] .twitter-typeahead input,input[readonly]{background-color:#EEE;cursor:not-allowed}

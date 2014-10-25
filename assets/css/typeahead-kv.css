@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
- * @version 3.1.0
+ * @version 3.2.0
  *
  * typeahead.js additional styling
  * 
@@ -16,7 +16,7 @@
 .tt-rtl .tt-dropdown-menu {
     text-align: right;
 }
-.tt-hint.loading {
+.tt-input.loading {
     background: transparent url('../img/loading.gif') no-repeat scroll right center content-box !important;
 }
 .twitter-typeahead input[disabled], input[readonly], fieldset[disabled] .twitter-typeahead input {

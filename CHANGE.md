@@ -3,7 +3,9 @@ version 3.2.0
 **Date:** 25-Oct-2014
 
 1. enh #181: Enhance RangeInput to include new vertical orientation
-2. Update select2 plugin to the latest release v3.5.1.
+2. bug #183: Fix typeahead remote loading spinning indicator.
+3. enh #184: Update select2 plugin to the latest release v3.5.1.
+4. enh #185: Update typeahead plugin to the latest release v0.10.5.
 
 version 3.1.0
 =============
