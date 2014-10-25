@@ -1,3 +1,10 @@
+version 3.2.0
+=============
+**Date:** 25-Oct-2014
+
+1. enh #181: Enhance RangeInput to include new vertical orientation
+2. Update select2 plugin to the latest release v3.5.1.
+
 version 3.1.0
 =============
 **Date:** 10-Oct-2014

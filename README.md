@@ -29,6 +29,9 @@ or add
 
 to the ```require``` section of your `composer.json` file.
 
+## Latest Release
+>NOTE: The latest version of the module is v3.2.0 released on 25-Oct-2014. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widgets/blob/master/CHANGE.md) for details.
+
 ## Additional Widgets
 
 This extension has now matured to contain the most needed basic widgets for Yii 2 input and navigation controls. In order to support this extension better, any

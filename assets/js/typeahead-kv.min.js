@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
- * @version 3.1.0
+ * @version 3.2.0
  *
  * Typeahead basic implementation script
  * (does not need a suggestion engine)

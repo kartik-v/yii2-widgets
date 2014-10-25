@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
  * @package yii2-widgets
- * @version 3.1.0
+ * @version 3.2.0
  */
 
 namespace kartik\widgets;
@@ -135,9 +135,8 @@ class Html5Input extends InputWidget
         Html::addCssClass($this->options, 'form-control');
         $size = isset($this->size) ? ' input-group-' . $this->size : '';
         Html::addCssClass($this->containerOptions, 'input-group input-group-html5' . $size);
-        $style = empty($this->html5Container['style']) ? '' : $this->html5Container['style'] . ';';
         if (isset($this->width) && ($this->width > 0)) {
-            $this->html5Container['style'] = $style . 'width:' . $this->width . ';';
+            Html::addCssStyle($this->html5Container, 'width:'.$this->width);
         }
         Html::addCssClass($this->html5Container, 'input-group-addon addon-' . $this->type);
         $caption = $this->getInput('textInput');
