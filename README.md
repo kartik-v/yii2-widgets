@@ -1,7 +1,7 @@
 yii2-widgets
 ============
 
-This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras. The widgets currently available are:
+This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras.
 
 > NOTE: This extension depends on the [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. Check the 
 [composer.json](https://github.com/kartik-v/yii2-widgets/blob/master/composer.json) for this extension's requirements and dependencies. 
@@ -45,6 +45,8 @@ This extension has now matured to contain the most needed basic widgets for Yii 
 - [yii2-checkbox-x](http://demos.krajee.com/checkbox-x): Bootstrap 3 extended checkbox widget with 3 states and more styles for Yii 2.0.
 - [yii2-date-range](http://demos.krajee.com/date-range): An extended bootstrap 3 date range picker widget for Yii 2.0.
 - [yii2-editable](http://demos.krajee.com/editable): Convert any displayed content to editable using inputs, widgets, and more features for Yii 2.0.
+
+The widgets currently available in **yii2-widgets** are grouped by the type of usage.
 
 ### Forms/Inputs
 
