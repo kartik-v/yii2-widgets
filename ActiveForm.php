@@ -183,7 +183,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
             $this->_offsetCss = "col-" . $size . "-offset-" . $span . " " . $this->_inputCss;
         }
 
-        if ($this->_inputCss == self::NOT_SET) {
+        if ($this->_inputCss == self::NOT_SET && empty($this->fieldConfig['template'])) {
             $this->fieldConfig['template'] = "{label}\n{input}\n{error}\n{hint}";
         }
 
