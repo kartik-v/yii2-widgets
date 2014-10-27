@@ -205,7 +205,11 @@ class ActiveField extends \yii\widgets\ActiveField
                 $error = $showErrors ? "<div class='{$offsetDivClass}'>{error}</div>\n" : "";
                 $hint = "<div class='{$offsetDivClass}'>{hint}</div>";
             }
-            $this->template = "{label}\n{$input}\n{$error}{$hint}";
+            $this->template = strtr($this->template, [
+                '{input}' => $input,
+                '{error}' => $error,
+                '{hint}' => $hint
+            ]);
         }
         if (!$showErrors) {
             $this->template = str_replace("{error}\n", "", $this->template);

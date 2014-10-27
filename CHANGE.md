@@ -6,6 +6,7 @@ version 3.2.0
 2. bug #183: Fix typeahead remote loading spinning indicator.
 3. enh #184: Update select2 plugin to the latest release v3.5.1.
 4. enh #185: Update typeahead plugin to the latest release v0.10.5.
+4. enh #186: Better replacement of tags for field template.
 
 version 3.1.0
 =============
