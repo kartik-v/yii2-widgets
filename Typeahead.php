@@ -52,7 +52,7 @@ class Typeahead extends TypeaheadBasic
     public $dataset = [];
     
     /**
-     * @var bool whether to register and use Handle Bars Template plugin compiler. 
+     * @var bool whether to register and use Handle Bars Template compiler plugin. 
      * Defaults to `true`.
      */
     public $useHandleBars = true;
