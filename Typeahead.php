@@ -50,6 +50,12 @@ class Typeahead extends TypeaheadBasic
      * - templates: array the templates used to render suggestions.
      */
     public $dataset = [];
+    
+    /**
+     * @var bool whether to register and use Handle Bars Template plugin compiler. 
+     * Defaults to `true`.
+     */
+    public $useHandleBars = true;
 
     /**
      * @var array the HTML attributes for the input tag.
@@ -188,6 +194,9 @@ class Typeahead extends TypeaheadBasic
     {
         $view = $this->getView();
         TypeaheadAsset::register($view);
+        if ($this->useHandleBars) {
+            TypeaheadHBAsset::register($view);
+        }
         $this->registerPluginOptions('typeahead');
         $view->registerJs($this->_bloodhound);
         $view->registerJs('jQuery("#' . $this->options['id'] . '").typeahead(' . $this->_hashVar . ',' . $this->_dataset . ');');

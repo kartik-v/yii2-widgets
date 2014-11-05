@@ -4,6 +4,7 @@ version 3.3.0
 
 1. enh #193: Upgraded select2 plugin to latest version.
 2. enh #166: Reverted back placeholder CSS for bootstrap v3.3.0.
+3. enh #195: Enable option to conditionally load HandleBars.
 
 version 3.2.0
 =============

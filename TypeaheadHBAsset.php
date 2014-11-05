@@ -9,19 +9,18 @@
 namespace kartik\widgets;
 
 /**
- * Asset bundle for Typeahead advanced widget
+ * Asset bundle for Typeahead Handle Bars plugin
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class TypeaheadAsset extends AssetBundle
+class TypeaheadHBAsset extends AssetBundle
 {
 
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/assets');
-        $this->setupAssets('css', ['css/typeahead', 'css/typeahead-kv']);
-        $this->setupAssets('js', ['js/typeahead.bundle']);
+        $this->setupAssets('js', ['js/handlebars']);
         parent::init();
     }
 }
