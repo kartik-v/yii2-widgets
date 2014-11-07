@@ -11,18 +11,11 @@ namespace kartik\widgets;
 use Yii;
 
 /**
- * Common Asset bundle for all widgets
+ * Common base widget asset bundle for all Krajee widgets
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class WidgetAsset extends AssetBundle
+class WidgetAsset extends \kartik\base\WidgetAsset
 {
-
-    public function init()
-    {
-        $this->setSourcePath(__DIR__ . '/assets');
-        $this->setupAssets('css', ['css/kv-widgets']);
-        parent::init();
-    }
 }
