@@ -10,7 +10,15 @@ This extension enhances or adds functionality to existing Yii Framework 2 Widget
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-> Note: Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
+> Note: You must set the `minimum-stability` to `dev` in the **composer.json** file in your application root folder before installation of this extension OR
+if your `minimum-stability` is set to `stable`, then set the following in the require section of your composer.json file
+
+```
+    kartik-v/yii2-widgets: "@dev",
+    kartik-v/yii2-krajee-base: "@dev"
+```
+
+Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
 
 Either run
 
