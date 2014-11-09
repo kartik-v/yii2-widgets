@@ -1,19 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2013
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-widgets
- * @version 3.3.0
+ * @version 3.4.0
  */
 
 namespace kartik\widgets;
-
-use Yii;
-use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
-use yii\base\InvalidConfigException;
-use yii\web\View;
-use yii\web\JsExpression;
 
 /**
  * StarRating widget is a wrapper widget for the Bootstrap Star Rating plugin by Krajee.
@@ -28,32 +21,6 @@ use yii\web\JsExpression;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class StarRating extends InputWidget
+class StarRating extends \kartik\rating\StarRating
 {
-
-    /**
-     * Initializes the widget
-     *
-     * @throw InvalidConfigException
-     */
-    public function init()
-    {
-        parent::init();
-        $this->registerAssets();
-        if ($this->pluginLoading) {
-            Html::addCssClass($this->options, 'rating-loading');
-        }
-        echo $this->getInput('textInput');
-    }
-
-    /**
-     * Registers the needed assets
-     */
-    public function registerAssets()
-    {
-        $view = $this->getView();
-        StarRatingAsset::register($view);
-        $this->registerPlugin('rating');
-    }
-
 }

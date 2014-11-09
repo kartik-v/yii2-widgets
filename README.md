@@ -3,47 +3,35 @@ yii2-widgets
 
 This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras.
 
-> NOTE: This extension depends on the [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. Check the 
-[composer.json](https://github.com/kartik-v/yii2-widgets/blob/master/composer.json) for this extension's requirements and dependencies. 
+> NOTE: This extension has been revamped with release v3.4.0 on 09-Nov-2014. With release v3.4.0, each widget within this extension bundle has been logically regrouped and split into separate sub repositories. 
+This change has been done to allow developers flexibility to install separately or specific widgets only (via composer) if needed. However, for new users installing this bundle 
+should be the easiest way to give you access to all these important widget sub repositories in one shot. This change would not affect backward compatibility for any users already using the previous extension versions.
 
-## Installation
+## Widgets available in this bundle
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+The **yii2-widgets** bundle automatically includes these widgets in sub repositories for accessing via `\kartik\widgets\` namespace.
 
-### Pre-requisites
+- [yii2-krajee-base](https://github.com/kartik-v/yii2-krajee-base) 
+- [yii2-widget-activeform](https://github.com/kartik-v/yii2-widget-activeform) 
+- [yii2-widget-affix](https://github.com/kartik-v/yii2-widget-affix) 
+- [yii2-widget-alert](https://github.com/kartik-v/yii2-widget-alert) 
+- [yii2-widget-colorinput](https://github.com/kartik-v/yii2-widget-colorinput) 
+- [yii2-widget-datepicker](https://github.com/kartik-v/yii2-widget-datepicker) 
+- [yii2-widget-datetimepicker](https://github.com/kartik-v/yii2-widget-datetimepicker) 
+- [yii2-widget-depdrop](https://github.com/kartik-v/yii2-widget-depdrop) 
+- [yii2-widget-fileinput](https://github.com/kartik-v/yii2-widget-fileinput) 
+- [yii2-widget-growl](https://github.com/kartik-v/yii2-widget-growl) 
+- [yii2-widget-rangeinput](https://github.com/kartik-v/yii2-widget-rangeinput) 
+- [yii2-widget-rating](https://github.com/kartik-v/yii2-widget-rating) 
+- [yii2-widget-select2](https://github.com/kartik-v/yii2-widget-select2) 
+- [yii2-widget-sidenav](https://github.com/kartik-v/yii2-widget-sidenav) 
+- [yii2-widget-spinner](https://github.com/kartik-v/yii2-widget-spinner) 
+- [yii2-widget-switchinput](https://github.com/kartik-v/yii2-widget-switchinput) 
+- [yii2-widget-timepicker](https://github.com/kartik-v/yii2-widget-timepicker) 
+- [yii2-widget-touchspin](https://github.com/kartik-v/yii2-widget-touchspin) 
+- [yii2-widget-typeahead](https://github.com/kartik-v/yii2-widget-typeahead) 
 
-> Note: Check the [composer.json](https://github.com/kartik-v/yii2-dropdown-x/blob/master/composer.json) for this extension's requirements and dependencies. 
-You must set the `minimum-stability` to `dev` in the **composer.json** file in your application root folder before installation of this extension OR
-if your `minimum-stability` is set to any other value other than `dev`, then set the following in the require section of your composer.json file
-
-
-```
-kartik-v/yii2-widgets: "@dev",
-kartik-v/yii2-krajee-base: "@dev"
-```
-
-Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
-
-### Install
-
-Either run
-
-```
-$ php composer.phar require kartik-v/yii2-widgets "dev-master"
-```
-
-or add
-
-```
-"kartik-v/yii2-widgets": "dev-master"
-```
-
-to the ```require``` section of your `composer.json` file.
-
-## Latest Release
->NOTE: The latest version of the module is v3.2.0 released on 25-Oct-2014. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widgets/blob/master/CHANGE.md) for details.
-
-## Additional Widgets
+## Additional related widgets
 
 This extension has now matured to contain the most needed basic widgets for Yii 2 input and navigation controls. In order to support this extension better, any
  additional input and navigation widgets will be created separately. Listed below are the additional widgets that are related to similar functionality like the 
@@ -59,6 +47,38 @@ This extension has now matured to contain the most needed basic widgets for Yii 
 - [yii2-checkbox-x](http://demos.krajee.com/checkbox-x): Bootstrap 3 extended checkbox widget with 3 states and more styles for Yii 2.0.
 - [yii2-date-range](http://demos.krajee.com/date-range): An extended bootstrap 3 date range picker widget for Yii 2.0.
 - [yii2-editable](http://demos.krajee.com/editable): Convert any displayed content to editable using inputs, widgets, and more features for Yii 2.0.
+- [yii2-label-inplace](http://demos.krajee.com/label-inplace): A form enhancement widget for Yii framework 2.0 allowing in-field label support.
+
+## Installation
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/). Remember to refer to the [composer.json](https://github.com/kartik-v/yii2-widgets/blob/master/composer.json) for 
+this extension's requirements and dependencies. 
+
+
+### Pre-requisites
+
+> Note: Check the [composer.json](https://github.com/kartik-v/yii2-dropdown-x/blob/master/composer.json) for this extension's requirements and dependencies. 
+Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
+
+### Install
+
+Either run
+
+```
+$ php composer.phar require kartik-v/yii2-widgets "*"
+```
+
+or add
+
+```
+"kartik-v/yii2-widgets": "*"
+```
+
+to the ```require``` section of your `composer.json` file.
+
+## Latest Release
+
+>NOTE: The latest version of the module is v3.4.0 released on 09-Nov-2014. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widgets/blob/master/CHANGE.md) for details.
 
 The widgets currently available in **yii2-widgets** are grouped by the type of usage.
 
@@ -394,7 +414,7 @@ You can see a [demonstration here](http://demos.krajee.com/widgets) on usage of 
 
 ### Typeahead
 ```php
-use kartik\widgets\Typeahead;
+use kartik\widgets\TypeaheadBasic;
 
 // TypeaheadBasic usage with ActiveForm and model
 echo $form->field($model, 'state_3')->widget(Typeahead::classname(), [
@@ -643,7 +663,6 @@ echo Alert::widget([
 	'titleOptions' => ['icon' => 'info-sign'],
 	'body' => 'This is an informative alert'
 ]);
-
 ```
 
 #### Growl

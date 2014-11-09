@@ -12,11 +12,27 @@
             "homepage": "http://www.krajee.com/"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
-        "kartik-v/yii2-krajee-base": "*",
-        "kartik-v/bootstrap-star-rating": "*",
-        "kartik-v/bootstrap-fileinput": "*",
-        "kartik-v/dependent-dropdown": "*"
+        "yii2-krajee-base": "*",
+        "yii2-widget-activeform": "*",
+        "yii2-widget-affix": "*",
+        "yii2-widget-alert": "*",
+        "yii2-widget-colorinput": "*",
+        "yii2-widget-datepicker": "*",
+        "yii2-widget-datetimepicker": "*",
+        "yii2-widget-depdrop": "*",
+        "yii2-widget-fileinput": "*",
+        "yii2-widget-growl": "*",
+        "yii2-widget-rangeinput": "*",
+        "yii2-widget-rating": "*",
+        "yii2-widget-select2": "*",
+        "yii2-widget-sidenav": "*",
+        "yii2-widget-spinner": "*",
+        "yii2-widget-switchinput": "*",
+        "yii2-widget-timepicker": "*",
+        "yii2-widget-touchspin": "*",
+        "yii2-widget-typeahead": "*"
     },
     "autoload": {
         "psr-4": {
