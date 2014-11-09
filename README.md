@@ -9,7 +9,7 @@ should be the easiest way to give you access to all these important widget sub r
 
 ## Widgets available in this bundle
 
-The **yii2-widgets** bundle automatically includes these widgets in sub repositories for accessing via `\kartik\widgets\` namespace.
+The **yii2-widgets** bundle automatically includes extensions or widgets from these sub repositories for accessing via `\kartik\widgets\` namespace.
 
 - [yii2-krajee-base](https://github.com/kartik-v/yii2-krajee-base) 
 - [yii2-widget-activeform](https://github.com/kartik-v/yii2-widget-activeform) 
