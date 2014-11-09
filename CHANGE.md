@@ -3,6 +3,7 @@ version 3.4.0
 **Date:** 09-Nov-2014
 
 1. enh #199: Revamp yii2-widgets extension bundle to refer to individual sub repositories.
+2. Set release to stable.
 
 version 3.3.0
 =============
