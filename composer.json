@@ -12,6 +12,7 @@
             "homepage": "http://www.krajee.com/"
         }
     ],
+	"minimum-stability": "dev",
     "require": {
         "yii2-krajee-base": "*",
         "yii2-widget-activeform": "*",
