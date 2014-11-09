@@ -14,7 +14,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "yii2-krajee-base": "*",
+        "yii2-krajee-base": "@dev",
         "yii2-widget-activeform": "*",
         "yii2-widget-affix": "*",
         "yii2-widget-alert": "*",
