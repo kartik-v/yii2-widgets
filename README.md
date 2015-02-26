@@ -1,6 +1,12 @@
 yii2-widgets
 ============
 
+[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-widgets/v/stable.svg)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![License](https://poser.pugx.org/kartik-v/yii2-widgets/license.svg)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/downloads.svg)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/d/monthly.png)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/d/daily.png)](https://packagist.org/packages/kartik-v/yii2-widgets)
+
 This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras.
 
 > NOTE: This extension has been revamped with release v3.4.0 on 09-Nov-2014. With release v3.4.0, each widget within this extension bundle has been logically regrouped and split into separate sub repositories. 
