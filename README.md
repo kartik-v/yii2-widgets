@@ -1,11 +1,11 @@
 yii2-widgets
 ============
 
-[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-widgets/v/stable.svg)](https://packagist.org/packages/kartik-v/yii2-widgets)
-[![License](https://poser.pugx.org/kartik-v/yii2-widgets/license.svg)](https://packagist.org/packages/kartik-v/yii2-widgets)
-[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/downloads.svg)](https://packagist.org/packages/kartik-v/yii2-widgets)
-[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/d/monthly.png)](https://packagist.org/packages/kartik-v/yii2-widgets)
-[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/d/daily.png)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-widgets/v/stable)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![License](https://poser.pugx.org/kartik-v/yii2-widgets/license)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/downloads)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/d/monthly)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/d/daily)](https://packagist.org/packages/kartik-v/yii2-widgets)
 
 This extension enhances or adds functionality to existing Yii Framework 2 Widgets to make available other bundled features available in Bootstrap 3.0, new HTML 5 features and affiliated Bootstrap extras.
 
