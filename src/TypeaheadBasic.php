@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
  * @package yii2-widgets
  * @version 3.4.1
  */
@@ -15,13 +15,12 @@ namespace kartik\widgets;
  * functionality and based on Twitter's typeahead.js which Twitter mentions as
  * a fast and fully-featured autocomplete library.
  *
- * This is an advanced implementation of the typeahead.js plugin included with the
- * Bloodhound suggestion engine.
+ * This is a basic implementation of typeahead.js without using any suggestion engine.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  * @see http://twitter.github.com/typeahead.js/examples
  */
-class Typeahead extends \kartik\typeahead\Typeahead
+class TypeaheadBasic extends \kartik\typeahead\TypeaheadBasic
 {
 }

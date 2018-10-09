@@ -1,7 +1,8 @@
 yii2-widgets
 ============
 
-[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-widgets/v/stable)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Stable Version](https://poser.pugx.org/kartik-v/yii2-widgets/v/stable)](https://packagist.org/packages/kartik-v/yii2-widgets)
+[![Unstable Version](https://poser.pugx.org/kartik-v/yii2-widgets/v/unstable)](https://packagist.org/packages/kartik-v/yii2-widgets)
 [![License](https://poser.pugx.org/kartik-v/yii2-widgets/license)](https://packagist.org/packages/kartik-v/yii2-widgets)
 [![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/downloads)](https://packagist.org/packages/kartik-v/yii2-widgets)
 [![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widgets/d/monthly)](https://packagist.org/packages/kartik-v/yii2-widgets)
@@ -82,9 +83,9 @@ or add
 
 to the ```require``` section of your `composer.json` file.
 
-## Latest Release
+## Release Updates
 
->NOTE: The latest version of the module is v3.4.0 released on 09-Nov-2014. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widgets/blob/master/CHANGE.md) for details.
+> Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widgets/blob/master/CHANGE.md) for details on changes to various releases.
 
 The widgets currently available in **yii2-widgets** are grouped by the type of usage.
 
@@ -696,4 +697,4 @@ echo AlertBlock::widget([
 
 ## License
 
-**yii2-widgets** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
+**yii2-widgets** is released under the BSD-3-Clause License. See the bundled `LICENSE.md` for details.
